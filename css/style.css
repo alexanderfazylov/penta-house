@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : AF
 */
 
+@font-face{
+    font-family: HelveticaNeueCyr-Light;
+    src: url("/fonts/HelveticaNeueCyr-Light.otf") format("opentype");
+}
 html, body {
     margin: 0;
     height: 100%;
@@ -57,7 +61,7 @@ a{
     display: inline-block;
     border-bottom: 1px dashed white;
     cursor: pointer;
-    font-family: "Tahoma";
+    font-family: Tahoma, sans-serif;
 }
 .phone{
     margin:10px 0 0;
@@ -84,7 +88,7 @@ a{
 }
 .slogan{
     margin: 5px 0 0;
-    font: 11px Tahoma;         
+    font: 11px Tahoma, sans-serif;         
 }
 .logo-line{
     margin: 20px auto;
@@ -94,7 +98,7 @@ a{
 }
 .menu{
     text-transform: uppercase;
-    font: 11px Tahoma;
+    font: 11px Tahoma, sans-serif;
     letter-spacing: 1px;
 }
 .menu a{
@@ -145,7 +149,7 @@ a{
     background-color: #464646;
 }
 .copyright{
-    font: 11px Tahoma; 
+    font: 11px Tahoma, sans-serif; 
 }
 table.content{
     width:100%;
@@ -170,7 +174,7 @@ div.service-line{
 }
 div.service-description{
     color: #a1a1a1;
-    font-family: Tahoma;
+    font-family: Tahoma, sans-serif;
 }
 table.content td.brand-col{
     text-align: center;
