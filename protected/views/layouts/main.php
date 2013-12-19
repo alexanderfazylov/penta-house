@@ -27,11 +27,11 @@
         <div class="slogan">Элитная сантехника, плитка.</br>Продажа. Монтаж. Сервис.</div>
         <div class="logo-line"></div>
         <div class="menu">
-            <a href="/index.php?r=site/about">О компании</a>
+            <a href="/index.php/site/about">О компании</a>
             <!--<a href="dealership.html">Дилерство</a>-->
             <!--<a href="about.html">Каталог</a>-->
             <!--<a href="projects.html">Проекты</a>-->
-            <a href="/index.php?r=site/contact">Контакты</a>
+            <a href="/index.php/site/contact">Контакты</a>
         </div>
         <div class="footer">
             <!--
