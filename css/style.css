@@ -78,7 +78,7 @@ a{
     width: 156px; 
     height: 79px;
     margin:150px auto 0;
-    background-image: url("logo.png");
+    background-image: url("/images/logo.png");
     display: block;
     /*opacity: 0;*/
 }
@@ -130,13 +130,13 @@ a{
     margin: 0 5px;
 }
 .social-networks a.vk{
-    background: url("social-networks.png"); 
+    background: url("/images/social-networks.png"); 
 }
 .social-networks a.fb{
-    background: url("social-networks.png") 60px 0px; 
+    background: url("/images/social-networks.png") 60px 0px; 
 }
 .social-networks a.tw{
-    background: url("social-networks.png") 30px 0px; 
+    background: url("/images/social-networks.png") 30px 0px; 
 }
 .footer-line{
     margin: 20px auto;
@@ -191,7 +191,7 @@ table.content td.brand-col{
     height: 50px;
 }
 .banner{
-    background: url(banner.jpg) center center;
+    background: url(/images/banner.jpg) center center;
     cursor: pointer;
 }
 

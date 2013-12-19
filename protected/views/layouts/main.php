@@ -5,55 +5,48 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="language" content="en" />
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
-	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+
+        <link rel="stylesheet" type="text/css" href ="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="/js/script.js"></script>
 </head>
 
 <body>
-
-<div class="container" id="page">
-
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+    <div class="header">
+        <div class="city">
+            <div class="current-city">Казань</div>
+            <!--<div class="choose-city">Выбрать другой город</div>-->
+        </div>
+        <div class="phone">
+            <div class="phone-number">+7 (843) 567-98-01</div>
+            <!--<div class="order-callback">Заказать обратный звонок</div>-->
+        </div>
+        <a id="logo" href="/index.php"></a>
+        <div class="slogan">Элитная сантехника, плитка.</br>Продажа. Монтаж. Сервис.</div>
+        <div class="logo-line"></div>
+        <div class="menu">
+            <a href="/index.php?r=site/about">О компании</a>
+            <!--<a href="dealership.html">Дилерство</a>-->
+            <!--<a href="about.html">Каталог</a>-->
+            <!--<a href="projects.html">Проекты</a>-->
+            <a href="/index.php?r=site/contact">Контакты</a>
+        </div>
+        <div class="footer">
+            <!--
+            <div class="social-networks">
+                <a class="vk" href="vk.com"></a>
+                <a class="fb" href="facebook.com"></a>
+                <a class="tw" href="twitter.com"></a>
+            </div>
+            -->
+            <div class="footer-line"></div>
+            <div class="copyright">&copy; 2013 Penta House</div>
+        </div>
+    </div>
 
 	<?php echo $content; ?>
 
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
-
-</body>
+    </body>
 </html>
