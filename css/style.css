@@ -1,0 +1,226 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 01.12.2013, 13:05:34
+    Author     : AF
+*/
+
+html, body {
+    margin: 0;
+    height: 100%;
+    min-width: 1200px;
+    font: 12px "HelveticaNeueCyr-Light";
+}
+h1{
+    font-size: 36px;
+    font-weight: normal;
+}
+h2{
+    font-size: 24px;
+    font-weight: normal;
+}
+p{
+    font-size: 13px;
+}
+a{
+    color: #4ebfa7;
+    text-decoration: none;
+}
+.breadcrumbs{
+    color: #a1a1a1;
+    font-style: italic;
+}
+.breadcrumbs a{
+    color: #a1a1a1;
+}
+.header {
+    float: left;
+    position: fixed;
+    height: 100%;
+    background-color: #222;
+    color:#898989;
+    text-align: center;
+    min-height: 630px;
+}
+.city{
+    margin:20px 0 0;
+}
+.current-city{
+    font-size: 18px;
+}
+.choose-city{
+    margin:5px 0 0;
+    color:#fff;
+    display: inline-block;
+    border-bottom: 1px dashed white;
+    cursor: pointer;
+    font-family: "Tahoma";
+}
+.phone{
+    margin:10px 0 0;
+}
+.phone-number{
+    font-size: 22px;
+    color: #FFF;
+}
+.order-callback{
+    margin:5px 0 0;
+    color:#FFF;
+    border-bottom: 1px dashed white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Tahoma";
+}
+#logo{
+    width: 156px; 
+    height: 79px;
+    margin:150px auto 0;
+    background-image: url("logo.png");
+    display: block;
+    /*opacity: 0;*/
+}
+.slogan{
+    margin: 5px 0 0;
+    font: 11px Tahoma;         
+}
+.logo-line{
+    margin: 20px auto;
+    width: 180px;
+    height: 1px;
+    background-color: #464646;
+}
+.menu{
+    text-transform: uppercase;
+    font: 11px Tahoma;
+    letter-spacing: 1px;
+}
+.menu a{
+    margin:10px 0;
+    display: block;
+    color: #898989;
+    text-decoration: none; 
+}
+.menu a.selected{
+    color: #FFF;
+}
+.menu a.selected:before{
+    content: "• ";
+}
+.menu a.selected:after{
+    content: " •";
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 20px;
+}
+.social-networks{
+    text-align: center;
+}
+.social-networks a{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 0;
+    margin: 0 5px;
+}
+.social-networks a.vk{
+    background: url("social-networks.png"); 
+}
+.social-networks a.fb{
+    background: url("social-networks.png") 60px 0px; 
+}
+.social-networks a.tw{
+    background: url("social-networks.png") 30px 0px; 
+}
+.footer-line{
+    margin: 20px auto;
+    width: 180px;
+    height: 1px;
+    background-color: #464646;
+}
+.copyright{
+    font: 11px Tahoma; 
+}
+table.content{
+    width:100%;
+    border:0px;
+    border-collapse:collapse;
+}
+table.content tr{
+   height: 180px;
+}
+table.content td.service{
+    text-align: center;
+}
+table.content td.service h1{
+    font-size: 22px;
+    font-weight: normal;
+}
+div.service-line{
+    width: 60px;
+    height: 1px;
+    background-color: #b7b7b7;
+    margin: 15px auto;
+}
+div.service-description{
+    color: #a1a1a1;
+    font-family: Tahoma;
+}
+table.content td.brand-col{
+    text-align: center;
+    cursor: pointer;
+}
+.headline{
+    background-color: #000;
+    text-align: center;
+    color: #FFF;
+    font-size: 18px;
+}
+.headline span.quantity{
+    color: #898989;
+}
+.brand-col-bg{
+    background-color: #000;
+    opacity: 0.5;
+    height: 50px;
+}
+.banner{
+    background: url(banner.jpg) center center;
+    cursor: pointer;
+}
+
+// About
+table.about .company-description{
+    padding: 37px 50px 0 80px;
+    vertical-align: top;
+}
+table.about .company-description h1{
+    margin: 10px 0 30px;
+}
+table.about .company-contatcs{
+    padding: 36px 50px 0 0;
+    vertical-align: top;
+}
+table.about .company-contatcs .contacts{
+    font-size: 24px;
+    line-height: 30px;
+}
+
+// Contacts
+table.content td.contacts{
+    
+}
+table.city-contact tr{
+    height: 20px;
+    font-size: 14px;
+}
+table.city-contact td.field-name{
+    color: #898989;
+    padding-right: 30px;
+}
