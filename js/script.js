@@ -15,7 +15,7 @@ $(document).ready(function(){
     //$( "#logo" ).animate( { opacity:"1" }, 1500);
 
     // Index page
-    $(".banner").click( function(){window.location.href = '/dornbracht/horizontal-shower.html';});
+    //$(".banner").click( function(){window.location.href = '/dornbracht/horizontal-shower.html';});
     
     // About
     $(".about").width(function(){
