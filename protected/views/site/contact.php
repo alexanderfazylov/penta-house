@@ -1,7 +1,7 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle="Penta House &mdash; Контакты";
+$this->pageTitle="Penta House - Контакты";
 ?>
 
 <table class="content">

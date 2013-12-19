@@ -1,7 +1,7 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle="Penta House &mdash; Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
+$this->pageTitle="Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
 ?>
 
 
