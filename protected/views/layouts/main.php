@@ -23,7 +23,7 @@
             <div class="phone-number">+7 (843) 567-98-01</div>
             <!--<div class="order-callback">Заказать обратный звонок</div>-->
         </div>
-        <a id="logo" href="/index.php"></a>
+        <a id="logo" href="/"></a>
         <div class="slogan">Элитная сантехника, плитка.</br>Продажа. Монтаж. Сервис.</div>
         <div class="logo-line"></div>
         <div class="menu">
