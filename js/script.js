@@ -12,8 +12,6 @@ $(document).ready(function(){
         return $(".first-col").width()+2;
     });
 
-    //$( "#logo" ).animate( { opacity:"1" }, 1500);
-
     // Index page
     //$(".banner").click( function(){window.location.href = '/dornbracht/horizontal-shower.html';});
     
@@ -24,18 +22,7 @@ $(document).ready(function(){
 });
 
 $(window).resize(function(){
-
-    // Hide-show last column
-    if($(window).width()<1200){
-        $(".last-col").hide();
-        $(".header").css( "min-width", "240px");
-        $("table.content td").css( "width", $(window).width()/5);
-    } else {
-        $(".last-col").show();
-        $(".header").css( "min-width", "200px");
-        $("table.content td").css( "width", $(window).width()/6);
-    }
-    
+    $("table.content td").css( "width", $(window).width()/6);
     $(".about").css( "width", "100%");
     
     // Header width
