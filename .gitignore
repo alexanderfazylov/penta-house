@@ -1,1 +1,8 @@
-/nbproject/private/
+protected/config/database.php
+protected/config/params.php
+uploads
+nbproject
+.idea
+assets
+protected/runtime/
+nodejs/config.js

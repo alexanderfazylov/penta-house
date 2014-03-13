@@ -1,54 +1,282 @@
-2013/12/19 18:48:06 [error] [php] date(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. (C:\projects\penta-house\protected\views\layouts\main.php:51)
+2014/03/13 16:04:32 [error] [php] include(WebUser.php): failed to open stream: No such file or directory (/var/www/yii/framework/YiiBase.php:432)
 Stack trace:
-#0 C:\projects\yii-1.1.14\framework\web\CBaseController.php(95): SiteController->renderInternal()
-#1 C:\projects\yii-1.1.14\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
-#2 C:\projects\yii-1.1.14\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
-#3 C:\projects\yii-1.1.14\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
-#4 C:\projects\yii-1.1.14\framework\web\CBaseController.php(206): CContentDecorator->run()
-#5 C:\projects\yii-1.1.14\framework\web\CBaseController.php(300): SiteController->endWidget()
-#6 C:\projects\penta-house\protected\views\layouts\column1.php(6): SiteController->endContent()
-#7 C:\projects\yii-1.1.14\framework\web\CBaseController.php(126): require()
-#8 C:\projects\yii-1.1.14\framework\web\CBaseController.php(95): SiteController->renderInternal()
-#9 C:\projects\yii-1.1.14\framework\web\CController.php(784): SiteController->renderFile()
-#10 C:\projects\penta-house\protected\controllers\SiteController.php(32): SiteController->render()
-#11 C:\projects\yii-1.1.14\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
-#12 C:\projects\yii-1.1.14\framework\web\CController.php(308): CInlineAction->runWithParams()
-#13 C:\projects\yii-1.1.14\framework\web\CController.php(286): SiteController->runAction()
-#14 C:\projects\yii-1.1.14\framework\web\CController.php(265): SiteController->runActionWithFilters()
-#15 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(282): SiteController->run()
-#16 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#17 C:\projects\yii-1.1.14\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#18 C:\projects\penta-house\index.php(13): CWebApplication->run()
+#0 unknown(0): spl_autoload_call()
+#1 /var/www/yii/framework/YiiBase.php(303): class_exists()
+#2 /var/www/yii/framework/YiiBase.php(196): import()
+#3 /var/www/yii/framework/base/CModule.php(386): createComponent()
+#4 /var/www/yii/framework/base/CModule.php(103): CWebApplication->getComponent()
+#5 /var/www/penta-house/protected/views/layouts/main.php(35): CWebApplication->__get()
+#6 /var/www/yii/framework/web/CBaseController.php(126): require()
+#7 /var/www/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#8 /var/www/yii/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#9 /var/www/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#10 /var/www/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#11 /var/www/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#12 /var/www/yii/framework/web/CBaseController.php(308): SiteController->endWidget()
+#13 /var/www/penta-house/protected/views/layouts/column1.php(6): SiteController->endContent()
+#14 /var/www/yii/framework/web/CBaseController.php(126): require()
+#15 /var/www/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#16 /var/www/yii/framework/web/CController.php(784): SiteController->renderFile()
+#17 /var/www/penta-house/protected/controllers/SiteController.php(32): SiteController->render()
+#18 /var/www/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#19 /var/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#20 /var/www/yii/framework/web/CController.php(286): SiteController->runAction()
+#21 /var/www/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#22 /var/www/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#23 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#24 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /var/www/penta-house/index.php(13): CWebApplication->run()
 REQUEST_URI=/
-in C:\projects\penta-house\protected\views\layouts\main.php (51)
-in C:\projects\penta-house\protected\views\layouts\column1.php (6)
-in C:\projects\penta-house\protected\controllers\SiteController.php (32)
-2013/12/19 23:50:47 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "about".' in C:\projects\yii-1.1.14\framework\web\CController.php:483
+in /var/www/penta-house/protected/views/layouts/main.php (35)
+in /var/www/penta-house/protected/views/layouts/column1.php (6)
+in /var/www/penta-house/protected/controllers/SiteController.php (32)
+2014/03/13 16:04:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "css/print.css".' in /var/www/yii/framework/web/CWebApplication.php:286
 Stack trace:
-#0 C:\projects\yii-1.1.14\framework\web\CController.php(270): CController->missingAction('about')
-#1 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(282): CController->run('about')
-#2 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(141): CWebApplication->runController('site/about')
-#3 C:\projects\yii-1.1.14\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#4 C:\projects\penta-house\index.php(13): CApplication->run()
-#5 {main}
-REQUEST_URI=/index.php?r=site/about
----
-2013/12/19 23:50:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "pages/about".' in C:\projects\yii-1.1.14\framework\web\CWebApplication.php:286
-Stack trace:
-#0 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(141): CWebApplication->runController('pages/about')
-#1 C:\projects\yii-1.1.14\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#2 C:\projects\penta-house\index.php(13): CApplication->run()
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/print.css')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
 #3 {main}
-REQUEST_URI=/index.php?r=pages/about
+REQUEST_URI=/css/print.css
+HTTP_REFERER=http://penta-house/
 ---
-2013/12/19 23:55:33 [error] [php] Undefined variable: model (C:\projects\penta-house\protected\controllers\SiteController.php:77)
+2014/03/13 16:04:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "css/screen.css".' in /var/www/yii/framework/web/CWebApplication.php:286
 Stack trace:
-#0 C:\projects\yii-1.1.14\framework\web\CController.php(286): SiteController->runAction()
-#1 C:\projects\yii-1.1.14\framework\web\CController.php(265): SiteController->runActionWithFilters()
-#2 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(282): SiteController->run()
-#3 C:\projects\yii-1.1.14\framework\web\CWebApplication.php(141): CWebApplication->runController()
-#4 C:\projects\yii-1.1.14\framework\base\CApplication.php(180): CWebApplication->processRequest()
-#5 C:\projects\penta-house\index.php(13): CWebApplication->run()
-REQUEST_URI=/index.php?r=site/about
-in C:\projects\penta-house\protected\controllers\SiteController.php (77)
-in C:\projects\penta-house\index.php (13)
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/screen.css')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/screen.css
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:04:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "css/form.css".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/form.css')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/form.css
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:04:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "css/bg.gif".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/bg.gif')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/bg.gif
+HTTP_REFERER=http://penta-house/css/main.css
+---
+2014/03/13 16:06:36 [error] [php] include(WebUser.php): failed to open stream: No such file or directory (/var/www/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 unknown(0): spl_autoload_call()
+#1 /var/www/yii/framework/YiiBase.php(303): class_exists()
+#2 /var/www/yii/framework/YiiBase.php(196): import()
+#3 /var/www/yii/framework/base/CModule.php(386): createComponent()
+#4 /var/www/yii/framework/base/CModule.php(103): CWebApplication->getComponent()
+#5 /var/www/penta-house/protected/views/layouts/main.php(22): CWebApplication->__get()
+#6 /var/www/yii/framework/web/CBaseController.php(126): require()
+#7 /var/www/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#8 /var/www/yii/framework/web/widgets/CContentDecorator.php(76): SiteController->renderFile()
+#9 /var/www/yii/framework/web/widgets/CContentDecorator.php(54): CContentDecorator->decorate()
+#10 /var/www/yii/framework/web/widgets/COutputProcessor.php(44): CContentDecorator->processOutput()
+#11 /var/www/yii/framework/web/CBaseController.php(214): CContentDecorator->run()
+#12 /var/www/yii/framework/web/CBaseController.php(308): SiteController->endWidget()
+#13 /var/www/penta-house/protected/views/layouts/column1.php(6): SiteController->endContent()
+#14 /var/www/yii/framework/web/CBaseController.php(126): require()
+#15 /var/www/yii/framework/web/CBaseController.php(95): SiteController->renderInternal()
+#16 /var/www/yii/framework/web/CController.php(784): SiteController->renderFile()
+#17 /var/www/penta-house/protected/controllers/SiteController.php(32): SiteController->render()
+#18 /var/www/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionIndex()
+#19 /var/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#20 /var/www/yii/framework/web/CController.php(286): SiteController->runAction()
+#21 /var/www/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#22 /var/www/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#23 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#24 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#25 /var/www/penta-house/index.php(13): CWebApplication->run()
+REQUEST_URI=/
+in /var/www/penta-house/protected/views/layouts/main.php (22)
+in /var/www/penta-house/protected/views/layouts/column1.php (6)
+in /var/www/penta-house/protected/controllers/SiteController.php (32)
+2014/03/13 16:06:36 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "css/bg.gif".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/bg.gif')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/bg.gif
+HTTP_REFERER=http://penta-house/css/main.css
+---
+2014/03/13 16:06:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "css/bg.gif".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('css/bg.gif')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/css/bg.gif
+HTTP_REFERER=http://penta-house/css/main.css
+---
+2014/03/13 16:13:53 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "about".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('about')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('about')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/about')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/penta-house/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/about
+HTTP_REFERER=http://penta-house/site/contact
+---
+2014/03/13 16:13:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "about".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('about')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('about')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/about')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/penta-house/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/about
+HTTP_REFERER=http://penta-house/site/about
+---
+2014/03/13 16:14:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "about".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('about')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('about')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/about')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/penta-house/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/about
+HTTP_REFERER=http://penta-house/site/about
+---
+2014/03/13 16:25:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:25:39 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:26:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:26:04 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:28:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:28:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:28:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:28:13 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "js/script.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/js/script.js
+HTTP_REFERER=http://penta-house/
+---
+2014/03/13 16:57:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] Unable to connect: Adaptive Server is unavailable or does not exist (severity 9)' in /var/www/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /var/www/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /var/www/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /var/www/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /var/www/yii/framework/cli/commands/MigrateCommand.php(442): CModule->getComponent('db')
+#4 /var/www/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /var/www/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory(-1)
+#6 /var/www/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 [internal function]: MigrateCommand->actionUp(Array)
+#8 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#9 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#10 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#11 /var/www/yii/framework/base/CApplication.php(184): CConsoleApplication->processRequest()
+#12 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#13 /var/www/penta-house/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#14 /var/www/penta-house/protected/yiic(4): require_once('/var/www/penta-...')
+#15 {main}
+---
+2014/03/13 16:57:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] Unable to connect: Adaptive Server is unavailable or does not exist (severity 9)' in /var/www/yii/framework/db/CDbConnection.php:382
+Stack trace:
+#0 /var/www/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /var/www/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive(true)
+#2 /var/www/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /var/www/yii/framework/cli/commands/MigrateCommand.php(442): CModule->getComponent('db')
+#4 /var/www/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /var/www/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory(-1)
+#6 /var/www/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 [internal function]: MigrateCommand->actionUp(Array)
+#8 /var/www/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#9 /var/www/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#10 /var/www/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#11 /var/www/yii/framework/base/CApplication.php(184): CConsoleApplication->processRequest()
+#12 /var/www/yii/framework/yiic.php(33): CApplication->run()
+#13 /var/www/penta-house/protected/yiic.php(7): require_once('/var/www/yii/fr...')
+#14 /var/www/penta-house/protected/yiic(4): require_once('/var/www/penta-...')
+#15 {main}
+---
+2014/03/13 17:00:56 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'penta-house.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2014/03/13 17:05:26 [error] [php] include(User.php): failed to open stream: No such file or directory (/var/www/yii/framework/YiiBase.php:432)
+Stack trace:
+#0 /var/www/penta-house/protected/components/UserIdentity.php(21): spl_autoload_call()
+#1 /var/www/penta-house/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#2 /var/www/yii/framework/validators/CInlineValidator.php(42): LoginForm->authenticate()
+#3 /var/www/yii/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute()
+#4 /var/www/yii/framework/base/CModel.php(159): CInlineValidator->validate()
+#5 /var/www/penta-house/protected/controllers/SiteController.php(100): LoginForm->validate()
+#6 /var/www/yii/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#7 /var/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#8 /var/www/yii/framework/web/CController.php(286): SiteController->runAction()
+#9 /var/www/yii/framework/web/CController.php(265): SiteController->runActionWithFilters()
+#10 /var/www/yii/framework/web/CWebApplication.php(282): SiteController->run()
+#11 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#12 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#13 /var/www/penta-house/index.php(13): CWebApplication->run()
+REQUEST_URI=/site/login
+in /var/www/penta-house/protected/components/UserIdentity.php (21)
+in /var/www/penta-house/protected/models/LoginForm.php (52)
+in /var/www/penta-house/protected/controllers/SiteController.php (100)
