@@ -10,8 +10,14 @@
 </head>
 
 <body>
-
-<?php echo $content; ?>
+<header>
+    <div class="container">
+        <?php $this->renderPartial('/layouts/_menu'); ?>
+    </div>
+</header>
+<div class="container">
+    <?php echo $content; ?>
+</div>
 
 </body>
 </html>
