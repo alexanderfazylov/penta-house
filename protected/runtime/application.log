@@ -392,3 +392,61 @@ Stack trace:
 REQUEST_URI=/main/index
 HTTP_REFERER=http://penta-house/admin/main/index
 ---
+2014/03/25 13:47:43 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "favicon.ico".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('favicon.ico')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/favicon.ico
+---
+2014/03/25 13:52:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'MAX) NOT NULL
+)' at line 5. The SQL statement executed was: CREATE TABLE `ph_brand` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL,
+	`upload_id` VARCHAR(255) NULL,
+	`description` nvarchar(MAX) NOT NULL
+).
+2014/03/25 13:53:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'MAX) NULL
+)' at line 5. The SQL statement executed was: CREATE TABLE `ph_brand` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL,
+	`upload_id` VARCHAR(255) NULL,
+	`description` nvarchar(MAX) NULL
+).
+2014/03/25 13:53:42 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'max) NULL
+)' at line 5. The SQL statement executed was: CREATE TABLE `ph_brand` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL,
+	`upload_id` VARCHAR(255) NULL,
+	`description` nvarchar(max) NULL
+).
+2014/03/25 16:32:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "dist/bootstrap-3.1.1-dist/js/jsrender.min.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('dist/bootstrap-...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/dist/bootstrap-3.1.1-dist/js/jsrender.min.js
+HTTP_REFERER=http://penta-house/admin/main/index
+---
+2014/03/25 16:32:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "dist/bootstrap-3.1.1-dist/js/jsrender.min.js".' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('dist/bootstrap-...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/penta-house/index.php(12): CApplication->run()
+#3 {main}
+REQUEST_URI=/dist/bootstrap-3.1.1-dist/js/jsrender.min.js
+HTTP_REFERER=http://penta-house/admin/main/index
+---
+2014/03/25 16:54:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "brand".' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('brand')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('brand')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('admin/main/bran...')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/penta-house/index.php(12): CApplication->run()
+#5 {main}
+REQUEST_URI=/admin/main/brand
+HTTP_REFERER=http://penta-house/admin/main/index
+---

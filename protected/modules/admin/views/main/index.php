@@ -1,13 +1,10 @@
-<?php
-/* @var $this MainController */
+<div class="col-md-8"></div>
+<div class="col-md-4">
+    <button type="button" class="btn btn-default btn-popup" data-popup="edit-brand" data-title="Создать производителя">
+        Создать производителя
+    </button>
+</div>
 
-$this->breadcrumbs=array(
-	'Main',
-);
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+<script id="template_edit-brand" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/brand/_edit_brand'); ?>
+</script>

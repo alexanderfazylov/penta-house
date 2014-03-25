@@ -10,15 +10,20 @@
 </head>
 
 <body>
-<header>
-    <div class="container">
+<!-- Begin page content -->
+<div class="container">
+    <div class="page-header">
         <?php $this->renderPartial('/layouts/_menu'); ?>
     </div>
-</header>
-<div class="container">
+
     <?php echo $content; ?>
 </div>
 
+<div id="footer">
+    <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+    </div>
+</div>
+<div id="modal-api"></div>
 </body>
 </html>
-
