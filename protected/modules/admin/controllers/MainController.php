@@ -28,12 +28,37 @@ class MainController extends Controller
     public function actionIndex()
     {
 
-        $this->render('index');
+        $brand = new Brand();
+        $this->render('index', array('brand' => $brand));
     }
 
     public function actionBrand()
     {
+        if (!isset($_POST['Brand'])) {
+            $response = array(
+                'status' => 'error',
+            );
+            Yii::app()->end();
+        }
 
-        var_dump($_POST);
+        if (isset($_POST['Brand']['id'])) {
+            $brand = Brand::model()->findByPk($_POST['Brand']['id']);
+        } else {
+            $brand = new Brand();
+        }
+
+        $brand->attributes = $_POST['Brand'];
+
+        if (!$brand->save()) {
+            $response = array(
+                'status' => 'error',
+                'model' => array("Brand" => $brand->getErrors())
+            );
+            Yii::app()->end();
+        }
+
+        MetaData::addSelf($brand);
+
+
     }
 }

@@ -32,3 +32,35 @@ body {
 .container .text-muted {
     margin: 20px 0;
 }
+
+.anchor {
+    float: none;
+    clear: both;
+}
+
+.pagination .last, .pagination .first {
+    display: none !important;
+}
+
+.pagination > .selected > a,
+.pagination > .selected > span,
+.pagination > .selected > a:hover,
+.pagination > .selected > span:hover,
+.pagination > .selected > a:focus,
+.pagination > .selected > span:focus {
+    z-index: 2;
+    color: #ffffff;
+    cursor: default;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+.pager .pagination a {
+    border-radius: 0px !important;
+}
+
+.brand-edit {
+    border-bottom: 1px dashed;
+    cursor: pointer;
+    display: inline-block;
+}

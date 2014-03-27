@@ -1,14 +1,6 @@
 $(function () {
     //$('.default-datapicker').datepicker();
-    $(document).on('click', '.btn-popup', function () {
-        var id = $(this).data('popup');
 
-        $('#modal-api').html(
-            $('#template_' + id).render($(this).data())
-        )
-        ;
-        $('#' + id).modal('show');
-    });
 });
 var button = {
     disable: function ($el) {
