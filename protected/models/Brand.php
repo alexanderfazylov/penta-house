@@ -45,7 +45,9 @@ class Brand extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+        return array(
+            'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
+        );
     }
 
     /**
@@ -79,13 +81,19 @@ class Brand extends CActiveRecord
         // @todo Please modify the following code to remove attributes that should not be searched.
 
         $criteria = new CDbCriteria;
+        $criteria->order = 't.id DESC';
 
         $criteria->compare('id', $this->id);
         $criteria->compare('name', $this->name, true);
         $criteria->compare('description', $this->description, true);
+        $criteria->compare('description', $this->description, true);
+        $criteria->with = array('meta_data');
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'pagination' => array(
+                'pageSize' => 20,
+            ),
         ));
     }
 
@@ -103,8 +111,8 @@ class Brand extends CActiveRecord
 
     public function popupPrepear($model)
     {
-        $aasd = Helper::convertModelToJson($model);
-        return "<div data-item='$aasd' data-popup='edit-brand' class='brand-edit btn-popup'  >Редактировать</div>";
+        $item = Helper::convertModelToJson($model);
+        return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-brand' class='brand-edit btn-popup'  >Редактировать</div>";
     }
 
 }

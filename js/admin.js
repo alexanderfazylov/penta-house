@@ -1,13 +1,16 @@
 $(function () {
 
     $(document).on('click', '#save-brand', function () {
-        $(this).ajaxFormSubmit();
+        $(this).ajaxFormSubmit(
+            function () {
+                $.fn.yiiGridView.update("brand-grid");
+            },
+            function () {
+            },
+            function () {
+            }
+        );
     });
-
-//    $(document).on('click', '.brand-edit', function () {
-//        $(this).data('item')
-//    });
-
     $(document).on('click', '.btn-popup', function () {
         var id = $(this).data('popup');
 

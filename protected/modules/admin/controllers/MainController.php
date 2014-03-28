@@ -41,7 +41,7 @@ class MainController extends Controller
             Yii::app()->end();
         }
 
-        if (isset($_POST['Brand']['id'])) {
+        if (!empty($_POST['Brand']['id'])) {
             $brand = Brand::model()->findByPk($_POST['Brand']['id']);
         } else {
             $brand = new Brand();

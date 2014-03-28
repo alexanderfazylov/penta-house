@@ -1,6 +1,8 @@
 <div class="col-md-8"></div>
 <div class="col-md-4 clearfix">
-    <button type="button" class="btn btn-default btn-popup" data-popup="edit-brand" data-title="Создать производителя">
+    <button type="button" class="btn btn-default btn-popup" data-popup="edit-brand"
+            data-item='{"meta_data":{}}'
+            data-title="Создание производителя">
         Создать производителя
     </button>
 </div>
@@ -9,48 +11,49 @@
     <?php $this->renderPartial('/main/brand/_edit_brand'); ?>
 </script>
 
-<div class="jumbotron">
-    <?php
-    $this->widget('zii.widgets.grid.CGridView', array(
-        'id' => 'brand-grid',
-        'dataProvider' => $brand->search(),
+
+<?php
+$this->widget('zii.widgets.grid.CGridView', array(
+    'id' => 'brand-grid',
+    'dataProvider' => $brand->search(),
+    'cssFile' => false,
+    'itemsCssClass' => 'table table-hover',
+    'columns' => array(
+        array(
+            'name' => 'id',
+            'value' => '$data->id',
+        ),
+        array(
+            'name' => 'Имя',
+            'value' => '$data->name',
+        ),
+        array(
+            'name' => 'Описание',
+            'value' => '$data->description',
+        ),
+        array(
+            'name' => 'Редактировать',
+            'type' => 'raw',
+            'value' => array($brand, 'popupPrepear'),
+        ),
+
+
+    ),
+    'pagerCssClass' => 'pager',
+    'pager' => array(
+        'htmlOptions' => array('class' => 'pagination pagination-sm'),
         'cssFile' => false,
-        'itemsCssClass' => 'table table-hover',
-        'columns' => array(
-            array(
-                'name' => 'id',
-                'value' => '$data->id',
-            ),
-            array(
-                'name' => 'Имя',
-                'value' => '$data->name',
-            ),
-            array(
-                'name' => 'Описание',
-                'value' => '$data->description',
-            ),
-            array(
-                'name' => 'Редактировать',
-                'type' => 'raw',
-                'value' => array($brand, 'popupPrepear'),
-            ),
+        'header' => '',
+        'firstPageLabel' => '',
+        'prevPageLabel' => '&laquo;',
+        'nextPageLabel' => '&raquo;',
+        'lastPageLabel' => '',
+
+    ),
 
 
-        ),
-        'pagerCssClass' => 'pager',
-        'pager' => array(
-            'htmlOptions' => array('class' => 'pagination pagination-sm'),
-            'cssFile' => false,
-            'header' => '',
-            'firstPageLabel' => '',
-            'prevPageLabel' => '&laquo;',
-            'nextPageLabel' => '&raquo;',
-            'lastPageLabel' => '',
-
-        ),
-        'template' => '{items}{pager}',
-    ));
-    ?>
-</div>
+    'template' => '{items}{pager}',
+));
+?>
 
 
