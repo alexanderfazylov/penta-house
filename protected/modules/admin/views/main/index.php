@@ -7,9 +7,7 @@
     </button>
 </div>
 <div class="anchor"></div>
-<script id="template_edit-brand" type="text/x-jsrender">
-    <?php $this->renderPartial('/main/brand/_edit_brand'); ?>
-</script>
+
 
 
 <?php
@@ -28,16 +26,21 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value' => '$data->name',
         ),
         array(
-            'name' => 'Описание',
-            'value' => '$data->description',
+            'name' => '',
+            'type' => 'raw',
+            'value' => array($brand, 'getLogo'),
+        ),
+        array(
+            'name' => 'Видимость',
+            'value' => '$data->maine_page_visible',
+            'type' => 'raw',
+            'value' => array($brand, 'pageVisible'),
         ),
         array(
             'name' => 'Редактировать',
             'type' => 'raw',
             'value' => array($brand, 'popupPrepear'),
         ),
-
-
     ),
     'pagerCssClass' => 'pager',
     'pager' => array(
@@ -56,4 +59,16 @@ $this->widget('zii.widgets.grid.CGridView', array(
 ));
 ?>
 
+
+
+
+<script id="template_edit-brand" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/brand/_edit_brand'); ?>
+</script>
+<script id="template_upload-row" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_upload_row'); ?>
+</script>
+<script id="template_crop_modal" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_crop_modal'); ?>
+</script>
 

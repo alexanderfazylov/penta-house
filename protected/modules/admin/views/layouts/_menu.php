@@ -11,6 +11,11 @@ $this->widget('zii.widgets.CMenu', array(
             'active' => (($controller == 'main' && $action == 'index'))
         ),
         array(
+            'label' => 'Коллекции',
+            'url' => Yii::app()->urlManager->createUrl('/admin/main/collections'),
+            'active' => (($controller == 'main' && $action == 'collections'))
+        ),
+        array(
             'label' => 'Проекты',
             'url' => Yii::app()->urlManager->createUrl('/admin/main/index'),
             'active' => (($controller == 'main' && $action == 'inasddex'))

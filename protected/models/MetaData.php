@@ -7,6 +7,7 @@
  * @property integer $id
  * @property string $description
  * @property string $keywords
+ * @property string $title
  */
 class MetaData extends CActiveRecord
 {
@@ -26,7 +27,7 @@ class MetaData extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('description, keywords', 'safe'),
+            array('description, keywords, title', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, description, keywords', 'safe', 'on' => 'search'),
@@ -52,6 +53,7 @@ class MetaData extends CActiveRecord
             'id' => 'ID',
             'description' => 'Description',
             'keywords' => 'Keywords',
+            'title' => 'title',
         );
     }
 

@@ -13,21 +13,36 @@ class MainController extends Controller
             Yii::app()->end();
         }
         $this->cs = Yii::app()->clientScript;
-
+        //js
         $this->cs->registerCoreScript('jquery');
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-3.1.1-dist/js/bootstrap.min.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-modal/js/bootstrap-modalmanager.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-modal/js/bootstrap-modal.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jGrowl/jquery.jgrowl.min.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/jsrender.min.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/file-uploader/fileuploader.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/Jcrop/js/jquery.Jcrop.min.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/nprogress/nprogress.js'));
+        //
         $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
         $this->cs->registerScriptFile($this->createUrl('/js/admin.js'));
-
+        //css
         $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-3.1.1-dist/css/bootstrap.min.css'));
         $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-modal/css/bootstrap-modal-bs3patch.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-modal/css/bootstrap-modal.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/jGrowl/jquery.jgrowl.min.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/file-uploader/fileuploader.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/Jcrop/css/jquery.Jcrop.min.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/nprogress/nprogress.css'));
+        //
         $this->cs->registerCssFile($this->createUrl('/css/admin.css'));
+
+
     }
 
     public function actionIndex()
     {
-
         $brand = new Brand();
         $this->render('index', array('brand' => $brand));
     }
@@ -48,6 +63,11 @@ class MainController extends Controller
         }
 
         $brand->attributes = $_POST['Brand'];
+        if (isset($_POST['Brand']['maine_page_visible'])) {
+            $brand->maine_page_visible = 1;
+        } else {
+            $brand->maine_page_visible = 0;
+        }
 
         if (!$brand->save()) {
             $response = array(
@@ -60,5 +80,11 @@ class MainController extends Controller
         MetaData::addSelf($brand);
 
 
+    }
+
+    public function actionCollections()
+    {
+
+        $this->render('collections', array());
     }
 }

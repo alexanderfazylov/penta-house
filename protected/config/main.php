@@ -36,6 +36,9 @@ return array(
 
     // application components
     'components' => array(
+        'ih' => array(
+            'class' => 'CImageHandler',
+        ),
         'urlManager' => array(
             'urlFormat' => 'path',
             'showScriptName' => false,
@@ -59,28 +62,7 @@ return array(
             // use 'site/error' action to display errors
             'errorAction' => 'site/error',
         ),
-        'log' => array(
-            'class' => 'CLogRouter',
-            'routes' => array(
-                array(
-                    'class' => 'CFileLogRoute',
-                    'levels' => 'error, warning',
-                ),
 
-                // uncomment the following to show log messages on web pages
-                /*
-                array(
-                    'class'=>'CWebLogRoute',
-                ),
-                */
-//                array(
-//                    'class' => 'CProfileLogRoute',
-//                    'report' => 'summary',
-//                    // Показывает время выполнения каждого отмеченного блока кода.
-//                    // Значение "report" также можно указать как "callstack".
-//                )
-            ),
-        ),
     ),
 
     // application-level parameters that can be accessed

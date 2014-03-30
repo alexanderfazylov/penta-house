@@ -64,3 +64,32 @@ body {
     cursor: pointer;
     display: inline-block;
 }
+
+.modal-body hr {
+    border-color: #999;
+    margin: 15px 0;
+}
+
+.modal-body label {
+    font-weight: 500;
+}
+
+.qq-crop-upload {
+    cursor: pointer;
+    border-bottom: 1px dashed;
+    color: blue;
+    margin-right: 20px;
+}
+
+.qq-delete-upload {
+    cursor: pointer;
+    border-bottom: 1px dashed;
+    color: red;
+}
+
+.qq-resize-upload {
+    cursor: pointer;
+    border-bottom: 1px dashed;
+    color: black;
+    margin-right: 20px;
+}

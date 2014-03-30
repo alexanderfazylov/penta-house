@@ -8,6 +8,7 @@ class m140325_095812_meta_data extends CDbMigration
             'id' => 'pk',
             'description' => 'text',
             'keywords' => 'text',
+            'title' => 'text',
         ));
     }
 
