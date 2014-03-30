@@ -16,14 +16,17 @@ class ServerController extends Controller
     {
         if (!is_dir($this->base_path)) {
             mkdir($this->base_path);
+            chmod($this->base_path, 0777);
         }
 
         if (!is_dir($this->base_path . $this->thumbs_path)) {
             mkdir($this->base_path . $this->thumbs_path);
+            chmod($this->base_path . $this->thumbs_path, 0777);
         }
 
         if (!is_dir($this->base_path . $this->medium_path)) {
             mkdir($this->base_path . $this->medium_path);
+            chmod($this->base_path . $this->medium_path, 0777);
         }
     }
 
