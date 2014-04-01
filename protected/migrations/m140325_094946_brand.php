@@ -7,6 +7,7 @@ class m140325_094946_brand extends CDbMigration
     {
         $this->createTable('{{brand}}', array(
             'id' => 'pk',
+            'order' => 'INT NULL',
             'name' => 'VARCHAR(255) NOT NULL',
             'description' => 'text',
             'site' => 'VARCHAR(255) NULL',

@@ -35,12 +35,11 @@ class Brand extends CActiveRecord
         // will receive user inputs.
         return array(
             array('name', 'required'),
-            array('meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible', 'numerical', 'integerOnly' => true),
+            array('meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible, order', 'numerical', 'integerOnly' => true),
             array('name, site, sert', 'length', 'max' => 255),
-            array('description', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, name, description, site, sert, meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible', 'safe', 'on' => 'search'),
+            //array('description', 'safe'),
+
+            array('id, name, maine_page_visible', 'safe', 'on' => 'search'),
         );
     }
 
@@ -67,16 +66,17 @@ class Brand extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'site' => 'Site',
-            'sert' => 'Sert',
+            'name' => 'Имя',
+            'description' => 'Описание',
+            'site' => 'Сайт',
+            'sert' => 'Сертификат',
             'meta_data_id' => 'Meta Data',
             'upload_1_id' => 'Upload 1',
             'upload_2_id' => 'Upload 2',
             'upload_3_id' => 'Upload 3',
             'upload_4_id' => 'Upload 4',
-            'maine_page_visible' => 'Maine Page Visible',
+            'maine_page_visible' => 'На главной странице',
+            'order' => 'Сортировка',
         );
     }
 
@@ -94,28 +94,26 @@ class Brand extends CActiveRecord
      */
     public function search()
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
-
         $criteria = new CDbCriteria;
 
-        $criteria->order = 't.id DESC';
-
-        $criteria->compare('id', $this->id);
-        $criteria->compare('name', $this->name, true);
-        $criteria->compare('description', $this->description, true);
-        $criteria->compare('site', $this->site, true);
-        $criteria->compare('sert', $this->sert, true);
-        $criteria->compare('meta_data_id', $this->meta_data_id);
-        $criteria->compare('upload_1_id', $this->upload_1_id);
-        $criteria->compare('upload_2_id', $this->upload_2_id);
-        $criteria->compare('upload_3_id', $this->upload_3_id);
-        $criteria->compare('upload_4_id', $this->upload_4_id);
+        $criteria->compare('t.id', $this->id);
+        $criteria->compare('t.name', $this->name, true);
+        $criteria->compare('t.order', $this->order);
         //$criteria->compare('maine_page_visible', $this->maine_page_visible);
 
         $criteria->with = array('meta_data', 'upload1', 'upload2', 'upload3', 'upload4',);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'sort' => array(
+                'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
+                'attributes' => array(
+                    't.id',
+                    't.name',
+                    't.order',
+                    't.maine_page_visible',
+                )
+            ),
             'pagination' => array(
                 'pageSize' => 20,
             ),
@@ -139,6 +137,7 @@ class Brand extends CActiveRecord
         return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-brand' class='brand-edit btn-popup'  >Редактировать</div>";
     }
 
+
     public function pageVisible($model)
     {
         if ($model->maine_page_visible == 0) {
@@ -160,5 +159,13 @@ class Brand extends CActiveRecord
 
     }
 
+    protected function beforeSave()
+    {
+        if (empty($this->order)) {
+            $this->order = $this->id;
+        }
+
+        return parent::beforeSave();
+    }
 
 }

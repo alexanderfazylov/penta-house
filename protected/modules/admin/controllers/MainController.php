@@ -43,7 +43,11 @@ class MainController extends Controller
 
     public function actionIndex()
     {
-        $brand = new Brand();
+        $brand = new Brand('search');
+        if (isset($_GET['Brand'])) {
+            $brand->attributes = $_GET['Brand'];
+        }
+
         $this->render('index', array('brand' => $brand));
     }
 

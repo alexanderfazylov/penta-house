@@ -1,11 +1,9 @@
-<div class="col-md-8"></div>
-<div class="col-md-4 clearfix">
-    <button type="button" class="btn btn-default btn-popup" data-popup="edit-brand"
-            data-item='{"meta_data":{}}'
-            data-title="Создание производителя">
-        Создать производителя
-    </button>
-</div>
+<button type="button" class="btn btn-default btn-popup" data-popup="edit-brand"
+        data-item='{"meta_data":{}}'
+        data-title="Создание производителя">
+    Создать производителя
+</button>
+
 <div class="anchor"></div>
 
 
@@ -16,30 +14,34 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider' => $brand->search(),
     'cssFile' => false,
     'itemsCssClass' => 'table table-hover',
+    'filter' => $brand,
     'columns' => array(
         array(
             'name' => 'id',
-            'value' => '$data->id',
         ),
         array(
-            'name' => 'Имя',
-            'value' => '$data->name',
+            'name' => 'name',
         ),
         array(
             'name' => '',
             'type' => 'raw',
             'value' => array($brand, 'getLogo'),
+            'filter' => false,
         ),
         array(
-            'name' => 'Видимость',
-            'value' => '$data->maine_page_visible',
+            'name' => 'maine_page_visible',
             'type' => 'raw',
             'value' => array($brand, 'pageVisible'),
+            'filter' => false,
+        ),
+        array(
+            'name' => 'order',
         ),
         array(
             'name' => 'Редактировать',
             'type' => 'raw',
             'value' => array($brand, 'popupPrepear'),
+            'filter' => false,
         ),
     ),
     'pagerCssClass' => 'pager',

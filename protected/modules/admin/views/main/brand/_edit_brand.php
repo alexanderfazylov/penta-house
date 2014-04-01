@@ -39,6 +39,11 @@
                     Скрыть производителя
                 </label>
             </div>
+            <div class="form-group">
+                <label for="brand-order">Порядок вывода</label>
+                <input type="text" class="form-control" id="brand-order" name="Brand[order]"
+                       value="{{>item.order}}">
+            </div>
             <hr/>
             <h4>Основная страница</h4>
 
