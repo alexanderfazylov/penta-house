@@ -56,6 +56,14 @@ $.fn.ajaxFormSubmit = function (success, complete, validator) {
 
                     if (typeof validator !== "undefined") {
                         validator(data);
+                        $('.has-error').removeClass('has-error');
+                        $.each(data.model, function (model, attributes) {
+                            $.each(attributes, function (atr, msg) {
+                                var name = model + "[" + atr + "]";
+                                $('[name="' + name + '"]').parents('.form-group').addClass('has-error');
+                                alert(msg);
+                            })
+                        })
                     } else {
                         for (key in data.message) {
                             alert(data.message[key]);

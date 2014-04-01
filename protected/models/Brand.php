@@ -76,7 +76,7 @@ class Brand extends CActiveRecord
             'upload_3_id' => 'Upload 3',
             'upload_4_id' => 'Upload 4',
             'maine_page_visible' => 'На главной странице',
-            'order' => 'Сортировка',
+            'order' => 'Порядок вывода',
         );
     }
 

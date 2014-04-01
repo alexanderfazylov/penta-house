@@ -49,17 +49,41 @@ $(function () {
     }
 
     $(document).on('click', '#save-brand', function () {
+        var $el = $(this);
+
         $(this).ajaxFormSubmit(
-            function () {
+            function (data) {
                 $.fn.yiiGridView.update("brand-grid");
                 $.jGrowl("Сохранено");
+                $el.parents('.modal').modal('hide');
             },
             function () {
             },
-            function () {
+            function (data) {
+
             }
         );
     });
+    $(document).on('click', '#delete-brand', function () {
+        var brand_id = $(this).data('brand-id');
+        var $el = $(this);
+        if (confirm("Удалить производителя?")) {
+            $.ajax({
+                url: '/admin/main/deleteBrand',
+                type: 'GET',
+                dataType: 'json',
+                data: {brand_id: brand_id},
+                success: function (data) {
+                    $el.parents('.modal').find('.modal-body').hide('clip', function () {
+                        $el.parents('.modal').modal('hide');
+                        $.fn.yiiGridView.update("brand-grid");
+                        $.jGrowl("Производитель удалён");
+                    });
+                }
+            });
+        }
+    });
+
     $(document).on('click', '.btn-popup', function () {
         var id = $(this).data('popup');
         $('#modal-api').html(
@@ -133,13 +157,15 @@ $(function () {
         });
     });
     $(document).on('click', '#crop-image', function () {
+        var $el = $(this);
         $(this).ajaxFormSubmit(
             function (data) {
                 $.fn.yiiGridView.update("brand-grid");
-                $.jGrowl("Сохранено");
+                $.jGrowl("Сохраните изменения");
                 $qq_crop_upload.parents('.qq-upload-list').html(
                     $('#template_upload-row').render(data.model)
                 );
+                $el.parents('.modal').modal('hide');
             },
             function () {
             },

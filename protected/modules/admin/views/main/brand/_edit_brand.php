@@ -108,7 +108,11 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger" style="float:left">Удалить производителя</button>
+        {{if item.id }}
+        <button type="button" class="btn btn-danger" data-brand-id="{{>item.id}}" style="float:left" id="delete-brand">
+            Удалить производителя
+        </button>
+        {{/if}}
         <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
         <button type="button" class="btn btn-primary" id="save-brand">Сохранить</button>
     </div>

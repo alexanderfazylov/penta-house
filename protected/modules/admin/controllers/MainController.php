@@ -78,6 +78,7 @@ class MainController extends Controller
                 'status' => 'error',
                 'model' => array("Brand" => $brand->getErrors())
             );
+            echo CJSON::encode($response);
             Yii::app()->end();
         }
 
@@ -90,5 +91,14 @@ class MainController extends Controller
     {
 
         $this->render('collections', array());
+    }
+
+    public function actionDeleteBrand($brand_id)
+    {
+        Brand::model()->deleteByPk($brand_id);
+        $response = array(
+            'status' => 'success',
+        );
+        echo CJSON::encode($response);
     }
 }
