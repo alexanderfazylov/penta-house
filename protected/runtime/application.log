@@ -1103,3 +1103,20 @@ REQUEST_URI=/server/upload?qqfile=009.jpg
 in C:\wamp\www\penta-house\protected\components\qqFileUploader.php (191)
 in C:\wamp\www\penta-house\protected\controllers\ServerController.php (14)
 in C:\wamp\www\penta-house\index.php (12)
+2014/04/01 17:36:19 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[HY000]: General error: 1215 Cannot add foreign key constraint. The SQL statement executed was: ALTER TABLE `ph_tag` ADD CONSTRAINT `tag_collection_tag` FOREIGN KEY (`id`) REFERENCES `ph_collection_tag` (`collection_id`).
+2014/04/01 17:37:08 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ph_collection' already exists. The SQL statement executed was: CREATE TABLE `ph_collection` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL
+).
+2014/04/01 17:37:55 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1217 Cannot delete or update a parent row: a foreign key constraint fails. The SQL statement executed was: DROP TABLE `ph_tag`.
+2014/04/01 17:38:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1091 Can't DROP 'tag_collection_tag'; check that column/key exists. The SQL statement executed was: ALTER TABLE `ph_tag` DROP FOREIGN KEY `tag_collection_tag`.
+2014/04/01 17:38:52 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S02]: Base table or view not found: 1051 Unknown table 'penta-house.ph_collection'. The SQL statement executed was: DROP TABLE `ph_collection`.
+2014/04/01 17:39:48 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ph_collection_upload' already exists. The SQL statement executed was: CREATE TABLE `ph_collection_upload` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`collection_id` INT NOT NULL,
+	`upload_id` INT NOT NULL
+).
+2014/04/01 17:40:04 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ph_tag' already exists. The SQL statement executed was: CREATE TABLE `ph_tag` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(255) NOT NULL
+).
