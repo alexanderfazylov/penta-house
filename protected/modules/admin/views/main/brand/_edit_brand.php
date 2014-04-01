@@ -108,6 +108,7 @@
         </form>
     </div>
     <div class="modal-footer">
+        <button type="button" class="btn btn-danger" style="float:left">Удалить производителя</button>
         <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
         <button type="button" class="btn btn-primary" id="save-brand">Сохранить</button>
     </div>
