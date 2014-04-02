@@ -92,8 +92,10 @@ class ServerController extends Controller
     {
         $upload = Upload::model()->findByPk($_POST['Upload']['id']);
 
-        $this->cropMedium($upload->file_name);
-        $this->cropThumbs($upload->file_name);
+        if (($_POST['w'] != '') && ($_POST['h'] != '') && ($_POST['x1'] != '') && ($_POST['y1']) != '') {
+            $this->cropMedium($upload->file_name);
+            $this->cropThumbs($upload->file_name);
+        }
 
 
         echo CJSON::encode(array('status' => 'success', 'model' => Helper::convertModelToArray($upload)));
@@ -103,10 +105,12 @@ class ServerController extends Controller
     {
         $picter = $this->base_path . $this->medium_path . $file_name;
 
+
         Yii::app()->ih
             ->load($picter)
             ->crop($_POST['w'], $_POST['h'], $_POST['x1'], $_POST['y1'])
             ->save($picter);
+
 
         return true;
     }

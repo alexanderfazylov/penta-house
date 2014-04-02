@@ -79,12 +79,16 @@
                 <textarea class="form-control" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
             </div>
             <hr/>
-            <div class="construct_upload"
-                 data-width="100"
-                 data-height="50"
-                 data-action="/server/CollectionUpload"
-                 data-multiple="true">
-                {{renderUploderMiltiple:item.collection_upload}}
+            <div class="form-group">
+                <label for="model-description">Фото</label>
+
+                <div class="construct_upload"
+                     data-width="100"
+                     data-height="50"
+                     data-action="/server/CollectionUpload"
+                     data-multiple="true">
+                    {{renderUploderMiltiple:item.collection_upload}}
+                </div>
             </div>
 
             <hr/>

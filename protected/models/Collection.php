@@ -29,16 +29,12 @@ class Collection extends CActiveRecord
      */
     public function rules()
     {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('name', 'required'),
             array('order, maine_page_visible, tile, sanitary_engineering, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, name, slogan, description, order, maine_page_visible, upload_1_id, brand_id, meta_data_id', 'safe', 'on' => 'search'),
+            array('id, name, order, brand_id', 'safe', 'on' => 'search'),
         );
     }
 
@@ -52,6 +48,7 @@ class Collection extends CActiveRecord
         return array(
             'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
             'upload1' => array(self::BELONGS_TO, 'Upload', 'upload_1_id'),
+            'brand' => array(self::BELONGS_TO, 'Brand', 'brand_id'),
             'collection_upload' => array(self::HAS_MANY, 'CollectionUpload', 'collection_id'),
         );
     }
@@ -73,6 +70,7 @@ class Collection extends CActiveRecord
             'meta_data_id' => 'Meta Data',
             'sanitary_engineering' => 'sanitary_engineering',
             'tile' => 'tile',
+            'brand.name' => 'Производитель',
         );
     }
 
@@ -94,16 +92,18 @@ class Collection extends CActiveRecord
 
         $criteria = new CDbCriteria;
 
-        $criteria->compare('id', $this->id);
-        $criteria->compare('name', $this->name, true);
-        $criteria->compare('slogan', $this->slogan, true);
-        $criteria->compare('description', $this->description, true);
-        $criteria->compare('order', $this->order);
-        $criteria->compare('upload_1_id', $this->upload_1_id);
-        $criteria->compare('brand_id', $this->brand_id);
-        $criteria->compare('meta_data_id', $this->meta_data_id);
+        $criteria->compare('t.id', $this->id);
+        $criteria->compare('t.name', $this->name, true);
+        $criteria->compare('t.order', $this->order);
+        $criteria->compare('t.brand_id', $this->brand_id);
 
-        $criteria->with = array('meta_data', 'upload1', 'collection_upload', 'collection_upload.upload');
+        $criteria->with = array(
+            'meta_data',
+            'upload1',
+            'brand',
+            'collection_upload',
+            'collection_upload.upload'
+        );
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -114,6 +114,7 @@ class Collection extends CActiveRecord
                     't.name',
                     't.order',
                     't.maine_page_visible',
+                    'brand.name' => 'brand.name',
                 )
             ),
             'pagination' => array(
@@ -147,4 +148,29 @@ class Collection extends CActiveRecord
         $item = Helper::convertModelToJson($model);
         return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
+
+    public static function getBrandSelect($collection)
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.maine_page_visible ASC, t.order ASC';
+
+
+        return CHtml::dropDownList(
+            'Collection[brand_id]', $collection->brand_id,
+            CHtml::listData(Brand::model()->findAll($criteria), 'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+//    public function getBrand($model)
+//    {
+//        $name =
+//        if (empty($model->brand)) {
+//            $model->
+//        }
+//
+//        return
+//    }
 }

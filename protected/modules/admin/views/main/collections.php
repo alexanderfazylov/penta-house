@@ -34,6 +34,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'filter' => false,
         ),
         array(
+            'name' => 'brand.name',
+            'filter' => Collection::getBrandSelect($collection),
+        ),
+        array(
             'name' => 'order',
         ),
         array(

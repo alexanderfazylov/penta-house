@@ -14,6 +14,8 @@
             <input type="hidden" id="w" name="w"/>
             <input type="hidden" id="h" name="h"/>
         </form>
+
+        <p style="margin-top: 30px" class="bg-info default-hint">Выделите часть изображение</p>
     </div>
     <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn">Назад</button>
