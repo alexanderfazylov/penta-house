@@ -5,7 +5,12 @@
 </button>
 
 <div class="anchor"></div>
+<script>
+    $(function () {
+        getBrands();
 
+    });
+</script>
 
 
 <?php
@@ -58,6 +63,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 <script id="template_edit-model" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_edit_collection'); ?>
+</script>
+<script id="template_uplod_wrap" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_uplod_wrap'); ?>
+</script>
+<script id="template_uplod_wrap_miltiple" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_uplod_wrap_miltiple'); ?>
 </script>
 <script id="template_upload-row" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_upload_row'); ?>

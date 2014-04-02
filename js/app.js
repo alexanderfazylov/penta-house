@@ -12,7 +12,9 @@ var button = {
         $el.removeAttr('disabled');
     }
 };
-
+function getUniq() {
+    return new Date().getTime();
+}
 $.fn.ajaxFormSubmit = function (success, complete, validator) {
 
 

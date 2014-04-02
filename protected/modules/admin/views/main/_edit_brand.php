@@ -11,23 +11,23 @@
             <div class="form-group">
                 <label>Фото подложки на главной странице</label>
 
-                <div id="file-uploader-1"></div>
-                <ul class="qq-upload-list" data-width="100" data-height="50">
-                    {{if item.upload1}}
-                    {{getUploadItem:item.upload1}}
-                    {{/if}}
-                </ul>
+
+                <div class="construct_upload"
+                     data-width="100"
+                     data-height="50"
+                     data-action="/server/UploadBrand1">
+                    {{renderUploder:item.upload1}}
+                </div>
             </div>
             <div class="form-group">
                 <label>Лого на главной странице и странице католога</label>
 
-                <div id="file-uploader-2"></div>
-                <ul class="qq-upload-list" data-width="200" data-height="50">
-                    {{if item.upload2}}
-                    {{getUploadItem:item.upload2}}
-                    {{/if}}
-                </ul>
-
+                <div class="construct_upload"
+                     data-width="100"
+                     data-height="50"
+                     data-action="/server/UploadBrand2">
+                    {{renderUploder:item.upload2}}
+                </div>
             </div>
             <div class="checkbox">
                 <label>
@@ -51,12 +51,12 @@
             <div class="form-group">
                 <label>Лого на основной странице и странице коллекций</label>
 
-                <div id="file-uploader-3"></div>
-                <ul class="qq-upload-list" data-width="300" data-height="50">
-                    {{if item.upload3}}
-                    {{getUploadItem:item.upload3}}
-                    {{/if}}
-                </ul>
+                <div class="construct_upload"
+                     data-width="100"
+                     data-height="50"
+                     data-action="/server/UploadBrand3">
+                    {{renderUploder:item.upload3}}
+                </div>
             </div>
             <div class="form-group">
                 <label for="brand-site">Сайт</label>
@@ -66,12 +66,12 @@
             <div class="form-group">
                 <label>Сертификат и пр.</label>
 
-                <div id="file-uploader-4"></div>
-                <ul class="qq-upload-list" data-width="400" data-height="50">
-                    {{if item.upload4}}
-                    {{getUploadItem:item.upload4}}
-                    {{/if}}
-                </ul>
+                <div class="construct_upload"
+                     data-width="100"
+                     data-height="50"
+                     data-action="/server/UploadBrand4">
+                    {{renderUploder:item.upload4}}
+                </div>
             </div>
             <div class="form-group">
                 <label for="brand-sert">Подпись к сертификату</label>

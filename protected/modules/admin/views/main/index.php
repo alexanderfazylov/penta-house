@@ -65,7 +65,10 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 
 <script id="template_edit-model" type="text/x-jsrender">
-    <?php $this->renderPartial('/main/brand/_edit_brand'); ?>
+    <?php $this->renderPartial('/main/_edit_brand'); ?>
+</script>
+<script id="template_uplod_wrap" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_uplod_wrap'); ?>
 </script>
 <script id="template_upload-row" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_upload_row'); ?>

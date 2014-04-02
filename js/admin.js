@@ -4,9 +4,35 @@ $.views.converters({getUploadItem: function (data) {
 $.views.converters({notCacheImage: function (file_name) {
     return file_name + '?' + new Date().getTime();
 }});
+$.views.converters({getUniqId: function () {
+    return new Date().getTime();
+}});
+
+
 $.views.converters({metaData: function (data) {
     return $('#template_meta_data').render(data);
 }});
+
+$.views.converters({renderUploder: function (upload) {
+    return $('#template_uplod_wrap').render({upload: upload});
+}});
+
+$.views.converters({renderUploderMiltiple: function (upload) {
+    return $('#template_uplod_wrap_miltiple').render({upload: upload});
+
+}});
+$.views.converters({getUploadItemMultiple: function (uploads) {
+    var response = '';
+    if (typeof uploads != 'undefined') {
+        $.each(uploads, function (k, value) {
+
+            response = response + $('#template_upload-row').render(value.upload);
+        });
+    }
+    return response;
+}});
+
+
 $.views.converters({checkboxMainePageVisible: function (visible) {
 
     var cheked = "";
@@ -26,31 +52,63 @@ $.views.converters({boolCheckbox: function (data) {
     return cheked;
 }});
 
+$.views.converters({getSelectOption: function (brand_id) {
+    var options = '';
+
+    $.each(brands, function (i, brand) {
+        var selected = "";
+        if (brand_id == brand.id) {
+            selected = "selected='selected'";
+        }
+        options = options + '<option ' + selected + ' value="' + brand.id + '">' + brand.name + '</option>'
+    });
+
+    return options;
+}});
+
+
+function getBrands() {
+    $.ajax({
+        url: '/admin/main/getBrends',
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            brands = data;
+        }
+    });
+}
 
 $(function () {
-    function creteBrandUploder(i) {
-        var $uploader = $('#file-uploader-' + i);
 
-        if ($uploader.length != 0) {
+    function initUploders() {
+        $('.construct_upload').each(function (k, el) {
+            var $uploader = $(el).find('.my_loder');
+            if (typeof $uploader.data('init') == 'undefined') {
+                $uploader.data('init', true);
+                var uploader = new qq.FileUploader({
+                    element: $uploader[0],
+                    multiple: $(el).data('multiple'),
+                    action: $(el).data('action'),
+                    onSubmit: function (id, fileName) {
+                        if (!$(el).data('multiple')) {
+                            $uploader.siblings('.qq-upload-list').html("");
+                        }
 
-            var uploader = new qq.FileUploader({
-                element: $uploader[0],
-                multiple: false,
-                action: '/server/UploadBrand' + i,
-                onSubmit: function (id, fileName) {
-                    $uploader.siblings('.qq-upload-list').html("");
-                },
-                onComplete: function (id, fileName, response) {
-                    $uploader.find('.qq-upload-list li').remove();
-                    $uploader.siblings('.qq-upload-list').html(
-                        $('#template_upload-row').render(response)
-                    );
-                    $uploader.find('.qq-picter img').attr('src', '/uploads/thumbs/' + response.file_name);
+                    },
+                    onComplete: function (id, fileName, response) {
+                        $uploader.find('.qq-upload-list li').hide();
+                        $uploader.siblings('.qq-upload-list').append(
+                            $('#template_upload-row').render(response)
+                        );
+                        $uploader.find('.qq-picter img').attr('src', '/uploads/thumbs/' + response.file_name);
+                        $.jGrowl('Сохраните изменения');
+                    }
+                });
+
+            }
+        });
 
 
-                }
-            });
-        }
     }
 
     function showCoords(c) {
@@ -103,16 +161,14 @@ $(function () {
 
     $(document).on('click', '.btn-popup', function () {
         var id = $(this).data('popup');
+
+        console.log($(this).data());
         $('#modal-api').html(
             $('#template_' + id).render($(this).data())
         );
         $('#' + id).modal('show');
 
-        var index = 1;
-        while (index <= 4) {
-            creteBrandUploder(index);
-            index++;
-        }
+        initUploders();
     });
     $(document).on('click', '.qq-delete-upload', function () {
         var upload_id = $(this).parents('.qq-upload-success').data('upload-id');
@@ -124,6 +180,7 @@ $(function () {
                 dataType: 'json',
                 data: {upload_id: upload_id},
                 success: function (data) {
+                    $.fn.yiiGridView.update("model-grid");
                     $el.parents('.qq-upload-success').remove();
                 }
             });
@@ -131,10 +188,9 @@ $(function () {
     });
 
     $(document).on('click', '.qq-crop-upload', function () {
-        $qq_crop_upload = $(this);
+        //$qq_crop_upload = $(this);
         var upload_id = $(this).parents('.qq-upload-success').data('upload-id');
-
-        var picter_data = $(this).parents('.qq-upload-list').data();
+        var picter_data = $(this).parents('.construct_upload').data();
         var ar = picter_data.width / picter_data.height;
         NProgress.start();
 
@@ -179,9 +235,7 @@ $(function () {
             function (data) {
                 $.fn.yiiGridView.update("model-grid");
                 $.jGrowl("Сохраните изменения");
-                $qq_crop_upload.parents('.qq-upload-list').html(
-                    $('#template_upload-row').render(data.model)
-                );
+                $('#file_upload_' + data.model.id).find('.qq-picter img').attr('src', '/uploads/thumbs/' + data.model.file_name + '?' + getUniq());
                 $el.parents('.modal').modal('hide');
             },
             function () {

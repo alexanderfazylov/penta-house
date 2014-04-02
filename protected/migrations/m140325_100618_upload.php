@@ -12,7 +12,7 @@ class m140325_100618_upload extends CDbMigration
             'size' => 'VARCHAR(255) NOT NULL',
             'model' => 'VARCHAR(255) NULL',
             'attribute' => 'VARCHAR(255) NULL',
-            'created' => 'time',
+            'created' => 'int null',
         ));
     }
 

@@ -51,6 +51,8 @@ class Collection extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
+            'upload1' => array(self::BELONGS_TO, 'Upload', 'upload_1_id'),
+            'collection_upload' => array(self::HAS_MANY, 'CollectionUpload', 'collection_id'),
         );
     }
 
@@ -101,7 +103,7 @@ class Collection extends CActiveRecord
         $criteria->compare('brand_id', $this->brand_id);
         $criteria->compare('meta_data_id', $this->meta_data_id);
 
-        $criteria->with = array('meta_data');
+        $criteria->with = array('meta_data', 'upload1', 'collection_upload', 'collection_upload.upload');
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

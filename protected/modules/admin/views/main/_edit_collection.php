@@ -52,18 +52,22 @@
             </div>
             <div class="form-group">
                 <label for="model-name">Производитель</label>
-                <input type="text" class="form-control" id="model-brand_id" name="Collection[brand_id]"
-                       value="{{>item.brand_id}}">
+                <select name="Collection[brand_id]">
+                    <option value="0">-</option>
+                    {{getSelectOption:item.brand_id}}
+                </select>
             </div>
             <div class="form-group">
                 <label>Обложка на странице каталога</label>
 
-                <div id="file-uploader-1"></div>
-                <ul class="qq-upload-list" data-width="100" data-height="50">
-                    {{if item.upload1}}
-                    {{getUploadItem:item.upload1}}
-                    {{/if}}
-                </ul>
+                <div class="construct_upload"
+                     data-width="100"
+                     data-height="50"
+                     data-action="/server/collectionUplod1"
+                     data-multiple="false">
+                    {{renderUploder:item.upload1}}
+                </div>
+
             </div>
             <div class="form-group">
                 <label for="model-slogan">Слоган</label>
@@ -74,6 +78,15 @@
                 <label for="model-description">Текст</label>
                 <textarea class="form-control" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
             </div>
+            <hr/>
+            <div class="construct_upload"
+                 data-width="100"
+                 data-height="50"
+                 data-action="/server/CollectionUpload"
+                 data-multiple="true">
+                {{renderUploderMiltiple:item.collection_upload}}
+            </div>
+
             <hr/>
             {{metaData:item.meta_data}}
         </form>

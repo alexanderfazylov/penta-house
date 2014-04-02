@@ -85,6 +85,8 @@ class MainController extends Controller
 
     public function actionCollections()
     {
+
+
         $collection = new Collection('search');
 
         if (isset($_GET['Collection'])) {
@@ -93,6 +95,14 @@ class MainController extends Controller
         $this->render('collections', array('collection' => $collection));
     }
 
+    public function actionGetBrends()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.maine_page_visible ASC, t.order ASC';
+
+        echo Helper::convertModelToJson(Brand::model()->findAll($criteria));
+    }
 
     public function actionDeleteBrand($id)
     {
@@ -107,6 +117,7 @@ class MainController extends Controller
 
     public function actionCollection()
     {
+
 
         if (!isset($_POST['Collection'])) {
             $response = array(
@@ -137,8 +148,42 @@ class MainController extends Controller
             Yii::app()->end();
         }
 
+
+        if (isset($_POST['CollectionUpload']['files'])) {
+            $new_collection_uploads = $_POST['CollectionUpload']['files'];
+
+            $old_collection_uploads = array();
+            $cu_models = CollectionUpload::model()->findAllByAttributes(array('collection_id' => $collection->id));
+
+            foreach ($cu_models as $model) {
+                if (isset($new_collection_uploads[$model->upload_id])) {
+                    unset($new_collection_uploads[$model->upload_id]);
+                }
+            }
+
+            foreach ($new_collection_uploads as $upload_id) {
+                $cu = new CollectionUpload();
+                $cu->upload_id = $upload_id;
+                $cu->collection_id = $collection->id;
+                $cu->save();
+            }
+
+
+        }
+
+
         MetaData::addSelf($collection);
+
+
     }
 
-
+    public function actionDeleteCollection($id)
+    {
+        Collection::model()->deleteByPk($id);
+        $response = array(
+            'status' => 'success',
+            'message' => 'Коллекция удалена',
+        );
+        echo CJSON::encode($response);
+    }
 }

@@ -94,6 +94,10 @@ body {
     margin-right: 20px;
 }
 
+.qq-uploader .qq-upload-success {
+    display: none;
+}
+
 .default-hint {
     padding: 15px;
 }

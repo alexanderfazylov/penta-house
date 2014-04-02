@@ -113,7 +113,7 @@ class Upload extends CActiveRecord
     protected function beforeSave()
     {
         $this->created = time();
-        
+
         return parent::beforeSave();
     }
 }
