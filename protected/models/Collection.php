@@ -33,7 +33,7 @@ class Collection extends CActiveRecord
         // will receive user inputs.
         return array(
             array('name', 'required'),
-            array('order, maine_page_visible, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true),
+            array('order, maine_page_visible, tile, sanitary_engineering, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             // The following rule is used by search().
@@ -49,7 +49,9 @@ class Collection extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+        return array(
+            'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
+        );
     }
 
     /**
@@ -67,6 +69,8 @@ class Collection extends CActiveRecord
             'upload_1_id' => 'Upload 1',
             'brand_id' => 'Brand',
             'meta_data_id' => 'Meta Data',
+            'sanitary_engineering' => 'sanitary_engineering',
+            'tile' => 'tile',
         );
     }
 
@@ -93,13 +97,26 @@ class Collection extends CActiveRecord
         $criteria->compare('slogan', $this->slogan, true);
         $criteria->compare('description', $this->description, true);
         $criteria->compare('order', $this->order);
-        $criteria->compare('maine_page_visible', $this->maine_page_visible);
         $criteria->compare('upload_1_id', $this->upload_1_id);
         $criteria->compare('brand_id', $this->brand_id);
         $criteria->compare('meta_data_id', $this->meta_data_id);
 
+        $criteria->with = array('meta_data');
+
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'sort' => array(
+                'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
+                'attributes' => array(
+                    't.id',
+                    't.name',
+                    't.order',
+                    't.maine_page_visible',
+                )
+            ),
+            'pagination' => array(
+                'pageSize' => 20,
+            ),
         ));
     }
 

@@ -67,11 +67,7 @@ class MainController extends Controller
         }
 
         $brand->attributes = $_POST['Brand'];
-        if (isset($_POST['Brand']['maine_page_visible'])) {
-            $brand->maine_page_visible = 1;
-        } else {
-            $brand->maine_page_visible = 0;
-        }
+        $brand->maine_page_visible = (isset($_POST['Brand']['maine_page_visible'])) ? 1 : 0;
 
         if (!$brand->save()) {
             $response = array(
@@ -97,6 +93,7 @@ class MainController extends Controller
         $this->render('collections', array('collection' => $collection));
     }
 
+
     public function actionDeleteBrand($id)
     {
         Brand::model()->deleteByPk($id);
@@ -106,4 +103,42 @@ class MainController extends Controller
         );
         echo CJSON::encode($response);
     }
+
+
+    public function actionCollection()
+    {
+
+        if (!isset($_POST['Collection'])) {
+            $response = array(
+                'status' => 'error',
+            );
+            Yii::app()->end();
+        }
+
+        if (!empty($_POST['Collection']['id'])) {
+            $collection = Collection::model()->findByPk($_POST['Collection']['id']);
+        } else {
+            $collection = new Collection();
+        }
+
+
+        $collection->attributes = $_POST['Collection'];
+        $collection->maine_page_visible = (isset($_POST['Collection']['maine_page_visible'])) ? 1 : 0;
+        $collection->sanitary_engineering = (isset($_POST['Collection']['sanitary_engineering'])) ? 1 : 0;
+        $collection->tile = (isset($_POST['Collection']['tile'])) ? 1 : 0;
+
+
+        if (!$collection->save()) {
+            $response = array(
+                'status' => 'error',
+                'model' => array("Collection" => $collection->getErrors())
+            );
+            echo CJSON::encode($response);
+            Yii::app()->end();
+        }
+
+        MetaData::addSelf($collection);
+    }
+
+
 }

@@ -1,24 +1,3 @@
-<h4>Продукция</h4>
-<div class="form-group">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Сантехника
-                </label>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Плитка
-                </label>
-            </div>
-        </div>
-    </div>
-</div>
-<hr/>
-
 <button type="button" class="btn btn-default btn-popup" data-popup="edit-model"
         data-item='{"meta_data":{}}'
         data-title="Создание коллекции">
@@ -77,9 +56,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 ?>
 
 
-
-
-<script id="template_edit_collection" type="text/x-jsrender">
+<script id="template_edit-model" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_edit_collection'); ?>
 </script>
 <script id="template_upload-row" type="text/x-jsrender">

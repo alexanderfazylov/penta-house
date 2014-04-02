@@ -17,28 +17,40 @@ $.views.converters({checkboxMainePageVisible: function (visible) {
     return '<input type="checkbox" ' + cheked + ' name="Brand[maine_page_visible]" >';
 }});
 
+$.views.converters({boolCheckbox: function (data) {
+    var cheked = "";
+    if (data == 1) {
+        cheked = 'checked="checked"';
+    }
+
+    return cheked;
+}});
+
 
 $(function () {
     function creteBrandUploder(i) {
         var $uploader = $('#file-uploader-' + i);
 
-        var uploader = new qq.FileUploader({
-            element: $uploader[0],
-            multiple: false,
-            action: '/server/UploadBrand' + i,
-            onSubmit: function (id, fileName) {
-                $uploader.siblings('.qq-upload-list').html("");
-            },
-            onComplete: function (id, fileName, response) {
-                $uploader.find('.qq-upload-list li').remove();
-                $uploader.siblings('.qq-upload-list').html(
-                    $('#template_upload-row').render(response)
-                );
-                $uploader.find('.qq-picter img').attr('src', '/uploads/thumbs/' + response.file_name);
+        if ($uploader.length != 0) {
+
+            var uploader = new qq.FileUploader({
+                element: $uploader[0],
+                multiple: false,
+                action: '/server/UploadBrand' + i,
+                onSubmit: function (id, fileName) {
+                    $uploader.siblings('.qq-upload-list').html("");
+                },
+                onComplete: function (id, fileName, response) {
+                    $uploader.find('.qq-upload-list li').remove();
+                    $uploader.siblings('.qq-upload-list').html(
+                        $('#template_upload-row').render(response)
+                    );
+                    $uploader.find('.qq-picter img').attr('src', '/uploads/thumbs/' + response.file_name);
 
 
-            }
-        });
+                }
+            });
+        }
     }
 
     function showCoords(c) {
