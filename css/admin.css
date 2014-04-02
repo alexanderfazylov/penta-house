@@ -59,7 +59,7 @@ body {
     border-radius: 0px !important;
 }
 
-.brand-edit {
+.model-edit {
     border-bottom: 1px dashed;
     cursor: pointer;
     display: inline-block;
@@ -92,4 +92,8 @@ body {
     border-bottom: 1px dashed;
     color: black;
     margin-right: 20px;
+}
+
+.default-hint {
+    padding: 15px;
 }

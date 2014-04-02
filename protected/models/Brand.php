@@ -134,7 +134,7 @@ class Brand extends CActiveRecord
     public function popupPrepear($model)
     {
         $item = Helper::convertModelToJson($model);
-        return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-brand' class='brand-edit btn-popup'  >Редактировать</div>";
+        return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
 
 

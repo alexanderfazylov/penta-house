@@ -7,7 +7,13 @@ class m140401_165230_collection extends CDbMigration
         $this->createTable('{{collection}}', array(
             'id' => 'pk',
             'name' => 'VARCHAR(255) NOT NULL',
-
+            'slogan' => 'VARCHAR(255) NULL',
+            'description' => 'TEXT',
+            'order' => 'INT NULL',
+            'maine_page_visible' => 'INT NULL DEFAULT 0',
+            'upload_1_id' => 'INT NULL',
+            'brand_id' => 'INT NULL',
+            'meta_data_id' => 'INT NULL',
         ));
 
         $this->createTable('{{tag}}', array(

@@ -89,15 +89,20 @@ class MainController extends Controller
 
     public function actionCollections()
     {
+        $collection = new Collection('search');
 
-        $this->render('collections', array());
+        if (isset($_GET['Collection'])) {
+            $collection->attributes = $_GET['Collection'];
+        }
+        $this->render('collections', array('collection' => $collection));
     }
 
-    public function actionDeleteBrand($brand_id)
+    public function actionDeleteBrand($id)
     {
-        Brand::model()->deleteByPk($brand_id);
+        Brand::model()->deleteByPk($id);
         $response = array(
             'status' => 'success',
+            'message' => 'Производитель удален',
         );
         echo CJSON::encode($response);
     }

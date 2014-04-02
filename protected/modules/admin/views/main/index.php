@@ -1,4 +1,4 @@
-<button type="button" class="btn btn-default btn-popup" data-popup="edit-brand"
+<button type="button" class="btn btn-default btn-popup" data-popup="edit-model"
         data-item='{"meta_data":{}}'
         data-title="Создание производителя">
     Создать производителя
@@ -10,7 +10,7 @@
 
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
-    'id' => 'brand-grid',
+    'id' => 'model-grid',
     'dataProvider' => $brand->search(),
     'cssFile' => false,
     'itemsCssClass' => 'table table-hover',
@@ -64,7 +64,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 
 
-<script id="template_edit-brand" type="text/x-jsrender">
+<script id="template_edit-model" type="text/x-jsrender">
     <?php $this->renderPartial('/main/brand/_edit_brand'); ?>
 </script>
 <script id="template_upload-row" type="text/x-jsrender">
@@ -72,5 +72,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 </script>
 <script id="template_crop_modal" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_crop_modal'); ?>
+</script>
+<script id="template_meta_data" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_meta_data'); ?>
 </script>
 

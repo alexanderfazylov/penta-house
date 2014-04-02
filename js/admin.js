@@ -4,7 +4,9 @@ $.views.converters({getUploadItem: function (data) {
 $.views.converters({notCacheImage: function (file_name) {
     return file_name + '?' + new Date().getTime();
 }});
-
+$.views.converters({metaData: function (data) {
+    return $('#template_meta_data').render(data);
+}});
 $.views.converters({checkboxMainePageVisible: function (visible) {
 
     var cheked = "";
@@ -48,12 +50,12 @@ $(function () {
         $('#h').val(c.h);
     }
 
-    $(document).on('click', '#save-brand', function () {
+    $(document).on('click', '#save-model', function () {
         var $el = $(this);
 
         $(this).ajaxFormSubmit(
             function (data) {
-                $.fn.yiiGridView.update("brand-grid");
+                $.fn.yiiGridView.update("model-grid");
                 $.jGrowl("Сохранено");
                 $el.parents('.modal').modal('hide');
             },
@@ -64,20 +66,23 @@ $(function () {
             }
         );
     });
-    $(document).on('click', '#delete-brand', function () {
-        var brand_id = $(this).data('brand-id');
-        var $el = $(this);
-        if (confirm("Удалить производителя?")) {
+    $(document).on('click', '#delete-model', function () {
+        var $el = $(this),
+            id = $el.data('model-id'),
+            action = $el.data('action');
+
+
+        if (confirm("Удалить " + $el.data('name') + " (" + $el.data('unit') + ")")) {
             $.ajax({
-                url: '/admin/main/deleteBrand',
+                url: action,
                 type: 'GET',
                 dataType: 'json',
-                data: {brand_id: brand_id},
+                data: {id: id},
                 success: function (data) {
                     $el.parents('.modal').find('.modal-body').hide('clip', function () {
                         $el.parents('.modal').modal('hide');
-                        $.fn.yiiGridView.update("brand-grid");
-                        $.jGrowl("Производитель удалён");
+                        $.fn.yiiGridView.update("model-grid");
+                        $.jGrowl(data.message);
                     });
                 }
             });
@@ -160,7 +165,7 @@ $(function () {
         var $el = $(this);
         $(this).ajaxFormSubmit(
             function (data) {
-                $.fn.yiiGridView.update("brand-grid");
+                $.fn.yiiGridView.update("model-grid");
                 $.jGrowl("Сохраните изменения");
                 $qq_crop_upload.parents('.qq-upload-list').html(
                     $('#template_upload-row').render(data.model)

@@ -1,26 +1,22 @@
-<div id="edit-brand" class="modal fade" tabindex="-1" data-width="600">
+<div id="edit-model" class="modal fade" tabindex="-1" data-width="600">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
         <h2 class="modal-title">{{>title}}</h2>
     </div>
     <div class="modal-body">
-        <form id="form-save-brand" action="/admin/main/brand" method="POST">
+        <form id="form-save-model" action="/admin/main/brand" method="POST">
             <input type="hidden" name="Brand[id]" value="{{>item.id}}"/>
-
-
             <h4>Отображение на глвной странице и странице каталога</h4>
 
             <div class="form-group">
                 <label>Фото подложки на главной странице</label>
 
                 <div id="file-uploader-1"></div>
-
                 <ul class="qq-upload-list" data-width="100" data-height="50">
                     {{if item.upload1}}
                     {{getUploadItem:item.upload1}}
                     {{/if}}
                 </ul>
-
             </div>
             <div class="form-group">
                 <label>Лого на главной странице и странице католога</label>
@@ -88,33 +84,19 @@
                     >{{>item.description}}</textarea>
             </div>
             <hr>
-            <h4>SEO</h4>
-
-            <div class="meta-data">
-                <div class="form-group">
-                    <label for="md-title">Заголовок</label>
-                    <textarea class="form-control" id="md-title"
-                              name="MetaData[title]">{{>item.meta_data.title}}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="md-keywords">Ключевые слова</label>
-                    <textarea class="form-control" id="md-keywords" name="MetaData[keywords]">{{>item.meta_data.keywords}}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="md-description">Описание</label>
-                    <textarea class="form-control" id="md-description" name="MetaData[description]">{{>item.meta_data.description}}</textarea>
-                </div>
-            </div>
+            {{metaData:item.meta_data}}
         </form>
     </div>
     <div class="modal-footer">
         {{if item.id }}
-        <button type="button" class="btn btn-danger" data-brand-id="{{>item.id}}" style="float:left" id="delete-brand">
+        <button type="button" class="btn btn-danger" data-name="{{>item.name}}" data-unit="производитель"
+                data-action="/admin/main/deleteBrand" data-model-id="{{>item.id}}"
+                style="float:left" id="delete-model">
             Удалить производителя
         </button>
         {{/if}}
         <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
-        <button type="button" class="btn btn-primary" id="save-brand">Сохранить</button>
+        <button type="button" class="btn btn-primary" id="save-model">Сохранить</button>
     </div>
 </div>
 

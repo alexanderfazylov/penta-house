@@ -6,6 +6,11 @@ $this->widget('zii.widgets.CMenu', array(
     'htmlOptions' => array('class' => 'nav nav-pills'),
     'items' => array(
         array(
+            'label' => 'Главная',
+            'url' => Yii::app()->urlManager->createUrl('/admin/default/index'),
+            'active' => (($controller == 'default' && $action == 'index'))
+        ),
+        array(
             'label' => 'Производители',
             'url' => Yii::app()->urlManager->createUrl('/admin/main/index'),
             'active' => (($controller == 'main' && $action == 'index'))
