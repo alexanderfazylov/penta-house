@@ -65,6 +65,17 @@ $.views.converters({getSelectOption: function (brand_id) {
 
     return options;
 }});
+$.views.converters({getCollection: function (data) {
+    var response = '';
+    if (data.length != 0) {
+        $.each(data, function (index, collection) {
+            response = response + $('#template_collection_row').render(collection);
+        });
+    } else {
+        response = "Нет прикрепленных коллекций";
+    }
+    return response;
+}});
 
 
 function getBrands() {

@@ -83,6 +83,13 @@
                 <textarea class="form-control" id="brand-description" name="Brand[description]"
                     >{{>item.description}}</textarea>
             </div>
+            {{if item.collection }}
+            <hr>
+            <div class="form-group">
+                <h4>Коллекции</h4>
+                {{getCollection:item.collection}}
+            </div>
+            {{/if}}
             <hr>
             {{metaData:item.meta_data}}
         </form>

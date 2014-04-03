@@ -38,6 +38,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'order',
         ),
         array(
+            'name' => 'Количество коллекций',
+            'type' => 'raw',
+            'value' => array($brand, 'collectionCount'),
+            'filter' => false,
+        ),
+        array(
             'name' => 'Редактировать',
             'type' => 'raw',
             'value' => array($brand, 'popupPrepear'),
@@ -79,4 +85,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
 <script id="template_meta_data" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_meta_data'); ?>
 </script>
-
+<script id="template_collection_row" type="text/x-jsrender">
+    <?php $this->renderPartial('/main/_collection_row'); ?>
+</script>

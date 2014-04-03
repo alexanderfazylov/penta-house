@@ -186,4 +186,17 @@ class MainController extends Controller
         );
         echo CJSON::encode($response);
     }
+
+
+    public function actionProjects()
+    {
+        $project = new Project('search');
+
+        if (isset($_GET['Project'])) {
+            $project->attributes = $_GET['Project'];
+        }
+
+        $this->render('projects', array('project' => $project));
+    }
+
 }

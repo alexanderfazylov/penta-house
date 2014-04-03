@@ -56,6 +56,7 @@ class Brand extends CActiveRecord
             'upload2' => array(self::BELONGS_TO, 'Upload', 'upload_2_id'),
             'upload3' => array(self::BELONGS_TO, 'Upload', 'upload_3_id'),
             'upload4' => array(self::BELONGS_TO, 'Upload', 'upload_4_id'),
+            'collection' => array(self::HAS_MANY, 'Collection', 'brand_id'),
         );
     }
 
@@ -101,7 +102,14 @@ class Brand extends CActiveRecord
         $criteria->compare('t.order', $this->order);
         //$criteria->compare('maine_page_visible', $this->maine_page_visible);
 
-        $criteria->with = array('meta_data', 'upload1', 'upload2', 'upload3', 'upload4',);
+        $criteria->with = array(
+            'meta_data',
+            'upload1',
+            'upload2',
+            'upload3',
+            'upload4',
+            'collection',
+        );
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -137,6 +145,15 @@ class Brand extends CActiveRecord
         return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
 
+    public function collectionCount($model)
+    {
+        if (empty($model->collection)) {
+            return 0;
+        } else {
+            return count($model->collection);
+        }
+
+    }
 
     public function pageVisible($model)
     {

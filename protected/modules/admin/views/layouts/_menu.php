@@ -22,24 +22,24 @@ $this->widget('zii.widgets.CMenu', array(
         ),
         array(
             'label' => 'Проекты',
-            'url' => Yii::app()->urlManager->createUrl('/admin/main/index'),
-            'active' => (($controller == 'main' && $action == 'inasddex'))
+            'url' => Yii::app()->urlManager->createUrl('/admin/main/projects'),
+            'active' => (($controller == 'main' && $action == 'projects'))
         ),
         array(
             'label' => 'Новости',
-            'url' => Yii::app()->urlManager->createUrl('/admin/main/index'),
-            'active' => (($controller == 'main' && $action == 'indeasdx'))
+            'url' => Yii::app()->urlManager->createUrl('/admin/main/posts'),
+            'active' => (($controller == 'main' && $action == 'posts'))
         ),
         array(
-            'label' => 'Учетные данные',
-            'url' => Yii::app()->urlManager->createUrl('/admin/main/index'),
-            'active' => (($controller == 'main' && $action == 'indexasd'))
+            'label' => 'Контактная информация',
+            'url' => Yii::app()->urlManager->createUrl('/admin/main/contacts'),
+            'active' => (($controller == 'main' && $action == 'contacts'))
         ),
-
         array(
-            'label' => 'Выход',
-            'url' => Yii::app()->urlManager->createUrl('site/logout'),
-        )
+            'label' => 'О компании',
+            'url' => Yii::app()->urlManager->createUrl('/admin/main/about'),
+            'active' => (($controller == 'main' && $action == 'contacts'))
+        ),
     ),
 ));
 ?>
