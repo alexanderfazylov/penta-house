@@ -139,7 +139,7 @@ class Project extends CActiveRecord
     protected function afterFind()
     {
         if (!empty($this->end_date)) {
-            $this->end_date = DateTime::createFromFormat('Y-m-d', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('d.m.Y');
+            $this->end_date = DateTime::createFromFormat('Y-m-d', $this->end_date)->format('d.m.Y');
         }
 
         return parent::afterFind();
@@ -149,7 +149,7 @@ class Project extends CActiveRecord
     {
 
         if (!empty($this->end_date) && ($this->date_status == self::VIEW)) {
-            $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->format('Ymd');
             $this->date_status = self::BASE;
         }
 
