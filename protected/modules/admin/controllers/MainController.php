@@ -15,6 +15,8 @@ class MainController extends Controller
         $this->cs = Yii::app()->clientScript;
         //js
         $this->cs->registerCoreScript('jquery');
+        $this->cs->registerCoreScript('jquery.ui');
+
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-3.1.1-dist/js/bootstrap.min.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-modal/js/bootstrap-modalmanager.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-modal/js/bootstrap-modal.js'));
@@ -27,6 +29,7 @@ class MainController extends Controller
         $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
         $this->cs->registerScriptFile($this->createUrl('/js/admin.js'));
         //css
+        $this->cs->registerCssFile($this->createUrl('/css/jquery-ui.css'));
         $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-3.1.1-dist/css/bootstrap.min.css'));
         $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-3.1.1-dist/css/bootstrap-theme.min.css'));
         $this->cs->registerCssFile($this->createUrl('/dist/bootstrap-modal/css/bootstrap-modal-bs3patch.css'));
@@ -152,7 +155,6 @@ class MainController extends Controller
         if (isset($_POST['CollectionUpload']['files'])) {
             $new_collection_uploads = $_POST['CollectionUpload']['files'];
 
-            $old_collection_uploads = array();
             $cu_models = CollectionUpload::model()->findAllByAttributes(array('collection_id' => $collection->id));
 
             foreach ($cu_models as $model) {
@@ -187,6 +189,16 @@ class MainController extends Controller
         echo CJSON::encode($response);
     }
 
+    public function actionDeleteProject($id)
+    {
+        Project::model()->deleteByPk($id);
+        $response = array(
+            'status' => 'success',
+            'message' => 'Проект удален',
+        );
+        echo CJSON::encode($response);
+    }
+
 
     public function actionProjects()
     {
@@ -198,5 +210,66 @@ class MainController extends Controller
 
         $this->render('projects', array('project' => $project));
     }
+
+
+    public function actionProject()
+    {
+
+
+        if (!isset($_POST['Project'])) {
+            $response = array(
+                'status' => 'error',
+            );
+            Yii::app()->end();
+        }
+
+        if (!empty($_POST['Project']['id'])) {
+            $project = Project::model()->findByPk($_POST['Project']['id']);
+        } else {
+            $project = new Project();
+        }
+
+
+        $project->attributes = $_POST['Project'];
+        $project->visible = (isset($_POST['Project']['visible'])) ? 1 : 0;
+
+
+        if (!$project->save()) {
+            $response = array(
+                'status' => 'error',
+                'model' => array("Project" => $project->getErrors())
+            );
+            echo CJSON::encode($response);
+            Yii::app()->end();
+        }
+
+
+        if (isset($_POST['ProjectUpload']['files'])) {
+            $new_collection_uploads = $_POST['ProjectUpload']['files'];
+
+            $cu_models = ProjectUpload::model()->findAllByAttributes(array('project_id' => $project->id));
+
+            foreach ($cu_models as $model) {
+                if (isset($new_collection_uploads[$model->upload_id])) {
+                    unset($new_collection_uploads[$model->upload_id]);
+                }
+            }
+
+            foreach ($new_collection_uploads as $upload_id) {
+                $cu = new ProjectUpload();
+                $cu->upload_id = $upload_id;
+                $cu->project_id = $project->id;
+                $cu->save();
+            }
+
+
+        }
+
+
+        MetaData::addSelf($project);
+
+
+    }
+
 
 }

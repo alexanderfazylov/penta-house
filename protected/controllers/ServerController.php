@@ -168,5 +168,16 @@ class ServerController extends Controller
         echo CJSON::encode($result);
     }
 
+    public function actionProjectUpload()
+    {
+        $result = $this->upload('ProjectUpload', 'upload_id');
+        echo CJSON::encode($result);
+    }
 
+
+    public function actionProjectUplod1()
+    {
+        $result = $this->upload('Project', 'upload_1_id');
+        echo CJSON::encode($result);
+    }
 }
