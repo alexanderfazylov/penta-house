@@ -7,8 +7,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -moz-box-sizing: border-box; /*Firefox 1+*/
-    -webkit-box-sizing: border-box; /*Safari 3+, Chrome 1+*/
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 html, body {
@@ -236,6 +236,11 @@ a {
     font-size: 0px;
 }
 
+.service-item{
+    display: table!important;
+    float: left;
+}
+
 .service-item, .news-item, .project-item {
     width: 25%;
     height: 200px;
@@ -305,6 +310,7 @@ a {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
+    width: 100%;
 }
 
 .service-item h3 {
