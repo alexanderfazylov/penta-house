@@ -126,3 +126,10 @@ body {
 .jGrowl-notification {
     color: #fff !important;
 }
+
+.direction li {
+    display: block;
+    padding: 10px 0;
+    float: none;
+    clear: both;
+}

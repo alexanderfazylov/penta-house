@@ -3,7 +3,7 @@
 class DefaultController extends Controller
 {
     public $cs;
-    
+
     public function init()
     {
         if (Yii::app()->user->isGuest) {
@@ -13,6 +13,7 @@ class DefaultController extends Controller
         $this->cs = Yii::app()->clientScript;
         //js
         $this->cs->registerCoreScript('jquery');
+        $this->cs->registerCoreScript('jquery.ui');
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-3.1.1-dist/js/bootstrap.min.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-modal/js/bootstrap-modalmanager.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/bootstrap-modal/js/bootstrap-modal.js'));
@@ -39,6 +40,17 @@ class DefaultController extends Controller
 
     public function actionIndex()
     {
-        $this->render('index');
+        $main = Maine::model()->findByPk(1);
+
+        if (isset($_POST['Main'])) {
+            $main->attributes = $_POST['Main'];
+            $main->save();
+            echo CJSON::encode(array(
+                'status' => 'success'
+            ));
+            Yii::app()->end();
+        }
+
+        $this->render('index', array('main' => $main));
     }
 }

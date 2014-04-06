@@ -407,4 +407,30 @@ class MainController extends Controller
         );
         echo CJSON::encode($response);
     }
+
+
+    public function actionAbout()
+    {
+
+        $models = About::model()->findAll();
+
+        if (empty($models)) {
+            $about = new About();
+        } else {
+            $about = $models[0];
+        }
+
+        if (isset($_POST['About'])) {
+            $about->attributes = $_POST['About'];
+            $about->save();
+            echo CJSON::encode(array(
+                'status' => 'success'
+            ));
+            Yii::app()->end();
+        }
+
+
+        $this->render('about', array('about' => $about));
+    }
+
 }

@@ -300,4 +300,32 @@ $(function () {
 
     });
 
+    $(document).on('click', '#about-edit', function () {
+        var $el = $(this);
+        $el.ajaxFormSubmit(
+            function (data) {
+                $.jGrowl("Сохранено");
+            },
+            function () {
+            },
+            function () {
+            }
+        );
+
+    });
+
+    $(document).on('click', '#main-edit', function () {
+        var $el = $(this);
+        $el.ajaxFormSubmit(
+            function (data) {
+                $.jGrowl("Сохранено");
+            },
+            function () {
+            },
+            function () {
+            }
+        );
+
+    });
+
 });
