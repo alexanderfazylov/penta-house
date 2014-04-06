@@ -41,9 +41,7 @@ class MetaData extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array(
-
-        );
+        return array();
     }
 
     /**
@@ -114,7 +112,7 @@ class MetaData extends CActiveRecord
 
             if (!$meta_data->save()) {
                 $response = array(
-                    'status' => 'success',
+                    'status' => 'error',
                     'model' => array("MetaData" => $meta_data->getErrors())
                 );
                 Yii::app()->end();

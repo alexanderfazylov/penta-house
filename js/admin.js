@@ -153,6 +153,16 @@ $(function () {
         });
     }
 
+    function initSelect($parent) {
+        $parent.find('select').each(function (i, select) {
+            var value = $(select).data('value');
+            if (typeof value != "undefined") {
+                $(select).find('[value="' + value + '"]').attr('selected', 'selected ')
+            }
+
+        });
+    }
+
     function showCoords(c) {
         $('#x1').val(c.x);
         $('#y1').val(c.y);
@@ -212,6 +222,7 @@ $(function () {
 
         initUploders();
         initDatapickers();
+        initSelect($('#' + id));
     });
     $(document).on('click', '.qq-delete-upload', function () {
         var upload_id = $(this).parents('.qq-upload-success').data('upload-id');
