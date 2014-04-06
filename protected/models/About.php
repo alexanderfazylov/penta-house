@@ -1,22 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "{{meta_data}}".
+ * This is the model class for table "{{about}}".
  *
- * The followings are the available columns in table '{{meta_data}}':
+ * The followings are the available columns in table '{{about}}':
  * @property integer $id
  * @property string $description
- * @property string $keywords
- * @property string $title
  */
-class MetaData extends CActiveRecord
+class About extends CActiveRecord
 {
     /**
      * @return string the associated database table name
      */
     public function tableName()
     {
-        return '{{meta_data}}';
+        return '{{about}}';
     }
 
     /**
@@ -27,10 +25,8 @@ class MetaData extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('description, keywords, title', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
-            array('id, description, keywords', 'safe', 'on' => 'search'),
+            array('description', 'safe'),
+            array('id, description', 'safe', 'on' => 'search'),
         );
     }
 
@@ -52,8 +48,6 @@ class MetaData extends CActiveRecord
         return array(
             'id' => 'ID',
             'description' => 'Description',
-            'keywords' => 'Keywords',
-            'title' => 'title',
         );
     }
 
@@ -77,7 +71,6 @@ class MetaData extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('description', $this->description, true);
-        $criteria->compare('keywords', $this->keywords, true);
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
@@ -88,43 +81,10 @@ class MetaData extends CActiveRecord
      * Returns the static model of the specified AR class.
      * Please note that you should have this exact method in all your CActiveRecord descendants!
      * @param string $className active record class name.
-     * @return MetaData the static model class
+     * @return About the static model class
      */
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
     }
-
-    public static function addSelf($model)
-    {
-        if (isset($_POST['MetaData'])) {
-            $response = array(
-                'status' => 'success'
-            );
-
-            if (!empty($model->meta_data_id)) {
-                $meta_data = self::model()->findByPk($model->meta_data_id);
-            } else {
-                $meta_data = new self();
-            }
-
-            $meta_data->attributes = $_POST['MetaData'];
-
-            if (!$meta_data->save()) {
-                $response = array(
-                    'status' => 'error',
-                    'model' => array("MetaData" => $meta_data->getErrors())
-                );
-                Yii::app()->end();
-            }
-
-
-            $model->meta_data_id = $meta_data->id;
-            $model->save();
-
-            echo CJSON::encode($response);
-
-        }
-    }
-
 }

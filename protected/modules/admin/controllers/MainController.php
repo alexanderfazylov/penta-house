@@ -272,4 +272,165 @@ class MainController extends Controller
     }
 
 
+    public function actionPosts()
+    {
+        $post = new Post('search');
+
+        if (isset($_GET['Post'])) {
+            $post->attributes = $_GET['Post'];
+        }
+
+        $this->render('posts', array('post' => $post));
+    }
+
+
+    public function actionPost()
+    {
+
+
+        if (!isset($_POST['Post'])) {
+            $response = array(
+                'status' => 'error',
+            );
+            Yii::app()->end();
+        }
+
+        if (!empty($_POST['Post']['id'])) {
+            $post = Post::model()->findByPk($_POST['Post']['id']);
+        } else {
+            $post = new Post();
+        }
+
+
+        $post->attributes = $_POST['Post'];
+        $post->visible = (isset($_POST['Post']['visible'])) ? 1 : 0;
+
+
+        if (!$post->save()) {
+            $response = array(
+                'status' => 'error',
+                'model' => array("Post" => $post->getErrors())
+            );
+            echo CJSON::encode($response);
+            Yii::app()->end();
+        }
+
+
+        if (isset($_POST['PostUpload']['files'])) {
+            $new_collection_uploads = $_POST['PostUpload']['files'];
+
+            $cu_models = ProjectUpload::model()->findAllByAttributes(array('project_id' => $post->id));
+
+            foreach ($cu_models as $model) {
+                if (isset($new_collection_uploads[$model->upload_id])) {
+                    unset($new_collection_uploads[$model->upload_id]);
+                }
+            }
+
+            foreach ($new_collection_uploads as $upload_id) {
+                $cu = new ProjectUpload();
+                $cu->upload_id = $upload_id;
+                $cu->project_id = $post->id;
+                $cu->save();
+            }
+        }
+
+        MetaData::addSelf($post);
+    }
+
+    public function actionDeletePost($id)
+    {
+        Post::model()->deleteByPk($id);
+        $response = array(
+            'status' => 'success',
+            'message' => 'Новость удален',
+        );
+        echo CJSON::encode($response);
+    }
+
+
+    public function actionContacts()
+    {
+        $contact = new Contact('search');
+
+        if (isset($_GET['Contact'])) {
+            $contact->attributes = $_GET['Contact'];
+        }
+
+        $this->render('contacts', array('contact' => $contact));
+    }
+
+    public function actionContact()
+    {
+
+
+        if (!isset($_POST['Contact'])) {
+            $response = array(
+                'status' => 'error',
+            );
+            Yii::app()->end();
+        }
+
+        if (!empty($_POST['Contact']['id'])) {
+            $contact = Contact::model()->findByPk($_POST['Contact']['id']);
+        } else {
+            $contact = new Contact();
+        }
+
+
+        $contact->attributes = $_POST['Contact'];
+        $contact->visible = (isset($_POST['Contact']['visible'])) ? 1 : 0;
+
+
+        if (!$contact->save()) {
+            $response = array(
+                'status' => 'error',
+                'model' => array("Contact" => $contact->getErrors())
+            );
+
+        } else {
+            $response = array(
+                'status' => 'success',
+            );
+        }
+
+        echo CJSON::encode($response);
+
+    }
+
+    public function actionDeleteContact($id)
+    {
+        Contact::model()->deleteByPk($id);
+        $response = array(
+            'status' => 'success',
+            'message' => 'Контакт удален',
+        );
+        echo CJSON::encode($response);
+    }
+
+
+    public function actionAbout()
+    {
+
+        $models = About::model()->findAll();
+
+        if (empty($models)) {
+            $about = new About();
+        } else {
+            $about = $models[0];
+        }
+
+        if (isset($_POST['About'])) {
+            $about->attributes = $_POST['About'];
+            $about->save();
+            echo CJSON::encode(array(
+                'status' => 'success'
+            ));
+            Yii::app()->end();
+        }
+
+
+        $this->render('about', array('about' => $about));
+    }
+
 }

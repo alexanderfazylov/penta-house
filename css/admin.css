@@ -101,6 +101,35 @@ body {
 .default-hint {
     padding: 15px;
 }
-#ui-datepicker-div{
-    z-index: 9999!important;
+
+#ui-datepicker-div {
+    z-index: 9999 !important;
+}
+
+.week .day-name {
+    display: inline-block;
+    width: 30px;
+}
+
+.week li {
+    display: block;
+}
+
+.week input {
+    width: 75px;
+}
+
+.week .time_from, .week .time_to {
+    display: inline-block;
+}
+
+.jGrowl-notification {
+    color: #fff !important;
+}
+
+.direction li {
+    display: block;
+    padding: 10px 0;
+    float: none;
+    clear: both;
 }

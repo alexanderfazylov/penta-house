@@ -38,7 +38,7 @@ $this->widget('zii.widgets.CMenu', array(
         array(
             'label' => 'О компании',
             'url' => Yii::app()->urlManager->createUrl('/admin/main/about'),
-            'active' => (($controller == 'main' && $action == 'contacts'))
+            'active' => (($controller == 'main' && $action == 'about'))
         ),
     ),
 ));
