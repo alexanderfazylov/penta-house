@@ -7,6 +7,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -moz-box-sizing: border-box; /*Firefox 1+*/
+    -webkit-box-sizing: border-box; /*Safari 3+, Chrome 1+*/
 }
 
 html, body {
