@@ -23,27 +23,14 @@
             </div>
             <div class="aside-menu">
                 <div class="logo">
-                    <div class="logo-p">PENTA</div>
-                    <div class="logo-h">HOUSE</div>
+                    <a href="/site/index">
+                        <div class="logo-p">PENTA</div>
+                        <div class="logo-h">HOUSE</div>
+                    </a>
+
                     <div class="logo-description">Элитная сантехника, плитка.<br> Продажа. Монтаж. Сервис.</div>
                 </div>
-                <ul class="menu">
-                    <li class="active">
-                        <a href="#">О компании</a>
-                    </li>
-                    <li>
-                        <a href="#">Дилерство</a>
-                    </li>
-                    <li>
-                        <a href="#">Каталог</a>
-                    </li>
-                    <li>
-                        <a href="#">Проекты</a>
-                    </li>
-                    <li>
-                        <a href="#">Контакты</a>
-                    </li>
-                </ul>
+                <?php $this->renderPartial('application.views.layouts._menu'); ?>
             </div>
         </div>
         <div class="aside-footer">
@@ -58,6 +45,8 @@
         </div>
     </div>
     <div class="content">
+        <?php $this->renderPartial('application.views.layouts._callback'); ?>
+        <?php $this->renderPartial('application.views.layouts._change_city'); ?>
         <?php echo $content; ?>
         <div class="anchor"></div>
     </div>
