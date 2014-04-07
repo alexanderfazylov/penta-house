@@ -21,6 +21,11 @@
                 </div>
 
             </div>
+            <div class="form-group">
+                <label for="model-order">Сортировка</label>
+                <input type="text" class="form-control" id="model-order" name="Project[order]"
+                       value="{{>item.order}}">
+            </div>
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="Project[visible]"

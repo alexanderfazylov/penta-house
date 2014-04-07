@@ -35,7 +35,7 @@ class Brand extends CActiveRecord
         // will receive user inputs.
         return array(
             array('name', 'required'),
-            array('meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible, order', 'numerical', 'integerOnly' => true),
+            array('meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible, order', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, site, sert', 'length', 'max' => 255),
             array('description', 'safe'),
 
@@ -168,8 +168,8 @@ class Brand extends CActiveRecord
     {
         $picter = '';
         $time = time();
-        if (!empty($model->upload2)) {
-            $picter = "<img src='/uploads/thumbs/{$model->upload2->file_name}?{$time}' />";
+        if (!empty($model->upload3)) {
+            $picter = "<img src='/uploads/thumbs/{$model->upload3->file_name}?{$time}' />";
         }
 
         return $picter;

@@ -37,7 +37,7 @@ class Post extends CActiveRecord
         // will receive user inputs.
         return array(
             array('name', 'required'),
-            array('order, visible, upload_1_id, meta_data_id', 'numerical', 'integerOnly' => true),
+            array('order, visible, upload_1_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name', 'length', 'max' => 255),
             array('description, start_date', 'safe'),
             // The following rule is used by search().

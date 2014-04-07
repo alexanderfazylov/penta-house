@@ -36,7 +36,7 @@ class Project extends CActiveRecord
         // will receive user inputs.
         return array(
             array('name', 'required'),
-            array('order, visible, upload_1_id, meta_data_id', 'numerical', 'integerOnly' => true),
+            array('order, visible, upload_1_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, end_date', 'length', 'max' => 255),
             array('description, end_date', 'safe'),
             // The following rule is used by search().

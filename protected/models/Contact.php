@@ -46,7 +46,7 @@ class Contact extends CActiveRecord
         // will receive user inputs.
         return array(
             array('city', 'required'),
-            array('order, type, visible', 'numerical', 'integerOnly' => true),
+            array('order, type, visible', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('city, phone, address, monday_start, monday_end, tuesday_start, tuesday_end, wednesday_start, wednesday_end, thursday_start, thursday_end, friday_start, friday_end, saturday_start, saturday_end, sunday_start, sunday_end', 'length', 'max' => 255),
             array('map', 'safe'),
             array('id, city, phone, address, map, order, type, visible, monday_start, monday_end, tuesday_start, tuesday_end, wednesday_start, wednesday_end, thursday_start, thursday_end, friday_start, friday_end, saturday_start, saturday_end, sunday_start, sunday_end', 'safe', 'on' => 'search'),
