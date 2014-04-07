@@ -150,3 +150,10 @@ textarea.h500 {
     background: #ddd;
     padding: 5px;
 }
+
+#model-grid .filters td:first-child input {
+    width: 50px !important;
+}
+.hasDatepicker{
+    width: 85px!important;
+}
