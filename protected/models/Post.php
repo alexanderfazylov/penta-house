@@ -15,6 +15,11 @@
  */
 class Post extends CActiveRecord
 {
+    const VIEW = 1;
+    const BASE = 2;
+
+    public $date_status = self::VIEW;
+
     /**
      * @return string the associated database table name
      */
@@ -60,13 +65,13 @@ class Post extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'name' => 'Name',
-            'description' => 'Description',
-            'order' => 'Order',
-            'visible' => 'Visible',
+            'name' => 'Заголовок',
+            'description' => 'Текст',
+            'order' => 'Сортировка',
+            'visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
             'meta_data_id' => 'Meta Data',
-            'start_date' => 'Start Date',
+            'start_date' => 'Дата',
         );
     }
 
@@ -91,6 +96,8 @@ class Post extends CActiveRecord
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.name', $this->name, true);
         $criteria->compare('t.order', $this->order);
+        $criteria->compare('t.visible', $this->visible);
+        $criteria->compare('t.start_date', self::formateDate($this->start_date));
 
         $criteria->with = array(
             'meta_data',
@@ -131,5 +138,70 @@ class Post extends CActiveRecord
     {
         $item = Helper::convertModelToJson($model);
         return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
+    }
+
+    public function getVisibleSelect($model)
+    {
+
+        return CHtml::dropDownList(
+            'Post[visible]', $model->visible,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '0',
+                        'name' => 'Видимый',
+
+                    ),
+                    array(
+                        'id' => '1',
+                        'name' => 'Скрытый',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+    public function pageVisible($model)
+    {
+        if ($model->visible == 0) {
+            return "Видимый";
+        } else {
+            return "Скрытый";
+        }
+    }
+
+    protected function afterFind()
+    {
+        if (!empty($this->start_date)) {
+            $this->start_date = DateTime::createFromFormat('Y-m-d', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('d.m.Y');
+        }
+
+        return parent::afterFind();
+    }
+
+    protected function beforeSave()
+    {
+
+        if (!empty($this->start_date) && ($this->date_status == self::VIEW)) {
+            $this->start_date = DateTime::createFromFormat('d.m.Y', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            $this->date_status = self::BASE;
+        }
+
+        return parent::beforeSave();
+    }
+
+    public static function formateDate($date)
+    {
+
+        $resp = $date;
+        if (!empty($date)) {
+            $resp = DateTime::createFromFormat('d.m.Y', $date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y-m-d');
+        }
+
+        return $resp;
+
     }
 }

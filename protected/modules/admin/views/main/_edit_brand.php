@@ -6,7 +6,7 @@
     <div class="modal-body">
         <form id="form-save-model" action="/admin/main/brand" method="POST">
             <input type="hidden" name="Brand[id]" value="{{>item.id}}"/>
-            <h4>Отображение на глвной странице и странице каталога</h4>
+            <h4>Отображение на главной странице и странице каталога</h4>
 
             <div class="form-group">
                 <label>Фото подложки на главной странице</label>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Лого на главной странице и странице католога</label>
+                <label>Лого на главной странице и странице каталога</label>
 
                 <div class="construct_upload"
                      data-width="100"
@@ -80,7 +80,7 @@
             <hr/>
             <div class="form-group">
                 <label for="brand-description">Текст</label>
-                <textarea class="form-control" id="brand-description" name="Brand[description]"
+                <textarea class="form-control h500" id="brand-description" name="Brand[description]"
                     >{{>item.description}}</textarea>
             </div>
             {{if item.collection }}

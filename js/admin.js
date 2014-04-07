@@ -149,7 +149,7 @@ $(function () {
 
     function initDatapickers() {
         $('.has-datapicker').each(function (i, el) {
-            $(el).datepicker();
+            $(el).datepicker(jQuery.extend({}, jQuery.datepicker.regional['ru'], {'dateFormat': 'dd.mm.yy'}));
         });
     }
 

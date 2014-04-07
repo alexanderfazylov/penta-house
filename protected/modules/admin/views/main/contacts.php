@@ -21,6 +21,20 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name' => 'city',
+        ), array(
+            'name' => 'phone',
+        ),
+        array(
+            'name' => 'type',
+            'type' => 'raw',
+            'value' => array($contact, 'getType'),
+            'filter' => Contact::getTypeSelect($contact),
+        ),
+        array(
+            'name' => 'visible',
+            'type' => 'raw',
+            'value' => array($contact, 'pageVisible'),
+            'filter' => Contact::getVisibleSelect($contact),
         ),
         array(
             'name' => 'Редактировать',

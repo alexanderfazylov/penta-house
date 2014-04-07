@@ -42,8 +42,8 @@
                        value="{{>item.start_date}}">
             </div>
             <div class="form-group">
-                <label for="model-description">Текст</label>
-                <textarea class="form-control" id="model-description"
+                <label for="model-description ">Текст</label>
+                <textarea class="form-control h500" id="model-description"
                           name="Post[description]">{{>item.description}}</textarea>
             </div>
             <hr/>

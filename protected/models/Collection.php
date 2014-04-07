@@ -60,16 +60,16 @@ class Collection extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'name' => 'Name',
-            'slogan' => 'Slogan',
-            'description' => 'Description',
-            'order' => 'Order',
-            'maine_page_visible' => 'Maine Page Visible',
+            'name' => 'Имя',
+            'slogan' => 'Слоган',
+            'description' => 'Текст',
+            'order' => 'Сортировка',
+            'maine_page_visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
             'brand_id' => 'Brand',
             'meta_data_id' => 'Meta Data',
             'sanitary_engineering' => 'sanitary_engineering',
-            'tile' => 'tile',
+            'tile' => 'Заголовок',
             'brand.name' => 'Производитель',
         );
     }
@@ -96,6 +96,7 @@ class Collection extends CActiveRecord
         $criteria->compare('t.name', $this->name, true);
         $criteria->compare('t.order', $this->order);
         $criteria->compare('t.brand_id', $this->brand_id);
+        $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
 
         $criteria->with = array(
             'meta_data',
@@ -110,10 +111,10 @@ class Collection extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id',
-                    't.name',
-                    't.order',
-                    't.maine_page_visible',
+                    't.id' => 'id',
+                    't.name' => 'name',
+                    't.order' => 'order',
+                    't.maine_page_visible' => 'maine_page_visible',
                     'brand.name' => 'brand.name',
                 )
             ),
@@ -164,13 +165,42 @@ class Collection extends CActiveRecord
         );
     }
 
-//    public function getBrand($model)
-//    {
-//        $name =
-//        if (empty($model->brand)) {
-//            $model->
-//        }
-//
-//        return
-//    }
+    public function getVisibleSelect($model)
+    {
+
+        return CHtml::dropDownList(
+            'Collection[maine_page_visible]', $model->maine_page_visible,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '0',
+                        'name' => 'Видимый',
+
+                    ),
+                    array(
+                        'id' => '1',
+                        'name' => 'Скрытый',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+
+    public function getBrandLogo($model)
+    {
+
+
+        $picter = '';
+        $time = time();
+        if (!empty($model->brand->upload2)) {
+            $picter = "<img src='/uploads/thumbs/{$model->brand->upload2->file_name}?{$time}' />";
+        }
+
+        return $picter;
+
+    }
 }

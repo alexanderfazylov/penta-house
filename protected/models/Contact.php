@@ -68,13 +68,13 @@ class Contact extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'city' => 'City',
-            'phone' => 'Phone',
-            'address' => 'Address',
-            'map' => 'Map',
-            'order' => 'Order',
-            'type' => 'Type',
-            'visible' => 'Visible',
+            'city' => 'Город',
+            'phone' => 'Телефон',
+            'address' => 'Адресс',
+            'map' => 'Карта',
+            'order' => 'Сортировка',
+            'type' => 'Тип',
+            'visible' => 'Видимость',
 
             'monday_start' => 'Monday Start',
             'monday_end' => 'Monday End',
@@ -118,6 +118,9 @@ class Contact extends CActiveRecord
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.city', $this->city, true);
         $criteria->compare('t.order', $this->order);
+        $criteria->compare('t.phone', $this->phone);
+        $criteria->compare('t.visible', $this->visible);
+        $criteria->compare('t.type', $this->type);
 
 //        $criteria->with = array(
 //            'meta_data',
@@ -156,4 +159,78 @@ class Contact extends CActiveRecord
         $item = Helper::convertModelToJson($model);
         return "<div data-item='$item' data-title='Редактирование {$model->city}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
+
+    public function getVisibleSelect($model)
+    {
+
+        return CHtml::dropDownList(
+            'Contact[visible]', $model->visible,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '0',
+                        'name' => 'Видимый',
+
+                    ),
+                    array(
+                        'id' => '1',
+                        'name' => 'Скрытый',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+    public function pageVisible($model)
+    {
+        if ($model->visible == 0) {
+            return "Видимый";
+        } else {
+            return "Скрытый";
+        }
+    }
+
+    public function getTypeSelect($model)
+    {
+        return CHtml::dropDownList(
+            'Contact[type]', $model->type,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '1',
+                        'name' => 'магазин',
+
+                    ),
+                    array(
+                        'id' => '2',
+                        'name' => 'склад',
+
+                    ),
+                    array(
+                        'id' => '3',
+                        'name' => 'шоурум',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+    public function getType($model)
+    {
+        if ($model->type == 1) {
+            return "магазин";
+        } elseif ($model->type == 2) {
+            return "склад";
+        } elseif ($model->type == 3) {
+            return "шоурум";
+        }
+    }
+
+
 }

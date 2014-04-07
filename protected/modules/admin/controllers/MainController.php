@@ -319,7 +319,7 @@ class MainController extends Controller
         if (isset($_POST['PostUpload']['files'])) {
             $new_collection_uploads = $_POST['PostUpload']['files'];
 
-            $cu_models = ProjectUpload::model()->findAllByAttributes(array('project_id' => $post->id));
+            $cu_models = PostUpload::model()->findAllByAttributes(array('post_id' => $post->id));
 
             foreach ($cu_models as $model) {
                 if (isset($new_collection_uploads[$model->upload_id])) {
@@ -328,9 +328,9 @@ class MainController extends Controller
             }
 
             foreach ($new_collection_uploads as $upload_id) {
-                $cu = new ProjectUpload();
+                $cu = new PostUpload();
                 $cu->upload_id = $upload_id;
-                $cu->project_id = $post->id;
+                $cu->post_id = $post->id;
                 $cu->save();
             }
         }
