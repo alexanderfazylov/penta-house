@@ -1,20 +1,5 @@
 $(function () {
-    //$('.default-datapicker').datepicker();
 
-    /*
-     * слайдер
-     */
-    if ($('.slider').length > 0)
-        $('.slider').mobilyslider({
-            transition: 'fade',
-            animationSpeed: 800,
-            autoplaySpeed: 3000,
-            autoplay: false,
-            bullets: false,
-            arrowsHide: false
-        });
-
-    $('.sliderArrowsBottom').children('.prev').after('<span>1/8</span>');
 });
 var button = {
     disable: function ($el) {
@@ -26,9 +11,11 @@ var button = {
         $el.removeAttr('disabled');
     }
 };
+
 function getUniq() {
     return new Date().getTime();
 }
+
 $.fn.ajaxFormSubmit = function (success, complete, validator) {
 
 

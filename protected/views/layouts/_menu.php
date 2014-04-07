@@ -1,40 +1,34 @@
 <?php
-$active_1 = '';
-$active_2 = '';
-$active_3 = '';
-$active_4 = '';
-$active_5 = '';
+$controller = Yii::app()->controller->getId();
+$action = Yii::app()->controller->getAction()->getId();
 
-if (Yii::app()->controller->getAction()->getId() == 'about') {
-    $active_1 = 'class="active"';
-} else if (Yii::app()->controller->getAction()->getId() == '') {
-    $active_2 = 'class="active"';
-} else if (Yii::app()->controller->getAction()->getId() == 'catalog' ||
-    Yii::app()->controller->getAction()->getId() == 'brand' ||
-    Yii::app()->controller->getAction()->getId() == 'collection'
-) {
-    $active_3 = 'class="active"';
-} else if (Yii::app()->controller->getAction()->getId() == '') {
-    $active_4 = 'class="active"';
-} else if (Yii::app()->controller->getAction()->getId() == 'contact') {
-    $active_5 = 'class="active"';
-}
+$this->widget('zii.widgets.CMenu', array(
+    'htmlOptions' => array('class' => 'menu'),
+    'items' => array(
+        array(
+            'label' => 'О компании',
+            'url' => ('/site/about'),
+            'active' => (($controller == 'site' && $action == 'about'))
+        ),
+        array(
+            'label' => 'Дилерство',
+            'url' => ('#'),
+            'active' => (($controller == 'default' && $action == 'index'))
+        ),
+        array(
+            'label' => 'Каталог',
+            'url' => ('/site/catalog'),
+            'active' => (($controller == 'site' && $action == 'catalog'))
+        ),
+        array(
+            'label' => 'Проекты',
+            'url' => ('#'),
+            'active' => (($controller == 'default' && $action == 'index'))
+        ),
+        array(
+            'label' => 'Контакты',
+            'url' => ('/site/contact'),
+            'active' => (($controller == 'site' && $action == 'contact'))
+        ),
+    ),));
 ?>
-
-<ul class="menu">
-    <li <?php echo $active_1; ?>>
-        <a href="/site/about">О компании</a>
-    </li>
-    <li <?php echo $active_2; ?>>
-        <a href="#">Дилерство</a>
-    </li>
-    <li <?php echo $active_3; ?>>
-        <a href="/site/catalog">Каталог</a>
-    </li>
-    <li <?php echo $active_4; ?>>
-        <a href="#">Проекты</a>
-    </li>
-    <li <?php echo $active_5; ?>>
-        <a href="/site/contact">Контакты</a>
-    </li>
-</ul>

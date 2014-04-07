@@ -106,6 +106,7 @@ h1 {
 .change-city {
     color: #fff;
     border-bottom: 1px dashed;
+    cursor: pointer;
 }
 
 .phone {
