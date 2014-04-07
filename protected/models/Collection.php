@@ -196,7 +196,7 @@ class Collection extends CActiveRecord
 
         $picter = '';
         $time = time();
-        if (!empty($model->brand->upload2)) {
+        if (!empty($model->brand->upload3)) {
             $picter = "<img src='/uploads/thumbs/{$model->brand->upload3->file_name}?{$time}' />";
         }
 

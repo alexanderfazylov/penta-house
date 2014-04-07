@@ -168,7 +168,7 @@ class Brand extends CActiveRecord
     {
         $picter = '';
         $time = time();
-        if (!empty($model->upload2)) {
+        if (!empty($model->upload3)) {
             $picter = "<img src='/uploads/thumbs/{$model->upload3->file_name}?{$time}' />";
         }
 
