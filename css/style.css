@@ -155,6 +155,7 @@ h1 {
 .menu li a {
     color: #898989;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
 .menu li.active a {
@@ -270,8 +271,15 @@ h1 {
     float: left;
 }
 
-.service-item, .news-item, .project-item {
+.service-item, .project-item, .index-box .news-item {
     width: 25%;
+}
+
+.about-footer .news-item {
+    width: 20%;
+}
+
+.service-item, .news-item, .project-item {
     height: 200px;
     display: inline-block;
     overflow: hidden;
@@ -374,7 +382,7 @@ h1 {
     display: none;
 }
 
-.callback-dialog h2 {
+.callback-dialog h2, .city-dialog h2 {
     font-size: 2.5em;
     color: #fff;
     font-weight: normal;
@@ -394,10 +402,17 @@ h1 {
 .dialog-form label {
     font-size: 1em;
     color: #898989;
-    width: 150px;
     display: inline-block;
     vertical-align: top;
     padding-top: 5px;
+}
+
+.callback-dialog .dialog-form label {
+    width: 150px;
+}
+
+.city-dialog .dialog-form label {
+    width: 40%;
 }
 
 .dialog-form input[type="text"], .dialog-form textarea {
@@ -437,13 +452,16 @@ h1 {
     cursor: pointer;
 }
 
+.callback-dialog .submit-btn {
+    margin-left: 155px;
+}
+
 .submit-btn {
     padding: 15px 30px;
     border: 1px solid #4ebfa7;
     color: #4ebfa7;
     background: #222222;
     font-size: 1.5em;
-    margin-left: 155px;
     margin-top: 20px;
     cursor: pointer;
 }
@@ -452,20 +470,30 @@ h1 {
 
 .about-company {
     float: left;
-    width: 60%;
+    width: 65%;
     height: 100%;
-    padding: 50px 80px 200px 100px;
+    padding: 50px 40px 100px 100px;
 }
 
 .about-contacts {
     float: right;
-    width: 40%;
+    width: 35%;
     height: 100%;
     padding-top: 50px;
 }
 
+.about-company-descr {
+    font-size: 0px;
+}
+
 .about-company p {
     margin: 15px 0;
+    display: inline-block;
+    width: 50%;
+    padding-right: 40px;
+    font-size: 12px;
+    vertical-align: top;
+    line-height: 1.8em;
 }
 
 .about-contacts h1, .about-company h1 {
@@ -530,7 +558,210 @@ h1 {
     margin-left: 140px;
 }
 
-.contact-info-table .td{
+.contact-info-table .td {
     padding: 0 40px 20px 0;
 
+}
+
+/*--- catalog ---*/
+
+.catalog {
+    width: 100%;
+    font-size: 0px;
+}
+
+.catalog-item {
+    width: 20%;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.catalog-title {
+    background: #000000 !important;
+    text-align: center;
+}
+
+.catalog-description {
+    display: none;
+}
+
+.catalog-item:hover .catalog-description {
+    display: block;
+}
+
+.catalog-description {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.catalog-description span {
+    vertical-align: middle;
+    height: 200px;
+    display: table-cell;
+}
+
+.catalog-logo {
+    position: absolute;
+    width: 140px;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    margin-left: -70px;
+    margin-top: -20px;
+}
+
+.catalog-item {
+    background: coral;
+    border: 1px solid crimson;
+}
+
+/*---- brand-plugin ----*/
+
+.brand-plugin {
+    height: 200px;
+    width: 100%;
+    border: 1px solid;
+}
+
+.brand-description {
+    float: left;
+    width: 65%;
+    height: 100%;
+    padding: 50px 40px 100px 100px;
+}
+
+.brand-logo {
+    float: right;
+    width: 35%;
+    height: 100%;
+    padding: 110px 20px 100px 0;
+}
+
+.brand-description-table .tr .td {
+    padding: 15px 40px 15px 0;
+    vertical-align: top;
+    line-height: 1.8em;
+}
+
+.brand {
+    width: 100%;
+    font-size: 0px;
+}
+
+.brand-item {
+    width: 20%;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.brand-title {
+    background: #000000 !important;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    line-height: 200px;
+}
+
+.brand-item:hover .brand-hover {
+    display: block;
+}
+
+.brand-hover {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.brand-hover span {
+    vertical-align: middle;
+    height: 200px;
+    display: table-cell;
+    font-size: 14px;
+    color: #fff;
+}
+
+.brand-item {
+    background: navy;
+    border: 1px solid #b9def0;
+}
+
+.brand-link {
+    color: #000;
+    font-size: 1.5em;
+    margin: 15px 0;
+    display: block;
+}
+
+.brand-logo-title {
+    font-size: 2em;
+    margin: 25px 0;
+}
+
+/*---- collection ----*/
+
+.collection {
+    padding: 50px 0px 100px;
+}
+
+.collection h1 {
+    margin-bottom: 40px;
+    padding-left: 100px;
+}
+
+.collection-description {
+    float: left;
+    width: 40%;
+    height: 100%;
+    padding-right: 50px;
+    padding-left: 100px;
+}
+
+.collection-description h5 {
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.collection-description p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+.collection-gallery {
+    float: right;
+    width: 60%;
+    height: 100%;
+}
+
+.collection-img {
+    width: 100%;
+    font-size: 0px;
+}
+
+.collection-img-item {
+    width: 33.33%;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.collection-img-item {
+    background: #FF7171;
+    border: 1px solid #d2322d;
 }

@@ -62,17 +62,27 @@ class SiteController extends Controller
         }
     }
 
-    /**
-     * Displays the contact page
-     */
     public function actionContact()
     {
         $this->render('contact');
     }
 
-    /**
-     * Displays the login page
-     */
+    public function actionCatalog()
+    {
+        $this->render('catalog');
+    }
+
+    public function actionBrand()
+    {
+        $this->render('brand');
+    }
+
+
+    public function actionCollection()
+    {
+        $this->render('collection');
+    }
+
     public function actionLogin()
     {
         $model = new LoginForm;
