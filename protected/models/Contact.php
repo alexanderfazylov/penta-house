@@ -131,10 +131,9 @@ class Contact extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id',
-                    't.city',
-                    't.order',
-                    't.visible',
+                    'id',
+                    'city',
+                    'order',
                 )
             ),
             'pagination' => array(

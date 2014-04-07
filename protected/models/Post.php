@@ -111,10 +111,10 @@ class Post extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id',
-                    't.name',
-                    't.order',
-                    't.visible',
+                    'id',
+                    'name',
+                    'order',
+                    'start_date',
                 )
             ),
             'pagination' => array(

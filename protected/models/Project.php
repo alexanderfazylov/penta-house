@@ -32,15 +32,11 @@ class Project extends CActiveRecord
      */
     public function rules()
     {
-        // NOTE: you should only define rules for those attributes that
-        // will receive user inputs.
         return array(
             array('name', 'required'),
             array('order, visible, upload_1_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, end_date', 'length', 'max' => 255),
             array('description, end_date', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
             array('id, name, order', 'safe', 'on' => 'search'),
         );
     }
@@ -110,9 +106,10 @@ class Project extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id',
-                    't.name',
-                    't.order',
+                    'id',
+                    'name',
+                    'order',
+                    'end_date',
                 )
             ),
             'pagination' => array(
