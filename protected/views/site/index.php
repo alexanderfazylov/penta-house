@@ -27,7 +27,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 
             <p class="hint">Например, так: 89051234567</p>
         </div>
-        <input class="submit-btn" type="submit"  value="Отправить"/>
+        <input class="submit-btn" type="submit" value="Отправить"/>
     </form>
 </div>
 
@@ -49,23 +49,23 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                 <h3>Продажа</h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">Бесплатный замер и проект</div>
+                <div class="service-description">Элитная сантехника по доступным ценам</div>
             </div>
         </div>
         <div class="service-item">
             <div class="service-item-wrapper">
-                <h3>Дизайн</h3>
+                <h3>Установка и монтаж</h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">замер и дизайн-проект</div>
+                <div class="service-description">Бесплатная установка и монтаж с гарантией</div>
             </div>
         </div>
         <div class="service-item">
             <div class="service-item-wrapper">
-                <h3>Проектирование</h3>
+                <h3>Сервисное обслуживание</h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">Бесплатный и дизайн</div>
+                <div class="service-description">Гарантийное обслуживание сантехники</div>
             </div>
         </div>
     </div>
@@ -162,10 +162,10 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 </div>
 
 <script>
-    $('.callback').click(function(){
+    $('.callback').click(function () {
         $('.callback-dialog').show();
     });
-    $('.dialog-close').click(function(){
+    $('.dialog-close').click(function () {
         $('.callback-dialog').hide();
     });
 </script>

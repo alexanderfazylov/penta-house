@@ -23,9 +23,26 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 3em;
+    font-weight: normal;
+}
+
 .anchor {
     clear: both;
     float: none;
+}
+
+.table {
+    display: table;
+}
+
+.tr {
+    display: table-row;
+}
+
+.td {
+    display: table-cell;
 }
 
 .wrapper {
@@ -282,15 +299,16 @@ a {
     color: #898989;
 }
 
-.project-description {
+.project-description, .news-description {
     display: none;
 }
 
-.project-item:hover .project-description {
+.project-item:hover .project-description,
+.news-item:hover .news-description {
     display: block;
 }
 
-.project-description {
+.project-description, .news-description {
     position: absolute;
     top: 0;
     left: 0;
@@ -302,7 +320,7 @@ a {
     background: rgba(0, 0, 0, 0.8);
 }
 
-.project-description span {
+.project-description span, .news-description span {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
@@ -428,4 +446,91 @@ a {
     margin-left: 155px;
     margin-top: 20px;
     cursor: pointer;
+}
+
+/*--- about ---*/
+
+.about-company {
+    float: left;
+    width: 60%;
+    height: 100%;
+    padding: 50px 80px 200px 100px;
+}
+
+.about-contacts {
+    float: right;
+    width: 40%;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.about-company p {
+    margin: 15px 0;
+}
+
+.about-contacts h1, .about-company h1 {
+    margin-bottom: 25px;
+}
+
+.contacts {
+    font-size: 2em;
+    line-height: 1.4em;
+}
+
+.contacts a {
+    color: #000;
+}
+
+/*--- contact ---*/
+
+.contact-map {
+    height: 200px;
+    border: 1px solid;
+    width: 100%;
+}
+
+.contact-info {
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.contact-info h1 {
+    margin-bottom: 15px;
+}
+
+.contact-info dt {
+    color: #898989;
+    font-size: 1.17em;
+}
+
+.contact-info dd {
+    font-size: 1.17em;
+}
+
+.city-title {
+    font-size: 2em;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.city-title-link {
+    border-bottom: 1px dashed #000;
+}
+
+.dl-horizontal dt {
+    float: left;
+    width: 140px;
+    clear: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dl-horizontal dd {
+    margin-left: 140px;
+}
+
+.contact-info-table .td{
+    padding: 0 40px 20px 0;
+
 }
