@@ -111,11 +111,10 @@ class Collection extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id' => 'id',
-                    't.name' => 'name',
-                    't.order' => 'order',
-                    't.maine_page_visible' => 'maine_page_visible',
-                    'brand.name' => 'brand.name',
+                    'id' => 'id',
+                    'name' => 'name',
+                    'order' => 'order',
+                    //'brand.name' => 'brand.name',
                 )
             ),
             'pagination' => array(

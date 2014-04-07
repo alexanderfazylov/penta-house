@@ -22,8 +22,8 @@
 
             </div>
             <div class="form-group">
-                <label for="model-order">Сортировка</label>
-                <input type="text" class="form-control" id="model-order" name="Project[order]"
+                <label for="model-order">Порядок вывода</label>
+                <input type="text" class="form-control"  style="width: 50px" id="model-order" name="Project[order]"
                        value="{{>item.order}}">
             </div>
             <div class="checkbox">
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="model-end_date">Дата сдачи</label>
-                <input type="text" class="form-control has-datapicker" id="model-end_date" name="Project[end_date]"
+                <input type="text" class="form-control has-datapicker"  style="width: 100px"  id="model-end_date" name="Project[end_date]"
                        value="{{>item.end_date}}">
             </div>
             <div class="form-group">

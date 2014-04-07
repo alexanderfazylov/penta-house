@@ -24,6 +24,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'type' => 'raw',
             'value' => array($brand, 'getLogo'),
             'filter' => false,
+
         ),
         array(
             'name' => 'name',

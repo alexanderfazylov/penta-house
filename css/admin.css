@@ -147,6 +147,13 @@ textarea.h500 {
 
 .qq-picter {
     display: inline-block;
-    background: #ddd;
+    background: #333;
     padding: 5px;
+}
+
+#model-grid .filters td:first-child input {
+    width: 50px !important;
+}
+.hasDatepicker{
+    width: 85px;
 }

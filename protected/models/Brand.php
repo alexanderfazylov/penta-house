@@ -116,10 +116,10 @@ class Brand extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id',
-                    't.name',
-                    't.order',
-                    't.maine_page_visible',
+                    'id',
+                    'name',
+                    'order'
+
                 )
             ),
             'pagination' => array(

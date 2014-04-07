@@ -67,7 +67,7 @@ class Post extends CActiveRecord
             'id' => 'ID',
             'name' => 'Заголовок',
             'description' => 'Текст',
-            'order' => 'Сортировка',
+            'order' => 'Порядок вывода',
             'visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
             'meta_data_id' => 'Meta Data',
@@ -111,10 +111,10 @@ class Post extends CActiveRecord
             'sort' => array(
                 'defaultOrder' => 't.visible ASC, t.order ASC',
                 'attributes' => array(
-                    't.id',
-                    't.name',
-                    't.order',
-                    't.visible',
+                    'id',
+                    'name',
+                    'order',
+                    'start_date',
                 )
             ),
             'pagination' => array(
