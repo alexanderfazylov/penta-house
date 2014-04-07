@@ -93,4 +93,16 @@ class PostUpload extends CActiveRecord
     {
         return parent::model($className);
     }
+
+
+    protected function afterSave()
+    {
+        if (empty($this->upload_id)) {
+            $this->delete();
+        }
+
+        return parent::afterSave();
+    }
+
+
 }

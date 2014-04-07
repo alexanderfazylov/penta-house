@@ -119,4 +119,31 @@ class SiteController extends Controller
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }
+
+    public function actionCallback()
+    {
+        if (!isset($_POST['Callback'])) {
+            echo CJSON::encode(array(
+                'status' => 'error',
+                'message' => 'Не корректный запрос',
+            ));
+            Yii::app()->end();
+        }
+
+        $callback = new Callback();
+        $callback->attributes = $_POST['Callback'];
+
+        if (!$callback->save()) {
+            echo CJSON::encode(array(
+                'status' => 'error',
+                'model' => array("Callback" => $callback->getErrors())
+            ));
+            Yii::app()->end();
+        }
+
+        echo CJSON::encode(array(
+            'status' => 'success',
+        ));
+    }
+
 }

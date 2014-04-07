@@ -72,4 +72,12 @@ class Helper
         $array = self::convertModelToArray($models, $filterAttributes);
         return CJSON::encode($array);
     }
+
+
+    public static function sendMail()
+    {
+
+        return true;
+    }
+
 } 
