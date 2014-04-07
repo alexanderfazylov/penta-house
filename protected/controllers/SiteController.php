@@ -76,12 +76,16 @@ class SiteController extends Controller
 
     public function actionBrand()
     {
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+
         $this->render('brand');
     }
 
 
     public function actionCollection()
     {
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+
         $this->render('collection');
     }
 
