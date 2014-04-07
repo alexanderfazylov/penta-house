@@ -5,7 +5,7 @@ class ServerController extends Controller
     private $base_path = 'uploads/';
     private $thumbs_path = 'thumbs/';
     private $medium_path = 'medium/';
-    private $allowed_extensions = array("jpeg", "jpg", "png", "jif");
+    private $allowed_extensions = array("jpeg", "jpg", "png", "gif");
 
     private function getSizeLimit()
     {

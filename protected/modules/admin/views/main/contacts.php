@@ -21,7 +21,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
         ),
         array(
             'name' => 'city',
-        ), array(
+        ),
+        array(
+            'name' => 'address',
+            'filter' => false,
+        ),
+        array(
             'name' => 'phone',
         ),
         array(

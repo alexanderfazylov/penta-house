@@ -31,7 +31,7 @@ class Collection extends CActiveRecord
     {
         return array(
             array('name', 'required'),
-            array('order, maine_page_visible, tile, sanitary_engineering, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true),
+            array('order, maine_page_visible, tile, sanitary_engineering, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             array('id, name, order, brand_id', 'safe', 'on' => 'search'),
@@ -197,7 +197,7 @@ class Collection extends CActiveRecord
         $picter = '';
         $time = time();
         if (!empty($model->brand->upload2)) {
-            $picter = "<img src='/uploads/thumbs/{$model->brand->upload2->file_name}?{$time}' />";
+            $picter = "<img src='/uploads/thumbs/{$model->brand->upload3->file_name}?{$time}' />";
         }
 
         return $picter;

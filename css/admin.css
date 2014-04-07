@@ -144,3 +144,8 @@ body {
 textarea.h500 {
     height: 500px;
 }
+
+..qq-picter {
+    display: inline-block;
+    background: #ddd;
+}

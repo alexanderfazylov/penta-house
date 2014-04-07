@@ -13,7 +13,7 @@
 <!-- Begin page content -->
 <div class="container">
     <div class="page-header">
-        <h1>ПентаХаус <a href="/site/index" >Перейти на сайт</a></h1>
+        <h1>ПентаХаус <a href="/site/index" target="_blank">Перейти на сайт</a></h1>
         <hr/>
         <?php $this->renderPartial('/layouts/_menu'); ?>
     </div>

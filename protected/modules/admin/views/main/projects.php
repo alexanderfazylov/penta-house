@@ -29,6 +29,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'name',
         ),
         array(
+            'name' => 'order',
+        ),
+        array(
             'name' => 'end_date',
 
             'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker',
