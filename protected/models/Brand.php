@@ -1,0 +1,188 @@
+<?php
+
+/**
+ * This is the model class for table "{{brand}}".
+ *
+ * The followings are the available columns in table '{{brand}}':
+ * @property integer $id
+ * @property string $name
+ * @property string $description
+ * @property string $site
+ * @property string $sert
+ * @property integer $meta_data_id
+ * @property integer $upload_1_id
+ * @property integer $upload_2_id
+ * @property integer $upload_3_id
+ * @property integer $upload_4_id
+ * @property integer $maine_page_visible
+ */
+class Brand extends CActiveRecord
+{
+    /**
+     * @return string the associated database table name
+     */
+    public function tableName()
+    {
+        return '{{brand}}';
+    }
+
+    /**
+     * @return array validation rules for model attributes.
+     */
+    public function rules()
+    {
+        // NOTE: you should only define rules for those attributes that
+        // will receive user inputs.
+        return array(
+            array('name', 'required'),
+            array('meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible, order', 'numerical', 'integerOnly' => true),
+            array('name, site, sert', 'length', 'max' => 255),
+            //array('description', 'safe'),
+
+            array('id, name, maine_page_visible', 'safe', 'on' => 'search'),
+        );
+    }
+
+    /**
+     * @return array relational rules.
+     */
+    public function relations()
+    {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
+            'upload1' => array(self::BELONGS_TO, 'Upload', 'upload_1_id'),
+            'upload2' => array(self::BELONGS_TO, 'Upload', 'upload_2_id'),
+            'upload3' => array(self::BELONGS_TO, 'Upload', 'upload_3_id'),
+            'upload4' => array(self::BELONGS_TO, 'Upload', 'upload_4_id'),
+            'collection' => array(self::HAS_MANY, 'Collection', 'brand_id'),
+        );
+    }
+
+    /**
+     * @return array customized attribute labels (name=>label)
+     */
+    public function attributeLabels()
+    {
+        return array(
+            'id' => 'ID',
+            'name' => 'Имя',
+            'description' => 'Описание',
+            'site' => 'Сайт',
+            'sert' => 'Сертификат',
+            'meta_data_id' => 'Meta Data',
+            'upload_1_id' => 'Upload 1',
+            'upload_2_id' => 'Upload 2',
+            'upload_3_id' => 'Upload 3',
+            'upload_4_id' => 'Upload 4',
+            'maine_page_visible' => 'На главной странице',
+            'order' => 'Порядок вывода',
+        );
+    }
+
+    /**
+     * Retrieves a list of models based on the current search/filter conditions.
+     *
+     * Typical usecase:
+     * - Initialize the model fields with values from filter form.
+     * - Execute this method to get CActiveDataProvider instance which will filter
+     * models according to data in model fields.
+     * - Pass data provider to CGridView, CListView or any similar widget.
+     *
+     * @return CActiveDataProvider the data provider that can return the models
+     * based on the search/filter conditions.
+     */
+    public function search()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->compare('t.id', $this->id);
+        $criteria->compare('t.name', $this->name, true);
+        $criteria->compare('t.order', $this->order);
+        //$criteria->compare('maine_page_visible', $this->maine_page_visible);
+
+        $criteria->with = array(
+            'meta_data',
+            'upload1',
+            'upload2',
+            'upload3',
+            'upload4',
+            'collection',
+        );
+
+        return new CActiveDataProvider($this, array(
+            'criteria' => $criteria,
+            'sort' => array(
+                'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
+                'attributes' => array(
+                    't.id',
+                    't.name',
+                    't.order',
+                    't.maine_page_visible',
+                )
+            ),
+            'pagination' => array(
+                'pageSize' => 20,
+            ),
+        ));
+    }
+
+    /**
+     * Returns the static model of the specified AR class.
+     * Please note that you should have this exact method in all your CActiveRecord descendants!
+     * @param string $className active record class name.
+     * @return Brand the static model class
+     */
+    public static function model($className = __CLASS__)
+    {
+        return parent::model($className);
+    }
+
+    public function popupPrepear($model)
+    {
+        $item = Helper::convertModelToJson($model);
+        return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
+    }
+
+    public function collectionCount($model)
+    {
+        if (empty($model->collection)) {
+            return 0;
+        } else {
+            return count($model->collection);
+        }
+
+    }
+
+    public function pageVisible($model)
+    {
+        if ($model->maine_page_visible == 0) {
+            return "Видимый";
+        } else {
+            return "Скрытый";
+        }
+    }
+
+    public function getLogo($model)
+    {
+        $picter = '';
+        $time = time();
+        if (!empty($model->upload2)) {
+            $picter = "<img src='/uploads/thumbs/{$model->upload2->file_name}?{$time}' />";
+        }
+
+        return $picter;
+
+    }
+
+    protected function beforeSave()
+    {
+        if (empty($this->order)) {
+            $this->order = $this->id;
+        }
+
+        return parent::beforeSave();
+    }
+
+}

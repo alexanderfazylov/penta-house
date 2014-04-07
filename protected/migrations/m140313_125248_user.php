@@ -19,6 +19,7 @@ class m140313_125248_user extends CDbMigration
 
     public function safeDown()
     {
+        $this->dropTable('{{user}}');
     }
 
 }
