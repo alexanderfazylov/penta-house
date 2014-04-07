@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="model-order">Порядок вывода</label>
-                <input style="width: 50px" type="number" class="form-control" id="model-order" name="Collection[order]"
+                <input style="width: 50px" type="text" class="form-control" id="model-order" name="Collection[order]"
                        value="{{>item.order}}">
             </div>
             <hr/>
@@ -76,7 +76,7 @@
             </div>
             <div class="form-group">
                 <label for="model-description">Текст</label>
-                <textarea class="form-control" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
+                <textarea class="form-control h500" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
             </div>
             <hr/>
             <div class="form-group">

@@ -1,7 +1,7 @@
 <form id="" action="/admin/main/about" method="POST">
     <div class="form-group">
         <label>Текст</label>
-        <textarea class="form-control" name="About[description]"><?php echo $about->description ?></textarea>
+        <textarea class="form-control h500" name="About[description]"><?php echo $about->description ?></textarea>
     </div>
     <button id="about-edit" type="button" class="btn btn-default pull-right">Сохранить</button>
 </form>

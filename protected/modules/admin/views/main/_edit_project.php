@@ -32,7 +32,7 @@
             <h4>Основная страница</h4>
 
             <div class="form-group">
-                <label for="model-name">Загаловок</label>
+                <label for="model-name">Заголовок</label>
                 <input type="text" class="form-control" id="model-name" name="Project[name]"
                        value="{{>item.name}}">
             </div>
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="model-description">Текст</label>
-                <textarea class="form-control" id="model-description"
+                <textarea class="form-control h500" id="model-description"
                           name="Project[description]">{{>item.description}}</textarea>
             </div>
             <hr/>

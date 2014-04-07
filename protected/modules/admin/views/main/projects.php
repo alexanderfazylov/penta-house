@@ -9,12 +9,18 @@
 
 
 <?php
+
+
+
+
+
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'model-grid',
     'dataProvider' => $project->search(),
     'cssFile' => false,
     'itemsCssClass' => 'table table-hover',
     'filter' => $project,
+    'afterAjaxUpdate' => 'reinstallDatePicker',
     'columns' => array(
         array(
             'name' => 'id',
@@ -23,7 +29,31 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'name',
         ),
         array(
-            'name' => 'Редактировать',
+            'name' => 'end_date',
+
+            'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker',
+                    array(
+                        'model' => $project,
+                        'attribute' => 'end_date',
+                        'language' => 'ru',
+                        'htmlOptions' => array(
+                            'id' => 'Project_end_date',
+                            'size' => '10',
+                        ),
+                        'htmlOptions' => array(
+                            'dateFormat' => 'dd.mm.yy',
+                        ),
+                    ),
+                    true),
+        ),
+        array(
+            'name' => 'visible',
+            'type' => 'raw',
+            'value' => array($project, 'pageVisible'),
+            'filter' => Project::getVisibleSelect($project),
+        ),
+        array(
+            'name' => '',
             'type' => 'raw',
             'value' => array($project, 'popupPrepear'),
             'filter' => false,
@@ -44,6 +74,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
     'template' => '{items}{pager}',
 ));
+
+Yii::app()->clientScript->registerScript('re-install-date-picker', "
+function reinstallDatePicker(id, data) {
+        //use the same parameters that you had set in your widget else the datepicker will be refreshed by default
+    $('#Project_end_date').datepicker(jQuery.extend({showMonthAfterYear:false},jQuery.datepicker.regional['ru'],{'dateFormat':'dd.mm.yy'}));
+}
+");
 ?>
 
 

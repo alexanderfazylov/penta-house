@@ -15,6 +15,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
     'cssFile' => false,
     'itemsCssClass' => 'table table-hover',
     'filter' => $post,
+    'afterAjaxUpdate' => 'reinstallDatePicker',
     'columns' => array(
         array(
             'name' => 'id',
@@ -23,7 +24,30 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'name',
         ),
         array(
-            'name' => 'Редактировать',
+            'name' => 'start_date',
+            'filter' => $this->widget('zii.widgets.jui.CJuiDatePicker',
+                    array(
+                        'model' => $post,
+                        'attribute' => 'start_date',
+                        'language' => 'ru',
+                        'htmlOptions' => array(
+                            'id' => 'Post_start_date',
+                            'size' => '10',
+                        ),
+                        'htmlOptions' => array(
+                            'dateFormat' => 'dd.mm.yy',
+                        ),
+                    ),
+                    true),
+        ),
+        array(
+            'name' => 'visible',
+            'type' => 'raw',
+            'value' => array($post, 'pageVisible'),
+            'filter' => Post::getVisibleSelect($post),
+        ),
+        array(
+            'name' => '',
             'type' => 'raw',
             'value' => array($post, 'popupPrepear'),
             'filter' => false,
@@ -44,6 +68,13 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
     'template' => '{items}{pager}',
 ));
+
+Yii::app()->clientScript->registerScript('re-install-date-picker', "
+function reinstallDatePicker(id, data) {
+        //use the same parameters that you had set in your widget else the datepicker will be refreshed by default
+    $('#Post_start_date').datepicker(jQuery.extend({showMonthAfterYear:false},jQuery.datepicker.regional['ru'],{'dateFormat':'dd.mm.yy'}));
+}
+");
 ?>
 
 

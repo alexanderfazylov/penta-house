@@ -125,6 +125,7 @@ body {
 
 .jGrowl-notification {
     color: #fff !important;
+    background: #000 !important;
 }
 
 .direction li {
@@ -132,4 +133,14 @@ body {
     padding: 10px 0;
     float: none;
     clear: both;
+}
+
+.page-header h1 > a {
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+textarea.h500 {
+    height: 500px;
 }

@@ -37,7 +37,7 @@ class Brand extends CActiveRecord
             array('name', 'required'),
             array('meta_data_id, upload_1_id, upload_2_id, upload_3_id, upload_4_id, maine_page_visible, order', 'numerical', 'integerOnly' => true),
             array('name, site, sert', 'length', 'max' => 255),
-            //array('description', 'safe'),
+            array('description', 'safe'),
 
             array('id, name, maine_page_visible', 'safe', 'on' => 'search'),
         );
@@ -76,7 +76,7 @@ class Brand extends CActiveRecord
             'upload_2_id' => 'Upload 2',
             'upload_3_id' => 'Upload 3',
             'upload_4_id' => 'Upload 4',
-            'maine_page_visible' => 'На главной странице',
+            'maine_page_visible' => 'Видимость',
             'order' => 'Порядок вывода',
         );
     }
@@ -100,7 +100,7 @@ class Brand extends CActiveRecord
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.name', $this->name, true);
         $criteria->compare('t.order', $this->order);
-        //$criteria->compare('maine_page_visible', $this->maine_page_visible);
+        $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
 
         $criteria->with = array(
             'meta_data',
@@ -183,6 +183,31 @@ class Brand extends CActiveRecord
         }
 
         return parent::beforeSave();
+    }
+
+    public function getVisibleSelect($model)
+    {
+
+
+        return CHtml::dropDownList(
+            'Brand[maine_page_visible]', $model->maine_page_visible,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '0',
+                        'name' => 'Видимый',
+
+                    ),
+                    array(
+                        'id' => '1',
+                        'name' => 'Скрытый',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
     }
 
 }

@@ -67,10 +67,10 @@ class Project extends CActiveRecord
             'name' => 'Заголовок',
             'description' => 'Текст',
             'order' => 'Сортировка',
-            'visible' => 'Visible',
+            'visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
             'meta_data_id' => 'Meta Data',
-            'end_date' => 'end_date',
+            'end_date' => 'Дата окончания',
         );
     }
 
@@ -95,6 +95,8 @@ class Project extends CActiveRecord
         $criteria->compare('t.id', $this->id);
         $criteria->compare('t.name', $this->name, true);
         $criteria->compare('t.order', $this->order);
+        $criteria->compare('t.visible', $this->visible);
+        $criteria->compare('t.end_date', self::formateDate($this->end_date));
 
         $criteria->with = array(
             'meta_data',
@@ -117,6 +119,18 @@ class Project extends CActiveRecord
                 'pageSize' => 20,
             ),
         ));
+    }
+
+    public static function formateDate($date)
+    {
+
+        $resp = $date;
+        if (!empty($date)) {
+            $resp = DateTime::createFromFormat('d.m.Y', $date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y-m-d');
+        }
+
+        return $resp;
+
     }
 
     /**
@@ -154,5 +168,38 @@ class Project extends CActiveRecord
         }
 
         return parent::beforeSave();
+    }
+
+    public function getVisibleSelect($model)
+    {
+
+        return CHtml::dropDownList(
+            'Project[visible]', $model->visible,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '0',
+                        'name' => 'Видимый',
+
+                    ),
+                    array(
+                        'id' => '1',
+                        'name' => 'Скрытый',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+    public function pageVisible($model)
+    {
+        if ($model->visible == 0) {
+            return "Видимый";
+        } else {
+            return "Скрытый";
+        }
     }
 }

@@ -20,19 +20,19 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'id',
         ),
         array(
-            'name' => 'name',
-        ),
-        array(
             'name' => '',
             'type' => 'raw',
             'value' => array($brand, 'getLogo'),
             'filter' => false,
         ),
         array(
+            'name' => 'name',
+        ),
+        array(
             'name' => 'maine_page_visible',
             'type' => 'raw',
             'value' => array($brand, 'pageVisible'),
-            'filter' => false,
+            'filter' => Brand::getVisibleSelect($brand),
         ),
         array(
             'name' => 'order',
@@ -44,7 +44,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'filter' => false,
         ),
         array(
-            'name' => 'Редактировать',
+            'name' => '',
             'type' => 'raw',
             'value' => array($brand, 'popupPrepear'),
             'filter' => false,

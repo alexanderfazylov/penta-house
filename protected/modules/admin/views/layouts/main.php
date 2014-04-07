@@ -13,17 +13,15 @@
 <!-- Begin page content -->
 <div class="container">
     <div class="page-header">
+        <h1>ПентаХаус <a href="/site/index" >Перейти на сайт</a></h1>
+        <hr/>
         <?php $this->renderPartial('/layouts/_menu'); ?>
     </div>
 
     <?php echo $content; ?>
 </div>
 
-<div id="footer">
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-    </div>
-</div>
+
 <div id="modal-api"></div>
 </body>
 </html>

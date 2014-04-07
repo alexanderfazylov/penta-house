@@ -31,6 +31,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'maine_page_visible',
             'type' => 'raw',
             'value' => array($collection, 'pageVisible'),
+            'filter' => Collection::getVisibleSelect($collection),
+        ),
+        array(
+            'name' => '',
+            'type' => 'raw',
+            'value' => array($collection, 'getBrandLogo'),
             'filter' => false,
         ),
         array(
@@ -41,7 +47,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name' => 'order',
         ),
         array(
-            'name' => 'Редактировать',
+            'name' => '',
             'type' => 'raw',
             'value' => array($collection, 'popupPrepear'),
             'filter' => false,
