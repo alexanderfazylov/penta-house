@@ -62,7 +62,7 @@ class Project extends CActiveRecord
             'id' => 'ID',
             'name' => 'Заголовок',
             'description' => 'Текст',
-            'order' => 'Сортировка',
+            'order' => 'Порядок вывода',
             'visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
             'meta_data_id' => 'Meta Data',

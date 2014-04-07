@@ -147,7 +147,7 @@ textarea.h500 {
 
 .qq-picter {
     display: inline-block;
-    background: #ddd;
+    background: #333;
     padding: 5px;
 }
 
@@ -155,5 +155,5 @@ textarea.h500 {
     width: 50px !important;
 }
 .hasDatepicker{
-    width: 85px!important;
+    width: 85px;
 }

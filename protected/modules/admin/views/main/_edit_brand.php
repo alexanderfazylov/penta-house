@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="brand-order">Порядок вывода</label>
-                <input type="text" class="form-control" id="brand-order" name="Brand[order]"
+                <input type="text"   style="width: 50px" class="form-control" id="brand-order" name="Brand[order]"
                        value="{{>item.order}}">
             </div>
             <hr/>

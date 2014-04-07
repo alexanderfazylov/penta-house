@@ -72,7 +72,7 @@ class Contact extends CActiveRecord
             'phone' => 'Телефон',
             'address' => 'Адресс',
             'map' => 'Карта',
-            'order' => 'Сортировка',
+            'order' => 'Порядок вывода',
             'type' => 'Тип',
             'visible' => 'Видимость',
 
