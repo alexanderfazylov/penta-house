@@ -1,4 +1,21 @@
-<div class="brand-plugin"></div>
+<div class="brand-plugin">
+    <div class="slider">
+        <div class="sliderContent">
+            <div class="item">
+                <img src="../../../i/brand-1.jpg"/>
+            </div>
+            <div class="item">
+                <img src="../../../i/brand-2.jpg"/>
+            </div>
+        </div>
+        <div class="sliderArrows sliderArrowsBottom"></div>
+    </div>
+    <div class="title">Коллекция My Nature
+        противоположности,
+        которые притягиваются
+    </div>
+    <div class="anchor"></div>
+</div>
 <div class="brand-description">
     <h1>Villeroy & Boch</h1>
 
