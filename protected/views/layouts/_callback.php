@@ -29,12 +29,3 @@
 </div>
 
 
-<script>
-    $('.callback').click(function () {
-        $('.callback-dialog').show();
-        $('.city-dialog').hide();
-    });
-    $('.dialog-close').click(function () {
-        $('.callback-dialog').hide();
-    });
-</script>

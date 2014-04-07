@@ -9,8 +9,10 @@ class SiteController extends Controller
         $this->cs = Yii::app()->clientScript;
 
         $this->cs->registerCoreScript('jquery');
-        $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
         $this->cs->registerCssFile($this->createUrl('/css/style.css'));
+        $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
+        $this->cs->registerScriptFile($this->createUrl('/js/action.js'));
+
     }
 
     /**

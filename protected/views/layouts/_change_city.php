@@ -35,14 +35,3 @@
         <input class="submit-btn" type="submit" value="Выбрать город"/>
     </form>
 </div>
-
-
-<script>
-    $('.change-city').click(function () {
-        $('.city-dialog').show();
-        $('.callback-dialog').hide();
-    });
-    $('.dialog-close').click(function () {
-        $('.city-dialog').hide();
-    });
-</script>
