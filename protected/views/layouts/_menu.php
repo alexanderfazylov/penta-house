@@ -12,8 +12,8 @@ $this->widget('zii.widgets.CMenu', array(
         ),
         array(
             'label' => 'Дилерство',
-            'url' => ('#'),
-            'active' => (($controller == 'default' && $action == 'index'))
+            'url' => ('/site/dealership'),
+            'active' => (($controller == 'site' && $action == 'dealership'))
         ),
         array(
             'label' => 'Каталог',
@@ -22,8 +22,8 @@ $this->widget('zii.widgets.CMenu', array(
         ),
         array(
             'label' => 'Проекты',
-            'url' => ('#'),
-            'active' => (($controller == 'default' && $action == 'index'))
+            'url' => ('/site/projects'),
+            'active' => (($controller == 'site' && $action == 'projects'))
         ),
         array(
             'label' => 'Контакты',

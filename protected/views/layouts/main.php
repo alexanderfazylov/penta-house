@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
     <meta name="language" content="ru"/>
+    <meta name="description" content="<?php echo $this->description; ?>">
+    <meta name="keywords" content="<?php echo $this->keywords; ?>">
 </head>
 
 <body>
@@ -36,9 +37,9 @@
         <div class="aside-footer">
             <div class="aside-footer-wrapper">
                 <div class="social">
-                    <a href="#" class="vk"></a>
-                    <a href="#" class="fc"></a>
-                    <a href="#" class="tw"></a>
+                    <a href="<?php echo $this->main->vk_link; ?>" class="vk"></a>
+                    <a href="<?php echo $this->main->fb_link; ?>" class="fc"></a>
+                    <a href="<?php echo $this->main->tw_link; ?>" class="tw"></a>
                 </div>
                 <div class="copyright">&copy; 2013 Penta House</div>
             </div>
