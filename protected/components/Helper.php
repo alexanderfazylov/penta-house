@@ -112,10 +112,6 @@ class Helper
 
             }
         }
-        //Yii::app()->session['city'] = '';
-        var_dump(Yii::app()->session['city']);
-        die();
-
     }
 
 } 
