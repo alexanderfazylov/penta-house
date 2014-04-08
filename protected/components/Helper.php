@@ -88,14 +88,11 @@ class Helper
 
     public static function selectCity($contacts)
     {
-        $ip = CHttpRequest::getUserHostAddress();
-        var_dump($ip);
-        die();
         if (!empty($contacts) && empty(Yii::app()->session['city'])) {
             //db test
             //$ip = '217.198.1.70';//KAZAN
             //$ip = '95.221.10.166'; //MOSCOW
-            $ip = self::getIp();
+            $ip = CHttpRequest::getUserHostAddress();
 
             $sx_geo = new SxGeo('SxGeoCity.dat');
             $req = $sx_geo->get($ip);
