@@ -104,6 +104,7 @@ class SiteController extends Controller
     public function actionCollection()
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
 
         $this->render('collection');
     }
