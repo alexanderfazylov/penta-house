@@ -156,4 +156,14 @@ class SiteController extends Controller
         ));
     }
 
+    public function actionDealership()
+    {
+        $this->render('dealership');
+    }
+
+    public function actionProjects()
+    {
+
+        $this->render('projects');
+    }
 }
