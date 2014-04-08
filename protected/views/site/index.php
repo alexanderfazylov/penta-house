@@ -9,34 +9,34 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
     <div class="service">
         <div class="service-item">
             <div class="service-item-wrapper">
-                <h3>Дизайн и проектирование</h3>
+                <h3><?php echo $this->main->direction_1; ?></h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">Бесплатный замер и дизайн-проект</div>
+                <div class="service-description"><?php echo $this->main->direction_description_1; ?></div>
             </div>
         </div>
         <div class="service-item">
             <div class="service-item-wrapper">
-                <h3>Продажа</h3>
+                <h3><?php echo $this->main->direction_2; ?></h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">Элитная сантехника по доступным ценам</div>
+                <div class="service-description"><?php echo $this->main->direction_description_2; ?></div>
             </div>
         </div>
         <div class="service-item">
             <div class="service-item-wrapper">
-                <h3>Установка и монтаж</h3>
+                <h3><?php echo $this->main->direction_3; ?></h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">Бесплатная установка и монтаж с гарантией</div>
+                <div class="service-description"><?php echo $this->main->direction_description_3; ?></div>
             </div>
         </div>
         <div class="service-item">
             <div class="service-item-wrapper">
-                <h3>Сервисное обслуживание</h3>
+                <h3><?php echo $this->main->direction_4; ?></h3>
 
                 <div class="service-hr"></div>
-                <div class="service-description">Гарантийное обслуживание сантехники</div>
+                <div class="service-description"><?php echo $this->main->direction_description_4; ?></div>
             </div>
         </div>
     </div>

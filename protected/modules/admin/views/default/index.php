@@ -60,15 +60,18 @@
         <ul class="direction">
             <li>
                 <label for="">Вконтакте</label>
-                <input class="form-control" type="text" name="Main[vk_link]" value="<?php echo $main->vk_link; ?>">
+                <input placeholder="http://exemple.com" class="form-control" type="text" name="Main[vk_link]"
+                       value="<?php echo $main->vk_link; ?>">
             </li>
             <li>
                 <label for="">Фейсбук</label>
-                <input class="form-control" type="text" name="Main[fb_link]" value="<?php echo $main->fb_link; ?>">
+                <input placeholder="http://exemple.com" class="form-control" type="text" name="Main[fb_link]"
+                       value="<?php echo $main->fb_link; ?>">
             </li>
             <li>
                 <label for="">Твитер</label>
-                <input class="form-control" type="text" name="Main[tw_link]" value="<?php echo $main->tw_link ?>">
+                <input placeholder="http://exemple.com" class="form-control" type="text" name="Main[tw_link]"
+                       value="<?php echo $main->tw_link ?>">
             </li>
         </ul>
     </div>

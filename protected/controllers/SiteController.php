@@ -3,6 +3,12 @@
 class SiteController extends Controller
 {
     public $cs;
+    public $fb_link;
+    public $vk_link;
+    public $tw_link;
+    public $main;
+    public $description = '';
+    public $keywords = '';
 
     public function init()
     {
@@ -12,6 +18,10 @@ class SiteController extends Controller
         $this->cs->registerCssFile($this->createUrl('/css/style.css'));
         $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
         $this->cs->registerScriptFile($this->createUrl('/js/action.js'));
+
+
+        $this->main = Maine::model()->findByPk(1);
+
 
     }
 
