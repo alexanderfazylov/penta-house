@@ -29,6 +29,9 @@
  */
 class Contact extends CActiveRecord
 {
+    const VISIBLE = 0;
+    const HIDDEN = 1;
+
     /**
      * @return string the associated database table name
      */
@@ -185,7 +188,7 @@ class Contact extends CActiveRecord
 
     public function pageVisible($model)
     {
-        if ($model->visible == 0) {
+        if ($model->visible == self::VISIBLE) {
             return "Видимый";
         } else {
             return "Скрытый";

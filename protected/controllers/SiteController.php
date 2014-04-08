@@ -9,6 +9,7 @@ class SiteController extends Controller
     public $main;
     public $description = '';
     public $keywords = '';
+    public $contacts = array();
 
     public function init()
     {
@@ -21,6 +22,10 @@ class SiteController extends Controller
 
 
         $this->main = Maine::model()->findByPk(1);
+        $this->contacts = Contact::model()->findAllByAttributes(array('visible' => Contact::VISIBLE));
+
+
+        Helper::selectCity($this->contacts);
 
 
     }

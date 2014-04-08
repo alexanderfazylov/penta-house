@@ -47,7 +47,11 @@ $(function () {
 
     });
 
+    $('#select-city').click(function () {
 
+        alert('1');
+
+    });
     /*
      * слайдер
      */
