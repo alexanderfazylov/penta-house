@@ -68,6 +68,7 @@ $(function () {
             $.each(contacts, function (i, contact) {
                 if (contact.id == select_contact_id) {
                     $('.aside-header .phone').text(contact.phone);
+                    $('.aside-header .city-name').text(contact.city);
                 }
             });
 
@@ -91,4 +92,12 @@ $(function () {
             arrowsHide: false
         });
 
+    $('.map-chenger').click(function () {
+        var latitude = $(this).data('latitude');
+        var longitude = $(this).data('longitude');
+        var zoom = $(this).data('zoom');
+
+
+        myMap.setCenter([longitude, latitude], zoom);
+    });
 });

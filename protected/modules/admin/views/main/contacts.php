@@ -3,7 +3,8 @@
         data-title="Создание контакта">
     Создать контакт
 </button>
-
+<a href="http://api.yandex.ru/maps/tools/getlonglat/index.xml" class="btn btn-success pull-right" target="_blank">Определение
+    координат</a>
 <div class="anchor"></div>
 
 

@@ -1,12 +1,61 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle="Penta House - Контакты";
+$this->pageTitle = "Penta House - Контакты";
 ?>
 
-<div class="contact-map"></div>
+<script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru_RU"
+        type="text/javascript"></script>
+
+<button type="button" class="map-chenger" data-latitude="48.91025" data-longitude="55.846422" data-zoom="15">
+    Первый
+    контакт
+</button>
+<button type="button" class="map-chenger" data-latitude="37.551234" data-longitude="55.765291" data-zoom="15">Второй
+    контакт
+</button>
+
+<div id="map" style="height:300px"></div>
+
+
+<script type="text/javascript">
+
+
+    ymaps.ready(function () {
+        myMap = new ymaps.Map("map", {
+            center: [55.846422, 48.91025],
+            zoom: 10
+        });
+        myMap.controls
+            // Кнопка изменения масштаба.
+            .add('zoomControl', { left: 5, top: 5 });
+
+        var myPlacemark1 = new ymaps.Placemark([55.846422, 48.91025], {
+            balloonContentHeader: "Пента-Хаусaaaaaaaaaaaaaaaa",
+            balloonContentBody: "Телефон 12312312",
+            balloonContentFooter: "08:00-10:00",
+            hintContent: "Хинт метки"
+        });
+
+        myMap.geoObjects.add(myPlacemark1);
+
+        var myPlacemark2 = new ymaps.Placemark([55.765291, 37.551234], {
+            balloonContentHeader: "Балун метки",
+            balloonContentBody: "Содержимое <em>балуна</em> метки",
+            balloonContentFooter: "Подвал",
+            hintContent: "Хинт метки"
+        });
+
+        myMap.geoObjects.add(myPlacemark2);
+
+    });
+
+
+</script>
+
 <div class="contact-info">
     <h1>Контакты</h1>
+
     <div class="table contact-info-table">
         <div class="tr">
             <div class="td">

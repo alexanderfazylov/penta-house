@@ -8,6 +8,7 @@
     <meta name="language" content="ru"/>
     <meta name="description" content="<?php echo $this->description; ?>">
     <meta name="keywords" content="<?php echo $this->keywords; ?>">
+
 </head>
 
 <body>
@@ -16,7 +17,8 @@
         <div class="aside-content">
             <div class="aside-header">
                 <div class="city">
-                    <span class="city-name">Казань</span>
+                    <span
+                        class="city-name"><?php echo Helper::getCity($this->contacts, $this->active_contact_id); ?></span>
                     <span class="change-city">Выбрать другой город</span>
                 </div>
                 <div class="phone"><?php echo Helper::getPhone($this->contacts, $this->active_contact_id); ?></div>

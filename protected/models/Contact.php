@@ -164,7 +164,7 @@ class Contact extends CActiveRecord
         return "<div data-item='$item' data-title='Редактирование {$model->city}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
         return CHtml::dropDownList(
@@ -197,7 +197,7 @@ class Contact extends CActiveRecord
         }
     }
 
-    public function getTypeSelect($model)
+    public static function getTypeSelect($model)
     {
         return CHtml::dropDownList(
             'Contact[type]', $model->type,

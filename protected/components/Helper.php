@@ -124,4 +124,17 @@ class Helper
 
         return $phone;
     }
+
+    public static function getCity($contacts, $active_contact_id)
+    {
+        $city = '';
+        foreach ($contacts as $contact) {
+            if ($contact->id == $active_contact_id) {
+                $city = $contact->city;
+            }
+        }
+
+        return $city;
+    }
+
 } 
