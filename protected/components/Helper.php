@@ -80,38 +80,48 @@ class Helper
         return true;
     }
 
-    public static function getIp()
-    {
-
-
-    }
-
     public static function selectCity($contacts)
     {
         if (!empty($contacts) && empty(Yii::app()->session['city'])) {
+
+            $ip = CHttpRequest::getUserHostAddress();
             //db test
             //$ip = '217.198.1.70';//KAZAN
             //$ip = '95.221.10.166'; //MOSCOW
-            $ip = CHttpRequest::getUserHostAddress();
 
             $sx_geo = new SxGeo('SxGeoCity.dat');
             $req = $sx_geo->get($ip);
 
             if (isset($req['city'])) {
-
                 $city = mb_strtoupper($req['city'], 'UTF-8');
-
-
                 foreach ($contacts as $contact) {
                     if (mb_strtoupper($contact->city, 'UTF-8') == $city) {
                         Yii::app()->session['city'] = $contact->city;
                         Yii::app()->session['contact_id'] = $contact->id;
                     }
                 }
-
-
+            } else {
+                foreach ($contacts as $contact) {
+                    if ($contact->default == Contact::DEFAULT_TRUE) {
+                        Yii::app()->session['city'] = $contact->city;
+                        Yii::app()->session['contact_id'] = $contact->id;
+                    }
+                }
             }
         }
+
+        return true;
     }
 
+    public static function getPhone($contacts, $active_contact_id)
+    {
+        $phone = '';
+        foreach ($contacts as $contact) {
+            if ($contact->id == $active_contact_id) {
+                $phone = $contact->phone;
+            }
+        }
+
+        return $phone;
+    }
 } 

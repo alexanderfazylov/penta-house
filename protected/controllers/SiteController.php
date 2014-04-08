@@ -10,6 +10,7 @@ class SiteController extends Controller
     public $description = '';
     public $keywords = '';
     public $contacts = array();
+    public $active_contact_id = array();
 
     public function init()
     {
@@ -22,10 +23,13 @@ class SiteController extends Controller
 
 
         $this->main = Maine::model()->findByPk(1);
+
         $this->contacts = Contact::model()->findAllByAttributes(array('visible' => Contact::VISIBLE));
 
-
         Helper::selectCity($this->contacts);
+
+
+        $this->active_contact_id = Yii::app()->session['contact_id'];
 
 
     }
@@ -171,4 +175,18 @@ class SiteController extends Controller
 
         $this->render('projects');
     }
+
+
+    public function actionSelectCity($contact_id)
+    {
+        $contact = Contact::model()->findByPk($contact_id);
+
+        Yii::app()->session['city'] = $contact->city;
+        Yii::app()->session['contact_id'] = $contact->id;
+
+        echo CJSON::encode(array(
+            'status' => 'success',
+        ));
+    }
+
 }

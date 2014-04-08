@@ -49,7 +49,33 @@ $(function () {
 
     $('#select-city').click(function () {
 
-        alert('1');
+        var data = $(this).parents('form').serializeArray();
+        var select_contact_id = data[0].value;
+
+        if (active_contact_id != select_contact_id) {
+            $.ajax({
+                url: '/site/selectCity',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    contact_id: select_contact_id
+                },
+                success: function (data) {
+
+                }
+            });
+
+            $.each(contacts, function (i, contact) {
+                if (contact.id == select_contact_id) {
+                    $('.aside-header .phone').text(contact.phone);
+                }
+            });
+
+
+        }
+
+        closePopup();
+
 
     });
     /*

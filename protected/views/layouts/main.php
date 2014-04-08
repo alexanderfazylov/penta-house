@@ -19,7 +19,7 @@
                     <span class="city-name">Казань</span>
                     <span class="change-city">Выбрать другой город</span>
                 </div>
-                <div class="phone">+7 (843) 567-98-01</div>
+                <div class="phone"><?php echo Helper::getPhone($this->contacts, $this->active_contact_id); ?></div>
                 <div class="callback">Заказать обратный звонок</div>
             </div>
             <div class="aside-menu">
@@ -54,4 +54,7 @@
 </div>
 </body>
 </html>
-
+<script>
+    var contacts = <?php echo Helper::convertModelToJson($this->contacts); ?>;
+    var active_contact_id = <?php echo $this->active_contact_id;?>;
+</script>

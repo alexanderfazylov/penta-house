@@ -13,6 +13,7 @@ class m140406_074654_contacts extends CDbMigration
             'order' => 'INT NULL',
             'type' => 'INT NULL',
             'visible' => 'INT NULL DEFAULT 0',
+            'default' => 'INT NULL DEFAULT 0',
 
             'monday_start' => 'VARCHAR(255) NULL',
             'monday_end' => 'VARCHAR(255) NULL',

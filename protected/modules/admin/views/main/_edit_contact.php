@@ -23,6 +23,13 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="model-type">Город по умолчанию</label>
+                <select id="model-default" name="Contact[default]" data-value="{{>item.default}}">
+                    <option value="0">нет</option>
+                    <option value="1">да</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="model-name">Телефон</label>
                 <input type="text" class="form-control" id="model-phone" name="Contact[phone]"
                        value="{{>item.phone}}">

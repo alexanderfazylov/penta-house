@@ -7,30 +7,20 @@
 
     <form class="dialog-form">
         <div class="row">
-            <label>
-                <input type="radio" name="City[kazan]"/>
-                Казань
-            </label>
-            <label>
-                <input type="radio" name="City[nn]"/>
-                Нижний Новгород
-            </label>
-            <label>
-                <input type="radio" name="City[moscow]"/>
-                Москва
-            </label>
-            <label>
-                <input type="radio" name="City[samara]"/>
-                Самара
-            </label>
-            <label>
-                <input type="radio" name="City[sp]"/>
-                Санкт-Петербург
-            </label>
-            <label>
-                <input type="radio" name="City[perm]"/>
-                Пермь
-            </label>
+            <?php foreach ($this->contacts as $contact): ?>
+                <label>
+                    <?php if ($this->active_contact_id == $contact->id) {
+                        $selected = 'checked="checked"';
+                    } else {
+                        $selected = '';
+                    }
+
+                    ?>
+                    <input <?php echo $selected; ?> type="radio" name="City[id]" value="<?php echo $contact->id; ?>"/>
+                    <?php echo $contact->city; ?>
+                </label>
+            <?php endforeach; ?>
+
         </div>
         <button id="select-city" type="button" class="submit-btn">Выбрать город</button>
     </form>

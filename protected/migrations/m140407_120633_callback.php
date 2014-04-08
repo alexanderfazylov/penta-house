@@ -7,7 +7,7 @@ class m140407_120633_callback extends CDbMigration
         $this->createTable('{{callback}}', array(
             'id' => 'pk',
             'text' => 'TEXT',
-            'name' => 'VARCHAR(255) NOT NULL',
+            'name' => 'VARCHAR(255) NULL',
             'phone' => 'VARCHAR(255) NOT NULL',
             'created' => 'datetime NOT NULL',
         ));
