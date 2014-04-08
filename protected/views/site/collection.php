@@ -50,11 +50,11 @@
     </div>
     <div class="collection-gallery">
         <div class="collection-img">
-            <a href="#" class="collection-img-item">
-                <img src="">
+            <a href="../../../i/brand-1.jpg" class="collection-img-item">
+                <img src="../../../i/test.png">
             </a>
-            <a href="#" class="collection-img-item">
-                <img src="">
+            <a href="../../../i/test.png" class="collection-img-item">
+                <img src="../../../i/test.png">
             </a>
             <a href="#" class="collection-img-item">
                 <img src="">
@@ -118,3 +118,9 @@
         </a>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".collection-img-item").lightBox();
+    });
+</script>
