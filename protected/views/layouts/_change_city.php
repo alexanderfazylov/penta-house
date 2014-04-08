@@ -8,30 +8,31 @@
     <form class="dialog-form">
         <div class="row">
             <label>
-                <input type="radio"  name="city"/>
+                <input type="radio" name="City[kazan]"/>
                 Казань
             </label>
             <label>
-                <input type="radio"  name="city"/>
+                <input type="radio" name="City[nn]"/>
                 Нижний Новгород
             </label>
             <label>
-                <input type="radio"  name="city"/>
+                <input type="radio" name="City[moscow]"/>
                 Москва
             </label>
             <label>
-                <input type="radio"  name="city"/>
+                <input type="radio" name="City[samara]"/>
                 Самара
             </label>
             <label>
-                <input type="radio"  name="city"/>
+                <input type="radio" name="City[sp]"/>
                 Санкт-Петербург
             </label>
             <label>
-                <input type="radio"  name="city"/>
+                <input type="radio" name="City[perm]"/>
                 Пермь
             </label>
         </div>
-        <input class="submit-btn" type="submit" value="Выбрать город"/>
+        <button id="select-city" type="button" class="submit-btn">Выбрать город</button>
     </form>
 </div>
+
