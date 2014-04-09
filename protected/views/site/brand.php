@@ -89,10 +89,10 @@
         <a href="/site/collection" class="brand-item brand-title">
             <span class="brand-title">Коллекции</span>
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item hovered">
             <img src="../../../i/test.png">
 
-            <div class="brand-hover">
+            <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd

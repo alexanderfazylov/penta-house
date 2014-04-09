@@ -100,4 +100,10 @@ $(function () {
 
         myMap.setCenter([longitude, latitude], zoom);
     });
+
+    $('.hovered').hover(function () {
+        $(this).children('.hovered-div').fadeIn(500);
+    }, function () {
+        $('.hovered-div').fadeOut();
+    })
 });

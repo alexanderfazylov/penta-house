@@ -13,6 +13,27 @@
     src: url("/fonts/HelveticaNeueCyr-Thin.otf") format("opentype");
 }
 
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -327,16 +348,8 @@ h1 {
     color: #898989;
 }
 
-.project-description, .news-description {
+.hovered-div {
     display: none;
-}
-
-.project-item:hover .project-description,
-.news-item:hover .news-description {
-    display: block;
-}
-
-.project-description, .news-description {
     position: absolute;
     top: 0;
     left: 0;
@@ -348,7 +361,7 @@ h1 {
     background: rgba(0, 0, 0, 0.8);
 }
 
-.project-description span, .news-description span {
+.hovered-div span {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
@@ -603,32 +616,6 @@ h1 {
     text-align: center;
 }
 
-.catalog-description {
-    display: none;
-}
-
-.catalog-item:hover .catalog-description {
-    display: block;
-}
-
-.catalog-description {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 14px;
-    height: 200px;
-    color: #fff;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.catalog-description span {
-    vertical-align: middle;
-    height: 200px;
-    display: table-cell;
-}
-
 .catalog-logo {
     position: absolute;
     width: 140px;
@@ -689,29 +676,6 @@ h1 {
     color: #fff;
     font-size: 18px;
     line-height: 200px;
-}
-
-.brand-item:hover .brand-hover {
-    display: block;
-}
-
-.brand-hover {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.brand-hover span {
-    vertical-align: middle;
-    height: 200px;
-    display: table-cell;
-    font-size: 14px;
-    color: #fff;
 }
 
 .brand-item {

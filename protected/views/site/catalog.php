@@ -7,10 +7,10 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         <a href="/site/brand" class="catalog-item catalog-title">
             <img class="catalog-logo" src="../../../i/logo.png">
         </a>
-        <a href="#" class="catalog-item">
+        <a href="#" class="catalog-item hovered">
             <img src="../../../i/test.png">
 
-            <div class="catalog-description">
+            <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
@@ -38,18 +38,25 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         <a href="#" class="catalog-item catalog-title">
             <img class="catalog-logo" src="../../../i/logo.png">
         </a>
-        <a href="#" class="catalog-item">
+        <a href="#" class="catalog-item hovered">
             <img src="../../../i/test.png">
 
-            <div class="catalog-description">
+            <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 </span>
             </div>
         </a>
-        <a href="#" class="catalog-item">
-            <img src="">
+        <a href="#" class="catalog-item hovered">
+            <img src="../../../i/test.png">
+            <div class="hovered-div">
+                <span>
+                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
+                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
+                aasdasdasdaasdasdasd
+                    </span>
+            </div>
         </a>
         <a href="#" class="catalog-item">
             <img src="">
