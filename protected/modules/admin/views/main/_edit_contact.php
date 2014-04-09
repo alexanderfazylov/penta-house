@@ -40,9 +40,12 @@
                           name="Contact[address]">{{>item.address}}</textarea>
             </div>
             <div class="form-group">
-                <label for="model-map">Карта</label>
-                <textarea class="form-control" id="model-map"
-                          name="Contact[map]">{{>item.map}}</textarea>
+                <label for="model-map">Координаты</label>
+                <input type="text" placeholder="">
+            </div>
+            <div class="form-group">
+                <label for="model-map">Зуум</label>
+                <input type="text" placeholder="">
             </div>
             <div class="form-group">
                 <label for="model-description">Режим работы</label>

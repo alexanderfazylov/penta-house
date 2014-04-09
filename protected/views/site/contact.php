@@ -7,11 +7,11 @@ $this->pageTitle = "Penta House - Контакты";
 <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru_RU"
         type="text/javascript"></script>
 
-<button type="button" class="map-chenger" data-latitude="48.91025" data-longitude="55.846422" data-zoom="15">
+<button type="button" class="map-chenger" data-latitude="55.846422" data-longitude="48.91025" data-zoom="15">
     Первый
     контакт
 </button>
-<button type="button" class="map-chenger" data-latitude="37.551234" data-longitude="55.765291" data-zoom="15">Второй
+<button type="button" class="map-chenger" data-latitude="55.765291" data-longitude="37.551234" data-zoom="15">Второй
     контакт
 </button>
 
@@ -24,11 +24,14 @@ $this->pageTitle = "Penta House - Контакты";
     ymaps.ready(function () {
         myMap = new ymaps.Map("map", {
             center: [55.846422, 48.91025],
-            zoom: 10
+            zoom: 10,
+            // включаем масштабирование карты колесом
+            behaviors: ['default', 'scrollZoom']
         });
         myMap.controls
             // Кнопка изменения масштаба.
             .add('zoomControl', { left: 5, top: 5 });
+
 
         var myPlacemark1 = new ymaps.Placemark([55.846422, 48.91025], {
             balloonContentHeader: "Пента-Хаусaaaaaaaaaaaaaaaa",
