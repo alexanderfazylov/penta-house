@@ -40,12 +40,18 @@
                           name="Contact[address]">{{>item.address}}</textarea>
             </div>
             <div class="form-group">
-                <label for="model-map">Координаты</label>
-                <input type="text" placeholder="">
+                <label for="model-map">Координаты метки</label>
+                <input type="text" class="coordinates" value="{{getCoordinats:item}}">
+                <a href="http://api.yandex.ru/maps/tools/getlonglat/index.xml" target="_blank">Определить
+                    координаты</a>
+                <br/>
+                <input type="hidden" name="Contact[latitude]" class="contact_latitude" value="{{>item.latitude}}">
+                <input type="hidden" name="Contact[longitude]" class="contact_longitude" value="{{>item.longitude}}">
+
             </div>
             <div class="form-group">
-                <label for="model-map">Зуум</label>
-                <input type="text" placeholder="">
+                <label for="model-map">Масштаб карты</label>
+                <input type="text" name="Contact[zoom]" value="{{>item.zoom}}">
             </div>
             <div class="form-group">
                 <label for="model-description">Режим работы</label>
