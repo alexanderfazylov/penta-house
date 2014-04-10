@@ -100,7 +100,6 @@ $(function () {
 
         var zoom = $(this).data('zoom');
 
-
         myMap.setCenter([latitude, longitude ], zoom);
     });
 

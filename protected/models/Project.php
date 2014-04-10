@@ -149,9 +149,8 @@ class Project extends CActiveRecord
 
     protected function afterFind()
     {
-        if (!empty($this->end_date)) {
-            $this->end_date = DateTime::createFromFormat('Y-m-d', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('d.m.Y');
-        }
+        $this->end_date = DateTime::createFromFormat('Y-m-d', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('d.m.Y');
+
 
         return parent::afterFind();
     }
@@ -161,8 +160,12 @@ class Project extends CActiveRecord
 
         if (!empty($this->end_date) && ($this->date_status == self::VIEW)) {
             $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
-            $this->date_status = self::BASE;
+        } else {
+            $this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         }
+
+        $this->date_status = self::BASE;
+
 
         return parent::beforeSave();
     }
@@ -199,4 +202,21 @@ class Project extends CActiveRecord
             return "Скрытый";
         }
     }
+
+    public static function indexCriteria()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.order ASC';
+        $criteria->limit = 7;
+        $criteria->compare('t.visible', 0);
+
+        $criteria->with = array(
+            'upload1',
+//            'upload2',
+        );
+
+        return $criteria;
+    }
+
 }

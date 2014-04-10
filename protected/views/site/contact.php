@@ -17,11 +17,10 @@ $this->pageTitle = "Penta House - Контакты";
     ymaps.ready(function () {
         myMap = new ymaps.Map("map", {
             center: [<?php echo $active_contact->longitude?>, <?php echo $active_contact->latitude?>],
-            zoom: <?php echo $active_contact->zoom;?>,
-            behaviors: ['default', 'scrollZoom']
+            zoom: <?php echo $active_contact->zoom;?>
+            //behaviors: ['default', 'scrollZoom']
         });
-        myMap.controls.add('zoomControl', { left: 5, top: 5 });
-
+        myMap.controls.add('zoomControl', { left: 5, bottom: 5 });
 
         <?php foreach($this->contacts as $contact):?>
 

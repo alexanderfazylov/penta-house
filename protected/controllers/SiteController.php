@@ -30,8 +30,6 @@ class SiteController extends Controller
 
 
         $this->active_contact_id = Yii::app()->session['contact_id'];
-
-
     }
 
     /**
@@ -59,9 +57,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        // renders the view file 'protected/views/site/index.php'
-        // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index');
+
+
+        $posts = Post::model()->findAll(Post::indexCriteria());
+        $brands = Brand::model()->findAll(Brand::indexCriteria());
+        $projects = Project::model()->findAll(Project::indexCriteria());
+
+
+        $this->render('index', array(
+                'posts' => $posts,
+                'brands' => $brands,
+                'projects' => $projects,
+
+            )
+        );
     }
 
     public function actionAbout()

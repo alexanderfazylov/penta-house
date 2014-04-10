@@ -175,9 +175,7 @@ class Post extends CActiveRecord
 
     protected function afterFind()
     {
-        if (!empty($this->start_date)) {
-            $this->start_date = DateTime::createFromFormat('Y-m-d', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('d.m.Y');
-        }
+        $this->start_date = DateTime::createFromFormat('Y-m-d', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('d.m.Y');
 
         return parent::afterFind();
     }
@@ -187,8 +185,11 @@ class Post extends CActiveRecord
 
         if (!empty($this->start_date) && ($this->date_status == self::VIEW)) {
             $this->start_date = DateTime::createFromFormat('d.m.Y', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
-            $this->date_status = self::BASE;
+        } else {
+            $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+
         }
+        $this->date_status = self::BASE;
 
         return parent::beforeSave();
     }
@@ -203,5 +204,21 @@ class Post extends CActiveRecord
 
         return $resp;
 
+    }
+
+    public static function indexCriteria()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.visible', 0);
+        $criteria->limit = 7;
+
+
+        $criteria->with = array(
+            'upload1',
+        );
+
+        return $criteria;
     }
 }

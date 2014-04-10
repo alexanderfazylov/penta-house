@@ -46,88 +46,42 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             <span class="pr-title">Проекты</span>
             <span class="pr-count">234</span>
         </a>
-        <a href="#" class="project-item hovered">
-            <img src="../../../i/test.png">
+        <?php foreach ($projects as $project): ?>
+            <a href="#" class="project-item hovered">
+                <img src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
 
-            <div class="hovered-div">
+                <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd
                     </span>
-            </div>
-        </a>
-        <a href="#" class="project-item">
-            <img src="">
-        </a>
-        <a href="#" class="project-item">
-            <img src="">
-        </a>
-        <a href="#" class="project-item">
-            <img src="">
-        </a>
-        <a href="#" class="project-item">
-            <img src="">
-        </a>
-        <a href="#" class="project-item">
-            <img src="">
-        </a>
-        <a href="#" class="project-item">
-            <img src="">
-        </a>
+                </div>
+            </a>
+        <?php endforeach; ?>
+
+
     </div>
     <div class="news">
         <a href="#" class="news-item news-title">
             <span class="nw-title">Октябрь</span>
             <span class="nw-count">234</span>
         </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
+        <?php foreach ($posts as $post): ?>
+            <a href="#" class="news-item" title="<?php echo $post->id; ?>">
+                <img src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+            </a>
+        <?php endforeach; ?>
+
+
     </div>
 </div>
 <div class="index-sidebar">
-    <a href="#" class="manufacturer">
-        <img src="../../../i/test.png">
-        <img class="manufacturer-logo" src="../../../i/logo.png">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
-    <a href="#" class="manufacturer">
-        <img src="">
-    </a>
+    <?php foreach ($brands as $brand): ?>
+        <a href="#" class="manufacturer" title="<?php echo $brand->name; ?>">
+            <img src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
+            <img class="manufacturer-logo"
+                 src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
+        </a>
+    <?php endforeach; ?>
 </div>

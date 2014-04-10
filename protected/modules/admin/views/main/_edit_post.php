@@ -67,7 +67,7 @@
         <button type="button" class="btn btn-danger" data-name="{{>item.name}}" data-unit="Новость"
                 data-action="/admin/main/deletePost" data-model-id="{{>item.id}}"
                 style="float:left" id="delete-model">
-            Удалить проект
+            Удалить новость
         </button>
         {{/if}}
         <button type="button" data-dismiss="modal" class="btn btn-default">Отмена</button>
