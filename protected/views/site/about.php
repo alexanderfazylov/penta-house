@@ -45,10 +45,9 @@ $this->pageTitle = "Penta House - О компании";
         <a href="#" class="news-item news-title">
             <span class="nw-title">Последние новости</span>
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item hovered">
             <img src="../../../i/test.png">
-
-            <div class="news-description">
+            <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
@@ -56,7 +55,7 @@ $this->pageTitle = "Penta House - О компании";
                     </span>
             </div>
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item hovered">
             <img src="">
         </a>
         <a href="#" class="news-item">

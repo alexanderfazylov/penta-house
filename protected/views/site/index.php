@@ -46,10 +46,10 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             <span class="pr-title">Проекты</span>
             <span class="pr-count">234</span>
         </a>
-        <a href="#" class="project-item">
+        <a href="#" class="project-item hovered">
             <img src="../../../i/test.png">
 
-            <div class="project-description">
+            <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
