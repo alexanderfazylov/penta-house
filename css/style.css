@@ -1,233 +1,993 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 01.12.2013, 13:05:34
-    Author     : AF
-*/
-
-@font-face{
+@font-face {
     font-family: HelveticaNeueCyr-Light;
     src: url("/fonts/HelveticaNeueCyr-Light.otf") format("opentype");
 }
+
+@font-face {
+    font-family: HelveticaNeueCyr-Medium;
+    src: url("/fonts/HelveticaNeueCyr-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: HelveticaNeueCyr-Thin;
+    src: url("/fonts/HelveticaNeueCyr-Thin.otf") format("opentype");
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
 html, body {
     margin: 0;
+    width: 100%;
     height: 100%;
     min-width: 1200px;
     font: 12px "HelveticaNeueCyr-Light";
 }
-h1{
-    font-size: 36px;
-    font-weight: normal;
-}
-h2{
-    font-size: 24px;
-    font-weight: normal;
-}
-p{
-    font-size: 13px;
-}
-a{
-    color: #4ebfa7;
+
+a {
     text-decoration: none;
 }
-.breadcrumbs{
+
+h1 {
+    font-size: 3em;
+    font-weight: normal;
+}
+
+.anchor {
+    clear: both;
+    float: none;
+}
+
+.table {
+    display: table;
+}
+
+.tr {
+    display: table-row;
+}
+
+.td {
+    display: table-cell;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    position: relative;
+}
+
+.content {
+    margin-left: 270px;
+    min-height: 100%;
+    height: 100%;
+}
+
+/*-- sidebar --*/
+
+.aside {
+    position: fixed;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    width: 270px;
+    background: #222222;
+}
+
+.aside-content {
+    padding-bottom: 120px;
+    position: relative;
+    padding: 20px 30px 0px;
+    background: #222222;
+    z-index: 10;
+}
+
+.aside-footer {
+    position: absolute;
+    padding: 0px 30px 20px;
+    bottom: 15px;
+    width: 100%;
+    margin: 120px auto 0;
+    z-index: 5;
+}
+
+.aside-footer-wrapper {
+    position: relative;
+    height: 120px;
+}
+
+.city-name {
+    font-size: 1.5em;
+    color: #898989;
+    margin-right: 20px;
+    font-family: "HelveticaNeueCyr-Thin";
+}
+
+.change-city {
+    color: #fff;
+    border-bottom: 1px dashed;
+    cursor: pointer;
+}
+
+.phone {
+    font-size: 2em;
+    color: #898989;
+    text-align: center;
+    margin: 30px 0px 10px;
+    font-family: "HelveticaNeueCyr-Thin";
+}
+
+.callback {
+    color: #fff;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.aside-menu {
+    position: absolute;
+    top: 100%;
+    width: 210px;
+    margin: 0 auto;
+    z-index: 10;
+    background: #222222;
+}
+
+.logo {
+    padding-bottom: 50px;
+    border-bottom: 1px solid #464646;
+}
+
+.logo a {
+    outline: none !important;
+}
+
+.logo-p, .logo-h {
+    color: #4ebfa7;
+    font-size: 4em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.logo-p {
+    font-family: "HelveticaNeueCyr-Medium";
+}
+
+.logo-h {
+    font-family: "HelveticaNeueCyr-Thin";
+}
+
+.logo-description {
+    color: #898989;
+    text-align: center;
+}
+
+.menu {
+    list-style: none;
+    padding: 60px 0 10px;
+}
+
+.menu li {
+    line-height: 40px;
+    text-align: center;
+}
+
+.menu li a {
+    color: #898989;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.menu li.active a {
+    color: #fff;
+}
+
+.menu li.active a:before {
+    color: #fff;
+    content: '\2022';
+    margin-right: 8px;
+}
+
+.menu li.active a:after {
+    color: #fff;
+    content: '\2022';
+    margin-left: 8px;
+}
+
+.social {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #464646;
+    margin: 0 15px;
+}
+
+.social .vk, .social .fc, .social .tw {
+    background: url("../i/soc.png") no-repeat;
+    height: 30px;
+    width: 30px;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.social .vk {
+    background-position: 0px 0px;
+}
+
+.social .fc {
+    background-position: -40px 0px;
+}
+
+.social .tw {
+    background-position: -80px 0px;
+}
+
+.copyright {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+/*---  index  ---*/
+
+.index-box {
+    float: left;
+    width: 80%;
+    height: 100%;
+}
+
+.index-sidebar {
+    height: 100%;
+    width: 20%;
+    float: right;
+}
+
+.manufacturer {
+    width: 100%;
+    display: block;
+    height: 200px;
+    background: indianred;
+    border: 1px solid firebrick;
+    position: relative;
+    overflow: hidden;
+}
+
+.manufacturer-logo {
+    position: absolute;
+    width: 140px;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    margin-left: -70px;
+    margin-top: -20px;
+}
+
+.main-img {
+    width: 100%;
+    height: 600px;
+    background: chartreuse;
+    border: 1px solid green;
+    position: relative;
+}
+
+.title {
+    font-size: 4em;
+    position: absolute;
+    left: 50px;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 5;
+}
+
+.main-img .title {
+    width: 480px;
+    bottom: 50px;
+}
+
+.brand-plugin .title {
+    width: 600px;
+    bottom: 100px;
+}
+
+.service, .news, .project {
+    width: 100%;
+    font-size: 0px;
+}
+
+.service-item {
+    display: table !important;
+    float: left;
+}
+
+.service-item, .project-item, .index-box .news-item {
+    width: 25%;
+}
+
+.about-footer .news-item {
+    width: 20%;
+}
+
+.service-item, .news-item, .project-item {
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.project-title, .news-title {
+    background: #000000 !important;
+    text-align: center;
+}
+
+.pr-title, .pr-count,
+.nw-title, .nw-count {
+    font-size: 18px;
+    line-height: 200px;
+    color: #fff;
+}
+
+.pr-title, .nw-title {
+    color: #fff;
+    margin-right: 5px;
+}
+
+.pr-count, .nw-count {
+    color: #898989;
+}
+
+.hovered-div {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.hovered-div span {
+    vertical-align: middle;
+    height: 200px;
+    display: table-cell;
+}
+
+.project-item {
+    background: coral;
+    border: 1px solid crimson;
+}
+
+.news-item {
+    background: forestgreen;
+    border: 1px solid yellowgreen;
+}
+
+.service-item-wrapper {
+    vertical-align: middle;
+    height: 200px;
+    display: table-cell;
+    width: 100%;
+}
+
+.service-item h3 {
+    text-align: center;
+    font-size: 24px;
+    color: #000000;
+}
+
+.service-hr {
+    width: 60px;
+    height: 1px;
+    margin: 15px auto 20px;
+    background: #464646;
+}
+
+.service-description {
+    text-align: center;
+    font-size: 12px;
     color: #a1a1a1;
     font-style: italic;
 }
-.breadcrumbs a{
-    color: #a1a1a1;
-}
-.header {
-    float: left;
-    position: fixed;
-    height: 100%;
-    color:#898989;
-    text-align: center;
-    min-height: 630px;
-    min-width: 200px;
-}
-.first-col, .header{
-    background-color: #222;
-}
-.city{
-    margin:20px 0 0;
-}
-.current-city{
-    font-size: 18px;
-}
-.choose-city{
-    margin:5px 0 0;
-    color:#fff;
-    display: inline-block;
-    border-bottom: 1px dashed white;
-    cursor: pointer;
-    font-family: Tahoma, sans-serif;
-}
-.phone{
-    margin:10px 0 0;
-}
-.phone-number{
-    font-size: 22px;
-    color: #FFF;
-}
-.order-callback{
-    margin:5px 0 0;
-    color:#FFF;
-    border-bottom: 1px dashed white;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "Tahoma";
-}
-#logo{
-    width: 156px; 
-    height: 79px;
-    margin:150px auto 0;
-    background-image: url("/images/logo.png");
-    display: block;
-    /*opacity: 0;*/
-}
-.slogan{
-    margin: 5px 0 0;
-    font: 11px Tahoma, sans-serif;         
-}
-.logo-line{
-    margin: 20px auto;
-    width: 180px;
-    height: 1px;
-    background-color: #464646;
-}
-.menu{
-    text-transform: uppercase;
-    font: 11px Tahoma, sans-serif;
-    letter-spacing: 1px;
-}
-.menu a{
-    margin:10px 0;
-    display: block;
-    color: #898989;
-    text-decoration: none; 
-}
-.menu a.selected{
-    color: #FFF;
-}
-.menu a.selected:before{
-    content: "• ";
-}
-.menu a.selected:after{
-    content: " •";
-}
-.footer{
+
+.dialog-position {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-bottom: 20px;
+    top: 20px;
+    left: 330px;
+    z-index: 500;
+    background: #222222;
+    padding: 40px 150px 40px 40px;
+    width: 760px;
+    display: none;
 }
-.social-networks{
-    text-align: center;
-}
-.social-networks a{
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border: 0;
-    margin: 0 5px;
-}
-.social-networks a.vk{
-    background: url("/images/social-networks.png"); 
-}
-.social-networks a.fb{
-    background: url("/images/social-networks.png") 60px 0px; 
-}
-.social-networks a.tw{
-    background: url("/images/social-networks.png") 30px 0px; 
-}
-.footer-line{
-    margin: 20px auto;
-    width: 180px;
-    height: 1px;
-    background-color: #464646;
-}
-.copyright{
-    font: 11px Tahoma, sans-serif; 
-}
-table.content{
-    width:100%;
-    border:0px;
-    border-collapse:collapse;
-}
-table.content tr{
-   height: 180px;
-}
-table.content td.service{
-    text-align: center;
-}
-table.content td.service h1{
-    font-size: 22px;
+
+.callback-dialog h2, .city-dialog h2 {
+    font-size: 2.5em;
+    color: #fff;
     font-weight: normal;
+    margin-bottom: 15px;
 }
-div.service-line{
-    width: 60px;
-    height: 1px;
-    background-color: #b7b7b7;
-    margin: 15px auto;
+
+.dialog-description {
+    font-size: 1.33em;
+    color: #898989;
+    margin-bottom: 25px;
 }
-div.service-description{
-    color: #a1a1a1;
-    font-family: Tahoma, sans-serif;
+
+.dialog-form .row {
+    margin: 10px 0;
 }
-table.content td.brand-col{
-    text-align: center;
+
+.dialog-form label {
+    font-size: 1em;
+    color: #898989;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 5px;
+}
+
+.callback-dialog .dialog-form label {
+    width: 150px;
+}
+
+.city-dialog .dialog-form label {
+    width: 40%;
+}
+
+.dialog-form input[type="text"], .dialog-form textarea {
+    border: 1px solid #000000;
+}
+
+.dialog-form input[type="text"] {
+    text-indent: 6px;
+    padding: 6px 0;
+    width: 290px;
+}
+
+.dialog-form textarea {
+    padding: 6px;
+    width: 415px;
+    min-height: 100px;
+    resize: none;
+}
+
+.hint {
+    font-size: 1em;
+    color: #898989;
+    margin-left: 155px;
+    padding-top: 5px;
+}
+
+.dialog-header {
+    position: relative;
+}
+
+.dialog-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 1em;
+    color: #898989;
     cursor: pointer;
 }
-.headline{
-    background-color: #000;
+
+.callback-dialog .submit-btn {
+    margin-left: 155px;
+}
+
+.submit-btn {
+    padding: 15px 30px;
+    border: 1px solid #4ebfa7;
+    color: #4ebfa7;
+    background: #222222;
+    font-size: 1.5em;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/*--- about ---*/
+
+.about-company {
+    float: left;
+    width: 65%;
+    height: 100%;
+    padding: 50px 40px 100px 100px;
+}
+
+.about-contacts {
+    float: right;
+    width: 35%;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.about-company-descr {
+    font-size: 0px;
+}
+
+.about-company p {
+    margin: 15px 0;
+    display: inline-block;
+    width: 50%;
+    padding-right: 40px;
+    font-size: 12px;
+    vertical-align: top;
+    line-height: 1.8em;
+}
+
+.about-contacts h1, .about-company h1 {
+    margin-bottom: 25px;
+}
+
+.contacts {
+    font-size: 2em;
+    line-height: 1.4em;
+}
+
+.contacts a {
+    color: #000;
+}
+
+/*--- contact ---*/
+
+.contact-map {
+    height: 800px;
+}
+
+.contact-info {
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.contact-info h1 {
+    margin-bottom: 15px;
+}
+
+.contact-info dt {
+    color: #898989;
+    font-size: 1.17em;
+}
+
+.contact-info dd {
+    font-size: 1.17em;
+}
+
+.city-title {
+    font-size: 2em;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.city-title-link {
+    border-bottom: 1px dashed #000;
+}
+
+.dl-horizontal dt {
+    float: left;
+    width: 140px;
+    clear: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dl-horizontal dd {
+    margin-left: 140px;
+}
+
+.contact-info-table .td {
+    padding: 0 40px 20px 0;
+
+}
+
+/*--- catalog ---*/
+
+.catalog {
+    width: 100%;
+    font-size: 0px;
+}
+
+.catalog-item {
+    width: 20%;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.catalog-title {
+    background: #000000 !important;
     text-align: center;
-    color: #FFF;
+}
+
+.catalog-logo {
+    position: absolute;
+    width: 140px;
+    height: 40px;
+    top: 50%;
+    left: 50%;
+    margin-left: -70px;
+    margin-top: -20px;
+}
+
+.catalog-item {
+    background: coral;
+    border: 1px solid crimson;
+}
+
+/*---- brand-plugin ----*/
+
+.brand-plugin {
+    position: relative;
+}
+
+.brand-description {
+    float: left;
+    width: 65%;
+    height: 100%;
+    padding: 50px 40px 100px 100px;
+}
+
+.brand-logo {
+    float: right;
+    width: 35%;
+    height: 100%;
+    padding: 110px 20px 100px 0;
+}
+
+.brand-description-table .tr .td {
+    padding: 15px 40px 15px 0;
+    vertical-align: top;
+    line-height: 1.8em;
+}
+
+.brand {
+    width: 100%;
+    font-size: 0px;
+}
+
+.brand-item {
+    width: 20%;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.brand-title {
+    background: #000000 !important;
+    text-align: center;
+    color: #fff;
     font-size: 18px;
-}
-.headline span.quantity{
-    color: #898989;
-}
-.brand-col-bg{
-    background-color: #000;
-    opacity: 0.5;
-    height: 50px;
-}
-.banner{
-    background: url(/images/banner.jpg) center center;
-    cursor: pointer;
+    line-height: 200px;
 }
 
-// About
-table.about .company-description{
-    padding: 37px 50px 0 80px;
-    vertical-align: top;
-}
-table.about .company-description h1{
-    margin: 10px 0 30px;
-}
-table.about .company-contatcs{
-    padding: 36px 50px 0 0;
-    vertical-align: top;
-}
-table.about .company-contatcs .contacts{
-    font-size: 24px;
-    line-height: 30px;
+.brand-item {
+    background: navy;
+    border: 1px solid #b9def0;
 }
 
-// Contacts
-table.content td.contacts{
-    
+.brand-link {
+    color: #000;
+    font-size: 1.5em;
+    margin: 15px 0;
+    display: block;
 }
-table.city-contact tr{
-    height: 20px;
-    font-size: 14px;
+
+.brand-logo-title {
+    font-size: 2em;
+    margin: 25px 0;
 }
-table.city-contact td.field-name{
-    color: #898989;
-    padding-right: 30px;
+
+/*---- collection ----*/
+
+.collection {
+    padding: 50px 0px 100px;
+}
+
+.collection h1 {
+    margin-bottom: 40px;
+    padding-left: 100px;
+}
+
+.collection-description {
+    float: left;
+    width: 40%;
+    height: 100%;
+    padding-right: 50px;
+    padding-left: 100px;
+}
+
+.collection-description h5 {
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.collection-description p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+.collection-gallery {
+    float: right;
+    width: 60%;
+    height: 100%;
+}
+
+.collection-img {
+    width: 100%;
+    font-size: 0px;
+}
+
+.collection-img-item {
+    width: 33.33%;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.collection-img-item {
+    background: #FF7171;
+    border: 1px solid #d2322d;
+}
+
+/*---- slider -----*/
+
+.slider {
+    float: left;
+    width: 100%;
+    max-height: 800px;
+    position: relative;
+}
+
+.sliderContent {
+    float: left;
+    width: 100%;
+    height: 800px;
+    clear: both;
+    position: relative;
+    overflow: hidden;
+}
+
+.sliderArrows {
+    position: absolute;
+    background: #000;
+    width: 320px;
+    height: 70px;
+    right: 0;
+    z-index: 5;
+    text-align: center;
+}
+
+.sliderArrows.sliderArrowsBottom {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 70px;
+    left: 0;
+    bottom: 0 !important;
+    z-index: 5;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.sliderArrowsBottom a {
+    font-size: 0 !important;
+}
+
+.sliderArrowsBottom span {
+    font-size: 1.17em;
+    color: #fff;
+    line-height: 70px;
+}
+
+.sliderArrows a {
+    display: inline-block;
+    z-index: 50;
+    color: #fff;
+    font-size: 1.17em;
+    line-height: 70px;
+}
+
+.sliderArrows a.prev {
+    background: url("../i/arrows-prev.png") no-repeat 0% center;
+    padding-left: 15px;
+}
+
+.sliderArrows a.next {
+    background: url("../i/arrows-next.png") no-repeat 100% center;
+    padding-right: 15px;
+}
+
+.sliderArrowsBottom a.prev {
+    background: url("../i/arrows-prev.png") no-repeat 0% 42%;
+    padding-left: 15px;
+}
+
+.sliderArrowsBottom a.next {
+    background: url("../i/arrows-next.png") no-repeat 100% 42%;
+    padding-right: 15px;
+}
+
+.sliderArrows a.prev:after {
+    content: '/';
+    padding: 0 10px;
+}
+
+.sliderArrowsBottom a.prev:after {
+    content: '';
+    padding: 0;
+}
+
+.sliderContent .item {
+    position: absolute;
+    width: 100%;
+    max-height: 800px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.sliderContent a {
+    outline: none;
+}
+
+/*--- gallery ---*/
+
+/**
+ * jQuery lightBox plugin
+ * This jQuery plugin was inspired and based on Lightbox 2 by Lokesh Dhakar (http://www.huddletogether.com/projects/lightbox2/)
+ * and adapted to me for use like a plugin from jQuery.
+ * @name jquery-lightbox-0.5.css
+ * @author Leandro Vieira Pinho - http://leandrovieira.com
+ * @version 0.5
+ * @date April 11, 2008
+ * @category jQuery plugin
+ * @copyright (c) 2008 Leandro Vieira Pinho (leandrovieira.com)
+ * @license CCAttribution-ShareAlike 2.5 Brazil - http://creativecommons.org/licenses/by-sa/2.5/br/deed.en_US
+ * @example Visit http://leandrovieira.com/projects/jquery/lightbox/ for more informations about this jQuery plugin
+ */
+#jquery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 90;
+    width: 100%;
+    height: 500px;
+}
+
+#jquery-lightbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    text-align: center;
+    line-height: 0;
+}
+
+#jquery-lightbox a img {
+    border: none;
+}
+
+#lightbox-container-image-box {
+    position: relative;
+    background-color: #fff;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+}
+
+#lightbox-container-image {
+    padding: 10px;
+}
+
+#lightbox-loading {
+    position: absolute;
+    top: 40%;
+    left: 0%;
+    height: 25%;
+    width: 100%;
+    text-align: center;
+    line-height: 0;
+}
+
+#lightbox-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+}
+
+#lightbox-container-image-box > #lightbox-nav {
+    left: 0;
+}
+
+#lightbox-nav a {
+    outline: none;
+}
+
+#lightbox-nav-btnPrev, #lightbox-nav-btnNext {
+    width: 49%;
+    height: 100%;
+    zoom: 1;
+    display: block;
+}
+
+#lightbox-nav-btnPrev {
+    left: 0;
+    float: left;
+}
+
+#lightbox-nav-btnNext {
+    right: 0;
+    float: right;
+}
+
+#lightbox-container-image-data-box {
+    font: 10px Verdana, Helvetica, sans-serif;
+    background-color: #fff;
+    margin: 0 auto;
+    line-height: 1.4em;
+    overflow: auto;
+    width: 100%;
+    padding: 0 10px 0;
+    box-sizing: content-box;
+}
+
+#lightbox-container-image-data {
+    padding: 0 10px;
+    color: #666;
+}
+
+#lightbox-container-image-data #lightbox-image-details {
+    width: 70%;
+    float: left;
+    text-align: left;
+}
+
+#lightbox-image-details-caption {
+    font-weight: bold;
+}
+
+#lightbox-image-details-currentNumber {
+    display: block;
+    clear: left;
+    padding-bottom: 1.0em;
+}
+
+#lightbox-secNav-btnClose {
+    width: 66px;
+    float: right;
+    padding-bottom: 0.7em;
 }

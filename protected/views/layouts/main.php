@@ -1,52 +1,62 @@
-<?php /* @var $this Controller */ ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
+    <title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="ru"/>
+    <meta name="description" content="<?php echo $this->description; ?>">
+    <meta name="keywords" content="<?php echo $this->keywords; ?>">
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-
-        <link rel="stylesheet" type="text/css" href ="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
-
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="/js/script.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <div class="city">
-            <div class="current-city">Казань</div>
-            <!--<div class="choose-city">Выбрать другой город</div>-->
-        </div>
-        <div class="phone">
-            <div class="phone-number">+7 (843) 567-98-01</div>
-            <!--<div class="order-callback">Заказать обратный звонок</div>-->
-        </div>
-        <a id="logo" href="/"></a>
-        <div class="slogan">Элитная сантехника, плитка.</br>Продажа. Монтаж. Сервис.</div>
-        <div class="logo-line"></div>
-        <div class="menu">
-            <a href="/site/about">О компании</a>
-            <!--<a href="dealership.html">Дилерство</a>-->
-            <!--<a href="about.html">Каталог</a>-->
-            <!--<a href="projects.html">Проекты</a>-->
-            <a href="/site/contact">Контакты</a>
-        </div>
-        <div class="footer">
-            <!--
-            <div class="social-networks">
-                <a class="vk" href="vk.com"></a>
-                <a class="fb" href="facebook.com"></a>
-                <a class="tw" href="twitter.com"></a>
+<div class="wrapper">
+    <div class="aside">
+        <div class="aside-content">
+            <div class="aside-header">
+                <div class="city">
+                    <span
+                        class="city-name"><?php echo Helper::getCity($this->contacts, $this->active_contact_id); ?></span>
+                    <span class="change-city">Выбрать другой город</span>
+                </div>
+                <div class="phone"><?php echo Helper::getPhone($this->contacts, $this->active_contact_id); ?></div>
+                <div class="callback">Заказать обратный звонок</div>
             </div>
-            -->
-            <div class="footer-line"></div>
-            <div class="copyright">&copy; 2013 Penta House</div>
+            <div class="aside-menu">
+                <div class="logo">
+                    <a href="/site/index">
+                        <div class="logo-p">PENTA</div>
+                        <div class="logo-h">HOUSE</div>
+                    </a>
+
+                    <div class="logo-description">Элитная сантехника, плитка.<br> Продажа. Монтаж. Сервис.</div>
+                </div>
+                <?php $this->renderPartial('application.views.layouts._menu'); ?>
+            </div>
+        </div>
+        <div class="aside-footer">
+            <div class="aside-footer-wrapper">
+                <div class="social">
+                    <a href="<?php echo $this->main->vk_link; ?>" class="vk"></a>
+                    <a href="<?php echo $this->main->fb_link; ?>" class="fc"></a>
+                    <a href="<?php echo $this->main->tw_link; ?>" class="tw"></a>
+                </div>
+                <div class="copyright">&copy; 2013 Penta House</div>
+            </div>
         </div>
     </div>
-
-	<?php echo $content; ?>
-
-    </body>
+    <div class="content">
+        <?php $this->renderPartial('application.views.layouts._callback'); ?>
+        <?php $this->renderPartial('application.views.layouts._change_city'); ?>
+        <?php echo $content; ?>
+        <div class="anchor"></div>
+    </div>
+</div>
+</body>
 </html>
+<script>
+    var contacts = <?php echo Helper::convertModelToJson($this->contacts); ?>;
+    var active_contact_id = <?php echo $this->active_contact_id;?>;
+</script>

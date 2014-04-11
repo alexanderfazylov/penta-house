@@ -1,96 +1,87 @@
 <?php
-/* @var $this SiteController */
-
-$this->pageTitle="Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
+$this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
 ?>
 
+<div class="index-box">
+    <div class="main-img">
+        <div class="title">Эволюция в ванной комнате</div>
+    </div>
+    <div class="service">
+        <div class="service-item">
+            <div class="service-item-wrapper">
+                <h3><?php echo $this->main->direction_1; ?></h3>
 
-<table class="content">
-    <tr>
-        <td class="first-col" rowspan="8"></td>
-        <td class="banner" colspan="4" rowspan="3"></td>
-        <td class="brand-col last-col" style="background: url(/images/villeroy_boch.jpg) center center">
-            <img src="/images/vb-logo.png" />
-        </td>
-    </tr>
-    <tr>
-        <td class="brand-col last-col" style="background: url(/images/dornbracht_1.jpg) center center">
-            <img src="/images/db-logo.png" />
-        </td>
-    </tr>
-    <tr>
-        <td class="brand-col last-col" style="background: url(/images/al.jpg) center center">
-            <img src="/images/al-logo.png" />
-        </td>
-    </tr>
-    <tr>
-        <td class="service">
-            <h1>Дизайн и&nbsp;проектирование</h1>
-            <div class="service-line"></div>
-            <div class="service-description">Бесплатный замер<br/>и&nbsp;дизайн-проект</div>
-        </td>
-        <td class="service">
-            <h1>Продажа</h1>
-            <div class="service-line"></div>
-            <div class="service-description">Элитная сантехника<br/>по&nbsp;доступным ценам</div>
-        </td>
-        <td class="service">
-            <h1>Установка и&nbsp;монтаж</h1>
-            <div class="service-line"></div>
-            <div class="service-description">Бесплатная установка и&nbsp;монтаж&nbsp;с&nbsp;гарантией</div>
-        </td>
-        <td class="service">
-            <h1>Сервисное обслуживание</h1>
-            <div class="service-line"></div>
-            <div class="service-description">Гарантийное обслуживание сантехники</div>
-        </td>
-        <td class="brand-col last-col" style="background: url(/images/hg.jpg) center center">
-            <img src="/images/hg-logo.png" />
-        </td>
-    </tr>
-    <tr>
-        <td class="headline">
-            Проекты <span class="quantity">4</span>
-        </td>
-        <td style="background: url(/images/bath1.jpg) center center"></td>
-        <td style="background: url(/images/bath2.jpg) center center"></td>
-        <td style="background: url(/images/bath4.jpg) center center"></td>
-        <td class="brand-col last-col" style="background: url(/images/gessi-bg.jpg) center center">
-            <img src="/images/gessi-logo.png" />
-        </td>
-    </tr>
-    <!--
-    <tr>
-        <td style="background: url(bath5.jpg) center center"></td>
-        <td style="background: url(bath6.jpg) center center"></td>
-        <td style="background: url(bath7.jpg) center center"></td>
-        <td style="background: url(bath8.jpg) center center"></td>
-        <td class="brand-col last-col" style="background: url(duravit-bg.jpg) center center">
-            <img src="duravit-logo.png" />
-        </td>
-    </tr>
-    -->
-    <tr>
-        <td style="background: url(/images/news1.jpg) center center"></td>
-        <td class="headline">
-            Новости <span class="quantity">9</span>
-        </td>
-        <td style="background: url(/images/news2.jpg) center center"></td>
-        <td style="background: url(/images/news3.jpg) center center"></td>
-        <td class="brand-col last-col" style="background: url(/images/keuco-bg.jpg) center center">
-            <img src="/images/keuco-logo.png" />
-        </td>
-    </tr>
-    <!--
-    <tr>
-        <td style="background: url(news4.jpg) center center"></td>
-        <td style="background: url(news5.jpg) center center"></td>
-        <td style="background: url(news6.jpg) center center"></td>
-        <td style="background: url(news7.jpg) center center"></td>
-        <td class="brand-col last-col" style="background: url(jacuzzi-bg.jpg) center center">
-            <img src="jacuzzi-logo.png" />
-        </td>
-    </tr>
-    -->
-</table>
+                <div class="service-hr"></div>
+                <div class="service-description"><?php echo $this->main->direction_description_1; ?></div>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="service-item-wrapper">
+                <h3><?php echo $this->main->direction_2; ?></h3>
 
+                <div class="service-hr"></div>
+                <div class="service-description"><?php echo $this->main->direction_description_2; ?></div>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="service-item-wrapper">
+                <h3><?php echo $this->main->direction_3; ?></h3>
+
+                <div class="service-hr"></div>
+                <div class="service-description"><?php echo $this->main->direction_description_3; ?></div>
+            </div>
+        </div>
+        <div class="service-item">
+            <div class="service-item-wrapper">
+                <h3><?php echo $this->main->direction_4; ?></h3>
+
+                <div class="service-hr"></div>
+                <div class="service-description"><?php echo $this->main->direction_description_4; ?></div>
+            </div>
+        </div>
+    </div>
+    <div class="anchor"></div>
+    <div class="project">
+        <a href="#" class="project-item project-title">
+            <span class="pr-title">Проекты</span>
+            <span class="pr-count">234</span>
+        </a>
+        <?php foreach ($projects as $project): ?>
+            <a href="#" class="project-item hovered">
+                <img src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
+
+                <div class="hovered-div">
+                <span>
+                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
+                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
+                aasdasdasdaasdasdasd
+                    </span>
+                </div>
+            </a>
+        <?php endforeach; ?>
+
+
+    </div>
+    <div class="news">
+        <a href="#" class="news-item news-title">
+            <span class="nw-title">Октябрь</span>
+            <span class="nw-count">234</span>
+        </a>
+        <?php foreach ($posts as $post): ?>
+            <a href="#" class="news-item" title="<?php echo $post->id; ?>">
+                <img src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+            </a>
+        <?php endforeach; ?>
+
+
+    </div>
+</div>
+<div class="index-sidebar">
+    <?php foreach ($brands as $brand): ?>
+        <a href="#" class="manufacturer" title="<?php echo $brand->name; ?>">
+            <img src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
+            <img class="manufacturer-logo"
+                 src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
+        </a>
+    <?php endforeach; ?>
+</div>
