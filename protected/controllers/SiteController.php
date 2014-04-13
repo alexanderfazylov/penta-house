@@ -104,11 +104,13 @@ class SiteController extends Controller
 
     public function actionCatalog()
     {
-        $this->render('catalog');
+        $this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
 
-        //$brands = Brand::model()->findAll(Brand::indexCriteria());
 
-        $this->render('catalog', array(//'posts' => $posts,
+        $brands = Brand::model()->findAll(Brand::catalogCriteria());
+
+        $this->render('catalog', array(
+                'brands' => $brands,
             )
         );
     }
