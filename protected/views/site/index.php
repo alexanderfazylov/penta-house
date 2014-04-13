@@ -5,6 +5,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 <div class="index-box">
     <div class="main-img">
         <div class="title">Эволюция в ванной комнате</div>
+        <img src="../../../i/logo.jpg">
     </div>
     <div class="service item-box">
         <div class="service-item item">
@@ -48,7 +49,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         </a>
         <?php foreach ($projects as $project): ?>
             <a href="#" class="project-item item hovered" title="<?php echo $project->id; ?>">
-                <img src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
+                <img class="item-bg" src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
 
                 <div class="hovered-div">
                 <span>
@@ -67,7 +68,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         </a>
         <?php foreach ($posts as $post): ?>
             <a href="#" class="news-item item" title="<?php echo $post->id; ?>">
-                <img src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+                <img class="item-bg" src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
             </a>
         <?php endforeach; ?>
     </div>
@@ -75,7 +76,8 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 <div class="index-sidebar">
     <?php foreach ($brands as $brand): ?>
         <a href="#" class="manufacturer" title="<?php echo $brand->name; ?>">
-            <img src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
+            <img class="item-bg"
+                 src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
             <img class="manufacturer-logo"
                  src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
         </a>

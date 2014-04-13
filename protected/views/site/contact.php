@@ -41,15 +41,15 @@ $this->pageTitle = "Penta House - Контакты";
 <div class="contact-info">
     <h1>Контакты</h1>
 
-    <ul>
+    <ul class="contact-info-ul">
         <?php foreach ($this->contacts as $contact): ?>
             <li>
-                <dl class="">
-                    <button type="button" class="map-chenger" data-latitude="<?php echo $contact->longitude; ?>"
-                            data-longitude="<?php echo $contact->latitude; ?>"
-                            data-zoom="15">
-                        <?php echo $contact->city; ?>
-                    </button>
+                <button type="button" class="map-chenger city-title" data-latitude="<?php echo $contact->longitude; ?>"
+                        data-longitude="<?php echo $contact->latitude; ?>"
+                        data-zoom="15">
+                    <?php echo $contact->city; ?>
+                </button>
+                <dl class="dl-horizontal">
                     <dt>Адрес</dt>
                     <dd><?php echo $contact->address ?></dd>
                     <dt>Телефон</dt>

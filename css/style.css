@@ -48,6 +48,18 @@
     position: relative;
 }
 
+.item img.item-bg, .manufacturer img.item-bg {
+    height: 100%;
+}
+
+.manufacturer {
+    width: 100%;
+    display: block;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
 .service-item, .index-box .news-item, .project-item {
     width: 25%;
 }
@@ -63,31 +75,6 @@
 .service-item {
     display: table !important;
     float: left;
-}
-
-.catalog-item {
-    background: coral;
-    border: 1px solid crimson;
-}
-
-.brand-item {
-    background: navy;
-    border: 1px solid #b9def0;
-}
-
-.project-item {
-    background: coral;
-    border: 1px solid crimson;
-}
-
-.news-item {
-    background: forestgreen;
-    border: 1px solid yellowgreen;
-}
-
-.collection-img-item {
-    background: #FF7171;
-    border: 1px solid #d2322d;
 }
 
 /*-------------------------------*/
@@ -327,16 +314,6 @@ h1 {
     float: right;
 }
 
-.manufacturer {
-    width: 100%;
-    display: block;
-    height: 200px;
-    background: indianred;
-    border: 1px solid firebrick;
-    position: relative;
-    overflow: hidden;
-}
-
 .manufacturer-logo {
     position: absolute;
     width: 140px;
@@ -350,9 +327,8 @@ h1 {
 .main-img {
     width: 100%;
     height: 600px;
-    background: chartreuse;
-    border: 1px solid green;
     position: relative;
+    overflow: hidden;
 }
 
 .title {
@@ -375,7 +351,7 @@ h1 {
 }
 
 .project-title, .news-title {
-    background: #000000 !important;
+    background: #000000;
     text-align: center;
 }
 
@@ -423,9 +399,9 @@ h1 {
 }
 
 .dialog-position {
-    position: absolute;
+    position: fixed;
     top: 20px;
-    left: 330px;
+    left: 300px;
     z-index: 500;
     background: #222222;
     padding: 40px 150px 40px 40px;
@@ -588,10 +564,9 @@ h1 {
     font-size: 2em;
     margin-bottom: 15px;
     display: inline-block;
-}
-
-.city-title-link {
+    background: none;
     border-bottom: 1px dashed #000;
+    outline: none;
 }
 
 .dl-horizontal dt {
@@ -607,9 +582,8 @@ h1 {
     margin-left: 140px;
 }
 
-.contact-info-table .td {
+.contact-info-ul li {
     padding: 0 40px 20px 0;
-
 }
 
 /*--- catalog ---*/

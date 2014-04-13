@@ -90,7 +90,7 @@
             <span class="brand-title">Коллекции</span>
         </a>
         <a href="#" class="brand-item item hovered">
-            <img src="../../../i/test.png">
+            <img class="item-bg" src="../../../i/test.png">
 
             <div class="hovered-div">
                 <span>
@@ -101,22 +101,22 @@
             </div>
         </a>
         <a href="#" class="brand-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="brand-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="brand-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="brand-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="brand-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="brand-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
     </div>
 </div>

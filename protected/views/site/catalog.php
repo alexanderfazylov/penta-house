@@ -8,7 +8,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             <img class="catalog-logo" src="../../../i/logo.png">
         </a>
         <a href="#" class="catalog-item item hovered">
-            <img src="../../../i/test.png">
+            <img class="item-bg" src="../../../i/test.png">
 
             <div class="hovered-div">
                 <span>
@@ -18,28 +18,28 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             </div>
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item catalog-title">
             <img class="catalog-logo" src="../../../i/logo.png">
         </a>
         <a href="#" class="catalog-item item hovered">
-            <img src="../../../i/test.png">
+            <img class="item-bg" src="../../../i/test.png">
 
             <div class="hovered-div">
                 <span>
@@ -49,7 +49,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             </div>
         </a>
         <a href="#" class="catalog-item item hovered">
-            <img src="../../../i/test.png">
+            <img class="item-bg" src="../../../i/test.png">
             <div class="hovered-div">
                 <span>
                 aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
@@ -59,19 +59,19 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             </div>
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
         <a href="#" class="catalog-item item">
-            <img src="">
+            <img class="item-bg" src="">
         </a>
     </div>
 </div>

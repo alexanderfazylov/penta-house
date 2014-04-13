@@ -47,7 +47,7 @@ $this->pageTitle = "Penta House - О компании";
         </a>
         <?php foreach ($posts as $post): ?>
             <a href="#" class="news-item item" title="<?php echo $post->id; ?>">
-                <img src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+                <img class="item-bg" src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
             </a>
         <?php endforeach; ?>
     </div>
