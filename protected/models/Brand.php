@@ -225,4 +225,22 @@ class Brand extends CActiveRecord
 
         return $criteria;
     }
+
+    public static function catalogCriteria()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.order ASC';
+        $criteria->limit = 8;
+        $criteria->compare('t.maine_page_visible', 0);
+
+        $criteria->with = array(
+            'upload1',
+            'upload2',
+            'collection',
+            'collection.upload1',
+        );
+
+        return $criteria;
+    }
 }
