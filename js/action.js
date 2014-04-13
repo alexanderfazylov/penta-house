@@ -93,12 +93,14 @@ $(function () {
         });
 
     $('.map-chenger').click(function () {
+
         var latitude = $(this).data('latitude');
+
         var longitude = $(this).data('longitude');
+
         var zoom = $(this).data('zoom');
 
-
-        myMap.setCenter([longitude, latitude], zoom);
+        myMap.setCenter([latitude, longitude ], zoom);
     });
 
     $('.hovered').hover(function () {

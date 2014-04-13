@@ -102,6 +102,20 @@ $.views.converters({getCollection: function (data) {
     return response;
 }});
 
+$.views.converters({getCoordinats: function (item) {
+    var value = "";
+    if (
+        typeof item.latitude != 'undefined' &&
+            typeof item.longitude != 'undefined' &&
+            item.latitude != '' &&
+            item.longitude != ''
+        ) {
+
+        value = item.latitude + ',' + item.longitude;
+    }
+    return value;
+}});
+
 
 function getBrands() {
     $.ajax({
@@ -219,6 +233,22 @@ $(function () {
             $('#template_' + id).render($(this).data())
         );
         $('#' + id).modal('show');
+
+        $('.coordinates').on('change keyup', function () {
+            var coordinates = $(this).val();
+            var arr = coordinates.split(',');
+
+            if (arr.length == 2) {
+                $('.contact_latitude').val(arr[0]);
+                $('.contact_longitude').val(arr[1]);
+            } else {
+                $.jGrowl('Проверьте правильность координат');
+                $('.contact_latitude').val('');
+                $('.contact_longitude').val('');
+            }
+
+
+        });
 
         initUploders();
         initDatapickers();
