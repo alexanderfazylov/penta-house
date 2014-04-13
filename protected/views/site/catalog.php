@@ -7,7 +7,7 @@
             </a>
             <?php foreach ($brand->collection as $collection): ?>
                 <a href="#" class="catalog-item item hovered">
-                    <img
+                    <img class="item-bg"
                         src="/uploads/<?php echo isset($collection->upload1) ? $collection->upload1->file_name : ''; ?>">
 
                     <div class="hovered-div">
