@@ -75,7 +75,12 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
-        $this->render('about');
+        $posts = Post::model()->findAll(Post::indexCriteria());
+
+        $this->render('about', array(
+                'posts' => $posts,
+            )
+        );
     }
 
 
@@ -100,6 +105,12 @@ class SiteController extends Controller
     public function actionCatalog()
     {
         $this->render('catalog');
+
+        //$brands = Brand::model()->findAll(Brand::indexCriteria());
+
+        $this->render('catalog', array(//'posts' => $posts,
+            )
+        );
     }
 
     public function actionBrand()

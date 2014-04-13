@@ -47,7 +47,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             <span class="pr-count">234</span>
         </a>
         <?php foreach ($projects as $project): ?>
-            <a href="#" class="project-item hovered">
+            <a href="#" class="project-item hovered" title="<?php echo $project->id; ?>">
                 <img src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
 
                 <div class="hovered-div">

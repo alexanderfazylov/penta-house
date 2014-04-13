@@ -185,7 +185,7 @@ class Brand extends CActiveRecord
         return parent::beforeSave();
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
 

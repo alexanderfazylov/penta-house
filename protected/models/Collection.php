@@ -164,7 +164,7 @@ class Collection extends CActiveRecord
         );
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
         return CHtml::dropDownList(

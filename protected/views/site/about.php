@@ -45,33 +45,10 @@ $this->pageTitle = "Penta House - О компании";
         <a href="#" class="news-item news-title">
             <span class="nw-title">Последние новости</span>
         </a>
-        <a href="#" class="news-item hovered">
-            <img src="../../../i/test.png">
-            <div class="hovered-div">
-                <span>
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd
-                    </span>
-            </div>
-        </a>
-        <a href="#" class="news-item hovered">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
-        <a href="#" class="news-item">
-            <img src="">
-        </a>
+        <?php foreach ($posts as $post): ?>
+            <a href="#" class="news-item" title="<?php echo $post->id; ?>">
+                <img src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+            </a>
+        <?php endforeach; ?>
     </div>
 </div>

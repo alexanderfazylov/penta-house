@@ -154,6 +154,8 @@ textarea.h500 {
 #model-grid .filters td:first-child input {
     width: 50px !important;
 }
-.hasDatepicker{
+
+.hasDatepicker {
     width: 85px;
 }
+

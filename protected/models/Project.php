@@ -170,7 +170,7 @@ class Project extends CActiveRecord
         return parent::beforeSave();
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
         return CHtml::dropDownList(

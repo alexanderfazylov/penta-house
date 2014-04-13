@@ -362,25 +362,6 @@ h1 {
     color: #898989;
 }
 
-.hovered-div {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 14px;
-    height: 200px;
-    color: #fff;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.hovered-div span {
-    vertical-align: middle;
-    height: 200px;
-    display: table-cell;
-}
-
 .project-item {
     background: coral;
     border: 1px solid crimson;
@@ -990,4 +971,31 @@ h1 {
     width: 66px;
     float: right;
     padding-bottom: 0.7em;
+}
+
+.hovered-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -o-transition: opacity 1s;
+}
+
+.hovered-div:hover {
+    opacity: 1;
+}
+
+.hovered-div span {
+    vertical-align: middle;
+    height: 200px;
+    display: table-cell;
 }
