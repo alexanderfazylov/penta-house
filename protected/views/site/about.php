@@ -41,11 +41,11 @@ $this->pageTitle = "Penta House - О компании";
 </div>
 <div class="anchor"></div>
 <div class="about-footer">
-    <div class="news">
-        <a href="#" class="news-item news-title">
+    <div class="news item-box">
+        <a href="#" class="news-item item news-title">
             <span class="nw-title">Последние новости</span>
         </a>
-        <a href="#" class="news-item hovered">
+        <a href="#" class="news-item item hovered">
             <img src="../../../i/test.png">
             <div class="hovered-div">
                 <span>
@@ -55,22 +55,22 @@ $this->pageTitle = "Penta House - О компании";
                     </span>
             </div>
         </a>
-        <a href="#" class="news-item hovered">
+        <a href="#" class="news-item item hovered">
             <img src="">
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item item">
             <img src="">
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item item">
             <img src="">
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item item">
             <img src="">
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item  item">
             <img src="">
         </a>
-        <a href="#" class="news-item">
+        <a href="#" class="news-item item">
             <img src="">
         </a>
     </div>

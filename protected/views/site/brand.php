@@ -85,11 +85,11 @@
 
 <div class="anchor"></div>
 <div class="about-footer">
-    <div class="brand">
-        <a href="/site/collection" class="brand-item brand-title">
+    <div class="item-box">
+        <a href="/site/collection" class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>
         </a>
-        <a href="#" class="brand-item hovered">
+        <a href="#" class="brand-item item hovered">
             <img src="../../../i/test.png">
 
             <div class="hovered-div">
@@ -100,22 +100,22 @@
                     </span>
             </div>
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
     </div>
