@@ -49,32 +49,32 @@
         </p>
     </div>
     <div class="collection-gallery">
-        <div class="collection-img">
-            <a href="../../../i/brand-1.jpg" class="collection-img-item">
+        <div class="item-box">
+            <a href="../../../i/brand-1.jpg" class="collection-img-item item">
                 <img src="../../../i/test.png">
             </a>
-            <a href="../../../i/test.png" class="collection-img-item">
+            <a href="../../../i/test.png" class="collection-img-item item">
                 <img src="../../../i/test.png">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
-            <a href="#" class="collection-img-item">
+            <a href="#" class="collection-img-item item">
                 <img src="">
             </a>
         </div>
@@ -83,11 +83,11 @@
 </div>
 <div class="anchor"></div>
 <div class="about-footer">
-    <div class="brand">
-        <a href="/site/collection" class="brand-item brand-title">
+    <div class="item-box">
+        <a href="/site/collection" class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>
         </a>
-        <a href="#" class="brand-item hovered">
+        <a href="#" class="brand-item item hovered">
             <img src="../../../i/test.png">
 
             <div class="hovered-div">
@@ -98,22 +98,22 @@
                     </span>
             </div>
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
-        <a href="#" class="brand-item">
+        <a href="#" class="brand-item item">
             <img src="">
         </a>
     </div>

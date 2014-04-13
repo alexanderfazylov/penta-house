@@ -34,6 +34,64 @@
     animation-name: fadeIn;
 }
 
+/*---------------*/
+
+.item-box {
+    width: 100%;
+    font-size: 0px;
+}
+
+.item {
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-item, .index-box .news-item, .project-item {
+    width: 25%;
+}
+
+.brand-item, .catalog-item, .about-footer .news-item {
+    width: 20%;
+}
+
+.collection-img-item {
+    width: 33.33%;
+}
+
+.service-item {
+    display: table !important;
+    float: left;
+}
+
+.catalog-item {
+    background: coral;
+    border: 1px solid crimson;
+}
+
+.brand-item {
+    background: navy;
+    border: 1px solid #b9def0;
+}
+
+.project-item {
+    background: coral;
+    border: 1px solid crimson;
+}
+
+.news-item {
+    background: forestgreen;
+    border: 1px solid yellowgreen;
+}
+
+.collection-img-item {
+    background: #FF7171;
+    border: 1px solid #d2322d;
+}
+
+/*-------------------------------*/
+
 * {
     margin: 0;
     padding: 0;
@@ -316,31 +374,6 @@ h1 {
     bottom: 100px;
 }
 
-.service, .news, .project {
-    width: 100%;
-    font-size: 0px;
-}
-
-.service-item {
-    display: table !important;
-    float: left;
-}
-
-.service-item, .project-item, .index-box .news-item {
-    width: 25%;
-}
-
-.about-footer .news-item {
-    width: 20%;
-}
-
-.service-item, .news-item, .project-item {
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}
-
 .project-title, .news-title {
     background: #000000 !important;
     text-align: center;
@@ -360,16 +393,6 @@ h1 {
 
 .pr-count, .nw-count {
     color: #898989;
-}
-
-.project-item {
-    background: coral;
-    border: 1px solid crimson;
-}
-
-.news-item {
-    background: forestgreen;
-    border: 1px solid yellowgreen;
 }
 
 .service-item-wrapper {
@@ -591,19 +614,6 @@ h1 {
 
 /*--- catalog ---*/
 
-.catalog {
-    width: 100%;
-    font-size: 0px;
-}
-
-.catalog-item {
-    width: 20%;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}
-
 .catalog-title {
     background: #000000 !important;
     text-align: center;
@@ -617,11 +627,6 @@ h1 {
     left: 50%;
     margin-left: -70px;
     margin-top: -20px;
-}
-
-.catalog-item {
-    background: coral;
-    border: 1px solid crimson;
 }
 
 /*---- brand-plugin ----*/
@@ -650,30 +655,12 @@ h1 {
     line-height: 1.8em;
 }
 
-.brand {
-    width: 100%;
-    font-size: 0px;
-}
-
-.brand-item {
-    width: 20%;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}
-
 .brand-title {
     background: #000000 !important;
     text-align: center;
     color: #fff;
     font-size: 18px;
     line-height: 200px;
-}
-
-.brand-item {
-    background: navy;
-    border: 1px solid #b9def0;
 }
 
 .brand-link {
@@ -722,23 +709,6 @@ h1 {
     float: right;
     width: 60%;
     height: 100%;
-}
-
-.collection-img {
-    width: 100%;
-    font-size: 0px;
-}
-
-.collection-img-item {
-    width: 33.33%;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-}
-
-.collection-img-item {
-    background: #FF7171;
-    border: 1px solid #d2322d;
 }
 
 /*---- slider -----*/
