@@ -45,7 +45,7 @@ $this->pageTitle = "Penta House - Контакты";
         <?php foreach ($this->contacts as $contact): ?>
             <li>
                 <div class="contact-info-wrapp">
-                    <button type="button" class="map-chenger city-title"
+                    <button type="button" class="map-chenger city-title active"
                             data-latitude="<?php echo $contact->longitude; ?>"
                             data-longitude="<?php echo $contact->latitude; ?>"
                             data-zoom="15">
@@ -62,44 +62,6 @@ $this->pageTitle = "Penta House - Контакты";
 
         <?php endforeach; ?>
     </ul>
-
-    <!--
-    TODO для тебя скрыл просто старую верстку, а не удалил.
-    Если не нужна удали.
-    -->
-    <div class="table contact-info-table" style="display: none">
-        <div class="tr">
-            <div class="td">
-                <p class="city-title">Казань</p>
-
-            </div>
-            <div class="td">
-                <p class="city-title">Казань</p>
-                <dl class="dl-horizontal">
-                    <dt>Адрес</dt>
-                    <dd>ул. Большая Красная, д. 13а, оф. 1-4</dd>
-                    <dt>Телефон</dt>
-                    <dd>+7 (843) 524-71-76</dd>
-                    <dt>Почта</dt>
-                    <dd>info@pentahouse.ru</dd>
-                </dl>
-            </div>
-        </div>
-        <div class="tr">
-            <div class="td">
-                <p class="city-title city-title-link">Москва</p>
-                <dl class="dl-horizontal">
-                    <dt>Адрес</dt>
-                    <dd>ул. Большая Красная, д. 13а, оф. 1-4</dd>
-                    <dt>Телефон</dt>
-                    <dd>+7 (843) 524-71-76</dd>
-                    <dt>Почта</dt>
-                    <dd>info@pentahouse.ru</dd>
-                </dl>
-            </div>
-            <div class="td"></div>
-        </div>
-    </div>
 </div>
 
 

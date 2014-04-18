@@ -63,8 +63,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
     </div>
     <div class="item-box">
         <a href="#" class="news-item item news-title">
-            <span class="nw-title">Октябрь</span>
-            <span class="nw-count">234</span>
+            <span class="nw-title">Новости</span>
         </a>
         <?php foreach ($posts as $post): ?>
             <a href="#" class="news-item item" title="<?php echo $post->id; ?>">

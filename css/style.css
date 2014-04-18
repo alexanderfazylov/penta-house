@@ -224,13 +224,6 @@ h1 {
     outline: none !important;
 }
 
-.logo-p, .logo-h {
-    color: #4ebfa7;
-    font-size: 4em;
-    text-align: center;
-    text-transform: uppercase;
-}
-
 .logo-description {
     color: #898989;
     text-align: center;
@@ -321,12 +314,11 @@ h1 {
 
 .manufacturer-logo {
     position: absolute;
-    width: 140px;
-    height: 40px;
-    top: 50%;
+    width: 180px;
+    height: 200px;
+    top: 0;
     left: 50%;
-    margin-left: -70px;
-    margin-top: -20px;
+    margin-left: -90px;
 }
 
 .main-img {
@@ -385,7 +377,8 @@ h1 {
 
 .service-item h3 {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: normal;
     color: #000000;
 }
 
@@ -400,7 +393,7 @@ h1 {
     text-align: center;
     font-size: 12px;
     color: #a1a1a1;
-    font-style: italic;
+    font-family: Tahoma, sans-serif;
 }
 
 .dialog-position {
@@ -543,16 +536,21 @@ h1 {
 
 /*--- contact ---*/
 
+.contact-info {
+    float: left;
+    width: 40%;
+    height: 100%;
+    padding: 50px 40px 100px 100px;
+}
+
 .contact-map {
+    float: right;
+    width: 60%;
     height: 800px;
 }
 
-.contact-info {
-    padding: 50px 100px 150px;
-}
-
 .contact-info h1 {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .contact-info dt {
@@ -573,6 +571,20 @@ h1 {
     border-bottom: 1px dashed #000;
     outline: none;
     cursor: pointer;
+    line-height: 0.9em;
+    padding-left: 20px;
+    margin-left: -15px;
+}
+
+.city-title.active{
+    border-bottom: none;
+}
+
+.city-title.active:before {
+    content: '\2022';
+    display: inline-block;
+    color: #4ebfa7;
+    margin-left: -20px;
 }
 
 .dl-horizontal dt {
@@ -592,14 +604,8 @@ h1 {
     padding: 0 40px 20px 0;
     list-style: none;
     line-height: 20px;
-    font-size: 0px;
-    display: inline-block;
-    width: 40%;
+    display: block;
     vertical-align: top;
-}
-
-.contact-info-wrapp{
-    font-size: 12px;
 }
 
 /*--- catalog ---*/
@@ -942,7 +948,7 @@ h1 {
     height: 200px;
     color: #fff;
     text-align: center;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition: opacity 1s;
     -moz-transition: opacity 1s;
