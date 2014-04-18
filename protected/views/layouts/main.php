@@ -27,8 +27,7 @@
             <div class="aside-menu">
                 <div class="logo">
                     <a href="/site/index">
-                        <div class="logo-p">PENTA</div>
-                        <div class="logo-h">HOUSE</div>
+                        <img src="../../../i/logo.png">
                     </a>
 
                     <div class="logo-description">Элитная сантехника, плитка.<br> Продажа. Монтаж. Сервис.</div>

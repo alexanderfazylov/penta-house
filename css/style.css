@@ -153,7 +153,6 @@ h1 {
 }
 
 .aside-content {
-    padding-bottom: 120px;
     position: relative;
     padding: 20px 30px 0px;
     background: #222222;
@@ -162,22 +161,26 @@ h1 {
 
 .aside-footer {
     position: absolute;
+    width: 156px;
     padding: 0px 30px 20px;
     bottom: 15px;
     width: 100%;
-    margin: 120px auto 0;
+    /*margin: 120px auto 0;*/
     z-index: 5;
 }
 
 .aside-footer-wrapper {
     position: relative;
-    height: 120px;
+    height: 90px;
+}
+
+.city {
+    text-align: center;
 }
 
 .city-name {
     font-size: 1.5em;
     color: #898989;
-    margin-right: 20px;
     font-family: "HelveticaNeueCyr-Thin";
 }
 
@@ -186,6 +189,7 @@ h1 {
     border-bottom: 1px dashed;
     cursor: pointer;
     white-space: nowrap;
+    font-family: Tahoma;
 }
 
 .phone {
@@ -201,18 +205,18 @@ h1 {
     text-align: center;
     text-decoration: underline;
     cursor: pointer;
+    font-family: Tahoma;
 }
 
 .aside-menu {
-    position: absolute;
-    top: 100%;
-    margin: 0 auto;
+    width: 156px;
+    margin: 100px auto 0;
     z-index: 10;
     background: #222222;
 }
 
 .logo {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #464646;
 }
 
@@ -227,26 +231,19 @@ h1 {
     text-transform: uppercase;
 }
 
-.logo-p {
-    font-family: "HelveticaNeueCyr-Medium";
-}
-
-.logo-h {
-    font-family: "HelveticaNeueCyr-Thin";
-}
-
 .logo-description {
     color: #898989;
     text-align: center;
+    font: 11px Tahoma, sans-serif;
 }
 
 .menu {
     list-style: none;
-    padding: 60px 0 10px;
+    padding: 20px 0 10px;
 }
 
 .menu li {
-    line-height: 40px;
+    line-height: 24px;
     text-align: center;
 }
 
@@ -254,6 +251,7 @@ h1 {
     color: #898989;
     text-decoration: none;
     text-transform: uppercase;
+    font: 11px Tahoma, sans-serif;
 }
 
 .menu li.active a {
@@ -274,9 +272,9 @@ h1 {
 
 .social {
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #464646;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
 .social .vk, .social .fc, .social .tw {
