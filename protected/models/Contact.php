@@ -62,7 +62,9 @@ class Contact extends CActiveRecord
      */
     public function relations()
     {
-        return array();
+        return array(
+
+        );
     }
 
     /**

@@ -213,9 +213,15 @@ class Project extends CActiveRecord
 
         $criteria->with = array(
             'upload1',
-//            'upload2',
         );
 
+        return $criteria;
+    }
+
+    public static function indexCountCriteria()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', 0);
         return $criteria;
     }
 

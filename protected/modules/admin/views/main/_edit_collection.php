@@ -61,8 +61,8 @@
                 <label>Обложка на странице каталога</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="400"
+                     data-height="200"
                      data-action="/server/collectionUplod1"
                      data-multiple="false">
                     {{renderUploder:item.upload1}}
@@ -83,8 +83,8 @@
                 <label for="model-description">Фото</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="2000"
+                     data-height="600"
                      data-action="/server/CollectionUpload"
                      data-multiple="true">
                     {{renderUploderMiltiple:item.collection_upload}}

@@ -544,9 +544,14 @@ h1 {
 }
 
 .contact-map {
-    float: right;
-    width: 60%;
-    height: 800px;
+    /*float: right;*/
+    /*width: 60%;*/
+    /*height: 800px;*/
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 49.8%;
 }
 
 .contact-info h1 {

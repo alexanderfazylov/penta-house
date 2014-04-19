@@ -45,18 +45,17 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
     <div class="item-box">
         <a href="#" class="project-item item project-title">
             <span class="pr-title">Проекты</span>
-            <span class="pr-count">234</span>
+            <span class="pr-count"><?php echo $projects_count; ?></span>
         </a>
         <?php foreach ($projects as $project): ?>
-            <a href="#" class="project-item item hovered" title="<?php echo $project->id; ?>">
-                <img class="item-bg" src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
+            <a href="#" class="project-item item hovered">
+                <img class="item-bg"
+                     src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
 
                 <div class="hovered-div">
                 <span>
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd
-                    </span>
+                    <?php echo $project->name; ?>
+                </span>
                 </div>
             </a>
         <?php endforeach; ?>
@@ -66,8 +65,16 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             <span class="nw-title">Новости</span>
         </a>
         <?php foreach ($posts as $post): ?>
-            <a href="#" class="news-item item" title="<?php echo $post->id; ?>">
-                <img class="item-bg" src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+            <a href="#" class="news-item item">
+                <img class="item-bg"
+                     src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+
+                <div class="hovered-div">
+                <span>
+                    <?php echo $post->name; ?>
+                </span>
+                </div>
+
             </a>
         <?php endforeach; ?>
     </div>
@@ -79,6 +86,8 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                  src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
             <img class="manufacturer-logo"
                  src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
+
+            <div class="hovered-div"><span></span></div>
         </a>
     <?php endforeach; ?>
 </div>

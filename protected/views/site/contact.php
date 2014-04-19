@@ -17,18 +17,18 @@ $this->pageTitle = "Penta House - Контакты";
     ymaps.ready(function () {
         myMap = new ymaps.Map("map", {
             center: [<?php echo $active_contact->longitude?>, <?php echo $active_contact->latitude?>],
-            zoom: <?php echo $active_contact->zoom;?>
-            //behaviors: ['default', 'scrollZoom']
+            zoom: <?php echo $active_contact->zoom;?>,
+            behaviors: ['default', 'scrollZoom']
         });
-        myMap.controls.add('zoomControl', { left: 5, bottom: 5 });
+        myMap.controls.add('zoomControl', { right: 5, top: 5 });
 
         <?php foreach($this->contacts as $contact):?>
 
         var myPlacemark<?php echo $contact->id;?> = new ymaps.Placemark([<?php echo $contact->longitude?>, <?php echo $contact->latitude?>], {
-            balloonContentHeader: "Пента-Хаусaaaaaaaaaaaaaaaa",
-            balloonContentBody: "Телефон 12312312",
-            balloonContentFooter: "08:00-10:00",
-            hintContent: "Хинт метки"
+            //balloonContentHeader: "Пента-Хаусaaaaaaaaaaaaaaaa",
+            //balloonContentBody: "Телефон 12312312",
+            //balloonContentFooter: "08:00-10:00",
+            //hintContent: ""
         });
 
         myMap.geoObjects.add(myPlacemark<?php echo $contact->id;?>);
