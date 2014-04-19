@@ -50,6 +50,9 @@
 
 .item img.item-bg, .manufacturer img.item-bg {
     height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
 }
 
 .manufacturer {
