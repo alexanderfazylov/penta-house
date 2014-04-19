@@ -192,10 +192,10 @@ class SiteController extends Controller
         $this->render('dealership');
     }
 
-    public function actionProjects()
+    public function actionProject($id)
     {
 
-        $this->render('projects');
+        $this->render('project');
     }
 
 

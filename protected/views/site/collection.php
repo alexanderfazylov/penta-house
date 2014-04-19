@@ -16,6 +16,7 @@
     </div>
     <div class="anchor"></div>
 </div>
+<div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Каталог</a> / Коллекции</div>
 <div class="collection">
     <h1> Коллекция Villeroy & Boch</h1>
 
@@ -82,7 +83,7 @@
     <div class="anchor"></div>
 </div>
 <div class="anchor"></div>
-<div class="about-footer">
+<div class="collection-footer">
     <div class="item-box">
         <a href="/site/collection" class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>

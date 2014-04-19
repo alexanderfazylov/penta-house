@@ -67,8 +67,12 @@
     width: 25%;
 }
 
-.brand-item, .catalog-item, .about-footer .news-item {
+.brand-item, .catalog-item {
     width: 20%;
+}
+
+.about-footer .news-item {
+    width: 50%;
 }
 
 .collection-img-item {
@@ -99,8 +103,6 @@
     margin-left: -90px;
     z-index: 20;
 }
-
-
 
 /*-------------------------------*/
 
@@ -162,6 +164,17 @@ h1 {
     margin-left: 16.6%;
     min-height: 100%;
     height: 100%;
+}
+
+.breadcrumbs {
+    color: #a1a1a1;
+    font-style: italic;
+    font-family: Tahoma;
+    padding: 50px 0px 15px 100px
+}
+
+.breadcrumbs a{
+    color: #a1a1a1;
 }
 
 /*-- sidebar --*/
@@ -511,16 +524,22 @@ h1 {
 
 .about-company {
     float: left;
-    width: 65%;
+    width: 35%;
     height: 100%;
-    padding: 50px 40px 100px 100px;
+    padding: 0px 40px 100px 100px;
 }
 
 .about-contacts {
-    float: right;
-    width: 35%;
+    float: left;
+    width: 25%;
     height: 100%;
-    padding-top: 50px;
+    padding-right: 15px;
+}
+
+.about-footer {
+    float: right;
+    width: 40%;
+    height: 100%;
 }
 
 .about-company-descr {
@@ -529,25 +548,28 @@ h1 {
 
 .about-company p {
     margin: 15px 0;
-    display: inline-block;
-    width: 50%;
-    padding-right: 40px;
     font-size: 12px;
     vertical-align: top;
     line-height: 1.8em;
 }
 
-.about-contacts h1, .about-company h1 {
+.about-contacts h1 {
+    margin-bottom: 10px;
+}
+
+.about-company h1 {
     margin-bottom: 25px;
 }
 
 .contacts {
     font-size: 2em;
     line-height: 1.4em;
+    list-style: none;
 }
 
 .contacts a {
     color: #000;
+    display: block;
 }
 
 /*--- contact ---*/
@@ -556,7 +578,7 @@ h1 {
     float: left;
     width: 40%;
     height: 100%;
-    padding: 50px 40px 100px 100px;
+    padding: 0px 40px 100px 100px;
 }
 
 .contact-map {
@@ -646,7 +668,7 @@ h1 {
     float: left;
     width: 65%;
     height: 100%;
-    padding: 50px 40px 100px 100px;
+    padding: 0px 40px 100px 100px;
 }
 
 .brand-logo {
@@ -685,7 +707,7 @@ h1 {
 /*---- collection ----*/
 
 .collection {
-    padding: 50px 0px 100px;
+    padding: 0px 0px 100px;
 }
 
 .collection h1 {
@@ -977,9 +999,11 @@ h1 {
     height: 200px;
     display: table-cell;
 }
+
 .has-error input {
     background: red;
 }
-.hovered-div-text{
+
+.hovered-div-text {
     display: inline-block;
 }

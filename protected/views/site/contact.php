@@ -3,7 +3,7 @@
 
 $this->pageTitle = "Penta House - Контакты";
 ?>
-
+<div class="breadcrumbs"><a href="/site/index">Главная</a> / Контакты</div>
 <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru_RU"
         type="text/javascript"></script>
 
