@@ -77,6 +77,28 @@
     float: left;
 }
 
+.catalog-logo {
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+    z-index: 20;
+}
+
+.manufacturer-logo {
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+    z-index: 20;
+}
+
+
+
 /*-------------------------------*/
 
 * {
@@ -310,15 +332,6 @@ h1 {
     height: 100%;
     width: 20%;
     float: right;
-}
-
-.manufacturer-logo {
-    position: absolute;
-    width: 180px;
-    height: 200px;
-    top: 0;
-    left: 50%;
-    margin-left: -90px;
 }
 
 .main-img {
@@ -618,16 +631,6 @@ h1 {
 .catalog-title {
     background: #000000 !important;
     text-align: center;
-}
-
-.catalog-logo {
-    position: absolute;
-    width: 140px;
-    height: 40px;
-    top: 50%;
-    left: 50%;
-    margin-left: -70px;
-    margin-top: -20px;
 }
 
 /*---- brand-plugin ----*/
@@ -946,6 +949,7 @@ h1 {
 
 .hovered-div {
     position: absolute;
+    z-index: 10;
     top: 0;
     left: 0;
     width: 100%;
@@ -961,7 +965,7 @@ h1 {
     -o-transition: opacity 1s;
 }
 
-.hovered-div:hover {
+.hovered:hover .hovered-div {
     opacity: 1;
 }
 
@@ -969,4 +973,8 @@ h1 {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
+}
+
+.hovered-div-text{
+    display: inline-block;
 }

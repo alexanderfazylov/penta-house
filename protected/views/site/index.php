@@ -53,9 +53,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                      src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
 
                 <div class="hovered-div">
-                <span>
-                    <?php echo $project->name; ?>
-                </span>
+                    <div class="hovered-div-text"><span><?php echo $project->name; ?></span></div>
                 </div>
             </a>
         <?php endforeach; ?>
@@ -70,9 +68,9 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                      src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
 
                 <div class="hovered-div">
-                <span>
-                    <?php echo $post->name; ?>
-                </span>
+                    <div class="hovered-div-text">
+                        <span><?php echo $post->name; ?></span>
+                    </div>
                 </div>
 
             </a>
@@ -81,13 +79,13 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 </div>
 <div class="index-sidebar">
     <?php foreach ($brands as $brand): ?>
-        <a href="#" class="manufacturer" title="<?php echo $brand->name; ?>">
+        <a href="#" class="manufacturer hovered" title="<?php echo $brand->name; ?>">
             <img class="item-bg"
                  src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
             <img class="manufacturer-logo"
                  src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
 
-            <div class="hovered-div"><span></span></div>
+            <div class="hovered-div"></div>
         </a>
     <?php endforeach; ?>
 </div>
