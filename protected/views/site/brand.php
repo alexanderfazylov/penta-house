@@ -93,11 +93,9 @@
             <img class="item-bg" src="../../../i/test.png">
 
             <div class="hovered-div">
-                <span>
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd
-                    </span>
+                <div class="hovered-div-text">
+                    <span>aasdasdasd</span>
+                </div>
             </div>
         </a>
         <a href="#" class="brand-item item">
