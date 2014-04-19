@@ -6,7 +6,7 @@
                      src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
             </a>
             <?php foreach ($brand->collection as $collection): ?>
-                <a href="#" class="catalog-item item hovered">
+                <a href="/site/collection?id=<?php echo $collection->id; ?>" class="catalog-item item hovered">
                     <img class="item-bg"
                          src="/uploads/<?php echo isset($collection->upload1) ? $collection->upload1->file_name : ''; ?>">
 

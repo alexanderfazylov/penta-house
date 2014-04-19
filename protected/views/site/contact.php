@@ -43,9 +43,11 @@ $this->pageTitle = "Penta House - Контакты";
 
     <ul class="contact-info-ul">
         <?php foreach ($this->contacts as $contact): ?>
+
             <li>
                 <div class="contact-info-wrapp">
-                    <button type="button" class="map-chenger city-title active"
+                    <button type="button"
+                            class="map-chenger city-title <?php echo ($contact->id == $this->active_contact_id) ? 'active' : ''; ?>"
                             data-latitude="<?php echo $contact->longitude; ?>"
                             data-longitude="<?php echo $contact->latitude; ?>"
                             data-zoom="15">
@@ -59,7 +61,6 @@ $this->pageTitle = "Penta House - Контакты";
                     </dl>
                 </div>
             </li>
-
         <?php endforeach; ?>
     </ul>
 </div>

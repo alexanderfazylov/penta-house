@@ -16,6 +16,8 @@
  */
 class Collection extends CActiveRecord
 {
+    const VISIBLE  = 0;
+    const HIDDEN  = 1;
     /**
      * @return string the associated database table name
      */

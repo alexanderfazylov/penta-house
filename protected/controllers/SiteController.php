@@ -128,10 +128,20 @@ class SiteController extends Controller
     }
 
 
-    public function actionCollection()
+    public function actionCollection($id)
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.visible', Collection::VISIBLE);
+
+        $collection = Collection::model()->model()->findAllByPk($id, $criteria);
+
+        if (empty($collection)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
 
         $this->render('collection');
     }
