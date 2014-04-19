@@ -593,12 +593,12 @@ h1 {
     outline: none;
     cursor: pointer;
     line-height: 0.9em;
-    padding-left: 20px;
-    margin-left: -15px;
 }
 
 .city-title.active {
     border-bottom: none;
+    padding-left: 20px;
+    margin-left: -15px;
 }
 
 .city-title.active:before {
