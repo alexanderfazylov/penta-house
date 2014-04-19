@@ -10,20 +10,26 @@ $this->widget('zii.widgets.CMenu', array(
             'url' => ('/site/about'),
             'active' => (($controller == 'site' && $action == 'about'))
         ),
-        array(
-            'label' => 'Дилерство',
-            'url' => ('/site/dealership'),
-            'active' => (($controller == 'site' && $action == 'dealership'))
-        ),
+//        array(
+//            'label' => 'Дилерство',
+//            'url' => ('/site/dealership'),
+//            'active' => (($controller == 'site' && $action == 'dealership'))
+//        ),
         array(
             'label' => 'Каталог',
             'url' => ('/site/catalog'),
-            'active' => (($controller == 'site' && $action == 'catalog'))
+            'active' => (
+                ($controller == 'site' && $action == 'catalog') ||
+                ($controller == 'site' && $action == 'brand')
+                )
         ),
         array(
             'label' => 'Проекты',
             'url' => ('/site/projects'),
-            'active' => (($controller == 'site' && $action == 'projects'))
+            'active' => (
+                    ($controller == 'site' && $action == 'projects') ||
+                    ($controller == 'site' && $action == 'project')
+                )
         ),
         array(
             'label' => 'Контакты',

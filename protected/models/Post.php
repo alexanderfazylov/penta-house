@@ -17,6 +17,8 @@ class Post extends CActiveRecord
 {
     const VIEW = 1;
     const BASE = 2;
+    const VISIBLE  = 0;
+    const HIDDEN  = 1;
 
     public $date_status = self::VIEW;
 
@@ -40,8 +42,6 @@ class Post extends CActiveRecord
             array('order, visible, upload_1_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name', 'length', 'max' => 255),
             array('description, start_date', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
             array('id, name, description, order, visible, upload_1_id, meta_data_id, start_date', 'safe', 'on' => 'search'),
         );
     }
@@ -186,7 +186,7 @@ class Post extends CActiveRecord
         if (!empty($this->start_date) && ($this->date_status == self::VIEW)) {
             $this->start_date = DateTime::createFromFormat('d.m.Y', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         } else {
-            $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+           // $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
 
         }
         $this->date_status = self::BASE;

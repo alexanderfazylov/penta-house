@@ -16,6 +16,8 @@ class Project extends CActiveRecord
 {
     const VIEW = 1;
     const BASE = 2;
+    const VISIBLE  = 0;
+    const HIDDEN  = 1;
 
     public $date_status = self::VIEW;
 
@@ -161,7 +163,7 @@ class Project extends CActiveRecord
         if (!empty($this->end_date) && ($this->date_status == self::VIEW)) {
             $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         } else {
-            $this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            //$this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         }
 
         $this->date_status = self::BASE;
@@ -208,8 +210,10 @@ class Project extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
-        $criteria->limit = 7;
         $criteria->compare('t.visible', 0);
+
+        $criteria->limit = 7;
+
 
         $criteria->with = array(
             'upload1',
