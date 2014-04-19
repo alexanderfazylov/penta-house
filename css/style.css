@@ -41,7 +41,7 @@
     font-size: 0px;
 }
 
-.item {
+.item-box .item {
     height: 200px;
     display: inline-block;
     overflow: hidden;
