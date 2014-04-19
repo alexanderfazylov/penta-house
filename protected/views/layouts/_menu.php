@@ -10,11 +10,11 @@ $this->widget('zii.widgets.CMenu', array(
             'url' => ('/site/about'),
             'active' => (($controller == 'site' && $action == 'about'))
         ),
-        array(
-            'label' => 'Дилерство',
-            'url' => ('/site/dealership'),
-            'active' => (($controller == 'site' && $action == 'dealership'))
-        ),
+//        array(
+//            'label' => 'Дилерство',
+//            'url' => ('/site/dealership'),
+//            'active' => (($controller == 'site' && $action == 'dealership'))
+//        ),
         array(
             'label' => 'Каталог',
             'url' => ('/site/catalog'),

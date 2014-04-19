@@ -42,7 +42,6 @@ $(function () {
             },
             function (data) {
                 $('.has-error').removeClass('has-error');
-
                 $.each(data.model, function (model, attributes) {
                     $.each(attributes, function (atr, msg) {
                         var name = model + "[" + atr + "]";

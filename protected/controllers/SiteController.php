@@ -114,11 +114,17 @@ class SiteController extends Controller
         );
     }
 
-    public function actionBrand()
+    public function actionBrand($id)
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
-        $this->render('brand');
+        $brand = Brand::model()->findByPk($id);
+
+
+        $this->render('brand', array(
+                'brand' => $brand
+            )
+        );
     }
 
 
@@ -194,8 +200,18 @@ class SiteController extends Controller
 
     public function actionProjects()
     {
+        $criteria = new CDbCriteria;
 
-        $this->render('projects');
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.visible', 0);
+
+        $projects = Project::model()->findAll($criteria);
+
+
+
+        $this->render('projects', array(
+            '$projects'=>$projects
+        ));
     }
 
 

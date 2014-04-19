@@ -16,6 +16,8 @@ class Project extends CActiveRecord
 {
     const VIEW = 1;
     const BASE = 2;
+    const VISIBLE  = 0;
+    const HIDDEN  = 1;
 
     public $date_status = self::VIEW;
 
@@ -208,8 +210,10 @@ class Project extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
-        $criteria->limit = 7;
         $criteria->compare('t.visible', 0);
+
+        $criteria->limit = 7;
+
 
         $criteria->with = array(
             'upload1',
