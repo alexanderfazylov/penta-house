@@ -28,11 +28,9 @@ class Callback extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('name, phone, created', 'required'),
+            array('phone, created', 'required'),
             array('name, phone', 'length', 'max' => 255),
             array('text', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
             array('id, text, name, phone, created', 'safe', 'on' => 'search'),
         );
     }
@@ -54,9 +52,9 @@ class Callback extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'text' => 'Text',
-            'name' => 'Name',
-            'phone' => 'Phone',
+            'text' => 'Тема звонка',
+            'name' => 'Как Вас зовут',
+            'phone' => 'Контактный телефон',
             'created' => 'Created',
         );
     }

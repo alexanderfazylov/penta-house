@@ -581,7 +581,7 @@ h1 {
     margin-left: -15px;
 }
 
-.city-title.active{
+.city-title.active {
     border-bottom: none;
 }
 
@@ -969,4 +969,8 @@ h1 {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
+}
+
+.has-error input {
+    background: red;
 }
