@@ -3,7 +3,7 @@
 
 $this->pageTitle = "Penta House - О компании";
 ?>
-
+<div class="breadcrumbs"><a href="/site/index">Главная</a> / О компании</div>
 <div class="about-company">
     <h1>О компании</h1>
 
@@ -28,18 +28,16 @@ $this->pageTitle = "Penta House - О компании";
 <div class="about-contacts">
     <h1>Контакты</h1>
 
-    <div class="contacts">
-        ул.&nbsp;Большая&nbsp;Красная, д.&nbsp;13а, оф.&nbsp;1-4</br>
-        <nobr>г. Казань, 420111</nobr>
-        </br>
-        <nobr>+7&nbsp;(843)&nbsp;524-71-76</nobr>
-        </br>
-        <nobr><a href="mailto:info@penta-house.ru">info@penta-house.ru</a></nobr>
-        </br>
-        <nobr><a href="http://www.penta-house.ru">www.penta-house.ru</a></nobr>
-    </div>
+    <ul class="contacts">
+        <li>
+            <div>ул.&nbsp;Большая&nbsp;Красная, д.&nbsp;13а, оф.&nbsp;1-4</div>
+            <div>г. Казань, 420111</div>
+            <div>+7&nbsp;(843)&nbsp;524-71-76</div>
+            <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
+            <a href="http://www.penta-house.ru">www.penta-house.ru</a>
+        </li>
+    </ul>
 </div>
-<div class="anchor"></div>
 <div class="about-footer">
     <div class="news item-box">
         <a href="#" class="news-item item news-title">
@@ -47,7 +45,8 @@ $this->pageTitle = "Penta House - О компании";
         </a>
         <?php foreach ($posts as $post): ?>
             <a href="#" class="news-item item" title="<?php echo $post->id; ?>">
-                <img class="item-bg" src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+                <img class="item-bg"
+                     src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
             </a>
         <?php endforeach; ?>
     </div>

@@ -201,16 +201,36 @@ class SiteController extends Controller
     public function actionProjects()
     {
         $criteria = new CDbCriteria;
-
-        $criteria->order = 't.order ASC';
-        $criteria->compare('t.visible', 0);
+        $criteria->order = 't.order ASC, t.end_date ASC';
+        $criteria->compare('t.visible', Project::VISIBLE);
 
         $projects = Project::model()->findAll($criteria);
 
+        $years = array();
+        foreach ($projects as $project) {
+            $years[DateTime::createFromFormat('d.m.Y', $project->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
+        }
+        ksort($years);
 
 
         $this->render('projects', array(
-            '$projects'=>$projects
+            'projects' => $projects,
+            'years' => $years,
+        ));
+    }
+
+    public function actionProject($id)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', Project::VISIBLE);
+        $project = Project::model()->findAllByPk($id, $criteria);
+
+        if (empty($project)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $this->render('project', array(
+            'project' => $project
         ));
     }
 
@@ -224,6 +244,43 @@ class SiteController extends Controller
 
         echo CJSON::encode(array(
             'status' => 'success',
+        ));
+    }
+
+
+    public function actionPosts()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC, t.start_date ASC';
+        $criteria->compare('t.visible', Post::VISIBLE);
+
+        $posts = Post::model()->findAll($criteria);
+
+        $years = array();
+        foreach ($posts as $post) {
+            $years[DateTime::createFromFormat('d.m.Y', $post->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
+        }
+        ksort($years);
+
+
+        $this->render('posts', array(
+            'posts' => $posts,
+            'years' => $years,
+        ));
+    }
+
+    public function actionPost($id)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', Project::VISIBLE);
+        $project = Project::model()->findAllByPk($id, $criteria);
+
+        if (empty($project)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $this->render('project', array(
+            'project' => $project
         ));
     }
 

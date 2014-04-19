@@ -16,6 +16,7 @@
     </div>
     <div class="anchor"></div>
 </div>
+<div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Каталог</a> / Производители</div>
 <div class="brand-description">
     <h1>Villeroy & Boch</h1>
 
@@ -84,7 +85,7 @@
 </div>
 
 <div class="anchor"></div>
-<div class="about-footer">
+<div class="collection-footer">
     <div class="item-box">
         <a href="/site/collection" class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>

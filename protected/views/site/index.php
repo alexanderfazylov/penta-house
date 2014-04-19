@@ -63,7 +63,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
             <span class="nw-title">Новости</span>
         </a>
         <?php foreach ($posts as $post): ?>
-            <a href="/site/post?id=<?php echo $post->id ?>" class="news-item item">
+            <a href="/site/post?id=<?php echo $post->id ?>" class="news-item item hovered">
                 <img class="item-bg"
                      src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
 
