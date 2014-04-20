@@ -56,16 +56,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+
         $posts = Post::model()->findAll(Post::indexCriteria());
         $brands = Brand::model()->findAll(Brand::indexCriteria());
         $projects = Project::model()->findAll(Project::indexCriteria());
         $projects_count = Project::model()->count(Project::indexCountCriteria());
+        $collections = Collection::model()->findAll(Collection::indexCriteria());
+
 
         $this->render('index', array(
                 'posts' => $posts,
                 'brands' => $brands,
                 'projects' => $projects,
                 'projects_count' => $projects_count,
+                'collections' => $collections,
 
             )
         );

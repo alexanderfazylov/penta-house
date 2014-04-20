@@ -3,9 +3,27 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 ?>
 
 <div class="index-box">
+
     <div class="main-img">
-        <div class="title">Эволюция в ванной комнате</div>
-        <img src="../../../i/logo.jpg">
+        <div class="brand-plugin">
+            <div class="slider">
+                <div class="sliderContent">
+                    <?php foreach ($collections as $collection): ?>
+                        <?php if(isset($collection->upload2)): ?>
+                            <div class="item">
+                                <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
+                                <div class="title">
+                                    <?php echo $collection->name; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="sliderArrows sliderArrowsBottom"></div>
+            </div>
+
+            <div class="anchor"></div>
+        </div>
     </div>
     <div class="service item-box">
         <div class="service-item item">

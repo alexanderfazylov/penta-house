@@ -173,7 +173,7 @@ h1 {
     padding: 50px 0px 15px 100px
 }
 
-.breadcrumbs a{
+.breadcrumbs a {
     color: #a1a1a1;
 }
 
@@ -357,6 +357,26 @@ h1 {
     overflow: hidden;
 }
 
+.main-img .sliderArrows {
+    display: none;
+}
+
+.main-img .brand-plugin {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.main-img .item {
+    height: 100%;
+
+}
+
+.main-img .ms-img {
+    position: absolute !important;
+    height: 100% !important;
+}
+
 .title {
     font-size: 4em;
     position: absolute;
@@ -367,8 +387,12 @@ h1 {
 }
 
 .main-img .title {
-    width: 480px;
-    bottom: 50px;
+    width: 40% !important;
+    bottom: 50px !important;
+}
+
+.main-img .sliderContent {
+    height: 600px!important;
 }
 
 .brand-plugin .title {

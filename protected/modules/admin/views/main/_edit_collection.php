@@ -35,13 +35,7 @@
                     Скрыть колекцию
                 </label>
             </div>
-            <div class="form-group">
-                <label for="model-index_slider">Добавить в слайдер на главной</label>
-                <select id="model-index_slider" name="Collection[index_slider]" data-value="{{>item.index_slider}}">
-                    <option value="0">Нет</option>
-                    <option value="1">Да</option>
-                </select>
-            </div>
+
             <hr/>
 
             <div class="form-group">
@@ -76,6 +70,26 @@
                 </div>
 
             </div>
+            <hr/>
+            <div class="form-group">
+                <label for="model-index_slider">Добавить в слайдер на главной</label>
+                <select id="model-index_slider" name="Collection[index_slider]" data-value="{{>item.index_slider}}">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Обложка на главной странице</label>
+
+                <div class="construct_upload"
+                     data-width="1200"
+                     data-height="600"
+                     data-action="/server/collectionUplod2"
+                     data-multiple="false">
+                    {{renderUploder:item.upload2}}
+                </div>
+            </div>
+            <hr>
             <div class="form-group">
                 <label for="model-slogan">Слоган</label>
                 <input type="text" class="form-control" id="model-slogan" name="Collection[slogan]"
@@ -88,7 +102,9 @@
             <hr/>
             <div class="form-group">
                 <label for="model-description">Фото</label>
+
                 <p class="default-hint">*Первое фото будет отображаться в слайдере на главной, если стоит флаг.</p>
+
                 <div class="construct_upload"
                      data-width="2000"
                      data-height="600"

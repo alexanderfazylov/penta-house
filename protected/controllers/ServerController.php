@@ -204,6 +204,17 @@ class ServerController extends Controller
         echo CJSON::encode($result);
     }
 
+    public function actionCollectionUplod2()
+    {
+        $result = $this->upload('Collection', 'upload_2_id');
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(1200, 600)
+            ->save($this->base_path . $result['file_name']);
+
+        echo CJSON::encode($result);
+    }
+
     public function actionCollectionUpload()
     {
         $result = $this->upload('CollectionUpload', 'upload_id');
