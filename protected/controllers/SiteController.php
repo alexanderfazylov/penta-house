@@ -79,9 +79,13 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $posts = Post::model()->findAll(Post::indexCriteria());
+        $about = About::model()->findByPk(1);
+        $contacts = Contact::mainFilter(false);
 
         $this->render('about', array(
                 'posts' => $posts,
+                'about' => $about,
+                'contacts' => $contacts,
             )
         );
     }

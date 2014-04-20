@@ -17,8 +17,8 @@ class Post extends CActiveRecord
 {
     const VIEW = 1;
     const BASE = 2;
-    const VISIBLE  = 0;
-    const HIDDEN  = 1;
+    const VISIBLE = 0;
+    const HIDDEN = 1;
 
     public $date_status = self::VIEW;
 
@@ -186,7 +186,7 @@ class Post extends CActiveRecord
         if (!empty($this->start_date) && ($this->date_status == self::VIEW)) {
             $this->start_date = DateTime::createFromFormat('d.m.Y', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         } else {
-           // $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            // $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
 
         }
         $this->date_status = self::BASE;
@@ -211,8 +211,8 @@ class Post extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
-        $criteria->compare('t.visible', 0);
-        $criteria->limit = 7;
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->limit = 9;
 
 
         $criteria->with = array(
