@@ -80,7 +80,7 @@
             <hr/>
             <div class="form-group">
                 <label for="brand-description">Текст</label>
-                <textarea class="form-control h500" id="brand-description" name="Brand[description]"
+                <textarea class="form-control h500 redactor" id="brand-description" name="Brand[description]"
                     >{{>item.description}}</textarea>
             </div>
             {{if item.collection }}

@@ -23,8 +23,7 @@ class SiteController extends Controller
 
 
         $this->main = Maine::model()->findByPk(1);
-
-        $this->contacts = Contact::model()->findAllByAttributes(array('visible' => Contact::VISIBLE));
+        $this->contacts = Contact::mainFilter();
 
         Helper::selectCity($this->contacts);
 
@@ -98,7 +97,9 @@ class SiteController extends Controller
 
     public function actionContact()
     {
-        $this->render('contact');
+        $this->pageTitle = "Penta House - Контакты";
+        $contacts = Contact::mainFilter(false);
+        $this->render('contact', array('contacts' => $contacts));
     }
 
     public function actionCatalog()
@@ -135,7 +136,7 @@ class SiteController extends Controller
 
         $criteria = new CDbCriteria;
         $criteria->order = 't.order ASC';
-        $criteria->compare('t.visible', Collection::VISIBLE);
+        $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
 
         $collection = Collection::model()->model()->findAllByPk($id, $criteria);
 

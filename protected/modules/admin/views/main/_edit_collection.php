@@ -35,6 +35,13 @@
                     Скрыть колекцию
                 </label>
             </div>
+            <div class="form-group">
+                <label for="model-index_slider">Добавить в слайдер на главной</label>
+                <select id="model-index_slider" name="Collection[index_slider]" data-value="{{>item.index_slider}}">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </select>
+            </div>
             <hr/>
 
             <div class="form-group">
@@ -76,12 +83,12 @@
             </div>
             <div class="form-group">
                 <label for="model-description">Текст</label>
-                <textarea class="form-control h500" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
+                <textarea class="form-control h500 redactor" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
             </div>
             <hr/>
             <div class="form-group">
                 <label for="model-description">Фото</label>
-
+                <p class="default-hint">*Первое фото будет отображаться в слайдере на главной, если стоит флаг.</p>
                 <div class="construct_upload"
                      data-width="2000"
                      data-height="600"

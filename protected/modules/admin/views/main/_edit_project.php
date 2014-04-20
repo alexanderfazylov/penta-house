@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
                 <label for="model-description">Текст</label>
-                <textarea class="form-control h500" id="model-description"
+                <textarea class="form-control h500 redactor" id="model-description"
                           name="Project[description]">{{>item.description}}</textarea>
             </div>
             <hr/>

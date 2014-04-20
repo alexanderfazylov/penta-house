@@ -16,8 +16,12 @@
  */
 class Collection extends CActiveRecord
 {
-    const VISIBLE  = 0;
-    const HIDDEN  = 1;
+    const VISIBLE = 0;
+    const HIDDEN = 1;
+    const INDEX_SLIDER_FALSE = 0;
+    const INDEX_SLIDER_TRUE = 1;
+
+
     /**
      * @return string the associated database table name
      */
@@ -33,7 +37,7 @@ class Collection extends CActiveRecord
     {
         return array(
             array('name', 'required'),
-            array('order, maine_page_visible, tile, sanitary_engineering, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
+            array('order, maine_page_visible, tile, sanitary_engineering, index_slider, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             array('id, name, order, brand_id', 'safe', 'on' => 'search'),
@@ -45,8 +49,6 @@ class Collection extends CActiveRecord
      */
     public function relations()
     {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
         return array(
             'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
             'upload1' => array(self::BELONGS_TO, 'Upload', 'upload_1_id'),
@@ -73,6 +75,7 @@ class Collection extends CActiveRecord
             'sanitary_engineering' => 'sanitary_engineering',
             'tile' => 'Заголовок',
             'brand.name' => 'Производитель',
+            'index_slider' => 'index_slider',
         );
     }
 

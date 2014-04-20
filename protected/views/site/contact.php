@@ -1,7 +1,7 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle = "Penta House - Контакты";
+
 ?>
 <div class="breadcrumbs"><a href="/site/index">Главная</a> / Контакты</div>
 <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru_RU"
@@ -9,7 +9,7 @@ $this->pageTitle = "Penta House - Контакты";
 
 <div id="map" class="contact-map"></div>
 
-<?php foreach ($this->contacts as $contact) if ($contact->id == $this->active_contact_id)
+<?php foreach ($contacts as $contact) if ($contact->id == $this->active_contact_id)
     $active_contact = $contact;
 ?>
 
@@ -22,7 +22,7 @@ $this->pageTitle = "Penta House - Контакты";
         });
         myMap.controls.add('zoomControl', { right: 5, top: 5 });
 
-        <?php foreach($this->contacts as $contact):?>
+        <?php foreach($contacts as $contact):?>
 
         var myPlacemark<?php echo $contact->id;?> = new ymaps.Placemark([<?php echo $contact->longitude?>, <?php echo $contact->latitude?>], {
             //balloonContentHeader: "Пента-Хаусaaaaaaaaaaaaaaaa",
@@ -42,7 +42,7 @@ $this->pageTitle = "Penta House - Контакты";
     <h1>Контакты</h1>
 
     <ul class="contact-info-ul">
-        <?php foreach ($this->contacts as $contact): ?>
+        <?php foreach ($contacts as $contact): ?>
 
             <li>
                 <div class="contact-info-wrapp">

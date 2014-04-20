@@ -12,6 +12,7 @@
  * @property integer $order
  * @property integer $type
  * @property integer $visible
+ * @property integer default_in_city
  * @property string $monday_start
  * @property string $monday_end
  * @property string $tuesday_start
@@ -33,6 +34,8 @@ class Contact extends CActiveRecord
     const HIDDEN = 1;
     const DEFAULT_FALSE = 0;
     const DEFAULT_TRUE = 1;
+    const DEFAULT_IN_CITY_FALSE = 0;
+    const DEFAULT_IN_CITY_TRUE = 1;
 
 
     /**
@@ -50,7 +53,7 @@ class Contact extends CActiveRecord
     {
         return array(
             array('city', 'required'),
-            array('order, type, visible, default, zoom', 'numerical', 'integerOnly' => true, 'min' => 0),
+            array('order, type, visible, default, default_in_city, zoom', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('longitude, latitude, city, phone, address, monday_start, monday_end, tuesday_start, tuesday_end, wednesday_start, wednesday_end, thursday_start, thursday_end, friday_start, friday_end, saturday_start, saturday_end, sunday_start, sunday_end', 'length', 'max' => 255),
             array('map', 'safe'),
             array('id, city, phone, address, map, order, type, visible, monday_start, monday_end, tuesday_start, tuesday_end, wednesday_start, wednesday_end, thursday_start, thursday_end, friday_start, friday_end, saturday_start, saturday_end, sunday_start, sunday_end', 'safe', 'on' => 'search'),
@@ -62,9 +65,7 @@ class Contact extends CActiveRecord
      */
     public function relations()
     {
-        return array(
-
-        );
+        return array();
     }
 
     /**
@@ -84,6 +85,7 @@ class Contact extends CActiveRecord
             'type' => 'Тип',
             'visible' => 'Видимость',
             'default' => 'Город по умолчанию',
+            'default_in_city' => 'Контакт по умолчанию среди одинаковых городов',
 
             'monday_start' => 'Monday Start',
             'monday_end' => 'Monday End',
@@ -209,17 +211,12 @@ class Contact extends CActiveRecord
                 array(
                     array(
                         'id' => '1',
-                        'name' => 'магазин',
+                        'name' => 'Проектный офис',
 
                     ),
                     array(
                         'id' => '2',
-                        'name' => 'склад',
-
-                    ),
-                    array(
-                        'id' => '3',
-                        'name' => 'шоурум',
+                        'name' => 'Шоурум',
 
                     ),
                 ),
@@ -232,13 +229,66 @@ class Contact extends CActiveRecord
     public function getType($model)
     {
         if ($model->type == 1) {
-            return "магазин";
+            return "Проектный офис";
         } elseif ($model->type == 2) {
-            return "склад";
-        } elseif ($model->type == 3) {
-            return "шоурум";
+            return "Шоурум";
+        }
+    }
+
+    public function defaultInCity($contact)
+    {
+        if ($this->default_in_city == self::DEFAULT_IN_CITY_FALSE) {
+            if (empty($contact)) {
+                $this->addError('default_in_city', "В городе {$this->city}, нет ни одного контакта по умолчанию.");
+            }
+        } else {
+            if (!$this->isNewRecord) {
+                if (!empty($contact)) {
+                    if ($contact->id != $this->id) {
+                        $this->addError('default_in_city', "В {$this->city} уже есть город по умолчанию");
+                    }
+                }
+            }
         }
     }
 
 
+    protected function beforeValidate()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->compare('t.city', $this->city);
+        $criteria->compare('t.default_in_city', self::DEFAULT_IN_CITY_TRUE);
+        $contact = self::model()->find($criteria);
+
+
+        $this->defaultInCity($contact);
+
+
+        return parent::beforeValidate();
+    }
+
+    protected function beforeSave()
+    {
+        return parent::beforeSave();
+    }
+
+    public static function strtolower($text)
+    {
+        return mb_strtolower($text, 'UTF-8');
+    }
+
+    public static function mainFilter($group = true)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->order = 't.city ASC';
+
+        if ($group) {
+            $criteria->group = 't.city';
+            $criteria->compare('t.default_in_city', self::DEFAULT_IN_CITY_TRUE);
+        }
+
+        return Contact::model()->findAll($criteria);
+    }
 }
