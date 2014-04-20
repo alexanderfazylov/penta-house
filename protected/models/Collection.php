@@ -222,4 +222,16 @@ class Collection extends CActiveRecord
 
         return $criteria;
     }
+
+    public static function selfPageCriteria()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
+
+        $criteria->with = array(
+            'collection_upload',
+        );
+        return $criteria;
+    }
 }

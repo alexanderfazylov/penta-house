@@ -103,11 +103,9 @@
             <div class="form-group">
                 <label for="model-description">Фото</label>
 
-                <p class="default-hint">*Первое фото будет отображаться в слайдере на главной, если стоит флаг.</p>
-
                 <div class="construct_upload"
                      data-width="2000"
-                     data-height="600"
+                     data-height="800"
                      data-action="/server/CollectionUpload"
                      data-multiple="true">
                     {{renderUploderMiltiple:item.collection_upload}}

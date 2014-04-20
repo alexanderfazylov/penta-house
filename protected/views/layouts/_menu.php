@@ -20,6 +20,7 @@ $this->widget('zii.widgets.CMenu', array(
             'url' => ('/site/catalog'),
             'active' => (
                 ($controller == 'site' && $action == 'catalog') ||
+                ($controller == 'site' && $action == 'collection') ||
                 ($controller == 'site' && $action == 'brand')
                 )
         ),

@@ -13,7 +13,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                             <div class="item">
                                 <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
                                 <div class="title">
-                                    <?php echo $collection->name; ?>
+                                    <?php echo $collection->slogan;?>
                                 </div>
                             </div>
                         <?php endif; ?>

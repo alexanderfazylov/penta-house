@@ -143,17 +143,20 @@ class SiteController extends Controller
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
 
-        $criteria = new CDbCriteria;
-        $criteria->order = 't.order ASC';
-        $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
 
-        $collection = Collection::model()->model()->findAllByPk($id, $criteria);
+        $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
+        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id));
 
         if (empty($collection)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
 
-        $this->render('collection');
+        $this->render('collection',
+            array(
+                'collection' => $collection,
+                'brand' => $brand,
+            )
+        );
     }
 
     public function actionLogin()
@@ -303,5 +306,6 @@ class SiteController extends Controller
             'project' => $project
         ));
     }
+
 
 }
