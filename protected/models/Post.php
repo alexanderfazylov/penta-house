@@ -221,4 +221,21 @@ class Post extends CActiveRecord
 
         return $criteria;
     }
+
+    public static function postCriteria($post_id)
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->limit = 9;
+        $criteria->addNotInCondition('t.id', [$post_id]);
+
+
+        $criteria->with = array(
+            'upload1',
+        );
+
+        return $criteria;
+    }
 }

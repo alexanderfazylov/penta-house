@@ -244,15 +244,16 @@ class Brand extends CActiveRecord
         return $criteria;
     }
 
-    public static function pageCollection($id)
+    public static function pageCollection($brand_id, $collection_id)
     {
         $criteria = new CDbCriteria;
-        $criteria->compare('t.id', $id);
+        $criteria->compare('t.id', $brand_id);
 
         $criteria->with = array(
             'collection',
             'collection.upload1',
         );
+        $criteria->addNotInCondition('collection.id', [$collection_id]);
 
         return $criteria;
     }

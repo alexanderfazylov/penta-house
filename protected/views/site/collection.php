@@ -36,11 +36,11 @@
 <div class="anchor"></div>
 <div class="collection-footer">
     <div class="item-box">
-        <a href="/site/collection" class="brand-item item brand-title">
+        <div class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>
-        </a>
+        </div>
         <?php foreach ($brand->collection as $collection): ?>
-            <a href="#" class="brand-item item hovered">
+            <a href="/site/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">
                 <img class="item-bg" src="/uploads/<?php echo $collection->upload1->file_name ?>"/>
 
                 <div class="hovered-div">

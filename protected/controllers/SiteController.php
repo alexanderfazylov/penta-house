@@ -145,7 +145,7 @@ class SiteController extends Controller
 
 
         $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
-        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id));
+        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
 
         if (empty($collection)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
@@ -244,17 +244,24 @@ class SiteController extends Controller
 
     public function actionProject($id)
     {
-        $criteria = new CDbCriteria;
-        $criteria->compare('t.visible', Project::VISIBLE);
-        $project = Project::model()->findAllByPk($id, $criteria);
+
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+
+
+        $project = Project::model()->model()->findByPk($id, Project::selfPageCriteria());
+        $projects = Project::model()->findAll(Project::pageProject($project->id));
 
         if (empty($project)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
 
-        $this->render('project', array(
-            'project' => $project
-        ));
+        $this->render('project',
+            array(
+                'project' => $project,
+                'projects' => $projects,
+            )
+        );
     }
 
 
@@ -294,16 +301,27 @@ class SiteController extends Controller
 
     public function actionPost($id)
     {
-        $criteria = new CDbCriteria;
-        $criteria->compare('t.visible', Project::VISIBLE);
-        $project = Project::model()->findAllByPk($id, $criteria);
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
 
-        if (empty($project)) {
+
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', Post::VISIBLE);
+        $criteria->with = array(
+            'post_upload',
+            'post_upload.upload'
+        );
+
+        $post = Post::model()->findByPk($id, $criteria);
+
+        if (empty($post)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
+        $posts = Post::model()->findAll(Post::postCriteria($post->id));
 
-        $this->render('project', array(
-            'project' => $project
+        $this->render('post', array(
+            'post' => $post,
+            'posts' => $posts,
         ));
     }
 
