@@ -253,7 +253,7 @@ class Brand extends CActiveRecord
             'collection',
             'collection.upload1',
         );
-        $criteria->addNotInCondition('collection.id', [$collection_id]);
+        $criteria->addNotInCondition('collection.id', array($collection_id));
 
         return $criteria;
     }

@@ -236,7 +236,7 @@ class Project extends CActiveRecord
         $criteria->order = 't.order ASC';
         $criteria->compare('t.visible', self::VISIBLE);
         $criteria->limit = 9;
-        $criteria->addNotInCondition('t.id', [$project_id]);
+        $criteria->addNotInCondition('t.id', array($project_id));
         $criteria->with = array(
             'upload1',
         );
