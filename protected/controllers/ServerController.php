@@ -93,8 +93,10 @@ class ServerController extends Controller
         $upload = Upload::model()->findByPk($_POST['Upload']['id']);
 
         if (($_POST['w'] != '') && ($_POST['h'] != '') && ($_POST['x1'] != '') && ($_POST['y1']) != '') {
+            $this->cropOrig($upload->file_name);
             $this->cropMedium($upload->file_name);
             $this->cropThumbs($upload->file_name);
+
         }
 
 
@@ -129,24 +131,59 @@ class ServerController extends Controller
         return true;
     }
 
+    public function cropOrig($file_name)
+    {
+        $picter = Yii::app()->ih->load($this->base_path . $file_name);
+        $medium_picter = Yii::app()->ih->load($this->base_path . $this->medium_path . $file_name);
+
+        unlink($this->base_path . $file_name);
+
+        $f = $picter->getWidth() / $medium_picter->getWidth();
+
+        $picter
+            ->crop($_POST['w'] * $f, $_POST['h'] * $f, $_POST['x1'] * $f, $_POST['y1'] * $f)
+            ->save($this->base_path . $file_name);
+
+        return true;
+    }
+
     /*
      * Brand uploads
      * */
     public function actionUploadBrand1()
     {
         $result = $this->upload('Brand', 'upload_1_id');
+
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(400, 200)
+            ->save($this->base_path . $result['file_name']);
+
+
         echo CJSON::encode($result);
     }
 
     public function actionUploadBrand2()
     {
         $result = $this->upload('Brand', 'upload_2_id');
+
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(180, 200)
+            ->save($this->base_path . $result['file_name']);
+
         echo CJSON::encode($result);
     }
 
     public function actionUploadBrand3()
     {
         $result = $this->upload('Brand', 'upload_3_id');
+
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(180, 200)
+            ->save($this->base_path . $result['file_name']);
+
         echo CJSON::encode($result);
     }
 
@@ -159,12 +196,34 @@ class ServerController extends Controller
     public function actionCollectionUplod1()
     {
         $result = $this->upload('Collection', 'upload_1_id');
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(400, 200)
+            ->save($this->base_path . $result['file_name']);
+
+        echo CJSON::encode($result);
+    }
+
+    public function actionCollectionUplod2()
+    {
+        $result = $this->upload('Collection', 'upload_2_id');
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(1200, 600)
+            ->save($this->base_path . $result['file_name']);
+
         echo CJSON::encode($result);
     }
 
     public function actionCollectionUpload()
     {
         $result = $this->upload('CollectionUpload', 'upload_id');
+
+        Yii::app()->ih
+            ->load($this->base_path . $result['file_name'])
+            ->resize(2000, 800)
+            ->save($this->base_path . $result['file_name']);
+
         echo CJSON::encode($result);
     }
 

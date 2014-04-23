@@ -46,6 +46,8 @@ class MainController extends Controller
 
     public function actionIndex()
     {
+        Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
+
         $brand = new Brand('search');
         if (isset($_GET['Brand'])) {
             $brand->attributes = $_GET['Brand'];
@@ -56,6 +58,8 @@ class MainController extends Controller
 
     public function actionBrand()
     {
+
+
         if (!isset($_POST['Brand'])) {
             $response = array(
                 'status' => 'error',
@@ -88,7 +92,7 @@ class MainController extends Controller
 
     public function actionCollections()
     {
-
+        Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
 
         $collection = new Collection('search');
 
@@ -202,6 +206,7 @@ class MainController extends Controller
 
     public function actionProjects()
     {
+        Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
         $project = new Project('search');
 
         if (isset($_GET['Project'])) {
@@ -274,6 +279,7 @@ class MainController extends Controller
 
     public function actionPosts()
     {
+        Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
         $post = new Post('search');
 
         if (isset($_GET['Post'])) {
@@ -411,7 +417,7 @@ class MainController extends Controller
 
     public function actionAbout()
     {
-
+        Yii::import('ext.imperavi-redactor-widget.ImperaviRedactorWidget');
         $models = About::model()->findAll();
 
         if (empty($models)) {

@@ -16,6 +16,8 @@ class Project extends CActiveRecord
 {
     const VIEW = 1;
     const BASE = 2;
+    const VISIBLE = 0;
+    const HIDDEN = 1;
 
     public $date_status = self::VIEW;
 
@@ -161,7 +163,7 @@ class Project extends CActiveRecord
         if (!empty($this->end_date) && ($this->date_status == self::VIEW)) {
             $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         } else {
-            $this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            //$this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         }
 
         $this->date_status = self::BASE;
@@ -170,7 +172,7 @@ class Project extends CActiveRecord
         return parent::beforeSave();
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
         return CHtml::dropDownList(
@@ -208,15 +210,49 @@ class Project extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
-        $criteria->limit = 7;
         $criteria->compare('t.visible', 0);
+
+        $criteria->limit = 7;
+
 
         $criteria->with = array(
             'upload1',
-//            'upload2',
         );
 
         return $criteria;
     }
 
+    public static function indexCountCriteria()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->limit = 7;
+        $criteria->compare('t.visible', 0);
+        return $criteria;
+    }
+
+    public static function pageProject($project_id)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->limit = 9;
+        $criteria->addNotInCondition('t.id', [$project_id]);
+        $criteria->with = array(
+            'upload1',
+        );
+
+        return $criteria;
+    }
+
+    public static function selfPageCriteria()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->with = array(
+            'project_upload',
+            'project_upload.upload',
+        );
+
+        return $criteria;
+    }
 }

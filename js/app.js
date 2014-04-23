@@ -57,8 +57,7 @@ $.fn.ajaxFormSubmit = function (success, complete, validator) {
 
                 } else {
 
-                    if (typeof validator !== "undefined") {
-                        validator(data);
+                    if (typeof validator == "undefined") {
                         $('.has-error').removeClass('has-error');
                         $.each(data.model, function (model, attributes) {
                             $.each(attributes, function (atr, msg) {
@@ -68,9 +67,7 @@ $.fn.ajaxFormSubmit = function (success, complete, validator) {
                             })
                         })
                     } else {
-                        for (key in data.message) {
-                            alert(data.message[key]);
-                        }
+                        validator(data);
                     }
                 }
 

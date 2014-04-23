@@ -7,7 +7,11 @@
 <div class="anchor"></div>
 
 
-
+<?php $this->widget('ImperaviRedactorWidget', array(
+    'selector' => '.redactor',
+    'options' => array(),
+));
+?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'model-grid',
@@ -89,3 +93,5 @@ $this->widget('zii.widgets.grid.CGridView', array(
 <script id="template_collection_row" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_collection_row'); ?>
 </script>
+
+

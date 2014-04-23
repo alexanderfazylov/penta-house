@@ -99,7 +99,7 @@ body {
 }
 
 .default-hint {
-    padding: 15px;
+    color: #777;
 }
 
 #ui-datepicker-div {
@@ -154,6 +154,11 @@ textarea.h500 {
 #model-grid .filters td:first-child input {
     width: 50px !important;
 }
-.hasDatepicker{
+
+.hasDatepicker {
     width: 85px;
+}
+
+.redactor_h500 {
+    height: 500px;
 }

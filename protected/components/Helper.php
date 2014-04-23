@@ -82,11 +82,13 @@ class Helper
 
     public static function selectCity($contacts)
     {
+
         if (!empty($contacts) && empty(Yii::app()->session['city'])) {
 
-            $ip = CHttpRequest::getUserHostAddress();
+            $chhtp = new CHttpRequest();
+            //$ip = $chhtp->getUserHostAddress();
             //db test
-            //$ip = '217.198.1.70';//KAZAN
+            $ip = '217.198.1.70';//KAZAN
             //$ip = '95.221.10.166'; //MOSCOW
 
             $sx_geo = new SxGeo('SxGeoCity.dat');
@@ -109,7 +111,8 @@ class Helper
                 }
             }
         }
-
+//        Yii::app()->session['city'] = '';
+//        Yii::app()->session['contact_id'] = '';
         return true;
     }
 

@@ -34,6 +34,78 @@
     animation-name: fadeIn;
 }
 
+/*---------------*/
+
+.item-box {
+    width: 100%;
+    font-size: 0px;
+}
+
+.item-box .item {
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+.item img.item-bg, .manufacturer img.item-bg {
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+}
+
+.manufacturer {
+    width: 100%;
+    display: block;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item, .index-box .news-item, .project-item {
+    width: 25%;
+}
+
+.brand-item, .catalog-item {
+    width: 20%;
+}
+
+.about-footer .news-item {
+    width: 50%;
+}
+
+.collection-img-item {
+    width: 33.33%;
+}
+
+.service-item {
+    display: table !important;
+    float: left;
+}
+
+.catalog-logo {
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+    z-index: 20;
+}
+
+.manufacturer-logo {
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+    z-index: 20;
+}
+
+/*-------------------------------*/
+
 * {
     margin: 0;
     padding: 0;
@@ -42,12 +114,17 @@
     -webkit-box-sizing: border-box;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 html, body {
     margin: 0;
     width: 100%;
     height: 100%;
     min-width: 1200px;
     font: 12px "HelveticaNeueCyr-Light";
+
 }
 
 a {
@@ -84,9 +161,20 @@ h1 {
 }
 
 .content {
-    margin-left: 270px;
+    margin-left: 16.6%;
     min-height: 100%;
     height: 100%;
+}
+
+.breadcrumbs {
+    color: #a1a1a1;
+    font-style: italic;
+    font-family: Tahoma;
+    padding: 50px 0px 15px 100px
+}
+
+.breadcrumbs a {
+    color: #a1a1a1;
 }
 
 /*-- sidebar --*/
@@ -96,12 +184,13 @@ h1 {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    width: 270px;
     background: #222222;
+    width: 16.6%;
+    min-width: 200px;
+
 }
 
 .aside-content {
-    padding-bottom: 120px;
     position: relative;
     padding: 20px 30px 0px;
     background: #222222;
@@ -110,22 +199,26 @@ h1 {
 
 .aside-footer {
     position: absolute;
+    width: 156px;
     padding: 0px 30px 20px;
     bottom: 15px;
     width: 100%;
-    margin: 120px auto 0;
+    /*margin: 120px auto 0;*/
     z-index: 5;
 }
 
 .aside-footer-wrapper {
     position: relative;
-    height: 120px;
+    height: 90px;
+}
+
+.city {
+    text-align: center;
 }
 
 .city-name {
     font-size: 1.5em;
     color: #898989;
-    margin-right: 20px;
     font-family: "HelveticaNeueCyr-Thin";
 }
 
@@ -133,6 +226,8 @@ h1 {
     color: #fff;
     border-bottom: 1px dashed;
     cursor: pointer;
+    white-space: nowrap;
+    font-family: Tahoma;
 }
 
 .phone {
@@ -148,19 +243,18 @@ h1 {
     text-align: center;
     text-decoration: underline;
     cursor: pointer;
+    font-family: Tahoma;
 }
 
 .aside-menu {
-    position: absolute;
-    top: 100%;
-    width: 210px;
-    margin: 0 auto;
+    width: 156px;
+    margin: 100px auto 0;
     z-index: 10;
     background: #222222;
 }
 
 .logo {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #464646;
 }
 
@@ -168,33 +262,19 @@ h1 {
     outline: none !important;
 }
 
-.logo-p, .logo-h {
-    color: #4ebfa7;
-    font-size: 4em;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.logo-p {
-    font-family: "HelveticaNeueCyr-Medium";
-}
-
-.logo-h {
-    font-family: "HelveticaNeueCyr-Thin";
-}
-
 .logo-description {
     color: #898989;
     text-align: center;
+    font: 11px Tahoma, sans-serif;
 }
 
 .menu {
     list-style: none;
-    padding: 60px 0 10px;
+    padding: 20px 0 10px;
 }
 
 .menu li {
-    line-height: 40px;
+    line-height: 24px;
     text-align: center;
 }
 
@@ -202,6 +282,7 @@ h1 {
     color: #898989;
     text-decoration: none;
     text-transform: uppercase;
+    font: 11px Tahoma, sans-serif;
 }
 
 .menu li.active a {
@@ -222,9 +303,9 @@ h1 {
 
 .social {
     text-align: center;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #464646;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 
 .social .vk, .social .fc, .social .tw {
@@ -269,32 +350,31 @@ h1 {
     float: right;
 }
 
-.manufacturer {
+.main-img {
     width: 100%;
-    display: block;
-    height: 200px;
-    background: indianred;
-    border: 1px solid firebrick;
+    height: 600px;
     position: relative;
     overflow: hidden;
 }
 
-.manufacturer-logo {
-    position: absolute;
-    width: 140px;
-    height: 40px;
-    top: 50%;
-    left: 50%;
-    margin-left: -70px;
-    margin-top: -20px;
+.main-img .sliderArrows {
+    display: none;
 }
 
-.main-img {
+.main-img .brand-plugin {
+    position: absolute;
+    height: 100%;
     width: 100%;
-    height: 600px;
-    background: chartreuse;
-    border: 1px solid green;
-    position: relative;
+}
+
+.main-img .item {
+    height: 100%;
+
+}
+
+.main-img .ms-img {
+    position: absolute !important;
+    height: 100% !important;
 }
 
 .title {
@@ -307,8 +387,12 @@ h1 {
 }
 
 .main-img .title {
-    width: 480px;
-    bottom: 50px;
+    width: 40% !important;
+    bottom: 50px !important;
+}
+
+.main-img .sliderContent {
+    height: 600px!important;
 }
 
 .brand-plugin .title {
@@ -316,33 +400,8 @@ h1 {
     bottom: 100px;
 }
 
-.service, .news, .project {
-    width: 100%;
-    font-size: 0px;
-}
-
-.service-item {
-    display: table !important;
-    float: left;
-}
-
-.service-item, .project-item, .index-box .news-item {
-    width: 25%;
-}
-
-.about-footer .news-item {
-    width: 20%;
-}
-
-.service-item, .news-item, .project-item {
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}
-
 .project-title, .news-title {
-    background: #000000 !important;
+    background: #000000;
     text-align: center;
 }
 
@@ -362,35 +421,6 @@ h1 {
     color: #898989;
 }
 
-.hovered-div {
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    font-size: 14px;
-    height: 200px;
-    color: #fff;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.hovered-div span {
-    vertical-align: middle;
-    height: 200px;
-    display: table-cell;
-}
-
-.project-item {
-    background: coral;
-    border: 1px solid crimson;
-}
-
-.news-item {
-    background: forestgreen;
-    border: 1px solid yellowgreen;
-}
-
 .service-item-wrapper {
     vertical-align: middle;
     height: 200px;
@@ -400,7 +430,8 @@ h1 {
 
 .service-item h3 {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: normal;
     color: #000000;
 }
 
@@ -415,13 +446,13 @@ h1 {
     text-align: center;
     font-size: 12px;
     color: #a1a1a1;
-    font-style: italic;
+    font-family: Tahoma, sans-serif;
 }
 
 .dialog-position {
-    position: absolute;
+    position: fixed;
     top: 20px;
-    left: 330px;
+    left: 300px;
     z-index: 500;
     background: #222222;
     padding: 40px 150px 40px 40px;
@@ -517,58 +548,75 @@ h1 {
 
 .about-company {
     float: left;
-    width: 65%;
+    width: 35%;
     height: 100%;
-    padding: 50px 40px 100px 100px;
+    padding: 0px 40px 100px 100px;
 }
 
 .about-contacts {
-    float: right;
-    width: 35%;
+    float: left;
+    width: 25%;
     height: 100%;
-    padding-top: 50px;
+    padding-right: 15px;
+}
+
+.about-footer {
+    float: right;
+    width: 40%;
+    height: 100%;
 }
 
 .about-company-descr {
-    font-size: 0px;
 }
 
 .about-company p {
     margin: 15px 0;
-    display: inline-block;
-    width: 50%;
-    padding-right: 40px;
     font-size: 12px;
     vertical-align: top;
     line-height: 1.8em;
 }
 
-.about-contacts h1, .about-company h1 {
+.about-contacts h1 {
+    margin-bottom: 10px;
+}
+
+.about-company h1 {
     margin-bottom: 25px;
 }
 
 .contacts {
     font-size: 2em;
     line-height: 1.4em;
+    list-style: none;
 }
 
 .contacts a {
     color: #000;
+    display: block;
 }
 
 /*--- contact ---*/
 
-.contact-map {
-    height: 800px;
+.contact-info {
+    float: left;
+    width: 40%;
+    height: 100%;
+    padding: 0px 40px 100px 100px;
 }
 
-.contact-info {
-    padding-top: 50px;
-    padding-left: 100px;
+.contact-map {
+    /*float: right;*/
+    /*width: 60%;*/
+    /*height: 800px;*/
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 49.8%;
 }
 
 .contact-info h1 {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .contact-info dt {
@@ -584,10 +632,25 @@ h1 {
     font-size: 2em;
     margin-bottom: 15px;
     display: inline-block;
+    background: none;
+    border: none;
+    border-bottom: 1px dashed #000;
+    outline: none;
+    cursor: pointer;
+    line-height: 0.9em;
 }
 
-.city-title-link {
-    border-bottom: 1px dashed #000;
+.city-title.active {
+    border-bottom: none;
+    padding-left: 20px;
+    margin-left: -15px;
+}
+
+.city-title.active:before {
+    content: '\2022';
+    display: inline-block;
+    color: #4ebfa7;
+    margin-left: -20px;
 }
 
 .dl-horizontal dt {
@@ -603,44 +666,19 @@ h1 {
     margin-left: 140px;
 }
 
-.contact-info-table .td {
-    padding: 0 40px 20px 0;
-
+.contact-info-ul li {
+    padding: 0 40px 50px 0;
+    list-style: none;
+    line-height: 20px;
+    display: block;
+    vertical-align: top;
 }
 
 /*--- catalog ---*/
 
-.catalog {
-    width: 100%;
-    font-size: 0px;
-}
-
-.catalog-item {
-    width: 20%;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}
-
 .catalog-title {
     background: #000000 !important;
     text-align: center;
-}
-
-.catalog-logo {
-    position: absolute;
-    width: 140px;
-    height: 40px;
-    top: 50%;
-    left: 50%;
-    margin-left: -70px;
-    margin-top: -20px;
-}
-
-.catalog-item {
-    background: coral;
-    border: 1px solid crimson;
 }
 
 /*---- brand-plugin ----*/
@@ -653,7 +691,7 @@ h1 {
     float: left;
     width: 65%;
     height: 100%;
-    padding: 50px 40px 100px 100px;
+    padding: 0px 40px 100px 100px;
 }
 
 .brand-logo {
@@ -669,30 +707,12 @@ h1 {
     line-height: 1.8em;
 }
 
-.brand {
-    width: 100%;
-    font-size: 0px;
-}
-
-.brand-item {
-    width: 20%;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-    position: relative;
-}
-
 .brand-title {
     background: #000000 !important;
     text-align: center;
     color: #fff;
     font-size: 18px;
     line-height: 200px;
-}
-
-.brand-item {
-    background: navy;
-    border: 1px solid #b9def0;
 }
 
 .brand-link {
@@ -710,7 +730,7 @@ h1 {
 /*---- collection ----*/
 
 .collection {
-    padding: 50px 0px 100px;
+    padding: 0px 0px 100px;
 }
 
 .collection h1 {
@@ -741,23 +761,6 @@ h1 {
     float: right;
     width: 60%;
     height: 100%;
-}
-
-.collection-img {
-    width: 100%;
-    font-size: 0px;
-}
-
-.collection-img-item {
-    width: 33.33%;
-    height: 200px;
-    display: inline-block;
-    overflow: hidden;
-}
-
-.collection-img-item {
-    background: #FF7171;
-    border: 1px solid #d2322d;
 }
 
 /*---- slider -----*/
@@ -990,4 +993,40 @@ h1 {
     width: 66px;
     float: right;
     padding-bottom: 0.7em;
+}
+
+.hovered-div {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    height: 200px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    -o-transition: opacity 1s;
+}
+
+.hovered:hover .hovered-div {
+    opacity: 1;
+}
+
+.hovered-div span {
+    vertical-align: middle;
+    height: 200px;
+    display: table-cell;
+}
+
+.has-error input {
+    background: red;
+}
+
+.hovered-div-text {
+    display: inline-block;
 }

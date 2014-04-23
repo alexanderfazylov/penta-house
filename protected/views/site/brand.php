@@ -16,6 +16,7 @@
     </div>
     <div class="anchor"></div>
 </div>
+<div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Каталог</a> / Производители</div>
 <div class="brand-description">
     <h1>Villeroy & Boch</h1>
 
@@ -84,39 +85,37 @@
 </div>
 
 <div class="anchor"></div>
-<div class="about-footer">
-    <div class="brand">
-        <a href="/site/collection" class="brand-item brand-title">
+<div class="collection-footer">
+    <div class="item-box">
+        <a href="/site/collection" class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>
         </a>
-        <a href="#" class="brand-item hovered">
-            <img src="../../../i/test.png">
+        <a href="#" class="brand-item item hovered">
+            <img class="item-bg" src="../../../i/test.png">
 
             <div class="hovered-div">
-                <span>
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd
-                    </span>
+                <div class="hovered-div-text">
+                    <span>aasdasdasd</span>
+                </div>
             </div>
         </a>
-        <a href="#" class="brand-item">
-            <img src="">
+        <a href="#" class="brand-item item">
+            <img class="item-bg" src="">
         </a>
-        <a href="#" class="brand-item">
-            <img src="">
+        <a href="#" class="brand-item item">
+            <img class="item-bg" src="">
         </a>
-        <a href="#" class="brand-item">
-            <img src="">
+        <a href="#" class="brand-item item">
+            <img class="item-bg" src="">
         </a>
-        <a href="#" class="brand-item">
-            <img src="">
+        <a href="#" class="brand-item item">
+            <img class="item-bg" src="">
         </a>
-        <a href="#" class="brand-item">
-            <img src="">
+        <a href="#" class="brand-item item">
+            <img class="item-bg" src="">
         </a>
-        <a href="#" class="brand-item">
-            <img src="">
+        <a href="#" class="brand-item item">
+            <img class="item-bg" src="">
         </a>
     </div>
 </div>

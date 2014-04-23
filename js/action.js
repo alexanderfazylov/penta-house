@@ -40,7 +40,14 @@ $(function () {
             function () {
 
             },
-            function () {
+            function (data) {
+                $('.has-error').removeClass('has-error');
+                $.each(data.model, function (model, attributes) {
+                    $.each(attributes, function (atr, msg) {
+                        var name = model + "[" + atr + "]";
+                        $('[name="' + name + '"]').parents('.form-group').addClass('has-error');
+                    })
+                })
 
             }
         );
@@ -103,9 +110,4 @@ $(function () {
         myMap.setCenter([latitude, longitude ], zoom);
     });
 
-    $('.hovered').hover(function () {
-        $(this).children('.hovered-div').fadeIn(500);
-    }, function () {
-        $('.hovered-div').fadeOut();
-    })
 });

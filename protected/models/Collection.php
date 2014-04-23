@@ -16,6 +16,12 @@
  */
 class Collection extends CActiveRecord
 {
+    const VISIBLE = 0;
+    const HIDDEN = 1;
+    const INDEX_SLIDER_FALSE = 0;
+    const INDEX_SLIDER_TRUE = 1;
+
+
     /**
      * @return string the associated database table name
      */
@@ -31,7 +37,7 @@ class Collection extends CActiveRecord
     {
         return array(
             array('name', 'required'),
-            array('order, maine_page_visible, tile, sanitary_engineering, upload_1_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
+            array('order, maine_page_visible, tile, sanitary_engineering, index_slider, upload_1_id, upload_2_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             array('id, name, order, brand_id', 'safe', 'on' => 'search'),
@@ -43,11 +49,10 @@ class Collection extends CActiveRecord
      */
     public function relations()
     {
-        // NOTE: you may need to adjust the relation name and the related
-        // class name for the relations automatically generated below.
         return array(
             'meta_data' => array(self::BELONGS_TO, 'MetaData', 'meta_data_id'),
             'upload1' => array(self::BELONGS_TO, 'Upload', 'upload_1_id'),
+            'upload2' => array(self::BELONGS_TO, 'Upload', 'upload_2_id'),
             'brand' => array(self::BELONGS_TO, 'Brand', 'brand_id'),
             'collection_upload' => array(self::HAS_MANY, 'CollectionUpload', 'collection_id'),
         );
@@ -66,11 +71,13 @@ class Collection extends CActiveRecord
             'order' => 'Сортировка',
             'maine_page_visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
+            'upload_2_id' => 'Upload 2',
             'brand_id' => 'Brand',
             'meta_data_id' => 'Meta Data',
             'sanitary_engineering' => 'sanitary_engineering',
             'tile' => 'Заголовок',
             'brand.name' => 'Производитель',
+            'index_slider' => 'index_slider',
         );
     }
 
@@ -101,6 +108,7 @@ class Collection extends CActiveRecord
         $criteria->with = array(
             'meta_data',
             'upload1',
+            'upload2',
             'brand',
             'collection_upload',
             'collection_upload.upload'
@@ -164,7 +172,7 @@ class Collection extends CActiveRecord
         );
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
         return CHtml::dropDownList(
@@ -201,5 +209,29 @@ class Collection extends CActiveRecord
 
         return $picter;
 
+    }
+
+    public static function indexCriteria()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.maine_page_visible', self::VISIBLE);
+        $criteria->compare('t.index_slider', self::INDEX_SLIDER_TRUE);
+        $criteria->with = array(
+            'upload2'
+        );
+
+        return $criteria;
+    }
+
+    public static function selfPageCriteria()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
+
+        $criteria->with = array(
+            'collection_upload',
+        );
+        return $criteria;
     }
 }

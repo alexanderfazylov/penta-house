@@ -3,11 +3,30 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 ?>
 
 <div class="index-box">
+
     <div class="main-img">
-        <div class="title">Эволюция в ванной комнате</div>
+        <div class="brand-plugin">
+            <div class="slider">
+                <div class="sliderContent">
+                    <?php foreach ($collections as $collection): ?>
+                        <?php if(isset($collection->upload2)): ?>
+                            <div class="item">
+                                <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
+                                <div class="title">
+                                    <?php echo $collection->slogan;?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="sliderArrows sliderArrowsBottom"></div>
+            </div>
+
+            <div class="anchor"></div>
+        </div>
     </div>
-    <div class="service">
-        <div class="service-item">
+    <div class="service item-box">
+        <div class="service-item item">
             <div class="service-item-wrapper">
                 <h3><?php echo $this->main->direction_1; ?></h3>
 
@@ -15,7 +34,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                 <div class="service-description"><?php echo $this->main->direction_description_1; ?></div>
             </div>
         </div>
-        <div class="service-item">
+        <div class="service-item item">
             <div class="service-item-wrapper">
                 <h3><?php echo $this->main->direction_2; ?></h3>
 
@@ -23,7 +42,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                 <div class="service-description"><?php echo $this->main->direction_description_2; ?></div>
             </div>
         </div>
-        <div class="service-item">
+        <div class="service-item item">
             <div class="service-item-wrapper">
                 <h3><?php echo $this->main->direction_3; ?></h3>
 
@@ -31,7 +50,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
                 <div class="service-description"><?php echo $this->main->direction_description_3; ?></div>
             </div>
         </div>
-        <div class="service-item">
+        <div class="service-item item">
             <div class="service-item-wrapper">
                 <h3><?php echo $this->main->direction_4; ?></h3>
 
@@ -41,47 +60,50 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         </div>
     </div>
     <div class="anchor"></div>
-    <div class="project">
-        <a href="#" class="project-item project-title">
+    <div class="item-box">
+        <a href="/site/projects" class="project-item item project-title">
             <span class="pr-title">Проекты</span>
-            <span class="pr-count">234</span>
+            <span class="pr-count"><?php echo $projects_count; ?></span>
         </a>
         <?php foreach ($projects as $project): ?>
-            <a href="#" class="project-item hovered">
-                <img src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
+            <a href="/site/project?id=<?php echo $project->id; ?>" class="project-item item hovered">
+                <img class="item-bg"
+                     src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
 
                 <div class="hovered-div">
-                <span>
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd aasdasdasdaasdasdasd
-                aasdasdasdaasdasdasd
-                    </span>
+                    <div class="hovered-div-text"><span><?php echo $project->name; ?></span></div>
                 </div>
             </a>
         <?php endforeach; ?>
-
-
     </div>
-    <div class="news">
-        <a href="#" class="news-item news-title">
-            <span class="nw-title">Октябрь</span>
-            <span class="nw-count">234</span>
+    <div class="item-box">
+        <a href="/site/posts" class="news-item item news-title">
+            <span class="nw-title">Новости</span>
         </a>
         <?php foreach ($posts as $post): ?>
-            <a href="#" class="news-item" title="<?php echo $post->id; ?>">
-                <img src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+            <a href="/site/post?id=<?php echo $post->id ?>" class="news-item item hovered">
+                <img class="item-bg"
+                     src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+
+                <div class="hovered-div">
+                    <div class="hovered-div-text">
+                        <span><?php echo $post->name; ?></span>
+                    </div>
+                </div>
+
             </a>
         <?php endforeach; ?>
-
-
     </div>
 </div>
 <div class="index-sidebar">
     <?php foreach ($brands as $brand): ?>
-        <a href="#" class="manufacturer" title="<?php echo $brand->name; ?>">
-            <img src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
+        <a href="/site/brand?id=<?php echo $brand->id; ?>" class="manufacturer hovered">
+            <img class="item-bg"
+                 src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
             <img class="manufacturer-logo"
                  src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
+
+            <div class="hovered-div"></div>
         </a>
     <?php endforeach; ?>
 </div>

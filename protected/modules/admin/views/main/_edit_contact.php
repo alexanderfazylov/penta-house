@@ -17,14 +17,20 @@
                 <label for="model-type">Тип</label>
                 <select id="model-type" name="Contact[type]" data-value="{{>item.type}}">
                     <option value="0">-</option>
-                    <option value="1">магазин</option>
-                    <option value="2">склад</option>
-                    <option value="3">шоурум</option>
+                    <option value="1">Проектный офис</option>
+                    <option value="2">Шоурум</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="model-type">Город по умолчанию</label>
                 <select id="model-default" name="Contact[default]" data-value="{{>item.default}}">
+                    <option value="0">нет</option>
+                    <option value="1">да</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="model-type">Контакт по умолчанию среди одинаковых городов</label>
+                <select id="model-default_in_city" name="Contact[default_in_city]" data-value="{{>item.default_in_city}}">
                     <option value="0">нет</option>
                     <option value="1">да</option>
                 </select>
