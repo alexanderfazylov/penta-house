@@ -128,8 +128,7 @@ class SiteController extends Controller
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
-        $brand = Brand::model()->findByPk($id);
-
+        $brand = Brand::model()->find(Brand::pageBrand($id));
 
         $this->render('brand', array(
                 'brand' => $brand
