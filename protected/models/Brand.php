@@ -185,7 +185,7 @@ class Brand extends CActiveRecord
         return parent::beforeSave();
     }
 
-    public function getVisibleSelect($model)
+    public static function getVisibleSelect($model)
     {
 
 
@@ -222,6 +222,38 @@ class Brand extends CActiveRecord
             'upload1',
             'upload2',
         );
+
+        return $criteria;
+    }
+
+    public static function catalogCriteria()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.order ASC';
+        $criteria->limit = 8;
+        $criteria->compare('t.maine_page_visible', 0);
+
+        $criteria->with = array(
+            'upload1',
+            'upload2',
+            'collection',
+            'collection.upload1',
+        );
+
+        return $criteria;
+    }
+
+    public static function pageCollection($brand_id, $collection_id)
+    {
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.id', $brand_id);
+
+        $criteria->with = array(
+            'collection',
+            'collection.upload1',
+        );
+        $criteria->addNotInCondition('collection.id', [$collection_id]);
 
         return $criteria;
     }

@@ -7,12 +7,12 @@
 <div class="anchor"></div>
 
 
-
+<?php $this->widget('ImperaviRedactorWidget', array(
+    'selector' => '.redactor',
+    'options' => array(),
+));
+?>
 <?php
-
-
-
-
 
 $this->widget('zii.widgets.grid.CGridView', array(
     'id' => 'model-grid',

@@ -23,8 +23,7 @@ class SiteController extends Controller
 
 
         $this->main = Maine::model()->findByPk(1);
-
-        $this->contacts = Contact::model()->findAllByAttributes(array('visible' => Contact::VISIBLE));
+        $this->contacts = Contact::mainFilter();
 
         Helper::selectCity($this->contacts);
 
@@ -57,17 +56,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
         $posts = Post::model()->findAll(Post::indexCriteria());
         $brands = Brand::model()->findAll(Brand::indexCriteria());
         $projects = Project::model()->findAll(Project::indexCriteria());
+        $projects_count = Project::model()->count(Project::indexCountCriteria());
+        $collections = Collection::model()->findAll(Collection::indexCriteria());
 
 
         $this->render('index', array(
                 'posts' => $posts,
                 'brands' => $brands,
                 'projects' => $projects,
+                'projects_count' => $projects_count,
+                'collections' => $collections,
 
             )
         );
@@ -75,7 +78,16 @@ class SiteController extends Controller
 
     public function actionAbout()
     {
-        $this->render('about');
+        $posts = Post::model()->findAll(Post::indexCriteria());
+        $about = About::model()->findByPk(1);
+        $contacts = Contact::mainFilter(false);
+
+        $this->render('about', array(
+                'posts' => $posts,
+                'about' => $about,
+                'contacts' => $contacts,
+            )
+        );
     }
 
 
@@ -94,28 +106,57 @@ class SiteController extends Controller
 
     public function actionContact()
     {
-        $this->render('contact');
+        $this->pageTitle = "Penta House - Контакты";
+        $contacts = Contact::mainFilter(false);
+        $this->render('contact', array('contacts' => $contacts));
     }
 
     public function actionCatalog()
     {
-        $this->render('catalog');
+        $this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
+
+
+        $brands = Brand::model()->findAll(Brand::catalogCriteria());
+
+        $this->render('catalog', array(
+                'brands' => $brands,
+            )
+        );
     }
 
-    public function actionBrand()
+    public function actionBrand($id)
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
-        $this->render('brand');
+        $brand = Brand::model()->findByPk($id);
+
+
+        $this->render('brand', array(
+                'brand' => $brand
+            )
+        );
     }
 
 
-    public function actionCollection()
+    public function actionCollection($id)
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
 
-        $this->render('collection');
+
+        $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
+        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
+
+        if (empty($collection)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $this->render('collection',
+            array(
+                'collection' => $collection,
+                'brand' => $brand,
+            )
+        );
     }
 
     public function actionLogin()
@@ -182,8 +223,45 @@ class SiteController extends Controller
 
     public function actionProjects()
     {
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC, t.end_date ASC';
+        $criteria->compare('t.visible', Project::VISIBLE);
 
-        $this->render('projects');
+        $projects = Project::model()->findAll($criteria);
+
+        $years = array();
+        foreach ($projects as $project) {
+            $years[DateTime::createFromFormat('d.m.Y', $project->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
+        }
+        ksort($years);
+
+
+        $this->render('projects', array(
+            'projects' => $projects,
+            'years' => $years,
+        ));
+    }
+
+    public function actionProject($id)
+    {
+
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+
+
+        $project = Project::model()->model()->findByPk($id, Project::selfPageCriteria());
+        $projects = Project::model()->findAll(Project::pageProject($project->id));
+
+        if (empty($project)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $this->render('project',
+            array(
+                'project' => $project,
+                'projects' => $projects,
+            )
+        );
     }
 
 
@@ -198,5 +276,54 @@ class SiteController extends Controller
             'status' => 'success',
         ));
     }
+
+
+    public function actionPosts()
+    {
+        $criteria = new CDbCriteria;
+        $criteria->order = 't.order ASC, t.start_date ASC';
+        $criteria->compare('t.visible', Post::VISIBLE);
+
+        $posts = Post::model()->findAll($criteria);
+
+        $years = array();
+        foreach ($posts as $post) {
+            $years[DateTime::createFromFormat('d.m.Y', $post->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
+        }
+        ksort($years);
+
+
+        $this->render('posts', array(
+            'posts' => $posts,
+            'years' => $years,
+        ));
+    }
+
+    public function actionPost($id)
+    {
+        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+
+
+        $criteria = new CDbCriteria;
+        $criteria->compare('t.visible', Post::VISIBLE);
+        $criteria->with = array(
+            'post_upload',
+            'post_upload.upload'
+        );
+
+        $post = Post::model()->findByPk($id, $criteria);
+
+        if (empty($post)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+        $posts = Post::model()->findAll(Post::postCriteria($post->id));
+
+        $this->render('post', array(
+            'post' => $post,
+            'posts' => $posts,
+        ));
+    }
+
 
 }

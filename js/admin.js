@@ -196,9 +196,6 @@ $(function () {
                 $el.parents('.modal').modal('hide');
             },
             function () {
-            },
-            function (data) {
-
             }
         );
     });
@@ -253,6 +250,10 @@ $(function () {
         initUploders();
         initDatapickers();
         initSelect($('#' + id));
+        if (jQuery('.redactor').length != 0) {
+            jQuery('.redactor').redactor([]);
+        }
+
     });
     $(document).on('click', '.qq-delete-upload', function () {
         var upload_id = $(this).parents('.qq-upload-success').data('upload-id');

@@ -35,6 +35,7 @@
                     Скрыть колекцию
                 </label>
             </div>
+
             <hr/>
 
             <div class="form-group">
@@ -61,14 +62,34 @@
                 <label>Обложка на странице каталога</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="400"
+                     data-height="200"
                      data-action="/server/collectionUplod1"
                      data-multiple="false">
                     {{renderUploder:item.upload1}}
                 </div>
 
             </div>
+            <hr/>
+            <div class="form-group">
+                <label for="model-index_slider">Добавить в слайдер на главной</label>
+                <select id="model-index_slider" name="Collection[index_slider]" data-value="{{>item.index_slider}}">
+                    <option value="0">Нет</option>
+                    <option value="1">Да</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Обложка на главной странице</label>
+
+                <div class="construct_upload"
+                     data-width="1200"
+                     data-height="600"
+                     data-action="/server/collectionUplod2"
+                     data-multiple="false">
+                    {{renderUploder:item.upload2}}
+                </div>
+            </div>
+            <hr>
             <div class="form-group">
                 <label for="model-slogan">Слоган</label>
                 <input type="text" class="form-control" id="model-slogan" name="Collection[slogan]"
@@ -76,15 +97,15 @@
             </div>
             <div class="form-group">
                 <label for="model-description">Текст</label>
-                <textarea class="form-control h500" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
+                <textarea class="form-control h500 redactor" id="model-description" name="Collection[description]">{{>item.description}}</textarea>
             </div>
             <hr/>
             <div class="form-group">
                 <label for="model-description">Фото</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="2000"
+                     data-height="800"
                      data-action="/server/CollectionUpload"
                      data-multiple="true">
                     {{renderUploderMiltiple:item.collection_upload}}

@@ -13,8 +13,8 @@
 
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="400"
+                     data-height="200"
                      data-action="/server/UploadBrand1">
                     {{renderUploder:item.upload1}}
                 </div>
@@ -23,8 +23,8 @@
                 <label>Лого на главной странице и странице каталога</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="180"
+                     data-height="200"
                      data-action="/server/UploadBrand2">
                     {{renderUploder:item.upload2}}
                 </div>
@@ -52,8 +52,8 @@
                 <label>Лого на основной странице и странице коллекций</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="180"
+                     data-height="200"
                      data-action="/server/UploadBrand3">
                     {{renderUploder:item.upload3}}
                 </div>
@@ -80,7 +80,7 @@
             <hr/>
             <div class="form-group">
                 <label for="brand-description">Текст</label>
-                <textarea class="form-control h500" id="brand-description" name="Brand[description]"
+                <textarea class="form-control h500 redactor" id="brand-description" name="Brand[description]"
                     >{{>item.description}}</textarea>
             </div>
             {{if item.collection }}
