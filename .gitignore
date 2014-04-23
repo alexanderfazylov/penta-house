@@ -3,6 +3,6 @@ protected/config/params.php
 uploads
 nbproject
 .idea
-assets
+./assets
 protected/runtime/
 nodejs/config.js
