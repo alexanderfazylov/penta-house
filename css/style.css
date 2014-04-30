@@ -248,10 +248,16 @@ h1 {
 }
 
 .aside-menu {
-    width: 156px;
-    margin: 100px auto 0;
+    /*border: 1px solid #fff;*/
+    width: 66%;
+    height: 260px;
     z-index: 10;
     background: #222222;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -33%;
+    margin-top: -130px;
 }
 
 .logo {
@@ -261,6 +267,12 @@ h1 {
 
 .logo a {
     outline: none !important;
+    display: block;
+    text-align: center;
+}
+.logo img{
+    width: 100%;
+    max-width: 170px;
 }
 
 .logo-description {
@@ -453,12 +465,13 @@ h1 {
 .dialog-position {
     position: fixed;
     top: 20px;
-    left: 300px;
+    left: 16.6%;
     z-index: 500;
     background: #222222;
     padding: 40px 150px 40px 40px;
     width: 760px;
     display: none;
+    margin: 0 0 0 12px;
 }
 
 .callback-dialog h2, .city-dialog h2 {
@@ -483,7 +496,7 @@ h1 {
     color: #898989;
     display: inline-block;
     vertical-align: top;
-    padding-top: 5px;
+    line-height: 27px;
 }
 
 .callback-dialog .dialog-form label {
@@ -502,6 +515,7 @@ h1 {
     text-indent: 6px;
     padding: 6px 0;
     width: 290px;
+    height: 27px;
 }
 
 .dialog-form textarea {
@@ -547,7 +561,7 @@ h1 {
 
 /*--- about ---*/
 
-.about-wrapp{
+.about-wrapp {
     padding: 0px 0px 100px 100px;
 }
 
@@ -576,7 +590,7 @@ h1 {
     display: block;
 }
 
-.about-company-item{
+.about-company-item {
     width: 90%;
     font-size: 0;
     display: block;
@@ -1084,7 +1098,7 @@ h1 {
 }
 
 .has-error input {
-    background: red;
+    background: #ffb094;
 }
 
 .hovered-div-text {

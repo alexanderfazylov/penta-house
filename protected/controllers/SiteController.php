@@ -56,6 +56,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        $this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
+
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
         $posts = Post::model()->findAll(Post::indexCriteria());
@@ -223,7 +225,7 @@ class SiteController extends Controller
     public function actionProjects()
     {
         $criteria = new CDbCriteria;
-        $criteria->order = 't.order ASC, t.end_date ASC';
+        $criteria->order = 't.end_date DESC, t.order ASC';
         $criteria->compare('t.visible', Project::VISIBLE);
 
         $projects = Project::model()->findAll($criteria);

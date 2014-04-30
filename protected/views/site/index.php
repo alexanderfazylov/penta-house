@@ -1,19 +1,15 @@
-<?php
-$this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
-?>
-
 <div class="index-box">
-
     <div class="main-img">
         <div class="brand-plugin">
             <div class="slider">
                 <div class="sliderContent">
                     <?php foreach ($collections as $collection): ?>
-                        <?php if(isset($collection->upload2)): ?>
+                        <?php if (isset($collection->upload2)): ?>
                             <div class="item">
                                 <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
+
                                 <div class="title">
-                                    <?php echo $collection->slogan;?>
+                                    <?php echo $collection->slogan; ?>
                                 </div>
                             </div>
                         <?php endif; ?>
@@ -67,8 +63,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         </a>
         <?php foreach ($projects as $project): ?>
             <a href="/site/project?id=<?php echo $project->id; ?>" class="project-item item hovered">
-                <img class="item-bg"
-                     src="/uploads/<?php echo isset($project->upload1) ? $project->upload1->file_name : ''; ?>">
+                <img class="item-bg" <?php echo Helper::getSrc($project->upload1); ?>>
 
                 <div class="hovered-div">
                     <div class="hovered-div-text"><span><?php echo $project->name; ?></span></div>
@@ -82,8 +77,7 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
         </a>
         <?php foreach ($posts as $post): ?>
             <a href="/site/post?id=<?php echo $post->id ?>" class="news-item item hovered">
-                <img class="item-bg"
-                     src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+                <img class="item-bg" <?php echo Helper::getSrc($post->upload1); ?> >
 
                 <div class="hovered-div">
                     <div class="hovered-div-text">
@@ -98,10 +92,8 @@ $this->pageTitle = "Penta House - Элитная сантехника и пли�
 <div class="index-sidebar">
     <?php foreach ($brands as $brand): ?>
         <a href="/site/brand?id=<?php echo $brand->id; ?>" class="manufacturer hovered">
-            <img class="item-bg"
-                 src="/uploads/<?php echo isset($brand->upload1) ? $brand->upload1->file_name : ''; ?>">
-            <img class="manufacturer-logo"
-                 src="/uploads/<?php echo isset($brand->upload2) ? $brand->upload2->file_name : ''; ?>">
+            <img class="item-bg" <?php echo Helper::getSrc($brand->upload1); ?> >
+            <img class="manufacturer-logo" <?php echo Helper::getSrc($brand->upload2); ?> >
 
             <div class="hovered-div"></div>
         </a>
