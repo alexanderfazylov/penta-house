@@ -74,9 +74,33 @@ class Helper
     }
 
 
-    public static function sendMail()
+    public static function sendMail($view, $params)
     {
+        $email = $params['recipient'];
 
+        $mail_config = Yii::app()->params['smtp_params'];
+
+        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+        $mailer->SMTPAuth = TRUE;
+        $mailer->IsSMTP();
+        //
+        $mailer->Host = $mail_config['host'];
+        $mailer->Username = $mail_config['user'];
+        $mailer->Password = $mail_config['password'];
+        //
+        $mailer->From = $mail_config['user'];
+        $mailer->AddAddress($email);
+        //
+        $mailer->Subject = $params['subject'];
+        $mailer->FromName = $params['from_name'];
+        //
+        $mailer->setPathViews('application.views.mail_templates');
+        $mailer->getView($view, $params);
+        if (!$mailer->Send()) {
+            Yii::log('Try to login with params: ' . print_r($mail_config, 1), 'warning');
+            Yii::log($mailer->ErrorInfo, 'warning');
+            return false;
+        }
         return true;
     }
 

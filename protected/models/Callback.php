@@ -106,13 +106,50 @@ class Callback extends CActiveRecord
         return parent::beforeValidate();
     }
 
+
+
+    protected function sendMailManagers()
+    {
+        $managers = array(
+            'alexander@fazylov.ru'
+        );
+
+        $params = array();
+
+        foreach ($managers as $manager_mail) {
+            $params = array();
+            $params['recipient'] = $manager_mail;
+            $params['subject'] = 'Заказан обратный звонок на сайте penta-house.ru';
+            $params['from_name'] = 'penta-house.ru';
+            $params['model'] = $this;
+
+            Helper::sendMail('callback_manager', $params);
+        }
+
+
+    }
+
+    protected function sendMailAuthor($author_mail)
+    {
+        $params = array();
+        $params['recipient'] = $author_mail;
+        $params['subject'] = 'Спасибо за обращение';
+        $params['from_name'] = 'менеджер Александр';
+        $params['model'] = $this;
+
+        Helper::sendMail('callback', $params);
+    }
+
     protected function afterSave()
     {
 
-        Helper::sendMail($this);
+
+        $this->sendMailManagers();
+
+        //$this->sendMailAuthor();
+
 
         return parent::afterSave();
     }
-
 
 }
