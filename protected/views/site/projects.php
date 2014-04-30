@@ -6,7 +6,7 @@
             </div>
             <?php foreach ($projects as $project): ?>
                 <?php if (DateTime::createFromFormat('d.m.Y', $project->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y') == $year): ?>
-                    <a href="/site/project?id=<?php echo $project->id; ?>" class="catalog-item item hovered">
+                    <a href="/project?id=<?php echo $project->id; ?>" class="catalog-item item hovered">
                         <img class="item-bg" <?php echo Helper::getSrc($project->upload1); ?> >
 
                         <div class="hovered-div">

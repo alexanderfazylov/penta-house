@@ -7,7 +7,7 @@ $this->widget('zii.widgets.CMenu', array(
     'items' => array(
         array(
             'label' => 'О компании',
-            'url' => ('/site/about'),
+            'url' => ('/about'),
             'active' => (($controller == 'site' && $action == 'about'))
         ),
 //        array(
@@ -17,7 +17,7 @@ $this->widget('zii.widgets.CMenu', array(
 //        ),
         array(
             'label' => 'Каталог',
-            'url' => ('/site/catalog'),
+            'url' => ('/catalog'),
             'active' => (
                 ($controller == 'site' && $action == 'catalog') ||
                 ($controller == 'site' && $action == 'collection') ||
@@ -26,7 +26,7 @@ $this->widget('zii.widgets.CMenu', array(
         ),
         array(
             'label' => 'Проекты',
-            'url' => ('/site/projects'),
+            'url' => ('/projects'),
             'active' => (
                     ($controller == 'site' && $action == 'projects') ||
                     ($controller == 'site' && $action == 'project')
@@ -34,7 +34,7 @@ $this->widget('zii.widgets.CMenu', array(
         ),
         array(
             'label' => 'Контакты',
-            'url' => ('/site/contact'),
+            'url' => ('/contact'),
             'active' => (($controller == 'site' && $action == 'contact'))
         ),
     ),));

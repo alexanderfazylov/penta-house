@@ -183,10 +183,11 @@ class Post extends CActiveRecord
     protected function beforeSave()
     {
 
-        if (!empty($this->start_date) && ($this->date_status == self::VIEW)) {
-            $this->start_date = DateTime::createFromFormat('d.m.Y', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+        if (!empty($this->start_date)) {
+            if ($this->date_status == self::VIEW)
+                $this->start_date = DateTime::createFromFormat('d.m.Y', $this->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         } else {
-            // $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            $this->start_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
 
         }
         $this->date_status = self::BASE;

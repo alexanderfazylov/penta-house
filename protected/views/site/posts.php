@@ -6,9 +6,8 @@
             </div>
             <?php foreach ($posts as $post): ?>
                 <?php if (DateTime::createFromFormat('d.m.Y', $post->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y') == $year): ?>
-                    <a href="/site/post?id=<?php echo $post->id; ?>" class="catalog-item item hovered">
-                        <img class="item-bg"
-                             src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+                    <a href="/post?id=<?php echo $post->id; ?>" class="catalog-item item hovered">
+                        <img class="item-bg" <?php echo Helper::getSrc($post->upload1); ?> >
 
                         <div class="hovered-div">
                             <div class="hovered-div-text">

@@ -29,7 +29,7 @@
         </div>
         <div class="aside-menu">
             <div class="logo">
-                <a href="/site/index">
+                <a href="/">
                     <img src="../../../i/logo.png">
                 </a>
 
