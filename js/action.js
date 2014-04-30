@@ -98,6 +98,8 @@ $(function () {
             bullets: false,
             arrowsHide: false
         });
+    if ($('.collection-img-item').length > 0)
+        $(".collection-img-item").lightBox();
 
     $('.map-chenger').click(function () {
 

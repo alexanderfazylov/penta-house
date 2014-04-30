@@ -1,42 +1,233 @@
 <?php
-/* @var $this SiteController */
-
-$this->pageTitle = "Penta House - О компании";
+///* @var $this SiteController */
+//
+//$this->pageTitle = "Penta House - О компании";
+//
 ?>
+<!--<div class="breadcrumbs"><a href="/site/index">Главная</a> / О компании</div>-->
+<!--<div class="about-company">-->
+<!--    <h1>О компании</h1>-->
+<!---->
+<!--    <div class="about-company-descr">-->
+<!--        --><?php //echo $about->description; ?>
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="about-contacts">-->
+<!--    <h1>Контакты</h1>-->
+<!--    --><?php //foreach ($contacts as $contact) if ($contact->id == $this->active_contact_id)
+//        $active_contact = $contact;
+//
+?>
+<!--    <ul class="contacts">-->
+<!--        <li>-->
+<!--            <div>--><?php //echo $active_contact->address; ?><!--</div>-->
+<!--            <div>--><?php //echo $active_contact->city; ?><!--</div>-->
+<!--            <div>--><?php //echo $active_contact->phone; ?><!--</div>-->
+<!---->
+<!--            <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>-->
+<!--            <a href="http://www.penta-house.ru">www.penta-house.ru</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--<div class="about-footer">-->
+<!--    <div class="news item-box">-->
+<!--        <a href="/site/posts" class="news-item item news-title">-->
+<!--            <span class="nw-title">Последние новости</span>-->
+<!--        </a>-->
+<!--        --><?php //foreach ($posts as $post): ?>
+<!--            <a href="/site/post?id=--><?php //echo $post->id; ?><!--" class="news-item item">-->
+<!--                <img class="item-bg"-->
+<!--                     src="/uploads/--><?php //echo isset($post->upload1) ? $post->upload1->file_name : ''; ?><!--">-->
+<!--            </a>-->
+<!--        --><?php //endforeach; ?>
+<!--    </div>-->
+<!--</div>-->
+
 <div class="breadcrumbs"><a href="/site/index">Главная</a> / О компании</div>
-<div class="about-company">
-    <h1>О компании</h1>
+<div class="about-wrapp">
+    <div class="about-company">
+        <h1>О компании</h1>
 
-    <div class="about-company-descr">
-        <?php echo $about->description; ?>
+        <ul class="about-company-descr">
+            <li>
+                PentaHouse – это многопрофильный холдинг,
+                который объединяет под одной торговой
+                маркой архитектурное бюро, инжиниринговую
+                компанию, оптовую и розничную группу элитной
+                сантехники, авторизированный инсталяционный
+                департамент и логистическую службу.
+                В Поволжье мы представляем уникальные
+                элитные фабрики и заводы сантехники, мебели,
+                посуды и предметов интерьера.
+                <p>
+                    В нашей команде работают высококлассные
+                    специалисты – дизайнеры, инженеры
+                    и менеджеры по представленным брендам.
+                </p>
+            </li>
+            <li>
+                Наши партнеры – более 50 европейских фабрик,
+                заводов-изготовителей и частных мастерских.
+                Мы сотрудничаем как с новейшими,
+                суперсовременными технологичными
+                производствами, так и со старинными родовыми
+                предприятиями, культурные традиции которых
+                передаются из поколения в поколение
+                несколько веков. Отсутствие посредников
+                в отношениях с поставщиками, наличие
+                собственного подразделения, управляющего
+                цепочкой поставок, позволяет существенно
+                снизить стоимость и сроки реализации проекта.
+            </li>
+            <li>
+                Luxury сегмент - это совершенно другой
+                уровень потребления, где cантехника является
+                не просто предметом роскоши, а сегментом
+                товаров и услуг, вызывающих особое
+                наслаждение. Причем утонченное удовольствие
+                и комфорт начинается еще с процесса выбора
+                и покупки оборудования, усиливается высоким
+                качеством обслуживания, закрепляется
+                восхищением от обладания и использования,
+                и продлевается благодаря профессиональному
+                сервису и обслуживанию. Именно такой подход
+                в работе предлагает своим заказчикам
+                и партнерам компания PentaHouse.
+            </li>
+            <li class="helper"></li>
+        </ul>
+        <h2 class="about-company-descr-title">Пять шагов от идеи до ее блестящего воплощения</h2>
+        <ul class="about-company-descr">
+            <li>
+                PentaHouse – это многопрофильный холдинг,
+                который объединяет под одной торговой
+                маркой архитектурное бюро, инжиниринговую
+                компанию, оптовую и розничную группу элитной
+                сантехники, авторизированный инсталяционный
+                департамент и логистическую службу.
+                В Поволжье мы представляем уникальные
+                элитные фабрики и заводы сантехники, мебели,
+                посуды и предметов интерьера.
+            </li>
+            <li class="helper"></li>
+        </ul>
     </div>
-</div>
-<div class="about-contacts">
-    <h1>Контакты</h1>
-    <?php foreach ($contacts as $contact) if ($contact->id == $this->active_contact_id)
-        $active_contact = $contact;
-    ?>
-    <ul class="contacts">
+    <div class="about-contacts">
+        <h1>Контакты</h1>
+
+        <h3>Проектный офис</h3>
+
+        <div class="contacts-title">Время работы</div>
+        <div class="contacts table">
+            <div class="tr">
+                <div class="td">dasds</div>
+                <div class="td">asdas</div>
+            </div>
+            <div class="tr">
+                <div class="td">sdf</div>
+                <div class="td">sdfs</div>
+            </div>
+            <div class="tr address-tr">
+                <div class="td">Адрес</div>
+                <div class="td">
+                    <div>asda</div>
+                    <div>asdasd</div>
+                    <div>asdasd</div>
+
+                    <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
+                </div>
+            </div>
+        </div>
+
+        <h3>Проектный офис</h3>
+
+        <div class="contacts-title">Время работы</div>
+        <div class="contacts table">
+            <div class="tr">
+                <div class="td">dasds</div>
+                <div class="td">asdas</div>
+            </div>
+            <div class="tr">
+                <div class="td">sdf</div>
+                <div class="td">sdfs</div>
+            </div>
+            <div class="tr address-tr">
+                <div class="td">Адрес</div>
+                <div class="td">
+                    <div>asda</div>
+                    <div>asdasd</div>
+                    <div>asdasd</div>
+
+                    <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="anchor"></div>
+    <h2 class="about-company-descr-title">Как мы выбираем производителей</h2>
+    <ul class="about-company-item">
         <li>
-            <div><?php echo $active_contact->address; ?></div>
-            <div><?php echo $active_contact->city; ?></div>
-            <div><?php echo $active_contact->phone; ?></div>
-
-            <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
-            <a href="http://www.penta-house.ru">www.penta-house.ru</a>
+            Марки и бренды, стремящиеся к статусу
+            элитных, затрачивают массу усилий, чтобы
+            закрепиться в верхнем эшелоне
+            производителей. Для этого они не жалеют
+            инвестиций в технологию производства,
+            вкладываются в сотрудничество с именитыми
+            дизайнерами, такими как Филипп Старк, Акилле
+            Кастильоне и другие. Они разрабатывают
+            собственные ноу-хау, которые выгодно отличают
+            их от конкурентов. Например, эксклюзивные
+            модели раковин из меди от компании Herbeau,
+            или специальный материал от HOESCH, отлитый
+            между двумя пластинами полированного стекла,
+            благодаря которому на поверхности не остается
+            пор, и ваша сантехника будет всегда идеально
+            чистой.
         </li>
+        <li>
+            Прежде чем выводить на рынок эксклюзивные
+            марки сантехники и комплектовать ими элитные
+            интерьеры, мы проводим тщательный отбор
+            производителей. Критерии отбора будущих
+            поставщиков у нас очень жесткие:
+            — Высокий уровень известности бренда
+            — Достаточный спрос на него по региону
+            и по России в целом
+            — Наличие обучающих центров для торговых
+            представителей и специалистов монтажа
+            — Развитый сервис и компетентная служба
+            поддержк
+        </li>
+        <li>
+            При заключении договора о поставках,
+            мы выдвигаем определенные условия работы,
+            разрабатываем свою стратегию развития
+            каждого бренда в нашем регионе. Такое
+            внимание к деталям и высокие требования
+            позволяет сохранить репутацию компании
+            PentaHouse и повысить интерес заказчиков
+            и инвесторов к будущим проектам.
+            <p>
+                Наличие дистрибьюторских договор с каждым
+                из поставщиков подтверждается посещением
+                наших объектов представителями технических
+                служб и даже первых лиц компаний-
+                производителей. А это важно не только для нас,
+                но и для наших заказчиков.
+            </p>
+        </li>
+        <li>
+            Все наши партнеры – это проверенные
+            и тщательно отобранные бренды, такие как
+            Teuco, Bossini, Oasis, Jacuzzi и многие другие.
+            Всего – более пятидесяти европейских фабрик,
+            заводов-изготовителей и частных мастерских.
+            Мы с уверенностью заявляем,
+            что оборудование, поставляемое компанией
+            PentaHouse, производится в Европейских
+            странах под непосредственным контролем
+            разработчиков и вла
+        </li>
+        <li class="helper"></li>
     </ul>
-</div>
-<div class="about-footer">
-    <div class="news item-box">
-        <a href="/site/posts" class="news-item item news-title">
-            <span class="nw-title">Последние новости</span>
-        </a>
-        <?php foreach ($posts as $post): ?>
-            <a href="/site/post?id=<?php echo $post->id; ?>" class="news-item item">
-                <img class="item-bg"
-                     src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
-            </a>
-        <?php endforeach; ?>
-    </div>
 </div>

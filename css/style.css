@@ -53,6 +53,7 @@
     position: absolute;
     left: 50%;
     margin-left: -200px;
+    width: 400px;
 }
 
 .manufacturer {
@@ -247,10 +248,16 @@ h1 {
 }
 
 .aside-menu {
-    width: 156px;
-    margin: 100px auto 0;
+    /*border: 1px solid #fff;*/
+    width: 66%;
+    height: 260px;
     z-index: 10;
     background: #222222;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -33%;
+    margin-top: -130px;
 }
 
 .logo {
@@ -260,6 +267,12 @@ h1 {
 
 .logo a {
     outline: none !important;
+    display: block;
+    text-align: center;
+}
+.logo img{
+    width: 100%;
+    max-width: 170px;
 }
 
 .logo-description {
@@ -392,7 +405,7 @@ h1 {
 }
 
 .main-img .sliderContent {
-    height: 600px!important;
+    height: 600px !important;
 }
 
 .brand-plugin .title {
@@ -452,12 +465,13 @@ h1 {
 .dialog-position {
     position: fixed;
     top: 20px;
-    left: 300px;
+    left: 16.6%;
     z-index: 500;
     background: #222222;
     padding: 40px 150px 40px 40px;
     width: 760px;
     display: none;
+    margin: 0 0 0 12px;
 }
 
 .callback-dialog h2, .city-dialog h2 {
@@ -482,7 +496,7 @@ h1 {
     color: #898989;
     display: inline-block;
     vertical-align: top;
-    padding-top: 5px;
+    line-height: 27px;
 }
 
 .callback-dialog .dialog-form label {
@@ -501,6 +515,7 @@ h1 {
     text-indent: 6px;
     padding: 6px 0;
     width: 290px;
+    height: 27px;
 }
 
 .dialog-form textarea {
@@ -546,16 +561,19 @@ h1 {
 
 /*--- about ---*/
 
+.about-wrapp {
+    padding: 0px 0px 100px 100px;
+}
+
 .about-company {
     float: left;
-    width: 35%;
+    width: 70%;
     height: 100%;
-    padding: 0px 40px 100px 100px;
 }
 
 .about-contacts {
     float: left;
-    width: 25%;
+    width: 30%;
     height: 100%;
     padding-right: 15px;
 }
@@ -567,31 +585,87 @@ h1 {
 }
 
 .about-company-descr {
+    width: 100%;
+    font-size: 0;
+    display: block;
 }
 
-.about-company p {
-    margin: 15px 0;
-    font-size: 12px;
+.about-company-item {
+    width: 90%;
+    font-size: 0;
+    display: block;
+}
+
+.about-company-descr-title {
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 50px 0 25px;
+}
+
+.about-company-descr li, .about-company-item li {
+    display: inline-block;
+    font-size: 13px;
     vertical-align: top;
-    line-height: 1.8em;
+    padding-right: 20px;
+}
+
+.about-company-descr li {
+    width: 33.3%;
+}
+
+.about-company-item li {
+    width: 25%;
+}
+
+.about-company-descr li p {
+    margin-top: 10px;
+}
+
+.about-company-descr li.helper, .about-company-item li.helper {
+    width: 100%;
+    height: 0;
+    visibility: hidden;
 }
 
 .about-contacts h1 {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .about-company h1 {
     margin-bottom: 25px;
 }
 
-.contacts {
+.about-contacts h3 {
     font-size: 2em;
-    line-height: 1.4em;
-    list-style: none;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.contacts-title {
+    color: #a1a1a1;
+    font-size: 14px;
+}
+
+.contacts {
+    margin-bottom: 40px;
+}
+
+.contacts .tr .td:first-child {
+    color: #a1a1a1;
+    font-size: 14px;
+    padding-right: 20px;
+}
+
+.contacts .tr .td:last-child {
+    font-size: 18px;
+}
+
+.contacts .address-tr .td {
+    padding-top: 10px;
 }
 
 .contacts a {
-    color: #000;
+    color: #4ebfa7;
     display: block;
 }
 
@@ -1024,7 +1098,7 @@ h1 {
 }
 
 .has-error input {
-    background: red;
+    background: #ffb094;
 }
 
 .hovered-div-text {
