@@ -267,6 +267,7 @@ class Brand extends CActiveRecord
                 'limit' => 3,
             ),
             'collection.upload1',
+            'meta_data',
         );
         return $criteria;
     }

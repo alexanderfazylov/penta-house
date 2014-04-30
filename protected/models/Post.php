@@ -234,6 +234,7 @@ class Post extends CActiveRecord
 
         $criteria->with = array(
             'upload1',
+
         );
 
         return $criteria;

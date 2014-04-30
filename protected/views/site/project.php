@@ -45,8 +45,7 @@
 
         <?php foreach ($projects as $model): ?>
             <a href="/site/project?id=<?php echo $model->id; ?>" class="brand-item item hovered">
-                <img class="item-bg"
-                     src="/uploads/<?php echo(isset($model->upload1) ? $model->upload1->file_name : ''); ?>"/>
+                <img class="item-bg" <?php echo Helper::getSrc($model->upload1); ?> />
 
                 <div class="hovered-div">
                     <div class="hovered-div-text">
@@ -59,8 +58,4 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    $(function () {
-        $(".collection-img-item").lightBox();
-    });
-</script>
+

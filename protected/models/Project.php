@@ -251,6 +251,7 @@ class Project extends CActiveRecord
         $criteria->with = array(
             'project_upload',
             'project_upload.upload',
+            'meta_data',
         );
 
         return $criteria;

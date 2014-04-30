@@ -231,6 +231,7 @@ class Collection extends CActiveRecord
 
         $criteria->with = array(
             'collection_upload',
+            'meta_data',
         );
         return $criteria;
     }
