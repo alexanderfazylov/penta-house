@@ -212,6 +212,7 @@ class Contact extends CActiveRecord
 
     public static function getType($model)
     {
+
         if (isset($model->type)) {
             if ($model->type == 1) {
                 return "Проектный офис";

@@ -48,7 +48,7 @@
                             data-latitude="<?php echo $contact->longitude; ?>"
                             data-longitude="<?php echo $contact->latitude; ?>"
                             data-zoom="15">
-                        <?php echo Contact::getType($contact->type); ?>
+                        <?php echo Contact::getType($contact); ?>
                     </button>
                     <dl class="dl-horizontal">
                         <dt>Время работы</dt>
