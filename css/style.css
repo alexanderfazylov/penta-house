@@ -237,6 +237,7 @@ h1 {
     text-align: center;
     margin: 30px 0px 10px;
     font-family: "HelveticaNeueCyr-Thin";
+    white-space: nowrap;
 }
 
 .callback {
@@ -270,7 +271,8 @@ h1 {
     display: block;
     text-align: center;
 }
-.logo img{
+
+.logo img {
     width: 100%;
     max-width: 170px;
 }
