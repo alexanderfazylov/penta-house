@@ -43,9 +43,8 @@
                 <span class="brand-title">Коллекции</span>
             </div>
             <?php foreach ($brand->collection as $collection): ?>
-                <a href="/site/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">
-                    <img class="item-bg" src="/uploads/<?php echo $collection->upload1->file_name ?>"/>
-
+                <a href="/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">
+                    <img class="item-bg" <?php echo Helper::getSrc($collection->upload1); ?>/>
                     <div class="hovered-div">
                         <div class="hovered-div-text">
                             <span><?php echo $collection->name; ?></span>

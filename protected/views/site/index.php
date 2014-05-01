@@ -6,11 +6,13 @@
                     <?php foreach ($collections as $collection): ?>
                         <?php if (isset($collection->upload2)): ?>
                             <div class="item">
-                                <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
+                                <a class="in_item" href="/collection?id=<?php echo $collection->id ?>">
+                                    <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
 
-                                <div class="title">
-                                    <?php echo $collection->slogan; ?>
-                                </div>
+                                    <div class="title">
+                                        <?php echo $collection->slogan; ?>
+                                    </div>
+                                </a>
                             </div>
                         <?php endif; ?>
                     <?php endforeach; ?>
@@ -25,6 +27,7 @@
         <div class="service-item item">
             <div class="service-item-wrapper">
                 <h3><?php echo $this->main->direction_1; ?></h3>
+
                 <div class="service-hr"></div>
                 <div class="service-description"><?php echo $this->main->direction_description_1; ?></div>
             </div>

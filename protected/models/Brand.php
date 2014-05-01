@@ -231,7 +231,7 @@ class Brand extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
-        $criteria->limit = 8;
+        //$criteria->limit = 8;
         $criteria->compare('t.maine_page_visible', 0);
 
         $criteria->with = array(

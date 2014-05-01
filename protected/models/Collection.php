@@ -95,8 +95,6 @@ class Collection extends CActiveRecord
      */
     public function search()
     {
-        // @todo Please modify the following code to remove attributes that should not be searched.
-
         $criteria = new CDbCriteria;
 
         $criteria->compare('t.id', $this->id);
@@ -117,7 +115,7 @@ class Collection extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
             'sort' => array(
-                'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
+                'defaultOrder' => 't.maine_page_visible ASC, t.order ASC, t.name ASC',
                 'attributes' => array(
                     'id' => 'id',
                     'name' => 'name',
