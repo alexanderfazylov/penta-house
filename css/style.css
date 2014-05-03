@@ -179,6 +179,44 @@ h1 {
 }
 
 /*-- sidebar --*/
+.social, .callback, .city-name, .copyright, .phone, .change-city {
+    display: none;
+}
+
+@media (min-height: 380px) {
+    .change-city {
+        display: inline-block;
+    }
+
+    .copyright {
+        display: block;
+    }
+
+}
+
+@media (min-height: 450px) {
+    .city-name {
+        display: inline-block;
+    }
+}
+
+@media (min-height: 490px) {
+    .phone {
+        display: block;
+    }
+}
+
+@media (min-height: 510px) {
+    .social {
+        display: block;
+    }
+}
+
+@media (min-height: 550px) {
+    .callback {
+        display: block;
+    }
+}
 
 .aside {
     position: fixed;
@@ -246,6 +284,7 @@ h1 {
     text-decoration: underline;
     cursor: pointer;
     font-family: Tahoma;
+    white-space: nowrap;
 }
 
 .aside-menu {
