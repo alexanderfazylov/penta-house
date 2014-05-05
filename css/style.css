@@ -776,11 +776,16 @@ h1 {
 
 .contact-info dt {
     color: #898989;
-    font-size: 1.17em;
+    font-size: 14px;
+    font-family: Tahoma;
 }
 
 .contact-info dd {
-    font-size: 1.17em;
+    font-size: 18px;
+}
+
+.contact-info dd  a {
+    color: #4ebfa7;
 }
 
 .city-title {
@@ -793,6 +798,13 @@ h1 {
     outline: none;
     cursor: pointer;
     line-height: 0.9em;
+    font-family: 'HelveticaNeueCyr-Light';
+}
+
+.contact-city{
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    font-weight: normal;
 }
 
 .city-title.active {
@@ -822,9 +834,9 @@ h1 {
 }
 
 .contact-info-ul li {
-    padding: 0 40px 50px 0;
+    padding: 0 10px 50px 0;
     list-style: none;
-    line-height: 20px;
+    line-height: 22px;
     display: block;
     vertical-align: top;
 }

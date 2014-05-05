@@ -39,7 +39,7 @@
     <ul class="contact-info-ul">
         <?php foreach ($contacts as $contact): ?>
             <?php if ($contact->default_in_city): ?>
-                <h2><?php echo $contact->city; ?></h2>
+                <h2 class="contact-city"><?php echo $contact->city; ?></h2>
             <?php endif; ?>
             <li>
                 <div class="contact-info-wrapp">
