@@ -288,14 +288,14 @@ h1 {
 
 .aside-menu {
     /*border: 1px solid #fff;*/
-    width: 66%;
+    width: 76%;
     height: 260px;
     z-index: 10;
     background: #222222;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -33%;
+    margin-left: -38%;
     margin-top: -130px;
 }
 
