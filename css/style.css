@@ -542,9 +542,8 @@ h1 {
     color: #898989;
     display: inline-block;
     vertical-align: top;
-    padding-top: 5px;
+    padding-top: 7px;
     font-family: Tahoma;
-    line-height: 27px;
 }
 
 .callback-dialog .dialog-form label {
@@ -565,7 +564,6 @@ h1 {
     padding: 6px 0;
     width: 290px;
     font-family: Tahoma;
-    height: 27px;
 }
 
 .dialog-form textarea {
@@ -1188,7 +1186,8 @@ h1 {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
-    font-size: 1.17em;
+    font-size: 14px;
+    font-family: Tahoma;
     padding: 0 20px 0;
 }
 
