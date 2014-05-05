@@ -235,7 +235,7 @@ class Brand extends CActiveRecord
         $criteria->compare('t.maine_page_visible', 0);
 
         $criteria->with = array(
-            'upload1',
+            //'upload1',
             'upload2',
             'collection',
             'collection.upload1',
