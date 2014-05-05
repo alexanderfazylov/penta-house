@@ -231,11 +231,11 @@ class Brand extends CActiveRecord
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
-        $criteria->limit = 8;
+        //$criteria->limit = 8;
         $criteria->compare('t.maine_page_visible', 0);
 
         $criteria->with = array(
-            'upload1',
+            //'upload1',
             'upload2',
             'collection',
             'collection.upload1',
@@ -267,6 +267,7 @@ class Brand extends CActiveRecord
                 'limit' => 3,
             ),
             'collection.upload1',
+            'meta_data',
         );
         return $criteria;
     }

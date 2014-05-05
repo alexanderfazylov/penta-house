@@ -74,9 +74,33 @@ class Helper
     }
 
 
-    public static function sendMail()
+    public static function sendMail($view, $params)
     {
+        $email = $params['recipient'];
 
+        $mail_config = Yii::app()->params['smtp_params'];
+
+        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+        $mailer->SMTPAuth = TRUE;
+        $mailer->IsSMTP();
+        //
+        $mailer->Host = $mail_config['host'];
+        $mailer->Username = $mail_config['user'];
+        $mailer->Password = $mail_config['password'];
+        //
+        $mailer->From = $mail_config['user'];
+        $mailer->AddAddress($email);
+        //
+        $mailer->Subject = $params['subject'];
+        $mailer->FromName = $params['from_name'];
+        //
+        $mailer->setPathViews('application.views.mail_templates');
+        $mailer->getView($view, $params);
+        if (!$mailer->Send()) {
+            Yii::log('Try to login with params: ' . print_r($mail_config, 1), 'warning');
+            Yii::log($mailer->ErrorInfo, 'warning');
+            return false;
+        }
         return true;
     }
 
@@ -88,7 +112,7 @@ class Helper
             $chhtp = new CHttpRequest();
             //$ip = $chhtp->getUserHostAddress();
             //db test
-            $ip = '217.198.1.70';//KAZAN
+            $ip = '217.198.1.70'; //KAZAN
             //$ip = '95.221.10.166'; //MOSCOW
 
             $sx_geo = new SxGeo('SxGeoCity.dat');
@@ -140,4 +164,35 @@ class Helper
         return $city;
     }
 
+
+    public static function getSrc($upload, $dop_path = false)
+    {
+
+
+        if (isset($upload->file_name)) {
+
+            if ($dop_path) {
+                $file_path = '/uploads/' . $dop_path . '/' . $upload->file_name;
+            } else {
+                $file_path = '/uploads/' . $upload->file_name;
+            }
+
+            $atr = "src='{$file_path}'";
+        } else {
+            $atr = "src='/i/default.png'";
+        }
+
+
+        return $atr;
+    }
+
+
+    public static function issetPhoto($collections)
+    {
+        foreach ($collections as $collection)
+            if (!empty($collection->collection_upload))
+                return true;
+
+        return false;
+    }
 } 

@@ -1,3 +1,28 @@
+<?php if (!empty($brand->collection) && Helper::issetPhoto($brand->collection)): ?>
+    <div class="brand-plugin">
+        <div class="slider">
+            <div class="sliderContent">
+                <?php foreach ($brand->collection as $collection): ?>
+                    <?php if (!empty($collection->collection_upload)): ?>
+                        <?php
+                        $collection_upload = $collection->collection_upload;
+                        $photo = $collection_upload[0];
+                        ?>
+                        <div class="item">
+                            <img
+                                style="height: 800px" <?php echo Helper::getSrc($photo->upload); ?>/>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+            <div class="sliderArrows sliderArrowsBottom"></div>
+        </div>
+        <div class="title">
+            <?php echo $collection->slogan; ?>
+        </div>
+        <div class="anchor"></div>
+    </div>
+<?php endif; ?>
 <div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Каталог</a></div>
 <div class="brand-description">
     <h1><?php echo $brand->name; ?></h1>
@@ -22,13 +47,12 @@
 <div class="anchor"></div>
 <div class="collection-footer">
     <div class="item-box">
-        <a href="/site/collection" class="brand-item item brand-title">
+        <div class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>
-        </a>
+        </div>
         <?php foreach ($brand->collection as $collection): ?>
-            <a href="<?php echo $collection->id; ?>" class="brand-item item hovered">
-                <img class="item-bg"
-                     src="/uploads/<?php (isset($collection->upload1)) ? $collection->upload1->file_name : ''; ?>">
+            <a href="/site/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">
+                <img class="item-bg" <?php echo Helper::getSrc($collection->upload1); ?> >
 
                 <div class="hovered-div">
                     <div class="hovered-div-text">

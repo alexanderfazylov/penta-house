@@ -160,10 +160,11 @@ class Project extends CActiveRecord
     protected function beforeSave()
     {
 
-        if (!empty($this->end_date) && ($this->date_status == self::VIEW)) {
-            $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+        if (!empty($this->end_date)) {
+            if ($this->date_status == self::VIEW)
+                $this->end_date = DateTime::createFromFormat('d.m.Y', $this->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         } else {
-            //$this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
+            $this->end_date = DateTime::createFromFormat('d.m.Y', date('d.m.Y'))->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Ymd');
         }
 
         $this->date_status = self::BASE;
@@ -209,7 +210,7 @@ class Project extends CActiveRecord
     {
         $criteria = new CDbCriteria;
 
-        $criteria->order = 't.order ASC';
+        $criteria->order = 't.end_date DESC, t.order ASC';
         $criteria->compare('t.visible', 0);
 
         $criteria->limit = 7;
@@ -251,6 +252,7 @@ class Project extends CActiveRecord
         $criteria->with = array(
             'project_upload',
             'project_upload.upload',
+            'meta_data',
         );
 
         return $criteria;

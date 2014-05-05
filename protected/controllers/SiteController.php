@@ -54,8 +54,11 @@ class SiteController extends Controller
      * This is the default 'index' action that is invoked
      * when an action is not explicitly requested by users.
      */
+
     public function actionIndex()
     {
+        $this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
+
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
         $posts = Post::model()->findAll(Post::indexCriteria());
@@ -126,9 +129,15 @@ class SiteController extends Controller
 
     public function actionBrand($id)
     {
+
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
 
         $brand = Brand::model()->find(Brand::pageBrand($id));
+
+
+        $this->description = $brand->meta_data->description;
+        $this->keywords = $brand->meta_data->keywords;
+        $this->pageTitle = $brand->meta_data->title;
 
         $this->render('brand', array(
                 'brand' => $brand
@@ -149,6 +158,10 @@ class SiteController extends Controller
         if (empty($collection)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
+
+        $this->description = $collection->meta_data->description;
+        $this->keywords = $collection->meta_data->keywords;
+        $this->pageTitle = $collection->meta_data->title;
 
         $this->render('collection',
             array(
@@ -223,7 +236,7 @@ class SiteController extends Controller
     public function actionProjects()
     {
         $criteria = new CDbCriteria;
-        $criteria->order = 't.order ASC, t.end_date ASC';
+        $criteria->order = 't.end_date DESC, t.order ASC';
         $criteria->compare('t.visible', Project::VISIBLE);
 
         $projects = Project::model()->findAll($criteria);
@@ -255,6 +268,9 @@ class SiteController extends Controller
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
 
+        $this->description = $project->meta_data->description;
+        $this->keywords = $project->meta_data->keywords;
+        $this->pageTitle = $project->meta_data->title;
         $this->render('project',
             array(
                 'project' => $project,
@@ -308,7 +324,8 @@ class SiteController extends Controller
         $criteria->compare('t.visible', Post::VISIBLE);
         $criteria->with = array(
             'post_upload',
-            'post_upload.upload'
+            'post_upload.upload',
+            'meta_data',
         );
 
         $post = Post::model()->findByPk($id, $criteria);
@@ -317,6 +334,10 @@ class SiteController extends Controller
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
         $posts = Post::model()->findAll(Post::postCriteria($post->id));
+
+        $this->description = $post->meta_data->description;
+        $this->keywords = $post->meta_data->keywords;
+        $this->pageTitle = $post->meta_data->title;
 
         $this->render('post', array(
             'post' => $post,

@@ -59,89 +59,22 @@
                 <label for="model-map">Масштаб карты</label>
                 <input type="text" name="Contact[zoom]" value="{{>item.zoom}}">
             </div>
+            <hr>
             <div class="form-group">
-                <label for="model-description">Режим работы</label>
-
-                <ul class="week">
-                    <li>
-                        <div class="day-name">Пн</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[monday_start]"
-                                   value="{{>item.monday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[monday_end]"
-                                   value="{{>item.monday_end}}">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="day-name">Вт</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[tuesday_start]"
-                                   value="{{>item.tuesday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[tuesday_end]"
-                                   value="{{>item.tuesday_end}}">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="day-name">Ср</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[wednesday_start]"
-                                   value="{{>item.wednesday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[wednesday_end]"
-                                   value="{{>item.wednesday_end}}">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="day-name">Чт</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[thursday_start]"
-                                   value="{{>item.thursday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[thursday_end]"
-                                   value="{{>item.thursday_end}}">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="day-name">Пт</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[friday_start]"
-                                   value="{{>item.friday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[friday_end]"
-                                   value="{{>item.friday_end}}">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="day-name">Сб</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[saturday_start]"
-                                   value="{{>item.saturday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[saturday_end]"
-                                   value="{{>item.saturday_end}}">
-                        </div>
-                    </li>
-                    <li>
-                        <div class="day-name">Вс</div>
-                        <div class="time_from">
-                            <input type="text" class="form-control" name="Contact[sunday_start]"
-                                   value="{{>item.sunday_start}}">
-                        </div>
-                        <div class="time_to">
-                            <input type="text" class="form-control" name="Contact[sunday_end]"
-                                   value="{{>item.sunday_end}}">
-                        </div>
-                    </li>
-                </ul>
+                <label for="model-weekdays">Будни</label>
+                <input type="text" name="Contact[weekdays]" value="{{>item.weekdays}}">
             </div>
+            <div class="form-group">
+                <label for="model-saturday">Суббота</label>
+                <input type="text" name="Contact[saturday]" value="{{>item.saturday}}">
+                <p class="default-hint">если поле пустое, значит выходной</p>
+            </div>
+            <div class="form-group">
+                <label for="model-sunday">Воскресенье</label>
+                <input type="text" name="Contact[sunday]" value="{{>item.sunday}}">
+                <p class="default-hint">если поле пустое, значит выходной</p>
+            </div>
+
             <hr/>
             <div class="checkbox">
                 <label>

@@ -54,9 +54,9 @@ class Contact extends CActiveRecord
         return array(
             array('city', 'required'),
             array('order, type, visible, default, default_in_city, zoom', 'numerical', 'integerOnly' => true, 'min' => 0),
-            array('longitude, latitude, city, phone, address, monday_start, monday_end, tuesday_start, tuesday_end, wednesday_start, wednesday_end, thursday_start, thursday_end, friday_start, friday_end, saturday_start, saturday_end, sunday_start, sunday_end', 'length', 'max' => 255),
+            array('longitude, latitude, city, phone, address, weekdays, saturday, sunday', 'length', 'max' => 255),
             array('map', 'safe'),
-            array('id, city, phone, address, map, order, type, visible, monday_start, monday_end, tuesday_start, tuesday_end, wednesday_start, wednesday_end, thursday_start, thursday_end, friday_start, friday_end, saturday_start, saturday_end, sunday_start, sunday_end', 'safe', 'on' => 'search'),
+            array('id, city, phone, address, map, order, type, visible', 'safe', 'on' => 'search'),
         );
     }
 
@@ -87,26 +87,11 @@ class Contact extends CActiveRecord
             'default' => 'Город по умолчанию',
             'default_in_city' => 'Контакт по умолчанию среди одинаковых городов',
 
-            'monday_start' => 'Monday Start',
-            'monday_end' => 'Monday End',
+            'weekdays' => 'weekdays',
+            'saturday' => 'saturday',
+            'sunday' => 'sunday',
 
-            'tuesday_start' => 'Tuesday Start',
-            'tuesday_end' => 'Tuesday End',
 
-            'wednesday_start' => 'Wednesday Start',
-            'wednesday_end' => 'Wednesday End',
-
-            'thursday_start' => 'Thursday Start',
-            'thursday_end' => 'Thursday End',
-
-            'friday_start' => 'Friday Start',
-            'friday_end' => 'Friday End',
-
-            'saturday_start' => 'Saturday Start',
-            'saturday_end' => 'Saturday End',
-
-            'sunday_start' => 'Sunday Start',
-            'sunday_end' => 'Sunday End',
         );
     }
 
@@ -205,33 +190,37 @@ class Contact extends CActiveRecord
 
     public static function getTypeSelect($model)
     {
-        return CHtml::dropDownList(
-            'Contact[type]', $model->type,
-            CHtml::listData(
-                array(
-                    array(
-                        'id' => '1',
-                        'name' => 'Проектный офис',
-
-                    ),
-                    array(
-                        'id' => '2',
-                        'name' => 'Шоурум',
-
-                    ),
-                ),
-                'id', 'name'),
-            array('empty' => '-')
-
-        );
+        return CHtml::dropDownList('Contact[type]', $model->type, CHtml::listData(self::typeArray(), 'id', 'name'), array('empty' => '-'));
     }
 
-    public function getType($model)
+    public static function typeArray()
     {
-        if ($model->type == 1) {
-            return "Проектный офис";
-        } elseif ($model->type == 2) {
-            return "Шоурум";
+        return
+            array(
+                array(
+                    'id' => '1',
+                    'name' => 'Проектный офис',
+
+                ),
+                array(
+                    'id' => '2',
+                    'name' => 'Шоурум',
+
+                ),
+            );
+    }
+
+    public static function getType($model)
+    {
+
+        if (isset($model->type)) {
+            if ($model->type == 1) {
+                return "Проектный офис";
+            } elseif ($model->type == 2) {
+                return "Шоурум";
+            }
+        }else{
+            return 'Не выбран';
         }
     }
 
@@ -291,4 +280,6 @@ class Contact extends CActiveRecord
 
         return Contact::model()->findAll($criteria);
     }
+
+
 }
