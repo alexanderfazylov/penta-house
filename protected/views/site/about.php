@@ -164,6 +164,9 @@
         </div>
     </div>
     <div class="anchor"></div>
+</div>
+
+<div class="about-wrapp">
     <h2 class="about-company-descr-title">Как мы выбираем производителей</h2>
     <ul class="about-company-item">
         <li>

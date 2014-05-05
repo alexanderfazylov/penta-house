@@ -553,13 +553,13 @@ h1 {
 
 .about-company {
     float: left;
-    width: 70%;
+    width: 65.796%;
     height: 100%;
 }
 
 .about-contacts {
     float: left;
-    width: 30%;
+    width: 34.204%;
     height: 100%;
     padding-right: 15px;
 }
@@ -577,7 +577,7 @@ h1 {
 }
 
 .about-company-item{
-    width: 90%;
+    width: 84.453%;
     font-size: 0;
     display: block;
 }
