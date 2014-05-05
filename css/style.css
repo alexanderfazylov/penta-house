@@ -169,7 +169,6 @@ h1 {
 
 .breadcrumbs {
     color: #a1a1a1;
-    font-style: italic;
     font-family: Tahoma;
     padding: 50px 0px 15px 100px
 }
@@ -267,6 +266,7 @@ h1 {
     color: #898989;
     text-align: center;
     font: 11px Tahoma, sans-serif;
+    white-space: nowrap;
 }
 
 .menu {
@@ -379,12 +379,13 @@ h1 {
 }
 
 .title {
-    font-size: 4em;
+    font-size: 3em;
     position: absolute;
     left: 50px;
-    padding: 50px;
-    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.5);
     z-index: 5;
+    color: #000;
 }
 
 .main-img .title {
@@ -470,6 +471,7 @@ h1 {
 
 .dialog-description {
     font-size: 1.33em;
+    font-family: Tahoma;
     color: #898989;
     margin-bottom: 25px;
 }
@@ -484,6 +486,7 @@ h1 {
     display: inline-block;
     vertical-align: top;
     padding-top: 5px;
+    font-family: Tahoma;
 }
 
 .callback-dialog .dialog-form label {
@@ -496,12 +499,14 @@ h1 {
 
 .dialog-form input[type="text"], .dialog-form textarea {
     border: 1px solid #000000;
+    font-family: Tahoma;
 }
 
 .dialog-form input[type="text"] {
     text-indent: 6px;
     padding: 6px 0;
     width: 290px;
+    font-family: Tahoma;
 }
 
 .dialog-form textarea {
@@ -516,6 +521,7 @@ h1 {
     color: #898989;
     margin-left: 155px;
     padding-top: 5px;
+    font-family: Tahoma;
 }
 
 .dialog-header {
@@ -529,6 +535,7 @@ h1 {
     font-size: 1em;
     color: #898989;
     cursor: pointer;
+    font-family: Tahoma;
 }
 
 .callback-dialog .submit-btn {
@@ -547,7 +554,7 @@ h1 {
 
 /*--- about ---*/
 
-.about-wrapp{
+.about-wrapp {
     padding: 0px 0px 100px 100px;
 }
 
@@ -561,6 +568,7 @@ h1 {
     float: left;
     width: 34.204%;
     height: 100%;
+    padding-left: 60px;
     padding-right: 15px;
 }
 
@@ -576,7 +584,7 @@ h1 {
     display: block;
 }
 
-.about-company-item{
+.about-company-item {
     width: 84.453%;
     font-size: 0;
     display: block;
@@ -625,6 +633,36 @@ h1 {
     font-size: 2em;
     font-weight: normal;
     margin-bottom: 10px;
+}
+
+.about-item-wrapper {
+    font-size: 0;
+    width: 84.453%;
+}
+
+.about-item {
+    width: 50%;
+    display: inline-block;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.about-item ul {
+    font-size: 0px;
+}
+
+.about-item li {
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: top;
+    padding-right: 20px;
+    width: 50%;
+}
+
+.about-item li.helper {
+    width: 100%;
+    height: 0;
+    visibility: hidden;
 }
 
 .contacts-title {
@@ -1081,6 +1119,8 @@ h1 {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
+    font-size: 1.17em;
+    padding: 0 20px 0;
 }
 
 .has-error input {

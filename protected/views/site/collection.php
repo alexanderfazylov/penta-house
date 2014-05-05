@@ -39,17 +39,19 @@
         <div class="brand-item item brand-title">
             <span class="brand-title">Коллекции</span>
         </div>
-        <?php foreach ($brand->collection as $collection): ?>
-            <a href="/site/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">
-                <img class="item-bg" src="/uploads/<?php echo $collection->upload1->file_name ?>"/>
+        <?php if (!is_null($brand)): ?>
+            <?php foreach ($brand->collection as $collection): ?>
+                <a href="/site/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">
+                    <img class="item-bg" src="/uploads/<?php echo $collection->upload1->file_name ?>"/>
 
-                <div class="hovered-div">
-                    <div class="hovered-div-text">
-                        <span><?php echo $collection->name; ?></span>
+                    <div class="hovered-div">
+                        <div class="hovered-div-text">
+                            <span><?php echo $collection->name; ?></span>
+                        </div>
                     </div>
-                </div>
-            </a>
-        <?php endforeach; ?>
+                </a>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
 
