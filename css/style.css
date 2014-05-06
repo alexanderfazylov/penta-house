@@ -230,7 +230,7 @@ h1 {
 
 .aside-content {
     position: relative;
-    padding: 20px 30px 0px;
+    padding: 20px 0px 0px;
     background: #222222;
     z-index: 10;
 }
@@ -288,14 +288,14 @@ h1 {
 
 .aside-menu {
     /*border: 1px solid #fff;*/
-    width: 66%;
+    width: 76%;
     height: 260px;
     z-index: 10;
     background: #222222;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -33%;
+    margin-left: -38%;
     margin-top: -130px;
 }
 
@@ -542,9 +542,8 @@ h1 {
     color: #898989;
     display: inline-block;
     vertical-align: top;
-    padding-top: 5px;
+    padding-top: 7px;
     font-family: Tahoma;
-    line-height: 27px;
 }
 
 .callback-dialog .dialog-form label {
@@ -565,7 +564,6 @@ h1 {
     padding: 6px 0;
     width: 290px;
     font-family: Tahoma;
-    height: 27px;
 }
 
 .dialog-form textarea {
@@ -778,11 +776,16 @@ h1 {
 
 .contact-info dt {
     color: #898989;
-    font-size: 1.17em;
+    font-size: 14px;
+    font-family: Tahoma;
 }
 
 .contact-info dd {
-    font-size: 1.17em;
+    font-size: 18px;
+}
+
+.contact-info dd  a {
+    color: #4ebfa7;
 }
 
 .city-title {
@@ -795,6 +798,13 @@ h1 {
     outline: none;
     cursor: pointer;
     line-height: 0.9em;
+    font-family: 'HelveticaNeueCyr-Light';
+}
+
+.contact-city{
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    font-weight: normal;
 }
 
 .city-title.active {
@@ -824,9 +834,9 @@ h1 {
 }
 
 .contact-info-ul li {
-    padding: 0 40px 50px 0;
+    padding: 0 10px 50px 0;
     list-style: none;
-    line-height: 20px;
+    line-height: 22px;
     display: block;
     vertical-align: top;
 }
@@ -1188,7 +1198,8 @@ h1 {
     vertical-align: middle;
     height: 200px;
     display: table-cell;
-    font-size: 1.17em;
+    font-size: 14px;
+    font-family: Tahoma;
     padding: 0 20px 0;
 }
 
