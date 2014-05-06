@@ -236,7 +236,7 @@ class SiteController extends Controller
     public function actionProjects()
     {
         $criteria = new CDbCriteria;
-        $criteria->order = 't.end_date DESC, t.order ASC';
+       $criteria->order = 't.end_date ASC, t.order ASC';
         $criteria->compare('t.visible', Project::VISIBLE);
 
         $projects = Project::model()->findAll($criteria);
@@ -245,7 +245,7 @@ class SiteController extends Controller
         foreach ($projects as $project) {
             $years[DateTime::createFromFormat('d.m.Y', $project->end_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
         }
-        ksort($years);
+        asort($years);
 
 
         $this->render('projects', array(

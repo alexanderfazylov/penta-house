@@ -79,4 +79,4 @@
     <button id="main-edit" type="button" class="btn btn-default pull-right">Сохранить</button>
 </form>
 
-
+<?php $this->renderPartial('/main/_page_meta_data', array('page' => $page)); ?>

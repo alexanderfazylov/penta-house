@@ -28,12 +28,21 @@
                 </div>
             </div>
             <hr/>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="Collection[maine_page_visible]"
-                    {{boolCheckbox:item.maine_page_visible}} />
-                    Скрыть колекцию
-                </label>
+            <div class="row">
+                <div class="col-md-6">
+                    <label>
+                        <input type="checkbox" name="Collection[maine_page_visible]"
+                        {{boolCheckbox:item.maine_page_visible}} />
+                        Скрыть колекцию
+                    </label>
+                </div>
+                <div class="col-md-6">
+                    <select name="Collection[entity_id]" data-value="{{>item.entity_id}}">
+                        <?php foreach (Entity::getAll() as $entity): ?>
+                            <option value="<?php echo $entity->id; ?>"><?php echo $entity->name; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
 
             <hr/>

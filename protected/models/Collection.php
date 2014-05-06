@@ -37,7 +37,7 @@ class Collection extends CActiveRecord
     {
         return array(
             array('name', 'required'),
-            array('order, maine_page_visible, tile, sanitary_engineering, index_slider, upload_1_id, upload_2_id, brand_id, meta_data_id', 'numerical', 'integerOnly' => true, 'min' => 0),
+            array('order, maine_page_visible, tile, sanitary_engineering, index_slider, upload_1_id, upload_2_id, brand_id, meta_data_id, entity_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             array('id, name, order, brand_id', 'safe', 'on' => 'search'),
@@ -55,6 +55,7 @@ class Collection extends CActiveRecord
             'upload2' => array(self::BELONGS_TO, 'Upload', 'upload_2_id'),
             'brand' => array(self::BELONGS_TO, 'Brand', 'brand_id'),
             'collection_upload' => array(self::HAS_MANY, 'CollectionUpload', 'collection_id'),
+            'entity' => array(self::BELONGS_TO, 'Entity', 'entity_id'),
         );
     }
 
@@ -78,6 +79,7 @@ class Collection extends CActiveRecord
             'tile' => 'Заголовок',
             'brand.name' => 'Производитель',
             'index_slider' => 'index_slider',
+            'entity_id' => 'entity_id',
         );
     }
 
@@ -230,6 +232,7 @@ class Collection extends CActiveRecord
         $criteria->with = array(
             'collection_upload',
             'meta_data',
+            'entity',
         );
         return $criteria;
     }

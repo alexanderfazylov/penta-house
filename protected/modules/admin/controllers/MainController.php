@@ -52,8 +52,8 @@ class MainController extends Controller
         if (isset($_GET['Brand'])) {
             $brand->attributes = $_GET['Brand'];
         }
-
-        $this->render('index', array('brand' => $brand));
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_CATALOG));
+        $this->render('index', array('brand' => $brand, 'page' => $page));
     }
 
     public function actionBrand()
@@ -212,8 +212,8 @@ class MainController extends Controller
         if (isset($_GET['Project'])) {
             $project->attributes = $_GET['Project'];
         }
-
-        $this->render('projects', array('project' => $project));
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_PROJECTS));
+        $this->render('projects', array('project' => $project, 'page' => $page));
     }
 
 
@@ -286,7 +286,8 @@ class MainController extends Controller
             $post->attributes = $_GET['Post'];
         }
 
-        $this->render('posts', array('post' => $post));
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_POSTS));
+        $this->render('posts', array('post' => $post, 'page' => $page));
     }
 
 
@@ -362,8 +363,8 @@ class MainController extends Controller
         if (isset($_GET['Contact'])) {
             $contact->attributes = $_GET['Contact'];
         }
-
-        $this->render('contacts', array('contact' => $contact));
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_CONTACT));
+        $this->render('contacts', array('contact' => $contact, 'page' => $page));
     }
 
     public function actionContact()
@@ -435,8 +436,15 @@ class MainController extends Controller
             Yii::app()->end();
         }
 
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_ABOUT));
 
-        $this->render('about', array('about' => $about));
+        $this->render('about', array('about' => $about, 'page' => $page));
+    }
+
+    public function actionSavePage($name)
+    {
+        $page = Page::model()->findByAttributes(array('name' => $name));
+        MetaData::addSelf($page);
     }
 
 }

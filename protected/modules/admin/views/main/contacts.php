@@ -1,3 +1,5 @@
+<?php $this->renderPartial('/main/_page_meta_data', array('page' => $page)); ?>
+
 <button type="button" class="btn btn-default btn-popup" data-popup="edit-model"
         data-item='{"meta_data":{}}'
         data-title="Создание контакта">

@@ -1,47 +1,10 @@
-<?php
-///* @var $this SiteController */
-//
-//$this->pageTitle = "Penta House - О компании";
-//
+<?php foreach ($contacts as $contact) if ($contact->id == $this->active_contact_id)
+    $active_contact = $contact;
+$active_city = $active_contact->city;
 ?>
-<!--<div class="breadcrumbs"><a href="/site/index">Главная</a> / О компании</div>-->
-<!--<div class="about-company">-->
-<!--    <h1>О компании</h1>-->
-<!---->
-<!--    <div class="about-company-descr">-->
-<!--        --><?php //echo $about->description; ?>
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="about-contacts">-->
-<!--    <h1>Контакты</h1>-->
-<!--    --><?php //foreach ($contacts as $contact) if ($contact->id == $this->active_contact_id)
-//        $active_contact = $contact;
-//
-?>
-<!--    <ul class="contacts">-->
-<!--        <li>-->
-<!--            <div>--><?php //echo $active_contact->address; ?><!--</div>-->
-<!--            <div>--><?php //echo $active_contact->city; ?><!--</div>-->
-<!--            <div>--><?php //echo $active_contact->phone; ?><!--</div>-->
-<!---->
-<!--            <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>-->
-<!--            <a href="http://www.penta-house.ru">www.penta-house.ru</a>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</div>-->
-<!--<div class="about-footer">-->
-<!--    <div class="news item-box">-->
-<!--        <a href="/site/posts" class="news-item item news-title">-->
-<!--            <span class="nw-title">Последние новости</span>-->
-<!--        </a>-->
-<!--        --><?php //foreach ($posts as $post): ?>
-<!--            <a href="/site/post?id=--><?php //echo $post->id; ?><!--" class="news-item item">-->
-<!--                <img class="item-bg"-->
-<!--                     src="/uploads/--><?php //echo isset($post->upload1) ? $post->upload1->file_name : ''; ?><!--">-->
-<!--            </a>-->
-<!--        --><?php //endforeach; ?>
-<!--    </div>-->
-<!--</div>-->
+
+
+
 
 <div class="breadcrumbs"><a href="/site/index">Главная</a> / О компании</div>
 <div class="about-wrapp">
@@ -115,53 +78,34 @@
 <div class="about-contacts">
     <h1>Контакты</h1>
 
-    <h3>Проектный офис</h3>
-
-    <div class="contacts-title">Время работы</div>
-    <div class="contacts table">
-        <div class="tr">
-            <div class="td">dasds</div>
-            <div class="td">asdas</div>
-        </div>
-        <div class="tr">
-            <div class="td">sdf</div>
-            <div class="td">sdfs</div>
-        </div>
-        <div class="tr address-tr">
-            <div class="td">Адрес</div>
-            <div class="td">
-                <div>asda</div>
-                <div>asdasd</div>
-                <div>asdasd</div>
-
-                <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
+    <?php foreach ($contacts as $contact): ?>
+        <?php if ($active_city == $contact->city): ?>
+            <h3><?php echo Contact::getType($contact); ?></h3>
+            <div class="contacts-title">Время работы</div>
+            <div class="contacts table">
+                <div class="tr">
+                    <div class="td">будни</div>
+                    <div class="td"><?php echo empty($contact->weekdays) ? 'неизвестно' : $contact->weekdays; ?></div>
+                </div>
+                <div class="tr">
+                    <div class="td">суббота</div>
+                    <div class="td"><?php echo empty($contact->saturday) ? 'выходной' : $contact->saturday; ?></div>
+                </div>
+                <div class="tr">
+                    <div class="td">воскресенье</div>
+                    <div class="td"><?php echo empty($contact->sunday) ? 'выходной' : $contact->sunday; ?></div>
+                </div>
+                <div class="tr address-tr">
+                    <div class="td">Адрес</div>
+                    <div class="td">
+                        <div><?php echo $contact->address;?></div>
+                        <div><?php echo $contact->phone; ?></div>
+                        <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-    <h3>Проектный офис</h3>
-
-    <div class="contacts-title">Время работы</div>
-    <div class="contacts table">
-        <div class="tr">
-            <div class="td">dasds</div>
-            <div class="td">asdas</div>
-        </div>
-        <div class="tr">
-            <div class="td">sdf</div>
-            <div class="td">sdfs</div>
-        </div>
-        <div class="tr address-tr">
-            <div class="td">Адрес</div>
-            <div class="td">
-                <div>asda</div>
-                <div>asdasd</div>
-                <div>asdasd</div>
-
-                <a href="mailto:info@penta-house.ru">info@penta-house.ru</a>
-            </div>
-        </div>
-    </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
 <div class="anchor"></div>
 <h2 class="about-company-descr-title">Как мы выбираем производителей</h2>
@@ -230,6 +174,20 @@
     </li>
     <li class="helper"></li>
 </ul>
+<div class="">
+    <div class="news item-box">
+        <a href="/site/posts" class="news-item item news-title">
+            <span class="nw-title">Последние новости</span>
+        </a>
+        <?php foreach ($posts as $post): ?>
+            <a href="/site/post?id=<?php echo $post->id; ?>" class="news-item item">
+                <img class="item-bg"
+                     src="/uploads/<?php echo isset($post->upload1) ? $post->upload1->file_name : ''; ?>">
+            </a>
+        <?php endforeach; ?>
+    </div>
+</div>
+
 <div class="about-item-wrapper">
     <div class="about-item">
         <h2 class="about-company-descr-title">Сроки поставки и ценовая политика</h2>
@@ -371,13 +329,13 @@
         производителя инженерного оборудования.
         Вот почему мы используем инженерное
         оборудование только ведущих мировых марок:
-        —  Трубопроводы: Viega (Германия), Henco
+        — Трубопроводы: Viega (Германия), Henco
         (Бельгия), Uponor (Швеция)
-        —  Радиаторы: Purmo (Финляндия), Buderus
+        — Радиаторы: Purmo (Финляндия), Buderus
         (Германия)
-        —  Котельное оборудование: Viessman, Buderus,
+        — Котельное оборудование: Viessman, Buderus,
         Vaillant (Германия)
-        —  Насосное оборудование: Grundfos,
+        — Насосное оборудование: Grundfos,
         Wilo (Германия)
         На все наше оборудование дается гарантия 50
         и более лет. И по основным позициям у нас

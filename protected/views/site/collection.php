@@ -18,7 +18,7 @@
 <?php endif; ?>
 <div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Каталог</a> / Коллекции</div>
 <div class="collection">
-    <h1> Коллекция <?php echo $collection->name; ?></h1>
+    <h1 class="entity_title"><?php echo $collection->entity->name; ?> <?php echo $collection->name; ?></h1>
 
     <div class="collection-description">
         <?php echo $collection->description; ?>

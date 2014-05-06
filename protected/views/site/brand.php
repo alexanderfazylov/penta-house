@@ -48,7 +48,7 @@
 <div class="collection-footer">
     <div class="item-box">
         <div class="brand-item item brand-title">
-            <span class="brand-title">Коллекции</span>
+            <span class="brand-title">Коллекции и технологии</span>
         </div>
         <?php foreach ($brand->collection as $collection): ?>
             <a href="/site/collection?id=<?php echo $collection->id; ?>" class="brand-item item hovered">

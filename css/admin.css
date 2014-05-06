@@ -162,3 +162,34 @@ textarea.h500 {
 .redactor_h500 {
     height: 500px;
 }
+
+.meta-data-page {
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px dashed #777;
+    border-radius: 15px;
+    clear: both;
+    float: none;
+    position: relative;
+}
+
+#save-page {
+    margin-top: 20px;
+}
+
+.seo-params, .close-seo {
+    display: none;
+}
+
+.meta-data-page.active .seo-params, .meta-data-page.active .close-seo {
+    display: block;
+}
+
+.meta-data-page.active .open-seo {
+    display: none;
+}
+
+.manege-seo {
+    float: right;
+}

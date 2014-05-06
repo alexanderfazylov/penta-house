@@ -51,6 +51,7 @@ class DefaultController extends Controller
             Yii::app()->end();
         }
 
-        $this->render('index', array('main' => $main));
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_INDEX));
+        $this->render('index', array('main' => $main, 'page' => $page));
     }
 }

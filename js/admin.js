@@ -186,6 +186,18 @@ $(function () {
         $('#h').val(c.h);
     }
 
+    $(document).on('click', '#save-page', function () {
+        var $el = $(this);
+
+        $el.ajaxFormSubmit(
+            function (data) {
+                $.jGrowl("Сохранено");
+            },
+            function () {
+            }
+        );
+    });
+
     $(document).on('click', '#save-model', function () {
         var $el = $(this);
 
@@ -358,5 +370,10 @@ $(function () {
         );
 
     });
+
+    $(document).on('click', '.toggle-meta-data', function () {
+        $('.meta-data-page').toggleClass('active');
+    });
+
 
 });

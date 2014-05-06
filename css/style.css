@@ -178,7 +178,7 @@ h1 {
 }
 
 /*-- sidebar --*/
-.social, .callback, .city-name, .copyright, .phone, .change-city {
+.social, .callback, .copyright, .phone, .city {
     display: none;
 }
 
@@ -191,16 +191,25 @@ h1 {
         display: block;
     }
 
+    div.phone {
+        display: block;
+        margin-top: 0;
+    }
+
 }
 
 @media (min-height: 450px) {
-    .city-name {
-        display: inline-block;
+    .phone {
+        display: block;
+    }
+
+    div.phone {
+        margin: 30px 0px 10px;
     }
 }
 
 @media (min-height: 490px) {
-    .phone {
+    .city {
         display: block;
     }
 }
@@ -784,7 +793,7 @@ h1 {
     font-size: 18px;
 }
 
-.contact-info dd  a {
+.contact-info dd a {
     color: #4ebfa7;
 }
 
@@ -801,7 +810,7 @@ h1 {
     font-family: 'HelveticaNeueCyr-Light';
 }
 
-.contact-city{
+.contact-city {
     font-size: 2.5em;
     margin-bottom: 25px;
     font-weight: normal;
@@ -1210,3 +1219,8 @@ h1 {
 .hovered-div-text {
     display: inline-block;
 }
+
+.entity_title:first-letter {
+    text-transform: uppercase !important;
+}
+
