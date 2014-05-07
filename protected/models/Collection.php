@@ -41,33 +41,10 @@ class Collection extends CActiveRecord
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             array('id, name, order, brand_id', 'safe', 'on' => 'search'),
-            array('name', 'unique', 'criteria' => array(
-                'condition' => '`brand_id`=:brand_id',
-                'params' => array(
-                    ':brand_id' => $this->brand_id
-                )
-            )),
+            array('name', 'UniqueAttributesValidator', 'with' => 'brand_id'),
         );
     }
 
-    public function beforeValidate()
-    {
-        if (parent::beforeValidate()) {
-
-            $validator = CValidator::createValidator('unique', $this, 'name', array(
-                'criteria' => array(
-                    'condition' => '`brand_id`=:brand_id',
-                    'params' => array(
-                        ':brand_id' => $this->brand_id
-                    )
-                )
-            ));
-            $this->getValidatorList()->insertAt(0, $validator);
-
-            return true;
-        }
-        return false;
-    }
 
     /**
      * @return array relational rules.

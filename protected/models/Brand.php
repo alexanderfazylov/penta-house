@@ -26,6 +26,8 @@ class Brand extends CActiveRecord
         return '{{brand}}';
     }
 
+    public $collection_count;
+
     /**
      * @return array validation rules for model attributes.
      */
@@ -39,7 +41,7 @@ class Brand extends CActiveRecord
             array('name, site, sert', 'length', 'max' => 255),
             array('description', 'safe'),
 
-            array('id, name, maine_page_visible', 'safe', 'on' => 'search'),
+            array('id, name, maine_page_visible, collection_count', 'safe', 'on' => 'search'),
         );
     }
 
@@ -57,6 +59,7 @@ class Brand extends CActiveRecord
             'upload3' => array(self::BELONGS_TO, 'Upload', 'upload_3_id'),
             'upload4' => array(self::BELONGS_TO, 'Upload', 'upload_4_id'),
             'collection' => array(self::HAS_MANY, 'Collection', 'brand_id'),
+            'collectionCount' => array(self::STAT, 'Collection', 'brand_id'),
         );
     }
 
@@ -102,6 +105,10 @@ class Brand extends CActiveRecord
         $criteria->compare('t.order', $this->order);
         $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
 
+//        if ($this->collection_count > 0) {
+//            $criteria->compare('collectionCount', $this->collection_count);
+//        }
+
         $criteria->with = array(
             'meta_data',
             'upload1',
@@ -109,6 +116,7 @@ class Brand extends CActiveRecord
             'upload3',
             'upload4',
             'collection',
+            ///'collectionCount',
         );
 
         return new CActiveDataProvider($this, array(
@@ -270,5 +278,12 @@ class Brand extends CActiveRecord
             'meta_data',
         );
         return $criteria;
+    }
+
+    public static function collectionCountInput($model)
+    {
+        $count = count($model->collection);
+
+        return "<input type='text' name='Brand[collection_count]' value='{$count}'>";
     }
 }
