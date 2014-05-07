@@ -10,6 +10,8 @@ class Helper
 {
     public static function convertModelToArray($models, array $filterAttributes = null)
     {
+
+
         if (is_array($models))
             $arrayMode = TRUE;
         else {
@@ -19,6 +21,7 @@ class Helper
 
         $result = array();
         foreach ($models as $model) {
+
             $attributes = $model->getAttributes();
 
             if (isset($filterAttributes) && is_array($filterAttributes)) {
@@ -45,9 +48,10 @@ class Helper
                 }
             }
 
+
             $relations = array();
             foreach ($model->relations() as $key => $related) {
-                if ($model->hasRelated($key) && !is_null($model->$key)) {
+                if ($model->hasRelated($key) && !is_null($model->$key) && is_object($related)) {
                     $relations[$key] = self::convertModelToArray($model->$key, $filterAttributes);
                 }
             }

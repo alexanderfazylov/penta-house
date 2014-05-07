@@ -105,9 +105,18 @@ class Brand extends CActiveRecord
         $criteria->compare('t.order', $this->order);
         $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
 
-//        if ($this->collection_count > 0) {
-//            $criteria->compare('collectionCount', $this->collection_count);
-//        }
+        $collection_table = Collection::model()->tableName();
+        $post_count_sql = "(select count(*) from $collection_table pt where pt.brand_id = t.id)";
+
+        // select
+        $criteria->select = array(
+            '*',
+            $post_count_sql . " as collection_count",
+        );
+
+
+        // where
+        $criteria->compare($post_count_sql, $this->collection_count);
 
         $criteria->with = array(
             'meta_data',
@@ -116,17 +125,18 @@ class Brand extends CActiveRecord
             'upload3',
             'upload4',
             'collection',
-            ///'collectionCount',
+            'collectionCount',
         );
 
-        return new CActiveDataProvider($this, array(
+        return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
             'sort' => array(
                 'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
                 'attributes' => array(
                     'id',
                     'name',
-                    'order'
+                    'order',
+                    'collection_count'
 
                 )
             ),
@@ -153,7 +163,7 @@ class Brand extends CActiveRecord
         return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
 
-    public function collectionCount($model)
+    public function collectionCountCalck($model)
     {
         if (empty($model->collection)) {
             return 0;
@@ -282,8 +292,6 @@ class Brand extends CActiveRecord
 
     public static function collectionCountInput($model)
     {
-        $count = count($model->collection);
-
-        return "<input type='text' name='Brand[collection_count]' value='{$count}'>";
+        return "<input type='text' name='Brand[collection_count]' value='{$model->collection_count}'>";
     }
 }
