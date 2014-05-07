@@ -16,7 +16,7 @@ $this->widget('zii.widgets.CMenu', array(
             'active' => (($controller == 'main' && $action == 'index'))
         ),
         array(
-            'label' => 'Коллекции',
+            'label' => 'Коллекции и технологии',
             'url' => Yii::app()->urlManager->createUrl('/admin/main/collections'),
             'active' => (($controller == 'main' && $action == 'collections'))
         ),

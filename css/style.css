@@ -439,9 +439,9 @@ h1 {
 .main-img .ms-img {
     position: absolute !important;
     height: 100% !important;
-    width: 900px;
+    width: 1400px;
     left: 50%;
-    margin-left: -450px;
+    margin-left: -700px;
 }
 
 .title {

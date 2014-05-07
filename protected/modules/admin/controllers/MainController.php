@@ -106,7 +106,7 @@ class MainController extends Controller
     {
         $criteria = new CDbCriteria;
 
-        $criteria->order = 't.maine_page_visible ASC, t.order ASC';
+        $criteria->order = 't.name ASC';
 
         echo Helper::convertModelToJson(Brand::model()->findAll($criteria));
     }

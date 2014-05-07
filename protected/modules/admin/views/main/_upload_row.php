@@ -4,7 +4,7 @@
             <img src="/uploads/thumbs/{{notCacheImage:file_name}}">
         </span>
     <span class="qq-upload-file">
-        <a href="/uploads/{{>file_name}}" target="_blank">{{>user_file_name}}</a>
+        <a href="/uploads/{{>file_name}}" target="_blank" title="{{>user_file_name}}">Открыть</a>
     </span>
     <span class="qq-input-uplod">
         <input type="hidden" name="{{>model}}[{{>attribute}}]" value="{{>id}}"/>
