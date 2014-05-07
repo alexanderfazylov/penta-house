@@ -67,6 +67,10 @@ class SiteController extends Controller
         $projects_count = Project::model()->count(Project::indexCountCriteria());
         $collections = Collection::model()->findAll(Collection::indexCriteria());
 
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_INDEX));
+        $this->description = $page->meta_data->description;
+        $this->keywords = $page->meta_data->keywords;
+        $this->pageTitle = $page->meta_data->title;
 
         $this->render('index', array(
                 'posts' => $posts,
@@ -74,7 +78,6 @@ class SiteController extends Controller
                 'projects' => $projects,
                 'projects_count' => $projects_count,
                 'collections' => $collections,
-
             )
         );
     }
@@ -84,6 +87,11 @@ class SiteController extends Controller
         $posts = Post::model()->findAll(Post::indexCriteria());
         $about = About::model()->findByPk(1);
         $contacts = Contact::mainFilter(false);
+
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_ABOUT));
+        $this->description = $page->meta_data->description;
+        $this->keywords = $page->meta_data->keywords;
+        $this->pageTitle = $page->meta_data->title;
 
         $this->render('about', array(
                 'posts' => $posts,
@@ -109,14 +117,22 @@ class SiteController extends Controller
 
     public function actionContact()
     {
-        $this->pageTitle = "Penta House - Контакты";
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_CONTACT));
+        $this->description = $page->meta_data->description;
+        $this->keywords = $page->meta_data->keywords;
+        $this->pageTitle = $page->meta_data->title;
+
         $contacts = Contact::mainFilter(false);
+
         $this->render('contact', array('contacts' => $contacts));
     }
 
     public function actionCatalog()
     {
-        $this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_CATALOG));
+        $this->description = $page->meta_data->description;
+        $this->keywords = $page->meta_data->keywords;
+        $this->pageTitle = $page->meta_data->title;
 
 
         $brands = Brand::model()->findAll(Brand::catalogCriteria());
@@ -236,7 +252,7 @@ class SiteController extends Controller
     public function actionProjects()
     {
         $criteria = new CDbCriteria;
-       $criteria->order = 't.end_date ASC, t.order ASC';
+        $criteria->order = 't.end_date ASC, t.order ASC';
         $criteria->compare('t.visible', Project::VISIBLE);
 
         $projects = Project::model()->findAll($criteria);
@@ -247,6 +263,11 @@ class SiteController extends Controller
         }
         asort($years);
 
+
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_PROJECTS));
+        $this->description = $page->meta_data->description;
+        $this->keywords = $page->meta_data->keywords;
+        $this->pageTitle = $page->meta_data->title;
 
         $this->render('projects', array(
             'projects' => $projects,
@@ -295,6 +316,11 @@ class SiteController extends Controller
 
     public function actionPosts()
     {
+        $page = Page::model()->findByAttributes(array('name' => Page::PAGE_POSTS));
+        $this->description = $page->meta_data->description;
+        $this->keywords = $page->meta_data->keywords;
+        $this->pageTitle = $page->meta_data->title;
+
         $criteria = new CDbCriteria;
         $criteria->order = 't.order ASC, t.start_date ASC';
         $criteria->compare('t.visible', Post::VISIBLE);

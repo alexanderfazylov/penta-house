@@ -210,7 +210,7 @@ class Project extends CActiveRecord
     {
         $criteria = new CDbCriteria;
 
-        $criteria->order = 't.end_date DESC, t.order ASC';
+        $criteria->order = 't.end_date DESC';
         $criteria->compare('t.visible', 0);
 
         $criteria->limit = 7;
