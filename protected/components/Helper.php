@@ -51,7 +51,7 @@ class Helper
 
             $relations = array();
             foreach ($model->relations() as $key => $related) {
-                if ($model->hasRelated($key) && !is_null($model->$key) && is_object($related)) {
+                if ($model->hasRelated($key) && !is_null($model->$key) && $related[0] != CActiveRecord::STAT) {
                     $relations[$key] = self::convertModelToArray($model->$key, $filterAttributes);
                 }
             }

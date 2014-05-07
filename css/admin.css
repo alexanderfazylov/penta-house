@@ -193,3 +193,11 @@ textarea.h500 {
 .manege-seo {
     float: right;
 }
+
+#model-grid td input {
+    display: block;
+    width: 100%;
+    min-width: 50px;
+    max-width: 150px;
+}
+

@@ -1,5 +1,5 @@
 <div class="anchor"></div>
-<form id="form-save-page" class="meta-data-page row" action="/admin/main/savePage?name=<?php echo $page->name ?>"
+<form id="form-save-page" class="meta-data-page row active" action="/admin/main/savePage?name=<?php echo $page->name ?>"
       method="POST">
 
     <div class="row col-md-12">

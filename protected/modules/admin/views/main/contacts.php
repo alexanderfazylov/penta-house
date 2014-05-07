@@ -1,4 +1,4 @@
-<?php $this->renderPartial('/main/_page_meta_data', array('page' => $page)); ?>
+
 
 <button type="button" class="btn btn-default btn-popup" data-popup="edit-model"
         data-item='{"meta_data":{}}'
@@ -67,7 +67,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 ));
 ?>
 
-
+<?php $this->renderPartial('/main/_page_meta_data', array('page' => $page)); ?>
 <script id="template_edit-model" type="text/x-jsrender">
     <?php $this->renderPartial('/main/_edit_contact'); ?>
 </script>
