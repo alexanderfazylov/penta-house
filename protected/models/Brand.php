@@ -26,6 +26,8 @@ class Brand extends CActiveRecord
         return '{{brand}}';
     }
 
+    public $collection_count;
+
     /**
      * @return array validation rules for model attributes.
      */
@@ -39,7 +41,7 @@ class Brand extends CActiveRecord
             array('name, site, sert', 'length', 'max' => 255),
             array('description', 'safe'),
 
-            array('id, name, maine_page_visible', 'safe', 'on' => 'search'),
+            array('id, name, maine_page_visible, collection_count', 'safe', 'on' => 'search'),
         );
     }
 
@@ -57,6 +59,7 @@ class Brand extends CActiveRecord
             'upload3' => array(self::BELONGS_TO, 'Upload', 'upload_3_id'),
             'upload4' => array(self::BELONGS_TO, 'Upload', 'upload_4_id'),
             'collection' => array(self::HAS_MANY, 'Collection', 'brand_id'),
+            'collectionCount' => array(self::STAT, 'Collection', 'brand_id'),
         );
     }
 
@@ -102,6 +105,19 @@ class Brand extends CActiveRecord
         $criteria->compare('t.order', $this->order);
         $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
 
+        $collection_table = Collection::model()->tableName();
+        $post_count_sql = "(select count(*) from $collection_table pt where pt.brand_id = t.id)";
+
+        // select
+        $criteria->select = array(
+            '*',
+            $post_count_sql . " as collection_count",
+        );
+
+
+        // where
+        $criteria->compare($post_count_sql, $this->collection_count);
+
         $criteria->with = array(
             'meta_data',
             'upload1',
@@ -109,16 +125,18 @@ class Brand extends CActiveRecord
             'upload3',
             'upload4',
             'collection',
+            'collectionCount',
         );
 
-        return new CActiveDataProvider($this, array(
+        return new CActiveDataProvider(get_class($this), array(
             'criteria' => $criteria,
             'sort' => array(
                 'defaultOrder' => 't.maine_page_visible ASC, t.order ASC',
                 'attributes' => array(
                     'id',
                     'name',
-                    'order'
+                    'order',
+                    'collection_count'
 
                 )
             ),
@@ -145,7 +163,7 @@ class Brand extends CActiveRecord
         return "<div data-item='$item' data-title='Редактирование {$model->name}' data-popup='edit-model' class='model-edit btn-popup'  >Редактировать</div>";
     }
 
-    public function collectionCount($model)
+    public function collectionCountCalck($model)
     {
         if (empty($model->collection)) {
             return 0;
@@ -270,5 +288,10 @@ class Brand extends CActiveRecord
             'meta_data',
         );
         return $criteria;
+    }
+
+    public static function collectionCountInput($model)
+    {
+        return "<input type='text' name='Brand[collection_count]' value='{$model->collection_count}'>";
     }
 }

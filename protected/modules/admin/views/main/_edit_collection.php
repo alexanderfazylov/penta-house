@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label for="model-name">Производитель</label>
                 <select name="Collection[brand_id]">
-                    <option value="0">-</option>
+<!--                    <option value="0">-</option>-->
                     {{getSelectOption:item.brand_id}}
                 </select>
             </div>
@@ -91,8 +91,8 @@
                 <label>Обложка на главной странице</label>
 
                 <div class="construct_upload"
-                     data-width="1200"
-                     data-height="600"
+                     data-width="1400"
+                     data-height="700"
                      data-action="/server/collectionUplod2"
                      data-multiple="false">
                     {{renderUploder:item.upload2}}

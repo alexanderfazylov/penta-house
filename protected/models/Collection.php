@@ -36,13 +36,15 @@ class Collection extends CActiveRecord
     public function rules()
     {
         return array(
-            array('name', 'required'),
+            array('name, brand_id', 'required'),
             array('order, maine_page_visible, tile, sanitary_engineering, index_slider, upload_1_id, upload_2_id, brand_id, meta_data_id, entity_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
             array('id, name, order, brand_id', 'safe', 'on' => 'search'),
+            array('name', 'UniqueAttributesValidator', 'with' => 'brand_id'),
         );
     }
+
 
     /**
      * @return array relational rules.
@@ -78,7 +80,7 @@ class Collection extends CActiveRecord
             'sanitary_engineering' => 'sanitary_engineering',
             'tile' => 'Заголовок',
             'brand.name' => 'Производитель',
-            'index_slider' => 'index_slider',
+            'index_slider' => 'Выведена&nbsp;на главную&nbsp;страницу',
             'entity_id' => 'entity_id',
         );
     }
@@ -104,6 +106,7 @@ class Collection extends CActiveRecord
         $criteria->compare('t.order', $this->order);
         $criteria->compare('t.brand_id', $this->brand_id);
         $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
+        $criteria->compare('t.index_slider', $this->index_slider);
 
         $criteria->with = array(
             'meta_data',
@@ -161,7 +164,7 @@ class Collection extends CActiveRecord
     {
         $criteria = new CDbCriteria;
 
-        $criteria->order = 't.maine_page_visible ASC, t.order ASC';
+        $criteria->order = 't.name ASC';
 
 
         return CHtml::dropDownList(
@@ -235,5 +238,37 @@ class Collection extends CActiveRecord
             'entity',
         );
         return $criteria;
+    }
+
+    public static function getIndexSliderSelect($model)
+    {
+        return CHtml::dropDownList(
+            'Collection[index_slider]', $model->index_slider,
+            CHtml::listData(
+                array(
+                    array(
+                        'id' => '0',
+                        'name' => 'нет',
+
+                    ),
+                    array(
+                        'id' => '1',
+                        'name' => 'да',
+
+                    ),
+                ),
+                'id', 'name'),
+            array('empty' => '-')
+
+        );
+    }
+
+    public static function indexSlider($model)
+    {
+        if ($model->index_slider == self::INDEX_SLIDER_TRUE) {
+            return 'Да';
+        } else {
+            return 'Нет';
+        }
     }
 }

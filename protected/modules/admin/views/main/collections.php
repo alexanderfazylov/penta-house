@@ -48,6 +48,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'filter' => Collection::getBrandSelect($collection),
         ),
         array(
+            'name' => 'index_slider',
+            'filter' => Collection::getIndexSliderSelect($collection),
+            'type' => 'raw',
+            'value' => array($collection, 'indexSlider'),
+        ),
+        array(
             'name' => 'order',
         ),
         array(

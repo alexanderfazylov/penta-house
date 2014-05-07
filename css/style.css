@@ -68,7 +68,7 @@
     width: 25%;
 }
 
-.brand-item, .catalog-item {
+.brand-item, .catalog-item, .about-box .news-item {
     width: 20%;
 }
 
@@ -439,9 +439,9 @@ h1 {
 .main-img .ms-img {
     position: absolute !important;
     height: 100% !important;
-    width: 900px;
+    width: 1400px;
     left: 50%;
-    margin-left: -450px;
+    margin-left: -700px;
 }
 
 .title {
@@ -621,20 +621,20 @@ h1 {
 /*--- about ---*/
 
 .about-wrapp {
-    padding: 0px 0px 100px 100px;
+    padding: 0px 0px 55px 100px;
 }
 
 .about-company {
     float: left;
-    width: 65.796%;
+    width: 70%;
     height: 100%;
+    padding-right: 5%;
 }
 
 .about-contacts {
     float: left;
-    width: 34.204%;
+    width: 30%;
     height: 100%;
-    padding-left: 60px;
     padding-right: 15px;
 }
 
@@ -651,7 +651,7 @@ h1 {
 }
 
 .about-company-item {
-    width: 84.453%;
+    width: 86.5%;
     font-size: 0;
     display: block;
 }
@@ -662,18 +662,19 @@ h1 {
     margin: 50px 0 25px;
 }
 
-.about-company-descr li, .about-company-item li {
+.about-company-descr > li, .about-company-item > li {
     display: inline-block;
     font-size: 13px;
     vertical-align: top;
     padding-right: 20px;
+    line-height: 18px;
 }
 
-.about-company-descr li {
+.about-company-descr > li {
     width: 33.3%;
 }
 
-.about-company-item li {
+.about-company-item > li {
     width: 25%;
 }
 
@@ -703,7 +704,7 @@ h1 {
 
 .about-item-wrapper {
     font-size: 0;
-    width: 84.453%;
+    width: 86.5%;
 }
 
 .about-item {
@@ -713,11 +714,11 @@ h1 {
     vertical-align: top;
 }
 
-.about-item ul {
+.about-item > ul {
     font-size: 0px;
 }
 
-.about-item li {
+.about-item ul > li {
     display: inline-block;
     font-size: 13px;
     vertical-align: top;
@@ -731,9 +732,36 @@ h1 {
     visibility: hidden;
 }
 
+.about-list {
+    display: block;
+    list-style: none;
+}
+
+.about-list li .mdash {
+    float: left;
+    color: #4ebfa7;
+    font-size: 13px;
+    margin-left: -20px;
+}
+
+.about-list li {
+    padding-top: 8px;
+    padding-left: 20px;
+}
+
+.about-list li:last-child {
+    padding-bottom: 8px;
+}
+
+.about-list li:after {
+    clear: both;
+    float: none;
+}
+
 .contacts-title {
     color: #a1a1a1;
     font-size: 14px;
+    font-family: Tahoma;
 }
 
 .contacts {
@@ -744,6 +772,7 @@ h1 {
     color: #a1a1a1;
     font-size: 14px;
     padding-right: 20px;
+    font-family: Tahoma;
 }
 
 .contacts .tr .td:last-child {

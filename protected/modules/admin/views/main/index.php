@@ -44,11 +44,12 @@ $this->widget('zii.widgets.grid.CGridView', array(
         array(
             'name' => 'order',
         ),
+        //'collection_count',
         array(
             'name' => 'Количество коллекций',
             'type' => 'raw',
-            'value' => array($brand, 'collectionCount'),
-            'filter' => false,
+            'value' => array($brand, 'collectionCountCalck'),
+            'filter' => Brand::collectionCountInput($brand),
         ),
         array(
             'name' => '',
