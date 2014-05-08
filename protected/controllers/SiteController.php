@@ -12,6 +12,37 @@ class SiteController extends Controller
     public $contacts = array();
     public $active_contact_id = array();
 
+    public function filters()
+    {
+        return array(
+            'accessControl',
+        );
+    }
+
+    public function accessRules()
+    {
+        return array(
+            // если используется проверка прав, не забывайте разрешить доступ к
+            // действию, отвечающему за генерацию изображения
+            array('allow',
+                'actions' => array('captcha'),
+                'users' => array('*'),
+            ),
+//            array('deny',
+//                'users' => array('*'),
+//            ),
+        );
+    }
+
+    public function actions()
+    {
+        return array(
+            'captcha' => array(
+                'class' => 'CCaptchaAction',
+            ),
+        );
+    }
+
     public function init()
     {
         $this->cs = Yii::app()->clientScript;
@@ -31,24 +62,6 @@ class SiteController extends Controller
         $this->active_contact_id = Yii::app()->session['contact_id'];
     }
 
-    /**
-     * Declares class-based actions.
-     */
-    public function actions()
-    {
-        return array(
-            // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha' => array(
-                'class' => 'CCaptchaAction',
-                'backColor' => 0xFFFFFF,
-            ),
-            // page action renders "static" pages stored under 'protected/views/site/pages'
-            // They can be accessed via: index.php?r=site/page&view=FileName
-            'page' => array(
-                'class' => 'CViewAction',
-            ),
-        );
-    }
 
     /**
      * This is the default 'index' action that is invoked
@@ -201,6 +214,7 @@ class SiteController extends Controller
         if (isset($_POST['LoginForm'])) {
             $model->username = $_POST['LoginForm']['username'];
             $model->password = md5($_POST['LoginForm']['password']);
+            $model->verifyCode = $_POST['LoginForm']['verifyCode'];
             // validate user input and redirect to the previous page if valid
             if ($model->validate() && $model->login())
                 $this->redirect('/admin/');

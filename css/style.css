@@ -1255,7 +1255,7 @@ h1 {
 
 /*-----Login----------*/
 
-.login-form{
+.login-form {
     width: 500px;
     margin: 0 auto;
     position: relative;
@@ -1291,7 +1291,7 @@ h1 {
     width: 350px;
     border: 1px solid #ccc;
     font-size: 16px;
-    background-color: #fff!important;
+    background-color: #fff !important;
 }
 
 .login-form .rememberMe {
@@ -1310,7 +1310,7 @@ h1 {
     vertical-align: middle;
 }
 
-.login-button{
+.login-button {
     padding: 15px 30px;
     border: 1px solid #4ebfa7;
     color: #4ebfa7;
@@ -1319,4 +1319,33 @@ h1 {
     margin-top: 20px;
     cursor: pointer;
     margin-left: 150px;
+}
+
+.ccaptcha_form {
+    display: block;
+    padding-left: 150px;
+    padding-bottom: 10px;
+}
+
+.ccaptcha_form img {
+    /*display: block;*/
+}
+
+.errorMessage {
+    display: block;
+}
+
+.ccaptcha_form a {
+    display: block;
+    font-size: 14px;
+    color: #4EBFA7;
+}
+
+.error_summary {
+    padding-left: 150px;
+    font-size: 14px;
+}
+
+.error_summary li {
+    color: red;
 }

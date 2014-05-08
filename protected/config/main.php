@@ -53,6 +53,7 @@ return array(
                 '/contact'=>'site/contact/',
                 '/post'=>'site/post/',
                 '/posts'=>'site/posts/',
+                '/login'=>'site/login/',
                 '/production/<id:\d+>'=>'site/production/',
                 '<controller:\w+>/<id:\d+>' => '<controller>/view',
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
