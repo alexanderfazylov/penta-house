@@ -10,7 +10,7 @@ $this->breadcrumbs=array(
 ?>
 
 
-<div class="form">
+<div class="form login-form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -18,16 +18,15 @@ $this->breadcrumbs=array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
+    <h1>Авторизация</h1>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<div class="row">
+	<div class="row login-options">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row login-options">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
@@ -40,7 +39,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('Войти', array('class' => 'login-button')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

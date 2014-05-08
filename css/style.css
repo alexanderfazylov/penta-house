@@ -1253,3 +1253,70 @@ h1 {
     text-transform: uppercase !important;
 }
 
+/*-----Login----------*/
+
+.login-form{
+    width: 500px;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 150px;
+    font-size: 0;
+}
+
+.login-form h1 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.login-form .row {
+    margin: 20px 0;
+}
+
+.login-options label {
+    color: #666766;
+    font-size: 16px;
+    display: inline-block;
+    font-family: Tahoma;
+    width: 150px;
+}
+
+.login-options label .required {
+    display: none;
+}
+
+.login-options input {
+    text-indent: 10px;
+    padding: 10px 0;
+    width: 350px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff!important;
+}
+
+.login-form .rememberMe {
+    margin-left: 150px;
+    color: #666766;
+    font-size: 14px;
+}
+
+.login-form .rememberMe label {
+    color: #666766;
+    font-family: Tahoma;
+    font-size: 14px;
+}
+
+.login-form .rememberMe input {
+    vertical-align: middle;
+}
+
+.login-button{
+    padding: 15px 30px;
+    border: 1px solid #4ebfa7;
+    color: #4ebfa7;
+    background: #fff;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+    margin-left: 150px;
+}
