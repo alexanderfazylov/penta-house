@@ -58,8 +58,9 @@
         </div>
     </div>
     <div id="pt-main" class="content">
-        <?php //$this->renderPartial('application.views.layouts._callback'); ?>
-        <?php //$this->renderPartial('application.views.layouts._change_city'); ?>
+        <?php $this->renderPartial('application.views.layouts._callback'); ?>
+        <?php $this->renderPartial('application.views.layouts._change_city'); ?>
+        <?php if ($this->carousel_panel) $this->renderPartial('application.views.layouts._carousel_panel'); ?>
         <?php echo $content; ?>
     </div>
 </div>

@@ -56,7 +56,6 @@ var PageTransitions = (function () {
                 break;
         }
 
-        console.log($currPage);
         $currPage.addClass(outClass).on(animEndEventName, function () {
             $currPage.off(animEndEventName);
             endCurrPage = true;

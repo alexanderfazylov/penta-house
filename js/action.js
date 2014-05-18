@@ -1,3 +1,6 @@
+function $_GET(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [, ""])[1].replace(/\+/g, '%20')) || null
+}
 $(function () {
     $('body').click(function () {
         closePopup();
@@ -89,17 +92,13 @@ $(function () {
     /*
      * слайдер
      */
-    if ($('.slider').length > 0)
-        $('.slider').mobilyslider({
-            transition: 'fade',
-            animationSpeed: 800,
-            autoplaySpeed: 3000,
-            autoplay: true,
-            bullets: false,
-            arrowsHide: false
-        });
-        if ($('.collection-img-item').length > 0)
-            $(".collection-img-item").lightBox();
+
+    $carousel = $('.carousel').carousel({
+        interval: 4000
+    });
+
+    if ($('.collection-img-item').length > 0)
+        $(".collection-img-item").lightBox();
 
     $('.map-chenger').click(function () {
 
@@ -112,46 +111,41 @@ $(function () {
         myMap.setCenter([latitude, longitude ], zoom);
     });
 
-    // PageTransitions.init();
-});
+    $('.carousel').on('slide.bs.carousel', function () {
+        var count = $('.carousel-indicators li').length - 1;
+        var active_index = $('.carousel-indicators li.active').index();
 
-function changeModel($el) {
-    var animate_nav;
-    if ($el.data('location_type') == 'next') {
-        animate_nav = 1;
-    } else {
-        animate_nav = 2;
-    }
-
-
-    $.ajax({
-        url: '/site/SearchModel',
-        type: 'GET',
-        dataType: 'HTML',
-        data: {
-            page_type: $el.data('page_type'),
-            entity_id: $el.data('entity_id'),
-            location_type: $el.data('location_type')
-        },
-        success: function (data) {
-            $('#pt-main').append(data);
-
-            var $block = $('.pt-page:not(.pt-page-current)');
-
-            if ($block.find('.slider').length > 0)
-                $block.find('.slider').mobilyslider({
-                    transition: 'fade',
-                    animationSpeed: 800,
-                    autoplaySpeed: 3000,
-                    autoplay: true,
-                    bullets: false,
-                    arrowsHide: false
-                });
-                if ($block.find('.collection-img-item').length > 0)
-                    $block.find(".collection-img-item").lightBox();
-
-            //PageTransitions.init();
-            PageTransitions.nextPage(animate_nav);
+        if (active_index == count) {
+            alert('1');
         }
-    });
+
+    })
+
+});
+function changeModel($el) {
+//    $carousel.carousel('next');
+
+    if (true) {
+        var animate_nav = $el.data('location_type') == 'next' ? 1 : 2;
+
+
+        $.ajax({
+            url: '/site/SearchModel',
+            type: 'GET',
+            dataType: 'HTML',
+            data: {
+                page_type: $el.data('page_type'),
+                entity_id: $_GET('id'),
+                location_type: $el.data('location_type')
+            },
+            success: function (data) {
+                $('#pt-main').append(data);
+                var $block = $('.pt-page:not(.pt-page-current)');
+                $carousel = $('.carousel').carousel();
+                $block.find(".collection-img-item").lightBox();
+                PageTransitions.nextPage(animate_nav);
+                History.pushState({}, $block.find('#page_title').val(), "?id=" + $block.find('#entity_id').val());
+            }
+        });
+    }
 }

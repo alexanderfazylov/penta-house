@@ -11,6 +11,9 @@ class SiteController extends Controller
     public $keywords = '';
     public $contacts = array();
     public $active_contact_id = array();
+    public $carousel_panel = false;
+    public $entity_id = null;
+    public $page_type = null;
 
     public function filters()
     {
@@ -52,7 +55,11 @@ class SiteController extends Controller
         $this->cs->registerCssFile($this->createUrl('/dist/PageTransitions/css/animations.css'));
         $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
         $this->cs->registerScriptFile($this->createUrl('/js/action.js'));
-
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.history.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/carousel.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/modernizr.custom.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/jquery.dlmenu.js'));
 
         $this->main = Maine::model()->findByPk(1);
         $this->contacts = Contact::mainFilter();
@@ -363,13 +370,6 @@ class SiteController extends Controller
 
     public function actionPost($id)
     {
-        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
-        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
-        $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/modernizr.custom.js'));
-        $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/jquery.dlmenu.js'));
-
-
-
 
 
         $criteria = new CDbCriteria;
@@ -391,6 +391,10 @@ class SiteController extends Controller
         $this->keywords = $post->meta_data->keywords;
         $this->pageTitle = $post->meta_data->title;
 
+        $this->carousel_panel = true;
+        $this->entity_id = $post->id;
+        $this->page_type = Page::PAGE_POSTS;
+
         $this->render('post', array(
             'model' => $post,
             'models' => $posts,
@@ -402,6 +406,7 @@ class SiteController extends Controller
     {
         $page = Page::model()->findByAttributes(array('name' => $page_type));
 
+
         if (empty($page)) {
             throw new CHttpException(404, 'Неверный запрос');
         }
@@ -410,13 +415,15 @@ class SiteController extends Controller
 
         $response = $entity::model()->SearchModel->condition($entity_id, $location_type);
 
+        $this->pageTitle = $response['model']->meta_data->title;
+
         $html = $this->renderPartial($page->view, array(
             'model' => $response['model'],
             'models' => $response['models'],
             'page' => $page,
         ), true, false);
 
-       // $html .= Helper::addTitleInput($response['model']->meta_data->title);
+        // $html .= Helper::addTitleInput($response['model']->meta_data->title);
 
 
         echo $html;

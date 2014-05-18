@@ -1,39 +1,17 @@
 <div class="pt-page">
-    <div class="test-but-panel">
-        <button type="button"
-                data-page_type="<?php echo Page::PAGE_POSTS ?>"
-                data-entity_id="<?php echo $model->id ?>"
-                data-location_type="<?php echo Page::MODEL_PREV ?>"
-                onclick="changeModel($(this))">
-            PREV
-        </button>
-        <button type="button"
-                data-page_type="<?php echo Page::PAGE_POSTS ?>"
-                data-entity_id="<?php echo $model->id ?>"
-                data-location_type="<?php echo Page::MODEL_NEXT ?>"
-                onclick="changeModel($(this))">
-            NEXT
-        </button>
-    </div>
-    <?php if (!empty($model->post_upload)): ?>
-        <div class="brand-plugin">
-            <div class="slider">
-                <div class="sliderContent">
-                    <?php foreach ($model->post_upload as $post_upload): ?>
-                        <div class="item">
-                            <img style="height: 800px"
-                                 src="/uploads/<?php echo $post_upload->upload->file_name; ?>"/>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-                <div class="sliderArrows sliderArrowsBottom"></div>
-            </div>
-            <div class="title">
-                <?php echo $model->name; ?>
-            </div>
-            <div class="anchor"></div>
-        </div>
-    <?php endif; ?>
+    <input type="hidden" id="page_title" value="<?php echo $this->pageTitle; ?>">
+    <input type="hidden" id="entity_id" value="<?php echo $model->id ?>">
+
+
+
+    <?php $this->renderPartial('/site/_carousel',
+        array(
+            'items' => $model->post_upload,
+            'title' => $model->name
+        )
+    );
+    ?>
+
     <div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Новости</a></div>
     <div class="collection">
         <h1> <?php echo $model->name; ?></h1>
@@ -74,5 +52,7 @@
         </div>
     </div>
 </div>
+
+
 
 
