@@ -85,6 +85,7 @@ class SiteController extends Controller
         $this->keywords = $page->meta_data->keywords;
         $this->pageTitle = $page->meta_data->title;
 
+
         $this->render('index', array(
                 'posts' => $posts,
                 'brands' => $brands,
@@ -142,13 +143,18 @@ class SiteController extends Controller
 
     public function actionCatalog()
     {
+
+
         $page = Page::model()->findByAttributes(array('name' => Page::PAGE_CATALOG));
+
+
         $this->description = $page->meta_data->description;
         $this->keywords = $page->meta_data->keywords;
         $this->pageTitle = $page->meta_data->title;
 
 
         $brands = Brand::model()->findAll(Brand::catalogCriteria());
+
 
         $this->render('catalog', array(
                 'brands' => $brands,
@@ -386,4 +392,15 @@ class SiteController extends Controller
     }
 
 
+    public function actionSearchModel($page_type, $entity_id, $location_type)
+    {
+        $entity = Page::getEntity($page_type);
+
+        $model = $entity::model()->SearchModel->condition($entity_id, $location_type);
+
+        var_dump($model);
+        die();
+
+
+    }
 }

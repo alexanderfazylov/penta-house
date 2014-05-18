@@ -17,6 +17,7 @@ class Page extends CActiveRecord
     const PAGE_CATALOG = 'catalog';
     const PAGE_PROJECTS = 'projects';
     const PAGE_POSTS = 'posts';
+    const PAGE_COLLECTION = 'collection';
 
     /**
      * @return string the associated database table name
@@ -36,7 +37,7 @@ class Page extends CActiveRecord
         return array(
             array('name', 'required'),
             array('meta_data_id', 'numerical', 'integerOnly' => true),
-            array('name', 'length', 'max' => 255),
+            array('name, entity', 'length', 'max' => 255),
             array('id, name, meta_data_id', 'safe', 'on' => 'search'),
         );
     }
@@ -60,6 +61,7 @@ class Page extends CActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'meta_data_id' => 'Meta Data',
+            'entity' => 'entity',
         );
     }
 
@@ -99,5 +101,14 @@ class Page extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+
+    public static function getEntity($page_type)
+    {
+        $model = self::model()->findByAttributes(array('name' => $page_type));
+
+        return $model->entity;
+
     }
 }

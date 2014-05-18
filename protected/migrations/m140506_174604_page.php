@@ -17,6 +17,9 @@ class m140506_174604_page extends CDbMigration
         $this->insert('{{page}}', array('name' => 'projects'));
         $this->insert('{{page}}', array('name' => 'posts'));
 
+        //
+
+
     }
 
     public function safeDown()

@@ -240,4 +240,29 @@ class Post extends CActiveRecord
 
         return $criteria;
     }
+
+    public static function behaviorsCriteria()
+    {
+        $criteria = new CDbCriteria;
+
+        $criteria->order = 't.order ASC';
+        $criteria->compare('t.visible', self::VISIBLE);
+        $criteria->with = array(
+            'upload1',
+
+        );
+
+        return $criteria;
+    }
+
+
+    public function behaviors()
+    {
+        return array(
+            'SearchModel' => array(
+                'class' => 'application.behaviors.SearchModel',
+                'behaviorsCriteria' => self::behaviorsCriteria()
+            ),
+        );
+    }
 }
