@@ -19,6 +19,9 @@ class Page extends CActiveRecord
     const PAGE_POSTS = 'posts';
     const PAGE_COLLECTION = 'collection';
 
+    const MODEL_NEXT = 'next';
+    const MODEL_PREV = 'prev';
+
     /**
      * @return string the associated database table name
      */

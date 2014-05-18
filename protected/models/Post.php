@@ -241,6 +241,11 @@ class Post extends CActiveRecord
         return $criteria;
     }
 
+    public static function addPageEntitys($id)
+    {
+        return self::model()->findAll(self::postCriteria($id));
+    }
+
     public static function behaviorsCriteria()
     {
         $criteria = new CDbCriteria;

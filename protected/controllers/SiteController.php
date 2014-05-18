@@ -49,6 +49,7 @@ class SiteController extends Controller
 
         $this->cs->registerCoreScript('jquery');
         $this->cs->registerCssFile($this->createUrl('/css/style.css'));
+        $this->cs->registerCssFile($this->createUrl('/dist/PageTransitions/css/animations.css'));
         $this->cs->registerScriptFile($this->createUrl('/js/app.js'));
         $this->cs->registerScriptFile($this->createUrl('/js/action.js'));
 
@@ -364,6 +365,11 @@ class SiteController extends Controller
     {
         $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/modernizr.custom.js'));
+        $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/jquery.dlmenu.js'));
+
+
+
 
 
         $criteria = new CDbCriteria;
@@ -379,28 +385,41 @@ class SiteController extends Controller
         if (empty($post)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
-        $posts = Post::model()->findAll(Post::postCriteria($post->id));
+        $posts = Post::addPageEntitys($post->id);
 
         $this->description = $post->meta_data->description;
         $this->keywords = $post->meta_data->keywords;
         $this->pageTitle = $post->meta_data->title;
 
         $this->render('post', array(
-            'post' => $post,
-            'posts' => $posts,
+            'model' => $post,
+            'models' => $posts,
         ));
     }
 
 
     public function actionSearchModel($page_type, $entity_id, $location_type)
     {
+        $page = Page::model()->findByAttributes(array('name' => $page_type));
+
+        if (empty($page)) {
+            throw new CHttpException(404, 'Неверный запрос');
+        }
+
         $entity = Page::getEntity($page_type);
 
-        $model = $entity::model()->SearchModel->condition($entity_id, $location_type);
+        $response = $entity::model()->SearchModel->condition($entity_id, $location_type);
 
-        var_dump($model);
-        die();
+        $html = $this->renderPartial($page->view, array(
+            'model' => $response['model'],
+            'models' => $response['models'],
+            'page' => $page,
+        ), true, false);
 
+       // $html .= Helper::addTitleInput($response['model']->meta_data->title);
+
+
+        echo $html;
 
     }
 }

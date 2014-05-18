@@ -2,13 +2,13 @@
 
 class SearchModel extends CBehavior
 {
-    const MODEL_NEXT = 'next';
-    const MODEL_PREV = 'prev';
+
 
     public $behaviorsCriteria;
 
     public function condition($entity_id, $location_type)
     {
+
         $current_model = $this->owner->findByPk($entity_id);
         $entity = null;
         $current_index = null;
@@ -33,14 +33,16 @@ class SearchModel extends CBehavior
             }
             $last_index = $key;
         }
-
-        if ($location_type == self::MODEL_NEXT) {
+        //
+        unset($models[$current_index]);
+        //
+        if ($location_type == Page::MODEL_NEXT) {
             if ($current_index == $last_index) {
                 $current_index = 0;
             } else {
                 ++$current_index;
             }
-        } else if ($location_type == self::MODEL_PREV) {
+        } else if ($location_type == Page::MODEL_PREV) {
             if ($current_index == 0) {
                 $current_index = $last_index;
             } else {
@@ -50,7 +52,12 @@ class SearchModel extends CBehavior
             throw new CHttpException(404, 'Неверный запрос');
         }
 
-        return $models[$current_index];
+        $response = array(
+            'model' => $models[$current_index],
+            'models' => $models
+        );
+
+        return $response;
     }
 
 }

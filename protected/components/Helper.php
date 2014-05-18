@@ -201,4 +201,8 @@ class Helper
     }
 
 
+    public static function addTitleInput($title)
+    {
+        return "<input type='hidden' id='page-title' value='{$title}'>";
+    }
 } 

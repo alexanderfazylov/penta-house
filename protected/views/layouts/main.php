@@ -57,15 +57,16 @@
             </div>
         </div>
     </div>
-    <div class="content">
-        <?php $this->renderPartial('application.views.layouts._callback'); ?>
-        <?php $this->renderPartial('application.views.layouts._change_city'); ?>
+    <div id="pt-main" class="content">
+        <?php //$this->renderPartial('application.views.layouts._callback'); ?>
+        <?php //$this->renderPartial('application.views.layouts._change_city'); ?>
         <?php echo $content; ?>
-        <div class="anchor"></div>
     </div>
 </div>
+<script src="/dist/PageTransitions/js/pagetransitions.js"></script>
 </body>
 </html>
+
 <script>
     var contacts = <?php echo Helper::convertModelToJson($this->contacts); ?>;
     var active_contact_id = <?php echo $this->active_contact_id;?>;
