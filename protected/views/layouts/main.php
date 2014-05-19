@@ -64,7 +64,7 @@
         <?php echo $content; ?>
     </div>
 </div>
-<script src="/dist/PageTransitions/js/pagetransitions.js"></script>
+<script src="/js/pagetransitions.js"></script>
 </body>
 </html>
 

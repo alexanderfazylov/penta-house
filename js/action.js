@@ -94,7 +94,7 @@ $(function () {
      */
 
     $carousel = $('.carousel').carousel({
-        interval: 4000
+        interval: false
     });
 
     if ($('.collection-img-item').length > 0)
@@ -110,22 +110,35 @@ $(function () {
 
         myMap.setCenter([latitude, longitude ], zoom);
     });
-
-    $('.carousel').on('slide.bs.carousel', function () {
-        var count = $('.carousel-indicators li').length - 1;
-        var active_index = $('.carousel-indicators li.active').index();
-
-        if (active_index == count) {
-            alert('1');
-        }
-
-    })
-
 });
+startRequest = false;
 function changeModel($el) {
-//    $carousel.carousel('next');
+    var count = $('.carousel-indicators li').length - 1;
+    var active_index = $('.carousel-indicators li.active').index();
 
-    if (true) {
+
+    if ($el.data('location_type') == 'prev') {
+        if (active_index == 0) {
+            changeContentPage($el);
+        } else {
+            $carousel.carousel('prev');
+        }
+    } else if ($el.data('location_type') == 'next') {
+        if (active_index == count) {
+            changeContentPage($el);
+        } else {
+            $carousel.carousel('next');
+        }
+    } else {
+        alert('Ошибка');
+    }
+
+
+}
+
+function changeContentPage($el) {
+    if (!startRequest) {
+        startRequest = true;
         var animate_nav = $el.data('location_type') == 'next' ? 1 : 2;
 
 
@@ -133,6 +146,7 @@ function changeModel($el) {
             url: '/site/SearchModel',
             type: 'GET',
             dataType: 'HTML',
+            async: false,
             data: {
                 page_type: $el.data('page_type'),
                 entity_id: $_GET('id'),
@@ -140,11 +154,20 @@ function changeModel($el) {
             },
             success: function (data) {
                 $('#pt-main').append(data);
-                var $block = $('.pt-page:not(.pt-page-current)');
                 $carousel = $('.carousel').carousel();
+
+                var $block = $('.pt-page:not(.pt-page-current)');
                 $block.find(".collection-img-item").lightBox();
-                PageTransitions.nextPage(animate_nav);
-                History.pushState({}, $block.find('#page_title').val(), "?id=" + $block.find('#entity_id').val());
+
+                PageTransitions.nextPage(animate_nav, function () {
+                    History.pushState({}, $block.find('#page_title').val(), "?id=" + $block.find('#entity_id').val());
+                    startRequest = false;
+                    $.each($('#pt-main .pt-page'), function (index, el) {
+                        if (!$(el).hasClass('pt-page-current')) {
+                            $(el).remove();
+                        }
+                    });
+                });
             }
         });
     }

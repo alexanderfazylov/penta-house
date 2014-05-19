@@ -29,7 +29,7 @@ var PageTransitions = (function () {
         $pages().eq(current).addClass('pt-page-current');
     }
 
-    function nextPage(options) {
+    function nextPage(options, callback) {
         var animation = (options.animation) ? options.animation : options;
 
         if (isAnimating) {
@@ -60,34 +60,32 @@ var PageTransitions = (function () {
             $currPage.off(animEndEventName);
             endCurrPage = true;
             if (endNextPage) {
-                onEndAnimation($currPage, $nextPage);
+                onEndAnimation($currPage, $nextPage, callback);
             }
         });
         $nextPage.addClass(inClass).on(animEndEventName, function () {
             $nextPage.off(animEndEventName);
             endNextPage = true;
             if (endCurrPage) {
-                onEndAnimation($currPage, $nextPage);
+                onEndAnimation($currPage, $nextPage, callback);
             }
         });
 
         if (!support) {
-            onEndAnimation($currPage, $nextPage);
+            onEndAnimation($currPage, $nextPage, callback);
         }
 
     }
 
-    function onEndAnimation($outpage, $inpage) {
+    function onEndAnimation($outpage, $inpage, callback) {
         endCurrPage = false;
         endNextPage = false;
         resetPage($outpage, $inpage);
         isAnimating = false;
-
+        callback();
     }
 
     function resetPage($outpage, $inpage) {
-        // console.log($outpage.data('originalClassList'));
-        //$outpage.attr('class', 'pt-page');
         $outpage.remove();
         $inpage.attr('class', 'pt-page pt-page-current');
 
