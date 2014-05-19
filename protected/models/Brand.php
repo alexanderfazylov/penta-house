@@ -246,6 +246,7 @@ class Brand extends CActiveRecord
 
     public static function catalogCriteria()
     {
+
         $criteria = new CDbCriteria;
 
         $criteria->order = 't.order ASC';
@@ -290,8 +291,35 @@ class Brand extends CActiveRecord
         return $criteria;
     }
 
+    public static function behaviorsCriteria()
+    {
+        $criteria = new CDbCriteria;
+
+        if (isset($_GET['id']))
+            $criteria->compare('t.id', $_GET['id']);
+
+        $criteria->with = array(
+            'collection' => array(//'limit' => 3,
+            ),
+            'collection.upload1',
+            'meta_data',
+        );
+        return $criteria;
+    }
+
     public static function collectionCountInput($model)
     {
         return "<input type='text' name='Brand[collection_count]' value='{$model->collection_count}'>";
+    }
+
+
+    public function behaviors()
+    {
+        return array(
+            'SearchModel' => array(
+                'class' => 'application.behaviors.SearchModel',
+                'behaviorsCriteria' => self::behaviorsCriteria()
+            ),
+        );
     }
 }

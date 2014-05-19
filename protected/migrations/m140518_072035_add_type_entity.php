@@ -15,6 +15,12 @@ class m140518_072035_add_type_entity extends CDbMigration
                 'view' => 'collection',
             )
         );
+        $this->insert('{{page}}', array(
+                'name' => 'brand',
+                'entity' => 'Brand',
+                'view' => 'brand',
+            )
+        );
         //
         $this->update('{{page}}',
             array(

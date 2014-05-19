@@ -18,6 +18,7 @@ class Page extends CActiveRecord
     const PAGE_PROJECTS = 'projects';
     const PAGE_POSTS = 'posts';
     const PAGE_COLLECTION = 'collection';
+    const PAGE_BRAND = 'brand';
 
     const MODEL_NEXT = 'next';
     const MODEL_PREV = 'prev';

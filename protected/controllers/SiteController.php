@@ -151,10 +151,7 @@ class SiteController extends Controller
 
     public function actionCatalog()
     {
-
-
         $page = Page::model()->findByAttributes(array('name' => Page::PAGE_CATALOG));
-
 
         $this->description = $page->meta_data->description;
         $this->keywords = $page->meta_data->keywords;
@@ -162,8 +159,6 @@ class SiteController extends Controller
 
 
         $brands = Brand::model()->findAll(Brand::catalogCriteria());
-
-
         $this->render('catalog', array(
                 'brands' => $brands,
             )
@@ -392,7 +387,7 @@ class SiteController extends Controller
 
         $this->carousel_panel = true;
         $this->entity_id = $brand->id;
-        $this->page_type = Page::PAGE_COLLECTION;
+        $this->page_type = Page::PAGE_BRAND;
 
         $this->description = $brand->meta_data->description;
         $this->keywords = $brand->meta_data->keywords;
