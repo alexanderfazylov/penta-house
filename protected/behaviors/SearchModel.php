@@ -34,7 +34,8 @@ class SearchModel extends CBehavior
             $last_index = $key;
         }
         //
-        unset($models[$current_index]);
+
+
         //
         if ($location_type == Page::MODEL_NEXT) {
             if ($current_index == $last_index) {
@@ -52,8 +53,11 @@ class SearchModel extends CBehavior
             throw new CHttpException(404, 'Неверный запрос');
         }
 
+        $current_model = $models[$current_index];
+        array_splice($models, $current_index, 1);
+
         $response = array(
-            'model' => $models[$current_index],
+            'model' => $current_model,
             'models' => $models
         );
 
