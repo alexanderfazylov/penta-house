@@ -257,4 +257,14 @@ class Project extends CActiveRecord
 
         return $criteria;
     }
+
+    public function behaviors()
+    {
+        return array(
+            'SearchModel' => array(
+                'class' => 'application.behaviors.SearchModel',
+                'behaviorsCriteria' => self::selfPageCriteria()
+            ),
+        );
+    }
 }

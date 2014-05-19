@@ -170,49 +170,6 @@ class SiteController extends Controller
         );
     }
 
-    public function actionBrand($id)
-    {
-
-        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
-
-        $brand = Brand::model()->find(Brand::pageBrand($id));
-
-
-        $this->description = $brand->meta_data->description;
-        $this->keywords = $brand->meta_data->keywords;
-        $this->pageTitle = $brand->meta_data->title;
-
-        $this->render('brand', array(
-                'brand' => $brand
-            )
-        );
-    }
-
-
-    public function actionCollection($id)
-    {
-        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
-        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
-
-
-        $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
-        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
-
-        if (empty($collection)) {
-            throw new CHttpException(404, 'Указанная запись не найдена');
-        }
-
-        $this->description = $collection->meta_data->description;
-        $this->keywords = $collection->meta_data->keywords;
-        $this->pageTitle = $collection->meta_data->title;
-
-        $this->render('collection',
-            array(
-                'collection' => $collection,
-                'brand' => $brand,
-            )
-        );
-    }
 
     public function actionLogin()
     {
@@ -303,31 +260,6 @@ class SiteController extends Controller
         ));
     }
 
-    public function actionProject($id)
-    {
-
-        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
-        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
-
-
-        $project = Project::model()->model()->findByPk($id, Project::selfPageCriteria());
-        $projects = Project::model()->findAll(Project::pageProject($project->id));
-
-        if (empty($project)) {
-            throw new CHttpException(404, 'Указанная запись не найдена');
-        }
-
-        $this->description = $project->meta_data->description;
-        $this->keywords = $project->meta_data->keywords;
-        $this->pageTitle = $project->meta_data->title;
-        $this->render('project',
-            array(
-                'project' => $project,
-                'projects' => $projects,
-            )
-        );
-    }
-
 
     public function actionSelectCity($contact_id)
     {
@@ -370,8 +302,6 @@ class SiteController extends Controller
 
     public function actionPost($id)
     {
-
-
         $criteria = new CDbCriteria;
         $criteria->compare('t.visible', Post::VISIBLE);
         $criteria->with = array(
@@ -401,32 +331,94 @@ class SiteController extends Controller
         ));
     }
 
+    public function actionProject($id)
+    {
+        $project = Project::model()->model()->findByPk($id, Project::selfPageCriteria());
+
+        if (empty($project)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $projects = Project::model()->findAll(Project::pageProject($project->id));
+
+        $this->description = $project->meta_data->description;
+        $this->keywords = $project->meta_data->keywords;
+        $this->pageTitle = $project->meta_data->title;
+
+        $this->carousel_panel = true;
+        $this->entity_id = $project->id;
+        $this->page_type = Page::PAGE_PROJECTS;
+
+        $this->render('project',
+            array(
+                'model' => $project,
+                'models' => $projects,
+            )
+        );
+    }
+
+    public function actionCollection($id)
+    {
+        $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
+        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
+
+        if (empty($collection)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $this->description = $collection->meta_data->description;
+        $this->keywords = $collection->meta_data->keywords;
+        $this->pageTitle = $collection->meta_data->title;
+
+        $this->carousel_panel = true;
+        $this->entity_id = $collection->id;
+        $this->page_type = Page::PAGE_COLLECTION;
+
+        $this->render('collection',
+            array(
+                'model' => $collection,
+                'models' => $brand->collection,
+            )
+        );
+    }
+
+    public function actionBrand($id)
+    {
+        $brand = Brand::model()->find(Brand::pageBrand($id));
+
+        if (empty($brand)) {
+            throw new CHttpException(404, 'Указанная запись не найдена');
+        }
+
+        $this->carousel_panel = true;
+        $this->entity_id = $brand->id;
+        $this->page_type = Page::PAGE_COLLECTION;
+
+        $this->description = $brand->meta_data->description;
+        $this->keywords = $brand->meta_data->keywords;
+        $this->pageTitle = $brand->meta_data->title;
+
+        $this->render('brand', array(
+                'model' => $brand
+            )
+        );
+    }
 
     public function actionSearchModel($page_type, $entity_id, $location_type)
     {
         $page = Page::model()->findByAttributes(array('name' => $page_type));
-
-
         if (empty($page)) {
             throw new CHttpException(404, 'Неверный запрос');
         }
-
         $entity = Page::getEntity($page_type);
-
         $response = $entity::model()->SearchModel->condition($entity_id, $location_type);
-
         $this->pageTitle = $response['model']->meta_data->title;
-
         $html = $this->renderPartial($page->view, array(
             'model' => $response['model'],
             'models' => $response['models'],
             'page' => $page,
         ), true, false);
 
-        // $html .= Helper::addTitleInput($response['model']->meta_data->title);
-
-
         echo $html;
-
     }
 }

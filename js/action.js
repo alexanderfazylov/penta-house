@@ -84,10 +84,7 @@ $(function () {
 
 
         }
-
         closePopup();
-
-
     });
     /*
      * слайдер
@@ -118,14 +115,19 @@ function changeModel($el) {
 
 
     if ($el.data('location_type') == 'prev') {
+
+
         if (active_index == 0) {
-            changeContentPage($el);
+            changeContentPage($el, function () {
+                $carousel.carousel(count);
+            });
         } else {
             $carousel.carousel('prev');
         }
     } else if ($el.data('location_type') == 'next') {
         if (active_index == count) {
-            changeContentPage($el);
+            changeContentPage($el, function () {
+            });
         } else {
             $carousel.carousel('next');
         }
@@ -136,7 +138,7 @@ function changeModel($el) {
 
 }
 
-function changeContentPage($el) {
+function changeContentPage($el, callback) {
     if (!startRequest) {
         startRequest = true;
         var animate_nav = $el.data('location_type') == 'next' ? 1 : 2;
@@ -155,6 +157,7 @@ function changeContentPage($el) {
             success: function (data) {
                 $('#pt-main').append(data);
                 $carousel = $('.carousel').carousel();
+                callback();
 
                 var $block = $('.pt-page:not(.pt-page-current)');
                 $block.find(".collection-img-item").lightBox();

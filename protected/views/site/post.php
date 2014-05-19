@@ -1,9 +1,6 @@
 <div class="pt-page">
     <input type="hidden" id="page_title" value="<?php echo $this->pageTitle; ?>">
     <input type="hidden" id="entity_id" value="<?php echo $model->id ?>">
-
-
-
     <?php $this->renderPartial('/site/_carousel',
         array(
             'items' => $model->post_upload,
@@ -11,7 +8,6 @@
         )
     );
     ?>
-
     <div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Новости</a></div>
     <div class="collection">
         <h1> <?php echo $model->name; ?></h1>
