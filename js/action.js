@@ -116,10 +116,14 @@ function changeModel($el) {
 
     if ($el.data('location_type') == 'prev') {
 
-
+        alert(active_index);
         if (active_index == 0) {
             changeContentPage($el, function () {
                 $carousel.carousel(count);
+            });
+        } else if (active_index == -1) {
+            changeContentPage($el, function () {
+               
             });
         } else {
             $carousel.carousel('prev');
