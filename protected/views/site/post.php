@@ -1,6 +1,8 @@
 <div class="pt-page">
     <input type="hidden" id="page_title" value="<?php echo $this->pageTitle; ?>">
     <input type="hidden" id="entity_id" value="<?php echo $model->id ?>">
+
+
     <?php $this->renderPartial('/site/_carousel',
         array(
             'items' => $model->post_upload,
@@ -47,6 +49,8 @@
             <?php endforeach; ?>
         </div>
     </div>
+
+
 </div>
 
 

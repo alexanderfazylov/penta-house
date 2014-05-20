@@ -116,14 +116,18 @@ function changeModel($el) {
 
     if ($el.data('location_type') == 'prev') {
 
-        alert(active_index);
         if (active_index == 0) {
             changeContentPage($el, function () {
-                $carousel.carousel(count);
+                //$carousel.carousel(count);
+                $carousel.find('.carousel-inner .item').removeClass('active');
+                $carousel.find('.carousel-indicators li').removeClass('active');
+                //
+                $carousel.find('.carousel-inner .item').last().addClass('active');
+                $carousel.find('.carousel-indicators li').last().addClass('active');
             });
         } else if (active_index == -1) {
             changeContentPage($el, function () {
-               
+
             });
         } else {
             $carousel.carousel('prev');
@@ -160,10 +164,13 @@ function changeContentPage($el, callback) {
             },
             success: function (data) {
                 $('#pt-main').append(data);
-                $carousel = $('.carousel').carousel();
+                var $block = $('.pt-page:not(.pt-page-current)');
+                ////////////////////////////////////////////////
+
+
+                $carousel = $block.find('.carousel').carousel();
                 callback();
 
-                var $block = $('.pt-page:not(.pt-page-current)');
                 $block.find(".collection-img-item").lightBox();
 
                 PageTransitions.nextPage(animate_nav, function () {
