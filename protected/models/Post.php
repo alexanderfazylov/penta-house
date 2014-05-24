@@ -249,7 +249,7 @@ class Post extends CActiveRecord
     public static function behaviorsCriteria()
     {
         $criteria = new CDbCriteria;
-
+        $criteria->limit = 9;
         $criteria->order = 't.order ASC';
         $criteria->compare('t.visible', self::VISIBLE);
         $criteria->with = array(

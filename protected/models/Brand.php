@@ -297,6 +297,7 @@ class Brand extends CActiveRecord
 
         if (isset($_GET['id']))
             $criteria->compare('t.id', $_GET['id']);
+        $criteria->limit = 9;
 
         $criteria->with = array(
             'collection' => array(//'limit' => 3,

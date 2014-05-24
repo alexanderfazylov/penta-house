@@ -231,6 +231,7 @@ class Collection extends CActiveRecord
         $criteria = new CDbCriteria;
         $criteria->order = 't.order ASC';
         $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
+        $criteria->limit = 9;
 
         $criteria->with = array(
             'collection_upload',

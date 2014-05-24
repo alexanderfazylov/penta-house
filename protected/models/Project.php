@@ -248,6 +248,7 @@ class Project extends CActiveRecord
     public static function selfPageCriteria()
     {
         $criteria = new CDbCriteria;
+        $criteria->limit = 9;
         $criteria->compare('t.visible', self::VISIBLE);
         $criteria->with = array(
             'project_upload',
