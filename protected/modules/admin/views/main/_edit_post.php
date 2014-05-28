@@ -32,7 +32,7 @@
             <h4>Основная страница</h4>
 
             <div class="form-group">
-                <label for="model-name">Загаловок</label>
+                <label for="model-name">Заголовок</label>
                 <input type="text" class="form-control" id="model-name" name="Post[name]"
                        value="{{>item.name}}">
             </div>

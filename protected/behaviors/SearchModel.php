@@ -35,7 +35,6 @@ class SearchModel extends CBehavior
         }
         //
 
-
         //
         if ($location_type == Page::MODEL_NEXT) {
             if ($current_index == $last_index) {

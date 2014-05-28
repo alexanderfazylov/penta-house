@@ -78,10 +78,6 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        $this->pageTitle = "Penta House - Элитная сантехника и плитка. Продажа. Монтаж. Сервис.";
-
-        $this->cs->registerScriptFile($this->createUrl('/dist/mobilyslider.js'));
-
         $posts = Post::model()->findAll(Post::indexCriteria());
         $brands = Brand::model()->findAll(Brand::indexCriteria());
         $projects = Project::model()->findAll(Project::indexCriteria());
@@ -277,7 +273,7 @@ class SiteController extends Controller
         $this->pageTitle = $page->meta_data->title;
 
         $criteria = new CDbCriteria;
-        $criteria->order = 't.order ASC, t.start_date ASC';
+        $criteria->order = 't.order ASC, t.start_date DESC';
         $criteria->compare('t.visible', Post::VISIBLE);
 
         $posts = Post::model()->findAll($criteria);
@@ -286,7 +282,7 @@ class SiteController extends Controller
         foreach ($posts as $post) {
             $years[DateTime::createFromFormat('d.m.Y', $post->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
         }
-        ksort($years);
+        asort($years);
 
 
         $this->render('posts', array(
@@ -357,9 +353,6 @@ class SiteController extends Controller
         $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
         $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
 
-        if (empty($brand)) {
-            $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id));
-        }
 
         if (empty($collection)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
@@ -376,7 +369,7 @@ class SiteController extends Controller
         $this->render('collection',
             array(
                 'model' => $collection,
-                'models' => $brand->collection,
+                'models' => (isset($brand->collection) ? $brand->collection : array()),
             )
         );
     }

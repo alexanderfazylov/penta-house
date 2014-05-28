@@ -213,7 +213,7 @@ class Post extends CActiveRecord
 
         $criteria->order = 't.order ASC';
         $criteria->compare('t.visible', self::VISIBLE);
-        $criteria->limit = 9;
+        $criteria->limit = 3;
 
 
         $criteria->with = array(

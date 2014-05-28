@@ -98,7 +98,10 @@ class MainController extends Controller
 
         if (isset($_GET['Collection'])) {
             $collection->attributes = $_GET['Collection'];
+        } else {
+            $collection->index_slider = '';
         }
+
         $this->render('collections', array('collection' => $collection));
     }
 

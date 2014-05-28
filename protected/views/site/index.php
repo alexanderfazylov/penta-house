@@ -1,27 +1,30 @@
 <div class="index-box">
     <div class="main-img">
-        <div class="brand-plugin">
-            <div class="slider">
-                <div class="sliderContent">
-                    <?php foreach ($collections as $collection): ?>
-                        <?php if (isset($collection->upload2)): ?>
-                            <div class="item">
-                                <a class="in_item" href="/collection?id=<?php echo $collection->id ?>">
-                                    <img class="ms-img" src="/uploads/<?php echo $collection->upload2->file_name ?>"/>
+
+
+        <?php if (!empty($collections)): ?>
+            <div class="brand-plugin">
+                <div id="carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <?php $index = 0; ?>
+                        <?php foreach ($collections as $item): ?>
+                            <?php if (isset($item->upload2)): ?>
+                                <a class="blocklink item <?php echo ($index == 0) ? 'active' : '' ?>"
+                                   href="/collection?id=<?php echo $item->id ?>">
+                                    <img class="ms-img" src="/uploads/<?php echo $item->upload2->file_name ?>"/>
 
                                     <div class="title">
-                                        <?php echo $collection->slogan; ?>
+                                        <?php echo $item->slogan; ?>
                                     </div>
                                 </a>
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
+                                <?php ++$index; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
-                <div class="sliderArrows sliderArrowsBottom"></div>
+                <div class="anchor"></div>
             </div>
-
-            <div class="anchor"></div>
-        </div>
+        <?php endif; ?>
     </div>
     <div class="service item-box">
         <div class="service-item item">
@@ -101,3 +104,9 @@
         </a>
     <?php endforeach; ?>
 </div>
+
+<script>
+    $('.carousel').carousel({
+        interval: 5000
+    });
+</script>

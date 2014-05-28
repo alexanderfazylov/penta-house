@@ -1,7 +1,7 @@
 <button type="button" class="btn btn-default btn-popup" data-popup="edit-model"
         data-item='{"meta_data":{}}'
         data-title="Создание коллекции">
-    Создать Коллецию
+    Создать коллекцию/технологию
 </button>
 
 <div class="anchor"></div>

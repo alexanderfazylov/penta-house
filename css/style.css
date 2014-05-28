@@ -186,6 +186,7 @@ h1 {
 
     .copyright {
         display: block;
+        font-family: Tahoma;
     }
 
     div.phone {
@@ -1692,4 +1693,8 @@ h1 {
 .hack-wrapper {
     position: relative;
     margin-bottom: 70px;
+}
+
+.blocklink {
+    display: block;
 }

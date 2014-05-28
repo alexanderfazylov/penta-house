@@ -14,7 +14,7 @@
         <h1 class="entity_title"><?php echo $model->entity->name; ?> <?php echo $model->name; ?></h1>
 
         <div class="collection-description">
-            <?php // echo $model->description; ?>
+            <?php echo $model->description; ?>
         </div>
         <div class="collection-gallery">
             <div class="item-box">

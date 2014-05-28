@@ -63,7 +63,7 @@
             <div class="form-group">
                 <label for="model-name">Производитель</label>
                 <select name="Collection[brand_id]">
-<!--                    <option value="0">-</option>-->
+                    <option value="">-</option>
                     {{getSelectOption:item.brand_id}}
                 </select>
             </div>
@@ -113,7 +113,7 @@
                 <label for="model-description">Фото</label>
 
                 <div class="construct_upload"
-                     data-width="2000"
+                     data-width="1600"
                      data-height="800"
                      data-action="/server/CollectionUpload"
                      data-multiple="true">

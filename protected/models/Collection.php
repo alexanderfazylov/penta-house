@@ -40,7 +40,7 @@ class Collection extends CActiveRecord
             array('order, maine_page_visible, tile, sanitary_engineering, index_slider, upload_1_id, upload_2_id, brand_id, meta_data_id, entity_id', 'numerical', 'integerOnly' => true, 'min' => 0),
             array('name, slogan', 'length', 'max' => 255),
             array('description', 'safe'),
-            array('id, name, order, brand_id', 'safe', 'on' => 'search'),
+            array('id, name, order, brand_id, maine_page_visible', 'safe', 'on' => 'search'),
             array('name', 'UniqueAttributesValidator', 'with' => 'brand_id'),
         );
     }
@@ -75,7 +75,7 @@ class Collection extends CActiveRecord
             'maine_page_visible' => 'Видимость',
             'upload_1_id' => 'Upload 1',
             'upload_2_id' => 'Upload 2',
-            'brand_id' => 'Brand',
+            'brand_id' => 'Производитель',
             'meta_data_id' => 'Meta Data',
             'sanitary_engineering' => 'sanitary_engineering',
             'tile' => 'Заголовок',
@@ -99,6 +99,7 @@ class Collection extends CActiveRecord
      */
     public function search()
     {
+
         $criteria = new CDbCriteria;
 
         $criteria->compare('t.id', $this->id);
@@ -273,10 +274,24 @@ class Collection extends CActiveRecord
         }
     }
 
+    public static function getIncrementLastOrder()
+    {
+        $
+    }
+
+    protected function beforeSave()
+    {
+        if ($this->isNewRecord) {
+            $this->order = self::getIncrementLastOrder();
+        }
+
+        return parent::beforeSave();
+    }
+
     public static function behaviorsCriteria()
     {
         $criteria = new CDbCriteria;
-
+        $criteria->limit = 9;
         $criteria->order = 't.order ASC';
         $criteria->compare('t.visible', self::VISIBLE);
         $criteria->with = array(
