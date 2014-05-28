@@ -357,6 +357,10 @@ class SiteController extends Controller
         $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
         $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
 
+        if (empty($brand)) {
+            $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id));
+        }
+
         if (empty($collection)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }

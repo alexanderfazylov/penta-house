@@ -263,7 +263,7 @@ class Brand extends CActiveRecord
         return $criteria;
     }
 
-    public static function pageCollection($brand_id, $collection_id)
+    public static function pageCollection($brand_id, $collection_id = false)
     {
         $criteria = new CDbCriteria;
         $criteria->compare('t.id', $brand_id);
@@ -271,7 +271,9 @@ class Brand extends CActiveRecord
             'collection',
             'collection.upload1',
         );
-        $criteria->addNotInCondition('collection.id', array($collection_id));
+
+        if ($collection_id)
+            $criteria->addNotInCondition('collection.id', array($collection_id));
 
         return $criteria;
     }
@@ -300,7 +302,7 @@ class Brand extends CActiveRecord
         $criteria->limit = 9;
 
         $criteria->with = array(
-            'collection' => array(//'limit' => 3,
+            'collection' => array( //'limit' => 3,
             ),
             'collection.upload1',
             'meta_data',
