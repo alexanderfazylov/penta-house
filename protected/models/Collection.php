@@ -276,12 +276,24 @@ class Collection extends CActiveRecord
 
     public static function getIncrementLastOrder()
     {
-        $
+        $criteria = new CDbCriteria;
+        $criteria->limit = 1;
+        $criteria->order = 't.order DESC';
+
+        $model = self::model()->find($criteria);
+
+
+        if (empty($model->order)) {
+            return 1;
+        } else {
+            return ++$model->order;
+        }
+
     }
 
     protected function beforeSave()
     {
-        if ($this->isNewRecord) {
+        if ($this->isNewRecord || empty($this->order)) {
             $this->order = self::getIncrementLastOrder();
         }
 
