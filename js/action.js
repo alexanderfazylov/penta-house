@@ -91,7 +91,7 @@ $(function () {
      */
 
     $carousel = $('.carousel').carousel({
-        interval: false
+        interval: 50000
     });
 
 //    if ($('.collection-img-item').length > 0)

@@ -7,9 +7,8 @@
                 <div class="carousel-inner">
                     <?php $index = 0; ?>
                     <?php foreach ($items as $item): ?>
-                        <div class="item <?php echo ($index == 0) ? 'active' : '' ?>">
-                            <img style="height: 100%"
-                                 src="/uploads/<?php echo $item->upload->file_name; ?>"/>
+                        <div class="item <?php echo ($index == 0) ? 'active' : '' ?>"><img
+                                src="/uploads/<?php echo $item->upload->file_name; ?>"/>
                         </div>
                         <?php ++$index; ?>
                     <?php endforeach; ?>

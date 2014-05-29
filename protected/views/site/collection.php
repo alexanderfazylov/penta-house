@@ -14,6 +14,7 @@
         <h1 class="entity_title"><?php echo $model->entity->name; ?> <?php echo $model->name; ?></h1>
 
         <div class="collection-description">
+            &nbsp;
             <?php echo $model->description; ?>
         </div>
         <?php if (isset($model->brand->upload3)): ?>
