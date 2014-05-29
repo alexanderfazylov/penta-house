@@ -16,13 +16,29 @@
         <div class="collection-description">
             <?php echo $model->description; ?>
         </div>
+        <?php if (isset($model->brand->upload3)): ?>
+            <div class="table brand-logo-colle ">
+                <div class="tr">
+                    <div class="td brand-logo-colle">
+                        <img style="width: 300px;" src="/uploads/<?php echo $model->brand->upload3->file_name; ?>">
+                    </div>
+                    <div class="td link-brand">
+                        <a class="brand-link" target="_blank"
+                           href="http://<?php echo $model->brand->site; ?>"><?php echo $model->brand->site; ?></a> <br/>
+                        <?php echo $model->entity->name; ?> <?php echo $model->name; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+
+
         <div class="collection-gallery">
             <div class="item-box">
+
                 <?php foreach ($model->collection_upload as $collection_upload): ?>
-                    <a href="/uploads/<?php echo $collection_upload->upload->file_name; ?>"
-                       class="collection-img-item item">
+                    <div class="collection-img-item item">
                         <img class="item-bg" <?php echo Helper::getSrc($collection_upload->upload, 'medium'); ?> ">
-                    </a>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>

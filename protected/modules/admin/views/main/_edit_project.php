@@ -56,8 +56,8 @@
                 <label for="model-description">Фото</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="1600"
+                     data-height="800"
                      data-action="/server/ProjectUpload"
                      data-multiple="true">
                     {{renderUploderMiltiple:item.project_upload}}

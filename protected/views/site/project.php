@@ -19,14 +19,11 @@
         </div>
         <div class="collection-gallery">
             <div class="item-box">
-
                 <?php foreach ($model->project_upload as $project_upload): ?>
-                    <a href="/uploads/<?php echo $project_upload->upload->file_name; ?>"
-                       class="collection-img-item item">
+                    <div class="collection-img-item item">
                         <img class="item-bg" src="/uploads/medium/<?php echo $project_upload->upload->file_name; ?>">
-                    </a>
+                    </div>
                 <?php endforeach; ?>
-
             </div>
         </div>
         <div class="anchor"></div>

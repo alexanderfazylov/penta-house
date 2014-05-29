@@ -274,11 +274,13 @@ class Collection extends CActiveRecord
         }
     }
 
-    public static function getIncrementLastOrder()
+    public static function getIncrementLastOrder($brand_id)
     {
         $criteria = new CDbCriteria;
         $criteria->limit = 1;
         $criteria->order = 't.order DESC';
+        $criteria->compare('t.brand_id', $brand_id);
+
 
         $model = self::model()->find($criteria);
 
@@ -294,7 +296,7 @@ class Collection extends CActiveRecord
     protected function beforeSave()
     {
         if ($this->isNewRecord || empty($this->order)) {
-            $this->order = self::getIncrementLastOrder();
+            $this->order = self::getIncrementLastOrder($this->brand_id);
         }
 
         return parent::beforeSave();

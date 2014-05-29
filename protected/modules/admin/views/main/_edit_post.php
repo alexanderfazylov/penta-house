@@ -38,7 +38,8 @@
             </div>
             <div class="form-group">
                 <label for="model-start_date">Дата</label>
-                <input type="text" class="form-control has-datapicker"  style="width: 100px" id="model-start_date" name="Post[start_date]"
+                <input type="text" class="form-control has-datapicker" style="width: 100px" id="model-start_date"
+                       name="Post[start_date]"
                        value="{{>item.start_date}}">
             </div>
             <div class="form-group">
@@ -51,8 +52,8 @@
                 <label for="model-description">Фото</label>
 
                 <div class="construct_upload"
-                     data-width="100"
-                     data-height="50"
+                     data-width="1600"
+                     data-height="800"
                      data-action="/server/PostUpload"
                      data-multiple="true">
                     {{renderUploderMiltiple:item.post_upload}}

@@ -121,8 +121,6 @@ class ServerController extends Controller
     {
         $picter = $this->base_path . $this->medium_path . $file_name;
 
-        unlink($this->base_path . $this->thumbs_path . $file_name);
-
         Yii::app()->ih
             ->load($picter)
             ->resize(80, 60)
@@ -133,14 +131,12 @@ class ServerController extends Controller
 
     public function cropOrig($file_name)
     {
-        $picter = Yii::app()->ih->load($this->base_path . $file_name);
-        $medium_picter = Yii::app()->ih->load($this->base_path . $this->medium_path . $file_name);
+        $picter = Yii::app()->ih->load($this->base_path . $file_name)->getWidth();
+        $medium_picter = Yii::app()->ih->load($this->base_path . $this->medium_path . $file_name)->getWidth();
 
-        unlink($this->base_path . $file_name);
+        $f = $picter / $medium_picter;
 
-        $f = $picter->getWidth() / $medium_picter->getWidth();
-
-        $picter
+        Yii::app()->ih->load($this->base_path . $file_name)
             ->crop($_POST['w'] * $f, $_POST['h'] * $f, $_POST['x1'] * $f, $_POST['y1'] * $f)
             ->save($this->base_path . $file_name);
 
@@ -209,7 +205,6 @@ class ServerController extends Controller
         $result = $this->upload('Collection', 'upload_2_id');
         Yii::app()->ih
             ->load($this->base_path . $result['file_name'])
-            ->resize(1400, 700)
             ->save($this->base_path . $result['file_name']);
 
         echo CJSON::encode($result);
@@ -221,7 +216,7 @@ class ServerController extends Controller
 
         Yii::app()->ih
             ->load($this->base_path . $result['file_name'])
-            ->resize(1600, 800)
+            ->resize(1600, 1600)
             ->save($this->base_path . $result['file_name']);
 
         echo CJSON::encode($result);

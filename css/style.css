@@ -621,6 +621,11 @@ h1 {
 
 .about-wrapp {
     padding: 0px 0px 55px 100px;
+    font-family: Tahoma;
+}
+
+.about-wrapp h2 {
+    font-family: 'HelveticaNeueCyr-Light';
 }
 
 .about-company {
@@ -635,6 +640,7 @@ h1 {
     width: 30%;
     height: 100%;
     padding-right: 15px;
+    font-family: 'HelveticaNeueCyr-Light';
 }
 
 .about-footer {
@@ -666,7 +672,7 @@ h1 {
     font-size: 13px;
     vertical-align: top;
     padding-right: 20px;
-    line-height: 18px;
+    line-height: 21px;
 }
 
 .about-company-descr > li {
@@ -723,6 +729,7 @@ h1 {
     vertical-align: top;
     padding-right: 20px;
     width: 50%;
+    line-height: 20px;
 }
 
 .about-item li.helper {
@@ -892,6 +899,7 @@ h1 {
     width: 65%;
     height: 100%;
     padding: 0px 40px 100px 100px;
+    font-family: Tahoma;
 }
 
 .brand-logo {
@@ -944,6 +952,7 @@ h1 {
     height: 100%;
     padding-right: 50px;
     padding-left: 100px;
+    font-family: Tahoma;
 }
 
 .collection-description h5 {
@@ -1697,4 +1706,22 @@ h1 {
 
 .blocklink {
     display: block;
+}
+
+.brand-logo-colle img {
+    display: block;
+}
+
+.brand-logo-colle a {
+    display: inline-block;
+}
+
+.brand-logo-colle .td {
+    vertical-align: middle;
+    /*line-height: 100px;*/
+}
+
+.link-brand {
+    padding-left: 30px;
+    font-family: Tahoma;
 }

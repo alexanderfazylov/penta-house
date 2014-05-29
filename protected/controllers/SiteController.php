@@ -57,7 +57,7 @@ class SiteController extends Controller
         $this->cs->registerScriptFile($this->createUrl('/js/action.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/jquery.history.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/carousel.js'));
-        $this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
+        //$this->cs->registerScriptFile($this->createUrl('/dist/jquery.lightbox-0.5.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/modernizr.custom.js'));
         $this->cs->registerScriptFile($this->createUrl('/dist/PageTransitions/js/jquery.dlmenu.js'));
 
@@ -273,7 +273,7 @@ class SiteController extends Controller
         $this->pageTitle = $page->meta_data->title;
 
         $criteria = new CDbCriteria;
-        $criteria->order = 't.order ASC, t.start_date DESC';
+        $criteria->order = 't.start_date DESC';
         $criteria->compare('t.visible', Post::VISIBLE);
 
         $posts = Post::model()->findAll($criteria);

@@ -94,8 +94,8 @@ $(function () {
         interval: false
     });
 
-    if ($('.collection-img-item').length > 0)
-        $(".collection-img-item").lightBox();
+//    if ($('.collection-img-item').length > 0)
+//        $(".collection-img-item").lightBox();
 
     $('.map-chenger').click(function () {
 
@@ -171,7 +171,7 @@ function changeContentPage($el, callback) {
                 $carousel = $block.find('.carousel').carousel();
                 callback();
 
-                $block.find(".collection-img-item").lightBox();
+                //$block.find(".collection-img-item").lightBox();
 
                 PageTransitions.nextPage(animate_nav, function () {
                     History.pushState({}, $block.find('#page_title').val(), "?id=" + $block.find('#entity_id').val());

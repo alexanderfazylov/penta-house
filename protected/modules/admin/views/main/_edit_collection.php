@@ -91,8 +91,8 @@
                 <label>Обложка на главной странице</label>
 
                 <div class="construct_upload"
-                     data-width="1400"
-                     data-height="700"
+                     data-width="1200"
+                     data-height="600"
                      data-action="/server/collectionUplod2"
                      data-multiple="false">
                     {{renderUploder:item.upload2}}

@@ -607,7 +607,7 @@ class CImageHandler extends CApplicationComponent
         return $this;
     }
 
-    public function save($file = false, $toFormat = false, $jpegQuality = 100, $touch = false)
+    public function save($file = false, $toFormat = false, $jpegQuality = 100, $touch = true)
     {
         if (empty($file)) {
             $file = $this->fileName;
