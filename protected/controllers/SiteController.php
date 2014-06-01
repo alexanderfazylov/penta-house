@@ -273,7 +273,7 @@ class SiteController extends Controller
         $this->pageTitle = $page->meta_data->title;
 
         $criteria = new CDbCriteria;
-        $criteria->order = 't.start_date DESC';
+        $criteria->order = 't.start_date ASC';
         $criteria->compare('t.visible', Post::VISIBLE);
 
         $posts = Post::model()->findAll($criteria);
@@ -282,7 +282,7 @@ class SiteController extends Controller
         foreach ($posts as $post) {
             $years[DateTime::createFromFormat('d.m.Y', $post->start_date)->setTimezone(new DateTimeZone('Europe/Moscow'))->format('Y')] = true;
         }
-        asort($years);
+        //asort($years);
 
 
         $this->render('posts', array(
@@ -350,13 +350,13 @@ class SiteController extends Controller
 
     public function actionCollection($id)
     {
-        $collection = Collection::model()->model()->findByPk($id, Collection::selfPageCriteria());
-        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
-
+        $collection = Collection::model()->model()->find(Collection::selfPageCriteria($id));
 
         if (empty($collection)) {
             throw new CHttpException(404, 'Указанная запись не найдена');
         }
+
+        $brand = Brand::model()->find(Brand::pageCollection($collection->brand_id, $collection->id));
 
         $this->description = $collection->meta_data->description;
         $this->keywords = $collection->meta_data->keywords;
@@ -403,7 +403,15 @@ class SiteController extends Controller
             throw new CHttpException(404, 'Неверный запрос');
         }
         $entity = Page::getEntity($page_type);
-        $response = $entity::model()->SearchModel->condition($entity_id, $location_type);
+
+
+        if ($page_type == 'collection') {
+            $response = $entity::model()->searchCollection($entity_id, $location_type);
+        } else {
+            $response = $entity::model()->SearchModel->condition($entity_id, $location_type);
+        }
+
+
         $this->pageTitle = $response['model']->meta_data->title;
         $html = $this->renderPartial($page->view, array(
             'model' => $response['model'],

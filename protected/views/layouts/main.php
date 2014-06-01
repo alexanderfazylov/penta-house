@@ -53,7 +53,7 @@
                         <a href="<?php echo $this->main->tw_link; ?>" class="tw"></a>
                     <?php endif ?>
                 </div>
-                <div class="copyright">&copy; 2013 Penta House</div>
+                <div class="copyright">&copy; 2013-<?php echo date('o'); ?>  Penta House</div>
             </div>
         </div>
     </div>

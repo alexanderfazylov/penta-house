@@ -94,18 +94,16 @@ $(function () {
         interval: 50000
     });
 
-//    if ($('.collection-img-item').length > 0)
-//        $(".collection-img-item").lightBox();
 
     $('.map-chenger').click(function () {
-
         var latitude = $(this).data('latitude');
-
         var longitude = $(this).data('longitude');
-
         var zoom = $(this).data('zoom');
-
         myMap.setCenter([latitude, longitude ], zoom);
+        //
+
+        $('.map-chenger').removeClass('active');
+        $(this).addClass('active');
     });
 });
 startRequest = false;

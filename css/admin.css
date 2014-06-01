@@ -201,3 +201,33 @@ textarea.h500 {
     max-width: 150px;
 }
 
+.modal {
+    top: 0 !important;
+    height: 100% !important;
+    /*overflow-y: scroll !important;*/
+}
+
+#modal-crop {
+    height: auto !important;
+}
+
+.modal-content-scroll {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow-y: scroll !important;
+}
+
+.modal-footer {
+    position: absolute;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    padding: 20px !important;
+    z-index: 999;
+
+}
+
+#modal-crop .modal-footer {
+    position: relative !important;
+}

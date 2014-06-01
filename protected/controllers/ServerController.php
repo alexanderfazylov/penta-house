@@ -216,7 +216,6 @@ class ServerController extends Controller
 
         Yii::app()->ih
             ->load($this->base_path . $result['file_name'])
-            ->resize(1600, 1600)
             ->save($this->base_path . $result['file_name']);
 
         echo CJSON::encode($result);

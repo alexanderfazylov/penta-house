@@ -121,7 +121,7 @@ class Collection extends CActiveRecord
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
             'sort' => array(
-                'defaultOrder' => 't.maine_page_visible ASC, t.order ASC, t.name ASC',
+                'defaultOrder' => 'brand.name ASC, t.order ASC, t.name ASC',
                 'attributes' => array(
                     'id' => 'id',
                     'name' => 'name',
@@ -227,12 +227,12 @@ class Collection extends CActiveRecord
         return $criteria;
     }
 
-    public static function selfPageCriteria()
+    public static function selfPageCriteria($id)
     {
         $criteria = new CDbCriteria;
-        $criteria->order = 't.order ASC';
+
+        $criteria->compare('t.id', $id);
         $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
-        $criteria->limit = 9;
 
         $criteria->with = array(
             'collection_upload',
@@ -302,27 +302,100 @@ class Collection extends CActiveRecord
         return parent::beforeSave();
     }
 
-    public static function behaviorsCriteria()
+    public static function behaviorsCriteria($brand_id, $in_brand)
     {
         $criteria = new CDbCriteria;
-        $criteria->limit = 9;
-        $criteria->order = 't.order ASC';
-        $criteria->compare('t.visible', self::VISIBLE);
+
+
+        //$criteria->limit = 9;
+
+        $criteria->compare('t.maine_page_visible', self::VISIBLE);
+
         $criteria->with = array(
             'upload1',
-
         );
+
+        if ($in_brand) {
+            array_push($criteria->with, 'brand');
+
+            $criteria->order = 'brand.name ASC, t.order ASC';
+
+            //$criteria->compare('t.brand_id', $brand_id);
+        } else {
+            $criteria->with = array(
+                'upload1',
+            );
+        }
+
 
         return $criteria;
     }
 
-    public function behaviors()
+    public function searchCollection($entity_id, $location_type)
     {
-        return array(
-            'SearchModel' => array(
-                'class' => 'application.behaviors.SearchModel',
-                'behaviorsCriteria' => self::selfPageCriteria()
-            ),
+        $entity = null;
+        $current_index = null;
+        $last_index = null;
+        $search_index = null;
+
+        $current_model = self::model()->find(Collection::selfPageCriteria($entity_id));
+
+        if (empty($current_model)) {
+            throw new CHttpException(404, 'Нет записей для отображения');
+        }
+
+
+        $models = self::model()->findAll(self::behaviorsCriteria($current_model->brand_id, true));
+
+
+        if (empty($models)) {
+            throw new CHttpException(404, 'Нет записей для отображения');
+        }
+
+
+        foreach ($models as $key => $model) {
+            if ($model->id == $entity_id) {
+                $current_index = $key;
+            }
+            $last_index = $key;
+        }
+        //
+
+        if ($location_type == Page::MODEL_NEXT) {
+            if ($current_index == $last_index) {
+                $current_index = 0;
+
+            } else {
+                ++$current_index;
+            }
+        } else if ($location_type == Page::MODEL_PREV) {
+            if ($current_index == 0) {
+                $current_index = $last_index;
+            } else {
+                --$current_index;
+            }
+        } else {
+            throw new CHttpException(404, 'Неверный запрос');
+        }
+
+        $current_model = $models[$current_index];
+
+
+        foreach ($models as $ind => $val) {
+            //if ($val->brand_id != $current_model->brand_id && count($models) > 5) {
+            if ($val->brand_id != $current_model->brand_id) {
+                unset($models[$ind]);
+            }
+        }
+
+        unset($models[$current_index]);
+        //array_splice($models, $current_index, 1);
+
+        $response = array(
+            'model' => $current_model,
+            'models' => $models
         );
+
+        return $response;
     }
 }

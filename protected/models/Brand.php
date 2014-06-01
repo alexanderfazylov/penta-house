@@ -251,7 +251,7 @@ class Brand extends CActiveRecord
 
         $criteria->order = 't.order ASC';
         //$criteria->limit = 8;
-        $criteria->compare('t.maine_page_visible', 0);
+
 
         $criteria->with = array(
             //'upload1',
@@ -259,6 +259,10 @@ class Brand extends CActiveRecord
             'collection',
             'collection.upload1',
         );
+
+        $criteria->compare('t.maine_page_visible', 0);
+        $criteria->compare('collection.maine_page_visible', Collection::VISIBLE);
+
 
         return $criteria;
     }

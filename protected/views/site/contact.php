@@ -38,10 +38,10 @@
 
     <ul class="contact-info-ul">
         <?php foreach ($contacts as $contact): ?>
-            <?php if ($contact->default_in_city): ?>
-                <h2 class="contact-city"><?php echo $contact->city; ?></h2>
-            <?php endif; ?>
             <li>
+                <?php if ($contact->default_in_city): ?>
+                    <h2 class="contact-city"><?php echo $contact->city; ?></h2>
+                <?php endif; ?>
                 <div class="contact-info-wrapp">
                     <button type="button"
                             class="map-chenger city-title <?php echo ($contact->id == $this->active_contact_id) ? 'active' : ''; ?>"
