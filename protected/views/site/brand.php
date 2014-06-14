@@ -52,20 +52,22 @@
     <div class="brand-description">
         <h1><?php echo $model->name; ?></h1>
 
+        <div class="brand-logo">
+            <?php if (isset($model->upload3)): ?>
+                <img style="width: 300px;" src="/uploads/<?php echo $model->upload3->file_name; ?>">
+            <?php endif; ?>
+            <a class="brand-link" target="_blank"
+               href="http://<?php echo $model->site; ?>"><?php echo $model->site; ?></a>
+            <?php if (isset($model->upload4)): ?>
+                <p class="brand-logo-title">
+                    Компания ПентаХаус является официальным дилером <?php echo $model->name; ?>
+                </p>
+                <img src="/uploads/<?php echo $model->upload3->file_name; ?>">
+            <?php endif; ?>
+        </div>
         <?php echo $model->description; ?>
     </div>
-    <div class="brand-logo">
-        <?php if (isset($model->upload3)): ?>
-            <img style="width: 300px;" src="/uploads/<?php echo $model->upload3->file_name; ?>">
-        <?php endif; ?>
-        <a class="brand-link" target="_blank" href="http://<?php echo $model->site; ?>"><?php echo $model->site; ?></a>
-        <?php if (isset($model->upload4)): ?>
-            <p class="brand-logo-title">
-                Компания ПентаХаус является официальным дилером <?php echo $model->name; ?>
-            </p>
-            <img src="/uploads/<?php echo $model->upload3->file_name; ?>">
-        <?php endif; ?>
-    </div>
+
 
     <div class="anchor"></div>
     <div class="collection-footer">

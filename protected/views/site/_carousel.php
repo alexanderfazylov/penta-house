@@ -31,4 +31,6 @@
             <div class="anchor"></div>
         </div>
     </div>
+<?php else: ?>
+    <div class="clearfix pustoi-block"></div>
 <?php endif; ?>

@@ -15,17 +15,18 @@
         <h1> <?php echo $model->name; ?></h1>
 
         <div class="collection-description">
+            <div class="collection-gallery">
+                <div class="item-box">
+                    <?php foreach ($model->project_upload as $project_upload): ?>
+                        <div class="collection-img-item item">
+                            <img class="item-bg" src="/uploads/illustration/<?php echo $project_upload->upload->file_name; ?>">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
             <?php echo $model->description; ?>
         </div>
-        <div class="collection-gallery">
-            <div class="item-box">
-                <?php foreach ($model->project_upload as $project_upload): ?>
-                    <div class="collection-img-item item">
-                        <img class="item-bg" src="/uploads/medium/<?php echo $project_upload->upload->file_name; ?>">
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
+
         <div class="anchor"></div>
     </div>
     <div class="anchor"></div>

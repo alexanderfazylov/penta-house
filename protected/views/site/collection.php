@@ -15,35 +15,37 @@
         <h1 class="entity_title"><?php echo $model->entity->name; ?> <?php echo $model->name; ?></h1>
 
         <div class="collection-description">
+            <?php if (isset($model->brand->upload3)): ?>
+                <div class="table brand-logo-colle ">
+                    <div class="tr">
+                        <div class="td brand-logo-colle">
+                            <img style="width: 300px;" src="/uploads/<?php echo $model->brand->upload3->file_name; ?>">
+                        </div>
+                        <div class="td link-brand">
+                            <a class="brand-link" target="_blank"
+                               href="http://<?php echo $model->brand->site; ?>"><?php echo $model->brand->site; ?></a> <br/>
+                            <?php echo $model->entity->name; ?> <?php echo $model->name; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="collection-gallery">
+                <div class="item-box">
+
+                    <?php foreach ($model->collection_upload as $collection_upload): ?>
+                        <div class="collection-img-item item">
+                            <img class="item-bg" <?php echo Helper::getSrc($collection_upload->upload, 'illustration'); ?> ">
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
             &nbsp;
             <?php echo $model->description; ?>
         </div>
-        <?php if (isset($model->brand->upload3)): ?>
-            <div class="table brand-logo-colle ">
-                <div class="tr">
-                    <div class="td brand-logo-colle">
-                        <img style="width: 300px;" src="/uploads/<?php echo $model->brand->upload3->file_name; ?>">
-                    </div>
-                    <div class="td link-brand">
-                        <a class="brand-link" target="_blank"
-                           href="http://<?php echo $model->brand->site; ?>"><?php echo $model->brand->site; ?></a> <br/>
-                        <?php echo $model->entity->name; ?> <?php echo $model->name; ?>
-                    </div>
-                </div>
-            </div>
-        <?php endif; ?>
 
 
-        <div class="collection-gallery">
-            <div class="item-box">
 
-                <?php foreach ($model->collection_upload as $collection_upload): ?>
-                    <div class="collection-img-item item">
-                        <img class="item-bg" <?php echo Helper::getSrc($collection_upload->upload, 'medium'); ?> ">
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
+
         <div class="anchor"></div>
     </div>
     <div class="anchor"></div>

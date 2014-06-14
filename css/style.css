@@ -80,6 +80,10 @@
     width: 33.33%;
 }
 
+.collection h1 {
+    max-width: 1000px;
+}
+
 .service-item {
     display: table !important;
     float: left;
@@ -513,6 +517,7 @@ h1 {
     font-size: 12px;
     color: #a1a1a1;
     font-family: Tahoma, sans-serif;
+    margin: 0 20px;
 }
 
 .dialog-position {
@@ -699,6 +704,7 @@ h1 {
 
 .about-company h1 {
     margin-bottom: 25px;
+    font-family: 'HelveticaNeueCyr-Light';
 }
 
 .about-contacts h3 {
@@ -896,7 +902,6 @@ h1 {
 
 .brand-description {
     float: left;
-    width: 65%;
     height: 100%;
     padding: 0px 40px 100px 100px;
     font-family: Tahoma;
@@ -904,9 +909,8 @@ h1 {
 
 .brand-logo {
     float: right;
-    width: 35%;
-    height: 100%;
-    padding: 110px 20px 100px 0;
+    width: 60%;
+    margin: 0 0 20px 30px;
 }
 
 .brand-description-table .tr .td {
@@ -948,7 +952,7 @@ h1 {
 
 .collection-description {
     float: left;
-    width: 40%;
+    /*width: 40%;*/
     height: 100%;
     padding-right: 50px;
     padding-left: 100px;
@@ -970,6 +974,7 @@ h1 {
     float: right;
     width: 60%;
     height: 100%;
+    margin: 0 0 20px 30px;
 }
 
 /*---- slider -----*/
@@ -1711,6 +1716,12 @@ h1 {
     display: block;
 }
 
+.table.brand-logo-colle {
+    float: right;
+    width: 60%;
+    margin-left: 30px;
+}
+
 .brand-logo-colle img {
     display: block;
 }
@@ -1722,6 +1733,11 @@ h1 {
 .brand-logo-colle .td {
     vertical-align: middle;
     /*line-height: 100px;*/
+    text-align: left;
+}
+
+.td:first-child.brand-logo-colle {
+    width: 1px;
 }
 
 .link-brand {
@@ -1729,3 +1745,6 @@ h1 {
     font-family: Tahoma;
 }
 
+.pustoi-block {
+    height: 30px;
+}

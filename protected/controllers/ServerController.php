@@ -5,6 +5,7 @@ class ServerController extends Controller
     private $base_path = 'uploads/';
     private $thumbs_path = 'thumbs/';
     private $medium_path = 'medium/';
+    private $illustration_path = 'illustration/';
     private $allowed_extensions = array("jpeg", "jpg", "png", "gif");
 
     private function getSizeLimit()
@@ -28,6 +29,11 @@ class ServerController extends Controller
             mkdir($this->base_path . $this->medium_path);
             chmod($this->base_path . $this->medium_path, 0777);
         }
+
+        if (!is_dir($this->base_path . $this->illustration_path)) {
+            mkdir($this->base_path . $this->illustration_path);
+            chmod($this->base_path . $this->illustration_path, 0777);
+        }
     }
 
     public function upload($model, $attribute)
@@ -36,6 +42,8 @@ class ServerController extends Controller
         $result = $uploader->handleUpload($this->base_path, FALSE, $model, $attribute);
         $this->createTumbs($result['file_name']);
         $this->createMedium($result['file_name']);
+        $this->createIllustration($result['file_name']);
+
         return $result;
     }
 
@@ -60,6 +68,24 @@ class ServerController extends Controller
         }
 
         $picter->save($this->base_path . $this->medium_path . $filename);
+
+        return true;
+    }
+
+    public function createIllustration($filename)
+    {
+        $width = 400;
+        $height = 400;
+
+        $picter = Yii::app()->ih->load($this->base_path . $filename);
+
+        if ($picter->getWidth() > $width || $picter->getHeight() > $height) {
+            $picter
+                ->resize($width, $height)
+                ->crop(400, 200);
+        }
+
+        $picter->save($this->base_path . $this->illustration_path . $filename);
 
         return true;
     }
@@ -96,6 +122,7 @@ class ServerController extends Controller
             $this->cropOrig($upload->file_name);
             $this->cropMedium($upload->file_name);
             $this->cropThumbs($upload->file_name);
+            $this->cropIllustration($upload->file_name);
 
         }
 
@@ -128,6 +155,23 @@ class ServerController extends Controller
 
         return true;
     }
+
+    public function cropIllustration($filename)
+    {
+        $width = 400;
+        $height = 400;
+
+        $picter = Yii::app()->ih->load($this->base_path . $filename);
+
+        if ($picter->getWidth() > $width || $picter->getHeight() > $height) {
+            $picter
+                ->resize($width, $height)
+                ->crop(400, 200);
+        }
+
+        $picter->save($this->base_path . $this->illustration_path . $filename);
+    }
+
 
     public function cropOrig($file_name)
     {

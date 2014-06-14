@@ -34,8 +34,6 @@ class Upload extends CActiveRecord
             array('file_name, user_file_name, ext, size', 'required'),
             array('file_name, user_file_name, ext, size, model, attribute', 'length', 'max' => 255),
             array('created', 'safe'),
-            // The following rule is used by search().
-            // @todo Please remove those attributes that should not be searched.
             array('id, file_name, user_file_name, ext, size, model, attribute, created', 'safe', 'on' => 'search'),
         );
     }
