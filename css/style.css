@@ -1470,6 +1470,7 @@ h1 {
     position: relative;
     -webkit-transition: 0.6s ease-in-out left;
     transition: 0.6s ease-in-out left;
+    overflow: hidden;
 }
 
 .carousel-inner > .item > img,
