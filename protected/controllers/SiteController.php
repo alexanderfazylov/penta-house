@@ -273,7 +273,7 @@ class SiteController extends Controller
         $this->pageTitle = $page->meta_data->title;
 
         $criteria = new CDbCriteria;
-        $criteria->order = 't.start_date ASC';
+        $criteria->order = 't.start_date DESC';
         $criteria->compare('t.visible', Post::VISIBLE);
 
         $posts = Post::model()->findAll($criteria);

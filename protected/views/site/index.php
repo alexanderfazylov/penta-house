@@ -1,10 +1,8 @@
 <div class="index-box">
     <div class="main-img">
-
-
         <?php if (!empty($collections)): ?>
             <div class="brand-plugin">
-                <div id="carousel" class="carousel slide" data-ride="carousel">
+                <div id="main-carousel" class="carousel slide" data-ride="main-carousel">
                     <div class="carousel-inner">
                         <?php $index = 0; ?>
                         <?php foreach ($collections as $item): ?>
@@ -21,7 +19,17 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
+                    <ol class="carousel-indicators main-carousel-indicators">
+                        <?php $index = 0; ?>
+                        <?php foreach ($collections as $item): ?>
+                            <li data-target="#main-carousel"
+                                data-slide-to="<?php echo $index; ?>"
+                                class="<?php echo ($index == 0) ? 'active' : '' ?>"></li>
+                            <?php ++$index; ?>
+                        <?php endforeach; ?>
+                    </ol>
                 </div>
+
                 <div class="anchor"></div>
             </div>
         <?php endif; ?>
@@ -105,8 +113,3 @@
     <?php endforeach; ?>
 </div>
 
-<script>
-    $('.carousel').carousel({
-        interval: 5000
-    });
-</script>

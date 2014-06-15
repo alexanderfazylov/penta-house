@@ -237,7 +237,7 @@ class Brand extends CActiveRecord
 
         $criteria->order = 't.order ASC';
         $criteria->limit = 7;
-        $criteria->compare('t.maine_page_visible', 0);
+        $criteria->compare('t.maine_page_visible', Brand::VISIBLE);
 
         $criteria->with = array(
             'upload1',

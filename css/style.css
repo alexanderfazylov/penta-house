@@ -455,6 +455,7 @@ h1 {
     background: rgba(255, 255, 255, 0.5);
     z-index: 5;
     color: #000;
+    max-width: 900px;
 }
 
 .main-img .title {
@@ -1597,11 +1598,12 @@ h1 {
     height: 70px;
     position: absolute;
     left: 0;
-    bottom: -70px !important;
+    bottom: 0 !important;
     z-index: 99999;
     background: #000000;
     line-height: 70px;
     text-align: center;
+    opacity: .9;
 }
 
 .carousel .item {
@@ -1709,7 +1711,7 @@ h1 {
 
 .hack-wrapper {
     position: relative;
-    margin-bottom: 70px;
+    /*margin-bottom: 70px;*/
 }
 
 .blocklink {
@@ -1747,4 +1749,8 @@ h1 {
 
 .pustoi-block {
     height: 30px;
+}
+
+.main-carousel-indicators {
+    background: transparent;
 }
