@@ -233,11 +233,14 @@ class Collection extends CActiveRecord
 
         $criteria->compare('t.id', $id);
         $criteria->compare('t.maine_page_visible', Collection::VISIBLE);
+        $criteria->compare('brand.maine_page_visible', Brand::VISIBLE);
+
 
         $criteria->with = array(
             'collection_upload',
             'meta_data',
             'entity',
+            'brand',
         );
         return $criteria;
     }
@@ -307,6 +310,7 @@ class Collection extends CActiveRecord
         $criteria = new CDbCriteria;
 
 
+        $criteria->order = 'brand.name ASC, t.order ASC';
         //$criteria->limit = 9;
 
         $criteria->compare('t.maine_page_visible', self::VISIBLE);
@@ -317,10 +321,9 @@ class Collection extends CActiveRecord
 
         if ($in_brand) {
             array_push($criteria->with, 'brand');
-
-            $criteria->order = 'brand.name ASC, t.order ASC';
-
-            //$criteria->compare('t.brand_id', $brand_id);
+            $criteria->order = 'brand.order ASC, t.order ASC';
+            $criteria->compare('brand.maine_page_visible', Brand::VISIBLE);
+            $criteria->compare('t.maine_page_visible', self::VISIBLE);
         } else {
             $criteria->with = array(
                 'upload1',

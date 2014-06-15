@@ -18,6 +18,9 @@
  */
 class Brand extends CActiveRecord
 {
+    const VISIBLE = 0;
+    const HIDDEN = 1;
+
     /**
      * @return string the associated database table name
      */
@@ -249,8 +252,11 @@ class Brand extends CActiveRecord
 
         $criteria = new CDbCriteria;
 
-        $criteria->order = 't.order ASC';
+        $criteria->order = 't.order ASC, collection.order ASC';
         //$criteria->limit = 8;
+
+        $criteria->compare('t.maine_page_visible', Brand::VISIBLE);
+        $criteria->compare('collection.maine_page_visible', Collection::VISIBLE);
 
 
         $criteria->with = array(
