@@ -3,7 +3,7 @@
     <input type="hidden" id="entity_id" value="<?php echo $model->id ?>">
     <?php if (!empty($model->collection) && Helper::issetPhoto($model->collection)): ?>
         <div class="hack-wrapper">
-            <img src="/i/hack.jpg" class="hack-height" width="100%"/>
+            <img src="/i/hack_5_3.jpg.jpg" class="hack-height" width="100%"/>
 
             <div class="brand-plugin">
                 <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -17,7 +17,7 @@
                                 ?>
                                 <div class="item <?php echo ($index == 0) ? 'active' : '' ?>">
                                     <img
-                                    <?php echo Helper::getSrc($photo->upload); ?> />
+                                        <?php echo Helper::getSrc($photo->upload); ?> />
                                 </div>
                                 <?php ++$index; ?>
                             <?php endif; ?>
@@ -43,9 +43,6 @@
                 </div>
                 <div class="anchor"></div>
             </div>
-
-
-            <?php echo $collection->slogan; ?>
         </div>
     <?php endif; ?>
     <div class="breadcrumbs"><a href="/site/index">Главная</a> / <a href="/site/catalog">Каталог</a></div>
