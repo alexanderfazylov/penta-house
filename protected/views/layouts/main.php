@@ -9,6 +9,36 @@
     <meta name="description" content="<?php echo $this->description; ?>">
     <meta name="keywords" content="<?php echo $this->keywords; ?>">
 
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter25284743 = new Ya.Metrika({id: 25284743,
+                        webvisor: true,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true});
+                } catch (e) {
+                }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
 </head>
 
 <body>
@@ -20,7 +50,10 @@
                     <span
                         class="city-name"><?php echo Helper::getCity($this->contacts, $this->active_contact_id); ?></span>
                     <?php if (count($this->contacts) >= 2): ?>
+                        <div class="anchor"></div>
                         <span class="change-city">Выбрать другой город</span>
+                        <div class="anchor"></div>
+
                     <?php endif; ?>
                 </div>
                 <div class="phone"><?php echo Helper::getPhone($this->contacts, $this->active_contact_id); ?></div>

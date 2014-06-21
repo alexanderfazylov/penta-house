@@ -397,7 +397,7 @@ h1 {
 .copyright {
     color: #fff;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
     text-align: center;
 }
@@ -908,6 +908,49 @@ h1 {
     font-family: Tahoma;
 }
 
+.brand-description p {
+    font-size: 13px;
+    line-height: 21px;
+    font-family: Tahoma;
+    margin-bottom: 20px;
+}
+
+.brand-description p:first-letter {
+    /*margin-left: 5px;*/
+}
+
+.brand-description h1, .brand-description h2, .brand-description h3, .brand-description h4 {
+    font-family: 'HelveticaNeueCyr-Light';
+    font-weight: normal;
+    margin: 15px 0 8px 0;
+}
+
+.collection-description h1, .collection-description h2, .collection-description h3, .collection-description h4 {
+    font-family: 'HelveticaNeueCyr-Light';
+    font-weight: normal;
+    margin: 15px 0 8px 0;
+}
+
+.collection-description li:after {
+    clear: both;
+    float: none;
+}
+
+.collection-description li:before {
+    content: "—";
+    position: relative;
+    color: #4ebfa7;
+    font-size: 13px;
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.collection-description li {
+    padding-left: 5px;
+    padding-top: 8px;
+    list-style: none;
+}
+
 .brand-logo {
     float: right;
     width: 60%;
@@ -968,7 +1011,7 @@ h1 {
 
 .collection-description p {
     font-size: 1.1em;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .collection-gallery {
@@ -1596,15 +1639,15 @@ h1 {
 
 .carousel-indicators {
     width: 100%;
-    height: 70px;
+    height: 90px;
     position: absolute;
     left: 0;
     bottom: 0 !important;
     z-index: 99999;
-    background: #000000;
+    /*background: #000000;*/
     line-height: 70px;
     text-align: center;
-    opacity: .9;
+    /*opacity: .9;*/
 }
 
 .carousel .item {
@@ -1702,7 +1745,7 @@ h1 {
     height: 100%;
     top: 0;
     /*border: 1px solid transparent;*/
-    border-bottom: 1px solid #000000;
+    /*border-bottom: 1px solid #000000;*/
 }
 
 .hack-height {

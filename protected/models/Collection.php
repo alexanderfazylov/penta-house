@@ -222,8 +222,11 @@ class Collection extends CActiveRecord
         $criteria = new CDbCriteria;
         $criteria->compare('t.maine_page_visible', self::VISIBLE);
         $criteria->compare('t.index_slider', self::INDEX_SLIDER_TRUE);
+        $criteria->compare('brand.maine_page_visible', Brand::VISIBLE);
+
         $criteria->with = array(
-            'upload2'
+            'upload2',
+            'brand'
         );
 
         return $criteria;
