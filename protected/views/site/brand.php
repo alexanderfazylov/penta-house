@@ -3,7 +3,7 @@
     <input type="hidden" id="entity_id" value="<?php echo $model->id ?>">
     <?php if (!empty($model->collection) && Helper::issetPhoto($model->collection)): ?>
         <div class="hack-wrapper">
-            <img src="/i/hack_5_3.jpg.jpg" class="hack-height" width="100%"/>
+            <img src="/i/hack_5_3.jpg" class="hack-height" width="100%"/>
 
             <div class="brand-plugin">
                 <div id="carousel" class="carousel slide" data-ride="carousel">
