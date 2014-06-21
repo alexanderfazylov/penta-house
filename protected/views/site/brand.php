@@ -16,8 +16,8 @@
                                 $photo = $collection_upload[0];
                                 ?>
                                 <div class="item <?php echo ($index == 0) ? 'active' : '' ?>">
-                                    <img style="height: 800px"
-                                    <?php echo Helper::getSrc($photo->upload); ?>//>
+                                    <img 
+                                    <?php echo Helper::getSrc($photo->upload); ?> />
                                 </div>
                                 <?php ++$index; ?>
                             <?php endif; ?>
