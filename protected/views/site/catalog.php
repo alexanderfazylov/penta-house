@@ -1,11 +1,11 @@
 <div class="">
     <div class="catalog item-box">
         <?php foreach ($brands as $brand): ?>
-            <a href="/site/brand?id=<?php echo $brand->id; ?>" class="catalog-item item catalog-title">
+            <a href="/brand?id=<?php echo $brand->id; ?>" class="catalog-item item catalog-title">
                 <img class="catalog-logo" <?php echo Helper::getSrc($brand->upload2); ?> >
             </a>
             <?php foreach ($brand->collection as $collection): ?>
-                <a href="/site/collection?id=<?php echo $collection->id; ?>" class="catalog-item item hovered">
+                <a href="/collection?id=<?php echo $collection->id; ?>" class="catalog-item item hovered">
                     <img class="item-bg" <?php echo Helper::getSrc($collection->upload1); ?>>
 
                     <div class="hovered-div">

@@ -925,6 +925,10 @@ h1 {
     margin: 15px 0 8px 0;
 }
 
+.collection-description h2, .brand-description h2 {
+    font-size: 2em;
+}
+
 .collection-description h1, .collection-description h2, .collection-description h3, .collection-description h4 {
     font-family: 'HelveticaNeueCyr-Light';
     font-weight: normal;
@@ -1797,4 +1801,8 @@ h1 {
 
 .main-carousel-indicators {
     background: transparent;
+}
+
+#main-carousel .title {
+    bottom: 90px !important;
 }

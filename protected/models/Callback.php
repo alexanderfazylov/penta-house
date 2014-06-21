@@ -107,12 +107,13 @@ class Callback extends CActiveRecord
     }
 
 
-
     protected function sendMailManagers()
     {
         $managers = array(
             'alexander@fazylov.ru',
             'lkdnvc@gmail.com',
+            'lkdnvc@yandex.ru',
+            'santika-online@yandex.ru',
         );
 
         $params = array();

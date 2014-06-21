@@ -24,7 +24,7 @@
                         <div class="td link-brand">
                             <a class="brand-link" target="_blank"
                                href="http://<?php echo $model->brand->site; ?>"><?php echo $model->brand->site; ?></a> <br/>
-                            <?php echo $model->entity->name; ?> <?php echo $model->name; ?>
+                            <?php echo $model->name; ?>
                         </div>
                     </div>
                 </div>

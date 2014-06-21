@@ -306,10 +306,13 @@ class Brand extends CActiveRecord
     {
         $criteria = new CDbCriteria;
 
-        if (isset($_GET['id']))
+        if (isset($_GET['id'])) {
             $criteria->compare('t.id', $_GET['id']);
-        $criteria->limit = 9;
+        }
 
+        $criteria->limit = 9;
+        $criteria->compare('t.maine_page_visible', self::VISIBLE);
+        
         $criteria->with = array(
             'collection' => array(
                 'limit' => 9,
