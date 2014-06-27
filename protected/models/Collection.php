@@ -109,7 +109,7 @@ class Collection extends CActiveRecord
         $criteria->compare('t.maine_page_visible', $this->maine_page_visible);
         $criteria->compare('t.index_slider', $this->index_slider);
 
-        $criteria->compare('brand.maine_page_visible', Brand::VISIBLE);
+        //$criteria->compare('brand.maine_page_visible', Brand::VISIBLE);
 
         $criteria->with = array(
             'meta_data',
